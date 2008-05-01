@@ -1,3 +1,14 @@
+- pages
+	- index: list of projects
+		-> summary
+	- summary: main page of a project (like gitweb)
+		- description, last change, clone url?
+		- shortlog: date, author, message, [branch/tag], links: commit, commitdiff, tree, snapshot/download
+	- commit
+	- tree
+	- commitdiff
+	- snapshot/download
+
 - ideas in nutshell
 	- free git repository viewer that is easy to install and does not have many dependencies
 	- depends: PHP5, git
