@@ -1,0 +1,25 @@
+- ideas in nutshell
+	- free git repository viewer that is easy to install and does not have many dependencies
+	- depends: PHP5, git
+
+- feature
+	- mandatory features (0.0.1)
+		- project list (configurable or from a root, using globs perhaps?)
+			- name, description (.git/description), action links
+		- tar.gz snapshots of trees
+		- shortlog
+	- optional
+		- tree browsing / downloading of individual files
+		- RSS feeds: projects, shortlog
+
+- name?
+	- ViewGit
+		- 3 google hits, none of a project
+		- Not registered at: SourceForge, Freshmeat, BerliOS
+
+- license?
+	- GPLv2 vs. GPLv3 vs. AGPLv3
+	- add clarification that linking to the original homepage is enough to provide source, as long as it's around
+
+- bundle about page that says what the software is and where to download it
+
