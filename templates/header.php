@@ -5,6 +5,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title><?php echo $page['title']; ?></title>
+	<link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 <body>
 

@@ -1,4 +1,5 @@
 <?php
+require_once('inc/config.php');
 
 error_reporting(E_ALL);
 
