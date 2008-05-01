@@ -25,8 +25,11 @@
 	- optional
 		- tree browsing / downloading of individual files
 		- RSS feeds: projects, shortlog
+		- branches list?
+		- tag list
 	- config
 		- date/time format
+	- don't mimic gitweb interface as it's a tad clunky
 
 - name?
 	- ViewGit
