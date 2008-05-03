@@ -14,6 +14,44 @@ function get_project_info($name)
 	return $info;
 }
 
+/**
+ * Get details of a commit: tree, parent, author/committer (name, mail, date), message
+ */
+function git_get_commit_info($project, $hash)
+{
+	$info = array();
+	$info['h'] = $hash;
+
+	$output = run_git($project, "git-rev-list --header --max-count=1 $hash");
+	// tree <h>
+	// parent <h>
+	// author <name> "<"<mail>">" <stamp> <timezone>
+	// committer
+	// <empty>
+	//     <message>
+	foreach ($output as $line) {
+		if (substr($line, 0, 4) === 'tree') {
+			$info['tree'] = substr($line, 5);
+		}
+		elseif (substr($line, 0, 6) === 'parent') {
+			$info['parent']  = substr($line, 7);
+		}
+		elseif (substr($line, 0, 6) === 'author') {
+			$pos_mailstart = strrpos($line, '<');
+			$pos_mailend = strrpos($line, '>');
+			$info['author_name'] = substr($line, 7, $pos_mailstart - 1 - 7);
+			$info['author_mail'] = substr($line, $pos_mailstart + 1, $pos_mailend - $pos_mailstart - 1);
+
+			$parts = explode(' ', $line);
+			$info['author_timezone'] = array_pop($parts);
+			$info['author_stamp'] = array_pop($parts);
+		}
+	}
+	print_r($info);
+
+	return $info;
+}
+
 function git_get_heads($project)
 {
 	$heads = array();
@@ -88,8 +126,9 @@ elseif ($action === 'summary') {
 	$heads = git_get_heads($page['project']);
 	$page['heads'] = array();
 	foreach ($heads as $h) {
+		$info = git_get_commit_info($page['project'], $h['h']);
 		$page['heads'][] = array(
-			'date' => '2008-05-03 10:11:23',
+			'date' => '2008-05-03 10:11:23', // TODO get from commit info
 			'h' => $h['h'],
 			'fullname' => $h['fullname'],
 			'name' => $h['name'],
