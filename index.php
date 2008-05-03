@@ -18,6 +18,10 @@ $action = 'index';
 $template = '';
 $page['title'] = 'ViewGit';
 
+if (isset($_REQUEST['do'])) {
+	$action = strtolower($_REQUEST['do']);
+}
+
 if ($action === 'index') {
 	$template = 'index';
 
@@ -31,6 +35,18 @@ if ($action === 'index') {
 		array('name' => 'projectb', 'description' => 'project b description'),
 	);
 	*/
+}
+elseif ($action === 'summary') {
+	$template = 'summary';
+	$page['project'] = strtolower($_REQUEST['p']);
+
+	$page['shortlog'] = array(
+		array('author' => 'Author Name', 'date' => '2008-05-03 10:06:22', 'message' => 'Insightful commentary', 'commit_id' => '57c8cae91dd942a2e1d72cc995468abef2c2beeb'),
+	);
+
+	$page['heads'] = array(
+		array('date' => '2008-05-03 10:11:23', 'name' => 'master'),
+	);
 }
 else {
 	die('Invalid action');
