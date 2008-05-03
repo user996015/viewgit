@@ -21,6 +21,7 @@ function git_get_commit_info($project, $hash)
 {
 	$info = array();
 	$info['h'] = $hash;
+	$info['message_full'] = '';
 
 	$output = run_git($project, "git-rev-list --header --max-count=1 $hash");
 	// tree <h>
@@ -43,8 +44,11 @@ function git_get_commit_info($project, $hash)
 			$info[$matches[1] .'_stamp'] = $matches[4];
 			$info[$matches[1] .'_timezone'] = $matches[5];
 		}
-		elseif (substr($line, 0, 4) == '    ' && !isset($info['message'])) {
-			$info['message'] = substr($line, 4, 40);
+		elseif (substr($line, 0, 4) === '    ') {
+			$info['message_full'] .= substr($line, 4) ."\n";
+			if (!isset($info['message'])) {
+				$info['message'] = substr($line, 4, 40);
+			}
 		}
 	}
 
@@ -116,13 +120,18 @@ elseif ($action === 'commit') {
 	$page['project'] = strtolower($_REQUEST['p']); // TODO validate
 	$page['commit_id'] = strtolower($_REQUEST['h']);
 
-	$page['author_name'] = 'Foo Bar';
-	$page['author_mail'] = 'foo@bar';
-	$page['author_datetime'] = '2008-05-03 13:50:28';
-	$page['committer_name'] = 'Fu Bar';
-	$page['committer_mail'] = 'fu@bar';
-	$page['message'] = 'short commit message';
-	$page['message_full'] = 'full commit message';
+	$info = git_get_commit_info($page['project'], $page['commit_id']);
+
+	$page['author_name'] = $info['author_name'];
+	$page['author_mail'] = $info['author_mail'];
+	$page['author_datetime'] = strftime($conf['datetime'], $info['author_stamp']);
+	$page['committer_name'] = $info['committer_name'];
+	$page['committer_mail'] = $info['committer_mail'];
+	$page['committer_datetime'] = strftime($conf['datetime'], $info['committer_stamp']);
+	$page['tree'] = $info['tree'];
+	$page['parent'] = $info['parent'];
+	$page['message'] = $info['message'];
+	$page['message_full'] = $info['message_full'];
 
 }
 elseif ($action === 'summary') {
