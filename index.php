@@ -74,6 +74,20 @@ function git_get_rev_list($project)
 	return run_git($project, 'git-rev-list HEAD');
 }
 
+function git_ls_tree($project, $tree)
+{
+	$entries = array();
+	$output = run_git($project, "git-ls-tree $tree");
+	// 100644 blob 493b7fc4296d64af45dac64bceac2d9a96c958c1    .gitignore
+	// 040000 tree 715c78b1011dc58106da2a1af2fe0aa4c829542f    doc
+	foreach ($output as $line) {
+		$parts = preg_split('/\s+/', $line, 4);
+		$entries[] = array('name' => $parts[3], 'mode' => $parts[0], 'type' => $parts[1], 'hash' => $parts[2]);
+	}
+
+	return $entries;
+}
+
 function makelink($dict)
 {
 	$params = array();
@@ -118,7 +132,7 @@ if ($action === 'index') {
 elseif ($action === 'commit') {
 	$template = 'commit';
 	$page['project'] = strtolower($_REQUEST['p']); // TODO validate
-	$page['commit_id'] = strtolower($_REQUEST['h']);
+	$page['commit_id'] = strtolower($_REQUEST['h']); // TODO validate
 
 	$info = git_get_commit_info($page['project'], $page['commit_id']);
 
@@ -161,6 +175,13 @@ elseif ($action === 'summary') {
 			'name' => $h['name'],
 		);
 	}
+}
+elseif ($action === 'tree') {
+	$template = 'tree';
+	$page['project'] = strtolower($_REQUEST['p']); // TODO validate
+	$page['tree'] = $_REQUEST['h']; // TODO validate
+
+	$page['entries'] = git_ls_tree($page['project'], $page['tree']);
 }
 else {
 	die('Invalid action');
