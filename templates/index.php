@@ -3,7 +3,7 @@
 <ul>
 <?php
 foreach ($page['projects'] as $p) {
-	echo "<li><a href=\"?do=view&amp;p=$p[name]\">$p[name]</a></li>\n";
+	echo "<li><a href=\"?do=summary&amp;p=$p[name]\">$p[name]</a> - $p[description]</li>\n";
 }
 ?>
 </ul>
