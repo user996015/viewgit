@@ -43,6 +43,9 @@ function git_get_commit_info($project, $hash)
 			$info[$matches[1] .'_stamp'] = $matches[4];
 			$info[$matches[1] .'_timezone'] = $matches[5];
 		}
+		elseif (substr($line, 0, 4) == '    ') {
+			$info['message'] = substr($line, 4, 40);
+		}
 	}
 
 	return $info;
@@ -60,6 +63,11 @@ function git_get_heads($project)
 	}
 
 	return $heads;
+}
+
+function git_get_rev_list($project)
+{
+	return run_git($project, 'git-rev-list HEAD');
 }
 
 function makelink($dict)
@@ -102,29 +110,29 @@ if ($action === 'index') {
 	foreach (array_keys($conf['projects']) as $p) {
 		$page['projects'][] = get_project_info($p);
 	}
-
-	/*
-	$page['projects'] = array(
-		array('name' => 'projecta', 'description' => 'project a description'),
-		array('name' => 'projectb', 'description' => 'project b description'),
-	);
-	*/
 }
 elseif ($action === 'summary') {
 	$template = 'summary';
 	$page['project'] = strtolower($_REQUEST['p']);
 	// TODO: validate project
-
-	$page['shortlog'] = array(
-		array('author' => 'Author Name', 'date' => '2008-05-03 10:06:22', 'message' => 'Insightful commentary', 'commit_id' => '57c8cae91dd942a2e1d72cc995468abef2c2beeb'),
-	);
+	
+	$revs = git_get_rev_list($page['project']);
+	foreach ($revs as $rev) {
+		$info = git_get_commit_info($page['project'], $rev);
+		$page['shortlog'][] = array(
+			'author' => $info['author_name'],
+			'date' => strftime($conf['datetime'], $info['author_stamp']),
+			'message' => $info['message'],
+			'commit_id' => $rev,
+		);
+	}
 
 	$heads = git_get_heads($page['project']);
 	$page['heads'] = array();
 	foreach ($heads as $h) {
 		$info = git_get_commit_info($page['project'], $h['h']);
 		$page['heads'][] = array(
-			'date' => strftime('%Y-%m-%d %H:%M:%S', $info['author_stamp']),
+			'date' => strftime($conf['datetime'], $info['author_stamp']),
 			'h' => $h['h'],
 			'fullname' => $h['fullname'],
 			'name' => $h['name'],
