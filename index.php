@@ -29,6 +29,7 @@ function git_get_commit_info($project, $hash)
 	// committer
 	// <empty>
 	//     <message>
+	$pattern = '/^(author|committer) ([^<]+) <([^>]*)> ([0-9]+) (.*)$/';
 	foreach ($output as $line) {
 		if (substr($line, 0, 4) === 'tree') {
 			$info['tree'] = substr($line, 5);
@@ -36,18 +37,13 @@ function git_get_commit_info($project, $hash)
 		elseif (substr($line, 0, 6) === 'parent') {
 			$info['parent']  = substr($line, 7);
 		}
-		elseif (substr($line, 0, 6) === 'author') {
-			$pos_mailstart = strrpos($line, '<');
-			$pos_mailend = strrpos($line, '>');
-			$info['author_name'] = substr($line, 7, $pos_mailstart - 1 - 7);
-			$info['author_mail'] = substr($line, $pos_mailstart + 1, $pos_mailend - $pos_mailstart - 1);
-
-			$parts = explode(' ', $line);
-			$info['author_timezone'] = array_pop($parts);
-			$info['author_stamp'] = array_pop($parts);
+		elseif (preg_match($pattern, $line, $matches) > 0) {
+			$info[$matches[1] .'_name'] = $matches[2];
+			$info[$matches[1] .'_mail'] = $matches[3];
+			$info[$matches[1] .'_stamp'] = $matches[4];
+			$info[$matches[1] .'_timezone'] = $matches[5];
 		}
 	}
-	print_r($info);
 
 	return $info;
 }
@@ -128,7 +124,7 @@ elseif ($action === 'summary') {
 	foreach ($heads as $h) {
 		$info = git_get_commit_info($page['project'], $h['h']);
 		$page['heads'][] = array(
-			'date' => '2008-05-03 10:11:23', // TODO get from commit info
+			'date' => strftime('%Y-%m-%d %H:%M:%S', $info['author_stamp']),
 			'h' => $h['h'],
 			'fullname' => $h['fullname'],
 			'name' => $h['name'],
