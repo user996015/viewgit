@@ -111,6 +111,20 @@ if ($action === 'index') {
 		$page['projects'][] = get_project_info($p);
 	}
 }
+elseif ($action === 'commit') {
+	$template = 'commit';
+	$page['project'] = strtolower($_REQUEST['p']); // TODO validate
+	$page['commit_id'] = strtolower($_REQUEST['h']);
+
+	$page['author_name'] = 'Foo Bar';
+	$page['author_mail'] = 'foo@bar';
+	$page['author_datetime'] = '2008-05-03 13:50:28';
+	$page['committer_name'] = 'Fu Bar';
+	$page['committer_mail'] = 'fu@bar';
+	$page['message'] = 'short commit message';
+	$page['message_full'] = 'full commit message';
+
+}
 elseif ($action === 'summary') {
 	$template = 'summary';
 	$page['project'] = strtolower($_REQUEST['p']);

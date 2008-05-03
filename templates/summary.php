@@ -4,7 +4,7 @@
 <ul>
 <?php
 foreach ($page['shortlog'] as $l) {
-	echo "<li>$l[date] - $l[author] - <a href=\"". makelink(array('a' => 'commit', 'h' => $l['commit_id'])) ."\">$l[message]</a></li>";
+	echo "<li>$l[date] - $l[author] - <a href=\"". makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $l['commit_id'])) ."\">$l[message]</a></li>";
 }
 ?>
 </ul>
@@ -13,7 +13,7 @@ foreach ($page['shortlog'] as $l) {
 <ul>
 <?php
 foreach ($page['heads'] as $h) {
-	echo "<li>$h[date] - <a href=\"". makelink(array('a' => 'shortlog', 'h' => "$h[fullname]")) ."\">$h[name]</a></li>";
+	echo "<li>$h[date] - <a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => "$h[fullname]")) ."\">$h[name]</a></li>";
 }
 ?>
 </ul>
