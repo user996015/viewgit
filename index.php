@@ -14,12 +14,24 @@ function get_project_info($name)
 	return $info;
 }
 
+function makelink($dict)
+{
+	$params = array();
+	foreach ($dict as $k => $v) {
+		$params[] = rawurlencode($k) .'='. str_replace('%2F', '/', rawurlencode($v));
+	}
+	if (count($params) > 0) {
+		return '?'. htmlentities(join('&', $params));
+	}
+	return '';
+}
+
 $action = 'index';
 $template = '';
 $page['title'] = 'ViewGit';
 
-if (isset($_REQUEST['do'])) {
-	$action = strtolower($_REQUEST['do']);
+if (isset($_REQUEST['a'])) {
+	$action = strtolower($_REQUEST['a']);
 }
 
 if ($action === 'index') {
