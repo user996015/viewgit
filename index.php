@@ -43,7 +43,7 @@ function git_get_commit_info($project, $hash)
 			$info[$matches[1] .'_stamp'] = $matches[4];
 			$info[$matches[1] .'_timezone'] = $matches[5];
 		}
-		elseif (substr($line, 0, 4) == '    ') {
+		elseif (substr($line, 0, 4) == '    ' && !isset($info['message'])) {
 			$info['message'] = substr($line, 4, 40);
 		}
 	}
