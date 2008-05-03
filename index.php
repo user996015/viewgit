@@ -14,6 +14,20 @@ function get_project_info($name)
 	return $info;
 }
 
+function git_get_heads($project)
+{
+	$heads = array();
+
+	$output = run_git($project, 'git-show-ref --heads');
+	foreach ($output as $line) {
+		$fullname = substr($line, 41);
+		$name = array_pop(explode('/', $fullname));
+		$heads[] = array('h' => substr($line, 0, 40), 'fullname' => "$fullname", 'name' => "$name");
+	}
+
+	return $heads;
+}
+
 function makelink($dict)
 {
 	$params = array();
@@ -24,6 +38,20 @@ function makelink($dict)
 		return '?'. htmlentities(join('&', $params));
 	}
 	return '';
+}
+
+/**
+ * Executes a git command in the project repo.
+ * @return array of output lines
+ */
+function run_git($project, $command)
+{
+	global $conf;
+
+	$output = array();
+	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." $command";
+	exec($cmd, &$output);
+	return $output;
 }
 
 $action = 'index';
@@ -51,14 +79,22 @@ if ($action === 'index') {
 elseif ($action === 'summary') {
 	$template = 'summary';
 	$page['project'] = strtolower($_REQUEST['p']);
+	// TODO: validate project
 
 	$page['shortlog'] = array(
 		array('author' => 'Author Name', 'date' => '2008-05-03 10:06:22', 'message' => 'Insightful commentary', 'commit_id' => '57c8cae91dd942a2e1d72cc995468abef2c2beeb'),
 	);
 
-	$page['heads'] = array(
-		array('date' => '2008-05-03 10:11:23', 'name' => 'master'),
-	);
+	$heads = git_get_heads($page['project']);
+	$page['heads'] = array();
+	foreach ($heads as $h) {
+		$page['heads'][] = array(
+			'date' => '2008-05-03 10:11:23',
+			'h' => $h['h'],
+			'fullname' => $h['fullname'],
+			'name' => $h['name'],
+		);
+	}
 }
 else {
 	die('Invalid action');

@@ -13,7 +13,7 @@ foreach ($page['shortlog'] as $l) {
 <ul>
 <?php
 foreach ($page['heads'] as $h) {
-	echo "<li>$h[date] - <a href=\"". makelink(array('do' => 'shortlog', 'h' => "refs/heads/$h[name]")) ."\">$h[name]</a></li>";
+	echo "<li>$h[date] - <a href=\"". makelink(array('do' => 'shortlog', 'h' => "$h[fullname]")) ."\">$h[name]</a></li>";
 }
 ?>
 </ul>
