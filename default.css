@@ -2,3 +2,20 @@ body {
 	color: black;
 	background-color: white;
 }
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table tr td {
+}
+
+table tbody tr:hover {
+	background-color: #ccc;
+}
+
+table th {
+	text-align: left;
+}
+
