@@ -23,7 +23,7 @@ function git_get_commit_info($project, $hash)
 	$info['h'] = $hash;
 	$info['message_full'] = '';
 
-	$output = run_git($project, "git-rev-list --header --max-count=1 $hash");
+	$output = run_git($project, "git rev-list --header --max-count=1 $hash");
 	// tree <h>
 	// parent <h>
 	// author <name> "<"<mail>">" <stamp> <timezone>
@@ -59,7 +59,7 @@ function git_get_heads($project)
 {
 	$heads = array();
 
-	$output = run_git($project, 'git-show-ref --heads');
+	$output = run_git($project, 'git show-ref --heads');
 	foreach ($output as $line) {
 		$fullname = substr($line, 41);
 		$name = array_pop(explode('/', $fullname));
@@ -71,13 +71,13 @@ function git_get_heads($project)
 
 function git_get_rev_list($project)
 {
-	return run_git($project, 'git-rev-list HEAD');
+	return run_git($project, 'git rev-list HEAD');
 }
 
 function git_ls_tree($project, $tree)
 {
 	$entries = array();
-	$output = run_git($project, "git-ls-tree $tree");
+	$output = run_git($project, "git ls-tree $tree");
 	// 100644 blob 493b7fc4296d64af45dac64bceac2d9a96c958c1    .gitignore
 	// 040000 tree 715c78b1011dc58106da2a1af2fe0aa4c829542f    doc
 	foreach ($output as $line) {
