@@ -1,4 +1,10 @@
-- common navigation bar / path at top
+- initial style
+	- preliminary CSS
+	- use tables for templates
+		- index
+		- summary
+		- commit
+	- common navigation bar / path at top
 - show times in UTC, except also in author's time somewhere
 
 - pages
@@ -28,6 +34,7 @@
 		- freshmeat project page
 		- post link to <http://git.or.cz/gitwiki/Gitweb>
 		- announce on git list
+		- announce on viewsvn's news section
 	- First fixes & new features based on feedback (0.0.2)
 
 - feature
