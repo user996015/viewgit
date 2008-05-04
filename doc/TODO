@@ -1,3 +1,7 @@
+- tree: allow downloading as tar/zip (git-archive)
+- common navigation bar / path at top
+- show times in UTC, except also in author's time somewhere
+
 - pages
 	- index: list of projects
 		-> summary
