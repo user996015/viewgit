@@ -2,15 +2,38 @@
 
 <h2><?php echo $page['message']; ?></h2>
 
-<ul>
-	<li>Author: <?php echo $page['author_name']; ?> &lt;<?php echo $page['author_mail']; ?>&gt;</li>
-	<li>Author date: <?php echo $page['author_datetime']; ?></li>
-	<li>Committer: <?php echo $page['committer_name']; ?> &lt;<?php echo $page['committer_mail']; ?>&gt;</li>
-	<li>Committer date: <?php echo $page['committer_datetime']; ?></li>
-	<li>Commit: <?php echo $page['commit_id']; ?></li>
-	<li>Tree: <a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $page['tree'])); ?>"><?php echo $page['tree']; ?></a></li>
-	<li>Parent: <a href="<?php echo makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $page['parent'])); ?>"><?php echo $page['parent']; ?></a></li>
-</ul>
+<table class="commit">
+<tbody>
+<tr>
+	<td>Author</td>
+	<td><?php echo $page['author_name']; ?> &lt;<?php echo $page['author_mail']; ?>&gt;</td>
+</tr>
+<tr>
+	<td>Author date</td>
+	<td><?php echo $page['author_datetime']; ?></td>
+</tr>
+<tr>
+	<td>Committer</td>
+	<td><?php echo $page['committer_name']; ?> &lt;<?php echo $page['committer_mail']; ?>&gt;</td>
+</tr>
+<tr>
+	<td>Committer date</td>
+	<td><?php echo $page['committer_datetime']; ?></td>
+</tr>
+<tr>
+	<td>Commit</td>
+	<td><?php echo $page['commit_id']; ?></td>
+</tr>
+<tr>
+	<td>Tree</td>
+	<td><a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $page['tree'])); ?>"><?php echo $page['tree']; ?></a></td>
+</tr>
+<tr>
+	<td>Parent</td>
+	<td><a href="<?php echo makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $page['parent'])); ?>"><?php echo $page['parent']; ?></a></td>
+</tr>
+</tbody>
+</table>
 
 <div class="message"><?php echo $page['message_full']; ?></div>
 
