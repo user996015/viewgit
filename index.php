@@ -129,6 +129,35 @@ if ($action === 'index') {
 		$page['projects'][] = get_project_info($p);
 	}
 }
+elseif ($action === 'archive') {
+	$project = $_REQUEST['p']; // TODO validate
+	$tree = $_REQUEST['h']; // TODO validate
+	$type = $_REQUEST['t'];
+
+	// TODO check that the data passed is really valid
+	if ($type === 'targz') {
+		header("Content-Type: application/x-tar-gz");
+		header("Content-Transfer-Encoding: binary");
+		header("Content-Disposition: attachment; filename=\"$project-tree-$tree.tar.gz\";");
+		$data = join("\n", run_git($project, "git archive --format=tar $tree |gzip"));
+		header("Content-Length: ". strlen($data));
+		echo $data;
+	}
+	elseif ($type === 'zip') {
+		header("Content-Type: application/x-zip");
+		header("Content-Transfer-Encoding: binary");
+		header("Content-Disposition: attachment; filename=\"$project-tree-$tree.zip\";");
+		$data = join("\n", run_git($project, "git archive --format=zip $tree"));
+		header("Content-Length: ". strlen($data));
+		echo $data;
+	}
+	else {
+		die('Invalid archive type requested');
+	}
+
+	//"git-archive --format=tar $tree"
+	die();
+}
 elseif ($action === 'commit') {
 	$template = 'commit';
 	$page['project'] = strtolower($_REQUEST['p']); // TODO validate

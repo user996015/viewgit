@@ -16,3 +16,5 @@ foreach ($page['entries'] as $e) {
 ?>
 </pre>
 
+<p>Download as <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree'], 't' => 'targz')) ?>">tar.gz</a> or <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree'], 't' => 'zip')) ?>">zip</a>.</p>
+
