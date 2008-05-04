@@ -6,6 +6,7 @@ body {
 table {
 	width: 100%;
 	border-collapse: collapse;
+	font-size: 90%;
 }
 
 table tr td {
@@ -17,5 +18,21 @@ table tbody tr:hover {
 
 table th {
 	text-align: left;
+	border-bottom: 1px solid black;
+}
+
+/* summary template */
+
+table.shortlog th.date {
+	width: 15%;
+	white-space: pre;
+}
+
+table.shortlog th.author {
+	width: 15%;
+}
+
+table.heads th.date {
+	width: 15%;
 }
 

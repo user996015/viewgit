@@ -155,7 +155,6 @@ elseif ($action === 'archive') {
 		die('Invalid archive type requested');
 	}
 
-	//"git-archive --format=tar $tree"
 	die();
 }
 elseif ($action === 'commit') {
