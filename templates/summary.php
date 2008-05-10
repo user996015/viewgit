@@ -18,7 +18,11 @@ foreach ($page['shortlog'] as $l) {
 	echo "\t<td>$l[date]</td>\n";
 	echo "\t<td>$l[author]</td>\n";
 	echo "\t<td><a href=\"". makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $l['commit_id'])) ."\">$l[message]</a></td>\n";
-	echo "\t<td><a href=\"". makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $l['tree'])) ."\">[tree]</a></td>\n";
+	echo "\t<td>";
+	echo "[<a href=\"". makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $l['tree'])) ."\">tree</a>]";
+	echo "[<a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 't' => 'targz')) ."\">tar/gz</a>]";
+	echo "[<a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 't' => 'zip')) ."\">zip</a>]";
+	echo "</td>\n";
 	echo "</tr>\n";
 }
 ?>
