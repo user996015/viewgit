@@ -225,6 +225,7 @@ elseif ($action === 'summary') {
 			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'message' => $info['message'],
 			'commit_id' => $rev,
+			'tree' => $info['tree'],
 		);
 	}
 
