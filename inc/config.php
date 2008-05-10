@@ -10,4 +10,7 @@ $conf['projects'] = array(
 
 $conf['datetime'] = '%Y-%m-%d %H:%M:%S';
 
+// Maximum number of shortlog entries to show on the summary page
+$conf['summary_shortlog'] = 30;
+
 include_once('localconfig.php');

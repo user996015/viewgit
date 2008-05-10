@@ -69,9 +69,14 @@ function git_get_heads($project)
 	return $heads;
 }
 
-function git_get_rev_list($project)
+function git_get_rev_list($project, $max_count = null)
 {
-	return run_git($project, 'git rev-list HEAD');
+	$cmd = 'git rev-list HEAD';
+	if (!is_null($max_count)) {
+		$cmd = "git rev-list --max-count=$max_count HEAD";
+	}
+
+	return run_git($project, $cmd);
 }
 
 function git_ls_tree($project, $tree)
@@ -181,7 +186,7 @@ elseif ($action === 'summary') {
 	$page['project'] = strtolower($_REQUEST['p']);
 	// TODO: validate project
 	
-	$revs = git_get_rev_list($page['project']);
+	$revs = git_get_rev_list($page['project'], $conf['summary_shortlog']);
 	foreach ($revs as $rev) {
 		$info = git_get_commit_info($page['project'], $rev);
 		$page['shortlog'][] = array(
