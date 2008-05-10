@@ -119,6 +119,21 @@ function run_git($project, $command)
 	return $output;
 }
 
+/**
+ * Makes sure the given project is valid. If it's not, this function will
+ * die().
+ * @return the project
+ */
+function validate_project($project)
+{
+	global $conf;
+
+	if (!in_array($project, array_keys($conf['projects']))) {
+		die('Invalid project');
+	}
+	return $project;
+}
+
 $action = 'index';
 $template = '';
 $page['title'] = 'ViewGit';
@@ -135,7 +150,7 @@ if ($action === 'index') {
 	}
 }
 elseif ($action === 'archive') {
-	$project = $_REQUEST['p']; // TODO validate
+	$project = validate_project($_REQUEST['p']);
 	$tree = $_REQUEST['h']; // TODO validate
 	$type = $_REQUEST['t'];
 
@@ -164,7 +179,7 @@ elseif ($action === 'archive') {
 }
 elseif ($action === 'commit') {
 	$template = 'commit';
-	$page['project'] = strtolower($_REQUEST['p']); // TODO validate
+	$page['project'] = validate_project($_REQUEST['p']);
 	$page['commit_id'] = strtolower($_REQUEST['h']); // TODO validate
 
 	$info = git_get_commit_info($page['project'], $page['commit_id']);
@@ -183,8 +198,7 @@ elseif ($action === 'commit') {
 }
 elseif ($action === 'summary') {
 	$template = 'summary';
-	$page['project'] = strtolower($_REQUEST['p']);
-	// TODO: validate project
+	$page['project'] = validate_project($_REQUEST['p']);
 	
 	$revs = git_get_rev_list($page['project'], $conf['summary_shortlog']);
 	foreach ($revs as $rev) {
@@ -211,7 +225,7 @@ elseif ($action === 'summary') {
 }
 elseif ($action === 'tree') {
 	$template = 'tree';
-	$page['project'] = strtolower($_REQUEST['p']); // TODO validate
+	$page['project'] = validate_project($_REQUEST['p']);
 	$page['tree'] = $_REQUEST['h']; // TODO validate
 
 	$page['entries'] = git_ls_tree($page['project'], $page['tree']);
