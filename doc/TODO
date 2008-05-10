@@ -1,3 +1,14 @@
+- function like run_git() except to return binary data properly (eg. tar & blobs)
+- downloading of blobs
+- page to show blob
+- research whether git checkout can be made to work through viewgit
+
+- index
+	- add direct download tar/zip link (of master branch?)
+	- add tree browsing link
+
+- test bare git repos
+
 - initial style
 	- preliminary CSS
 	- use tables for templates
@@ -5,6 +16,7 @@
 		- summary
 		- commit
 	- common navigation bar / path at top
+		- Index - [ project ] / path / in / project
 - show times in UTC, except also in author's time somewhere
 
 - pages
