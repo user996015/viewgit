@@ -134,6 +134,19 @@ function validate_project($project)
 	return $project;
 }
 
+/**
+ * Makes sure the given hash is valid. If it's not, this function will die().
+ * @return the hash
+ */
+function validate_hash($hash)
+{
+	if (strlen($hash) != 40 || !preg_match('/^[0-9a-z]*$/', $hash)) {
+		die('Invalid hash');
+
+	}
+	return $hash;
+}
+
 $action = 'index';
 $template = '';
 $page['title'] = 'ViewGit';
@@ -151,7 +164,7 @@ if ($action === 'index') {
 }
 elseif ($action === 'archive') {
 	$project = validate_project($_REQUEST['p']);
-	$tree = $_REQUEST['h']; // TODO validate
+	$tree = validate_hash($_REQUEST['h']);
 	$type = $_REQUEST['t'];
 
 	// TODO check that the data passed is really valid
@@ -180,7 +193,7 @@ elseif ($action === 'archive') {
 elseif ($action === 'commit') {
 	$template = 'commit';
 	$page['project'] = validate_project($_REQUEST['p']);
-	$page['commit_id'] = strtolower($_REQUEST['h']); // TODO validate
+	$page['commit_id'] = validate_hash($_REQUEST['h']);
 
 	$info = git_get_commit_info($page['project'], $page['commit_id']);
 
@@ -226,7 +239,7 @@ elseif ($action === 'summary') {
 elseif ($action === 'tree') {
 	$template = 'tree';
 	$page['project'] = validate_project($_REQUEST['p']);
-	$page['tree'] = $_REQUEST['h']; // TODO validate
+	$page['tree'] = validate_hash($_REQUEST['h']);
 
 	$page['entries'] = git_ls_tree($page['project'], $page['tree']);
 }
