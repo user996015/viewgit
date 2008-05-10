@@ -9,3 +9,11 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 </head>
 <body>
 
+<div class="nav">
+<a href=".">Index</a>
+<?php
+if (isset($page['project'])) {
+	echo " &raquo; <a href=\"". makelink(array('a' => 'summary', 'p' => $page['project'])) ."\">$page[project]</a>";
+}
+?>
+</div>

@@ -155,6 +155,7 @@ $page['title'] = 'ViewGit';
 if (isset($_REQUEST['a'])) {
 	$action = strtolower($_REQUEST['a']);
 }
+$page['action'] = $action;
 
 if ($action === 'index') {
 	$template = 'index';

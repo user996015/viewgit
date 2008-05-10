@@ -21,6 +21,13 @@ table th {
 	border-bottom: 1px solid black;
 }
 
+.nav {
+	font-size: 80%;
+	padding: 0.5em;
+	background-color: #999;
+	border: 1px solid black;
+}
+
 /* summary template */
 
 table.shortlog th.date {
