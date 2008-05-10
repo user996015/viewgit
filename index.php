@@ -193,6 +193,16 @@ elseif ($action === 'archive') {
 
 	die();
 }
+elseif ($action === 'blob') {
+	$page['project'] = validate_project($_REQUEST['p']);
+	$page['hash'] = validate_hash($_REQUEST['h']);
+
+	$lines = run_git($page['project'], "git cat-file blob $page[hash]");
+
+	header('Content-type: text/plain');
+	print(join("\n", $lines));
+	die();
+}
 elseif ($action === 'commit') {
 	$template = 'commit';
 	$page['project'] = validate_project($_REQUEST['p']);
