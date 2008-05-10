@@ -43,6 +43,7 @@ function git_get_commit_info($project, $hash)
 			$info[$matches[1] .'_mail'] = $matches[3];
 			$info[$matches[1] .'_stamp'] = $matches[4];
 			$info[$matches[1] .'_timezone'] = $matches[5];
+			$info[$matches[1] .'_utcstamp'] = $matches[4] - ((intval($matches[5]) / 100.0) * 3600);
 		}
 		elseif (substr($line, 0, 4) === '    ') {
 			$info['message_full'] .= substr($line, 4) ."\n";
@@ -200,10 +201,10 @@ elseif ($action === 'commit') {
 
 	$page['author_name'] = $info['author_name'];
 	$page['author_mail'] = $info['author_mail'];
-	$page['author_datetime'] = strftime($conf['datetime'], $info['author_stamp']);
+	$page['author_datetime'] = strftime($conf['datetime'], $info['author_utcstamp']);
 	$page['committer_name'] = $info['committer_name'];
 	$page['committer_mail'] = $info['committer_mail'];
-	$page['committer_datetime'] = strftime($conf['datetime'], $info['committer_stamp']);
+	$page['committer_datetime'] = strftime($conf['datetime'], $info['committer_utcstamp']);
 	$page['tree'] = $info['tree'];
 	$page['parent'] = $info['parent'];
 	$page['message'] = $info['message'];
@@ -220,7 +221,7 @@ elseif ($action === 'summary') {
 		$info = git_get_commit_info($page['project'], $rev);
 		$page['shortlog'][] = array(
 			'author' => $info['author_name'],
-			'date' => strftime($conf['datetime'], $info['author_stamp']),
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'message' => $info['message'],
 			'commit_id' => $rev,
 		);
@@ -231,7 +232,7 @@ elseif ($action === 'summary') {
 	foreach ($heads as $h) {
 		$info = git_get_commit_info($page['project'], $h['h']);
 		$page['heads'][] = array(
-			'date' => strftime($conf['datetime'], $info['author_stamp']),
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'h' => $h['h'],
 			'fullname' => $h['fullname'],
 			'name' => $h['name'],
