@@ -157,6 +157,7 @@ if (isset($_REQUEST['a'])) {
 
 if ($action === 'index') {
 	$template = 'index';
+	$page['title'] = 'List of projects - ViewGit';
 
 	foreach (array_keys($conf['projects']) as $p) {
 		$page['projects'][] = get_project_info($p);
@@ -212,6 +213,7 @@ elseif ($action === 'commit') {
 elseif ($action === 'summary') {
 	$template = 'summary';
 	$page['project'] = validate_project($_REQUEST['p']);
+	$page['title'] = "$page[project] - Summary - ViewGit";
 	
 	$revs = git_get_rev_list($page['project'], $conf['summary_shortlog']);
 	foreach ($revs as $rev) {
@@ -240,6 +242,7 @@ elseif ($action === 'tree') {
 	$template = 'tree';
 	$page['project'] = validate_project($_REQUEST['p']);
 	$page['tree'] = validate_hash($_REQUEST['h']);
+	$page['title'] = "$page[project] - Tree - ViewGit";
 
 	$page['entries'] = git_ls_tree($page['project'], $page['tree']);
 }
