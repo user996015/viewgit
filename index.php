@@ -245,9 +245,11 @@ elseif ($action === 'commit') {
 	$page['author_name'] = $info['author_name'];
 	$page['author_mail'] = $info['author_mail'];
 	$page['author_datetime'] = strftime($conf['datetime'], $info['author_utcstamp']);
+	$page['author_datetime_local'] = strftime($conf['datetime'], $info['author_stamp']) .' '. $info['author_timezone'];
 	$page['committer_name'] = $info['committer_name'];
 	$page['committer_mail'] = $info['committer_mail'];
 	$page['committer_datetime'] = strftime($conf['datetime'], $info['committer_utcstamp']);
+	$page['committer_datetime_local'] = strftime($conf['datetime'], $info['committer_stamp']) .' '. $info['committer_timezone'];
 	$page['tree'] = $info['tree'];
 	$page['parent'] = $info['parent'];
 	$page['message'] = $info['message'];

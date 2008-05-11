@@ -2,7 +2,6 @@
 - downloading of blobs
 - page to show blob
 - research whether git checkout can be made to work through viewgit
-- commit: show also author/committer local time + timefield
 
 - index
 	- add direct download tar/zip link (of master branch?)
@@ -68,5 +67,6 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- commit: option to hide/scramble the e-mail
 - archive: use ob_start/ob_length/ob_flush for creating archives so that Content-Length can be sent
 

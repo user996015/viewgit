@@ -13,12 +13,20 @@
 	<td><?php echo $page['author_datetime']; ?></td>
 </tr>
 <tr>
+	<td>Author local date</td>
+	<td><?php echo $page['author_datetime_local']; ?></td>
+</tr>
+<tr>
 	<td>Committer</td>
 	<td><?php echo $page['committer_name']; ?> &lt;<?php echo $page['committer_mail']; ?>&gt;</td>
 </tr>
 <tr>
 	<td>Committer date</td>
 	<td><?php echo $page['committer_datetime']; ?></td>
+</tr>
+<tr>
+	<td>Committer local date</td>
+	<td><?php echo $page['committer_datetime_local']; ?></td>
 </tr>
 <tr>
 	<td>Commit</td>
