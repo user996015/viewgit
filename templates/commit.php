@@ -1,6 +1,4 @@
-<h1>Commit <?php echo $page['commit_id']; ?> for project <?php echo $page['project']; ?></h1>
-
-<h2><?php echo $page['message']; ?></h2>
+<h1><?php echo $page['message']; ?></h1>
 
 <table class="commit">
 <tbody>

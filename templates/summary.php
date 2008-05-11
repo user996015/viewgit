@@ -1,6 +1,4 @@
-<h1>Summary for <?php echo $page['project']; ?></h1>
-
-<h2>Shortlog</h2>
+<h1>Shortlog</h1>
 
 <table class="shortlog">
 <thead>
@@ -29,7 +27,7 @@ foreach ($page['shortlog'] as $l) {
 </tbody>
 </table>
 
-<h2>Tags</h2>
+<h1>Tags</h1>
 
 <table class="heads">
 <thead>
@@ -52,7 +50,7 @@ foreach ($page['tags'] as $tag) {
 </tbody>
 </table>
 
-<h2>Heads</h2>
+<h1>Heads</h1>
 
 <table class="heads">
 <thead>

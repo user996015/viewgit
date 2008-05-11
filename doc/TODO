@@ -28,6 +28,7 @@
 		- must have a minimalistic but useful interface
 		- must have features planned as mandatory
 		- should be at least able to rival other similar projects (the PHP ones at least)
+		- validate generated pages
 
 		- sourceforge project
 		- website, tracked with Google Analytics

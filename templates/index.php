@@ -1,4 +1,3 @@
-<h1>List of projects</h1>
 
 <table>
 <thead>

@@ -1,5 +1,3 @@
-<h1>Tree <?php echo $page['tree']; ?> for project <?php echo $page['project']; ?></h1>
-
 <pre>
 <?php
 foreach ($page['entries'] as $e) {
