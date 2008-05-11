@@ -1,11 +1,11 @@
-- index: show date of last change
 - downloading of blobs
 - page to show blob
 - research whether git checkout can be made to work through viewgit
-
-- index
-	- add direct download tar/zip link (of master branch?)
-	- add tree browsing link
+- summary: commitdiff
+	- author
+	- log
+	- files changed: patch -> section, blob
+	- diff (+ section links)
 
 - test bare git repos
 

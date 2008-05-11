@@ -11,6 +11,12 @@ function get_project_info($name)
 	$info['name'] = $name;
 	$info['description'] = file_get_contents($info['repo'] .'/description');
 
+	$headinfo = git_get_commit_info($name, 'HEAD');
+	$info['head_stamp'] = $headinfo['author_utcstamp'];
+	$info['head_datetime'] = strftime($conf['datetime'], $headinfo['author_utcstamp']);
+	$info['head_hash'] = $headinfo['h'];
+	$info['head_tree'] = $headinfo['tree'];
+
 	return $info;
 }
 
