@@ -29,6 +29,29 @@ foreach ($page['shortlog'] as $l) {
 </tbody>
 </table>
 
+<h2>Tags</h2>
+
+<table class="heads">
+<thead>
+<tr>
+	<th class="date">Date</th>
+	<th class="branch">Tag</th>
+	<th class="actions">Actions</th>
+</tr>
+</thead>
+<tbody>
+<?php
+foreach ($page['tags'] as $tag) {
+	echo "<tr>\n";
+	echo "\t<td>$tag[date]</td>\n";
+	echo "\t<td><a href=\"\">$tag[name]</a></td>\n";
+	echo "\t<td></td>\n";
+	echo "</tr>\n";
+}
+?>
+</tbody>
+</table>
+
 <h2>Heads</h2>
 
 <table class="heads">

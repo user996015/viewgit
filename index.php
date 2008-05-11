@@ -80,6 +80,19 @@ function git_get_rev_list($project, $max_count = null)
 	return run_git($project, $cmd);
 }
 
+function git_get_tags($project)
+{
+	$tags = array();
+
+	$output = run_git($project, 'git show-ref --tags');
+	foreach ($output as $line) {
+		$fullname = substr($line, 41);
+		$name = array_pop(explode('/', $fullname));
+		$tags[] = array('h' => substr($line, 0, 40), 'fullname' => $fullname, 'name' => $name);
+	}
+	return $tags;
+}
+
 function git_ls_tree($project, $tree)
 {
 	$entries = array();
@@ -255,6 +268,18 @@ elseif ($action === 'summary') {
 			'message' => $info['message'],
 			'commit_id' => $rev,
 			'tree' => $info['tree'],
+		);
+	}
+
+	$tags = git_get_tags($page['project']);
+	$page['tags'] = array();
+	foreach ($tags as $tag) {
+		$info = git_get_commit_info($page['project'], $tag['h']);
+		$page['tags'][] = array(
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'h' => $tag['h'],
+			'fullname' => $tag['fullname'],
+			'name' => $tag['name'],
 		);
 	}
 
