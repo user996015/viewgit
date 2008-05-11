@@ -121,6 +121,20 @@ function run_git($project, $command)
 }
 
 /**
+ * Executes a git command in the project repo, sending output directly to the
+ * client.
+ */
+function run_git_passthru($project, $command)
+{
+	global $conf;
+
+	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." $command";
+	$result = 0;
+	passthru($cmd, &$result);
+	return $result;
+}
+
+/**
  * Makes sure the given project is valid. If it's not, this function will
  * die().
  * @return the project
@@ -175,17 +189,23 @@ elseif ($action === 'archive') {
 		header("Content-Type: application/x-tar-gz");
 		header("Content-Transfer-Encoding: binary");
 		header("Content-Disposition: attachment; filename=\"$project-tree-$tree.tar.gz\";");
+		/*
 		$data = join("\n", run_git($project, "git archive --format=tar $tree |gzip"));
 		header("Content-Length: ". strlen($data));
 		echo $data;
+		*/
+		run_git_passthru($project, "git archive --format=tar $tree |gzip");
 	}
 	elseif ($type === 'zip') {
 		header("Content-Type: application/x-zip");
 		header("Content-Transfer-Encoding: binary");
 		header("Content-Disposition: attachment; filename=\"$project-tree-$tree.zip\";");
+		/*
 		$data = join("\n", run_git($project, "git archive --format=zip $tree"));
 		header("Content-Length: ". strlen($data));
 		echo $data;
+		*/
+		run_git_passthru($project, "git archive --format=zip $tree");
 	}
 	else {
 		die('Invalid archive type requested');
@@ -197,10 +217,9 @@ elseif ($action === 'blob') {
 	$page['project'] = validate_project($_REQUEST['p']);
 	$page['hash'] = validate_hash($_REQUEST['h']);
 
-	$lines = run_git($page['project'], "git cat-file blob $page[hash]");
-
 	header('Content-type: text/plain');
-	print(join("\n", $lines));
+
+	run_git_passthru($page['project'], "git cat-file blob $page[hash]");
 	die();
 }
 elseif ($action === 'commit') {
