@@ -1,7 +1,8 @@
-- function like run_git() except to return binary data properly (eg. tar & blobs)
+- index: show date of last change
 - downloading of blobs
 - page to show blob
 - research whether git checkout can be made to work through viewgit
+- commit: show also author/committer local time + timefield
 
 - index
 	- add direct download tar/zip link (of master branch?)
@@ -9,19 +10,7 @@
 
 - test bare git repos
 
-- initial style
-	- preliminary CSS
-	- use tables for templates
-		- index
-		- summary
-		- commit
-	- common navigation bar / path at top
-		- Index - [ project ] / path / in / project
-- show times in UTC, except also in author's time somewhere
-
 - pages
-	- index: list of projects
-		-> summary
 	- summary: main page of a project (like gitweb)
 		- description, last change, clone url?
 		- shortlog: date, author, message, [branch/tag], links: commit, commitdiff, tree, snapshot/download
@@ -47,6 +36,7 @@
 		- post link to <http://git.or.cz/gitwiki/Gitweb>
 		- announce on git list
 		- announce on viewsvn's news section
+		- link from viewsvn's page
 	- First fixes & new features based on feedback (0.0.2)
 
 - feature
@@ -55,13 +45,12 @@
 			- name, description (.git/description), action links
 		- tar.gz snapshots of trees
 		- shortlog
-	- optional
+		- root dir, under which all directories are shown on viewgit
 		- tree browsing / downloading of individual files
+	- optional
 		- RSS feeds: projects, shortlog
 		- branches list?
 		- tag list
-	- config
-		- date/time format
 	- don't mimic gitweb interface as it's a tad clunky
 
 - name?
@@ -77,3 +66,7 @@
 
 - other projects?
 	- <http://git.or.cz/gitwiki/Gitweb>
+
+[low priority]
+- archive: use ob_start/ob_length/ob_flush for creating archives so that Content-Length can be sent
+
