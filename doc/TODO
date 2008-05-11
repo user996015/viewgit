@@ -1,58 +1,53 @@
-- downloading of blobs
-- page to show blob
-- research whether git checkout can be made to work through viewgit
+- summary: show [MASTER] and so on if the given commit is a tag or a head
+
+- blobs
+	- downloading of blobs
+	- page to show blob
+	- linked from: tree
 - summary: commitdiff
 	- author
 	- log
 	- files changed: patch -> section, blob
 	- diff (+ section links)
+- research whether git checkout can be made to work through viewgit
 
 - test bare git repos
 
-- pages
-	- summary: main page of a project (like gitweb)
-		- description, last change, clone url?
-		- shortlog: date, author, message, [branch/tag], links: commit, commitdiff, tree, snapshot/download
-	- commit
-	- tree
-	- commitdiff
-	- snapshot/download
+[Milestones]
+- Public Launch (0.0.1?)
+	- a public demo
+	- must have a minimalistic but useful interface
+	- must have features planned as mandatory
+	- should be at least able to rival other similar projects (the PHP ones at least)
+	- validate generated pages
 
+	- sourceforge project
+	- website, tracked with Google Analytics
+	- freshmeat project page
+	- post link to <http://git.or.cz/gitwiki/Gitweb>
+	- announce on git list
+	- announce on viewsvn's news section
+	- link from viewsvn's page
+- First fixes & new features based on feedback (0.0.2)
+
+[features]
 - ideas in nutshell
 	- free git repository viewer that is easy to install and does not have many dependencies
 	- depends: PHP5, git
+- mandatory features (0.0.1)
+	- project list (configurable or from a root, using globs perhaps?)
+		- name, description (.git/description), action links
+	- tar.gz snapshots of trees
+	- shortlog
+	- root dir, under which all directories are shown on viewgit
+	- tree browsing / downloading of individual files
+- optional
+	- RSS feeds: projects, shortlog
+	- branches list?
+	- tag list
+- don't mimic gitweb interface as it's a tad clunky
 
-- milestones
-	- Public Launch (0.0.1?)
-		- a public demo
-		- must have a minimalistic but useful interface
-		- must have features planned as mandatory
-		- should be at least able to rival other similar projects (the PHP ones at least)
-		- validate generated pages
-
-		- sourceforge project
-		- website, tracked with Google Analytics
-		- freshmeat project page
-		- post link to <http://git.or.cz/gitwiki/Gitweb>
-		- announce on git list
-		- announce on viewsvn's news section
-		- link from viewsvn's page
-	- First fixes & new features based on feedback (0.0.2)
-
-- feature
-	- mandatory features (0.0.1)
-		- project list (configurable or from a root, using globs perhaps?)
-			- name, description (.git/description), action links
-		- tar.gz snapshots of trees
-		- shortlog
-		- root dir, under which all directories are shown on viewgit
-		- tree browsing / downloading of individual files
-	- optional
-		- RSS feeds: projects, shortlog
-		- branches list?
-		- tag list
-	- don't mimic gitweb interface as it's a tad clunky
-
+[misc]
 - name?
 	- ViewGit
 		- 3 google hits, none of a project
@@ -61,6 +56,7 @@
 - license?
 	- GPLv2 vs. GPLv3 vs. AGPLv3
 	- add clarification that linking to the original homepage is enough to provide source, as long as it's around
+	- when decided, state in the commit log that it holds retroactively for earlier commits?
 
 - bundle about page that says what the software is and where to download it
 
