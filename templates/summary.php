@@ -43,7 +43,7 @@ foreach ($page['shortlog'] as $l) {
 foreach ($page['tags'] as $tag) {
 	echo "<tr>\n";
 	echo "\t<td>$tag[date]</td>\n";
-	echo "\t<td><a href=\"\">$tag[name]</a></td>\n";
+	echo "\t<td><a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $tag['fullname'])) ."\">$tag[name]</a></td>\n";
 	echo "\t<td></td>\n";
 	echo "</tr>\n";
 }
