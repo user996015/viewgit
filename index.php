@@ -3,6 +3,31 @@ error_reporting(E_ALL);
 
 require_once('inc/config.php');
 
+/**
+ * Formats "git diff" output into xhtml.
+ */
+function format_diff($text)
+{
+	$text = htmlentities($text);
+
+	$text = preg_replace(
+		array(
+			'/^(\+.*)$/m',
+			'/^(-.*)$/m',
+			'/^(@.*)$/m',
+			'/^([^\+-@].*)$/m',
+		),
+		array(
+			'<span class="add">$1</span>',
+			'<span class="del">$1</span>',
+			'<span class="pos">$1</span>',
+			'<span class="etc">$1</span>',
+		),
+		$text);
+
+	return $text;
+}
+
 function get_project_info($name)
 {
 	global $conf;
@@ -276,7 +301,8 @@ elseif ($action === 'commitdiff') {
 	$page['author_mail'] = $info['author_mail'];
 	$page['author_datetime'] = strftime($conf['datetime'], $info['author_utcstamp']);
 
-	$page['diffdata'] = join("\n", run_git($page['project'], "git diff $hash^..$hash"));
+	$text = join("\n", run_git($page['project'], "git diff $hash^..$hash"));
+	$page['diffdata'] = format_diff($text);
 }
 elseif ($action === 'summary') {
 	$template = 'summary';

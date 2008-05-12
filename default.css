@@ -54,3 +54,19 @@ table.heads th.date {
 	background-color: #999;
 }
 
+.diff .add {
+	color: green;
+}
+
+.diff .del {
+	color: red;
+}
+
+.diff .pos {
+	color: purple;
+}
+
+.diff .etc {
+	color: #999;
+}
+
