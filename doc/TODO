@@ -1,17 +1,18 @@
-- summary: show [MASTER] and so on if the given commit is a tag or a head
-
+- shortlog page
+	- share subtemplate with summary
+	- summary's shortlog title should link here
+	- start from HEAD unless 'h' is provided, add a 'next' link that starts from the last commit?
 - blobs
 	- downloading of blobs
 	- page to show blob
 	- linked from: tree
+
 - summary: commitdiff
 	- author
 	- log
 	- files changed: patch -> section, blob
 	- diff (+ section links)
 - research whether git checkout can be made to work through viewgit
-
-- test bare git repos
 
 [Milestones]
 - Public Launch (0.0.1?)
@@ -37,8 +38,8 @@
 - mandatory features (0.0.1)
 	- project list (configurable or from a root, using globs perhaps?)
 		- name, description (.git/description), action links
-	- tar.gz snapshots of trees
-	- shortlog
+	- DONE tar.gz snapshots of trees
+	- DONE shortlog
 	- root dir, under which all directories are shown on viewgit
 	- tree browsing / downloading of individual files
 - optional
@@ -57,6 +58,7 @@
 	- GPLv2 vs. GPLv3 vs. AGPLv3
 	- add clarification that linking to the original homepage is enough to provide source, as long as it's around
 	- when decided, state in the commit log that it holds retroactively for earlier commits?
+	- contributions should be licensed under aforementioned license "or any later version approved by" me (to allow upgrading to GPLv4 or whatever later?)
 
 - bundle about page that says what the software is and where to download it
 
@@ -64,6 +66,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- summary: show [MASTER] and so on if the given commit is a tag or a head
 - commit: option to hide/scramble the e-mail
 - archive: use ob_start/ob_length/ob_flush for creating archives so that Content-Length can be sent
 
