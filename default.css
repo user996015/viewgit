@@ -49,7 +49,7 @@ table.heads th.date {
 
 /* commitdiff template */
 
-.message {
+.commitmessage {
 	padding: 0.5em;
 	background-color: #999;
 }

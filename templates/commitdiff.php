@@ -7,7 +7,7 @@ echo ' ['. $page['author_datetime'] .']';
 ?>
 </div>
 
-<div class="message">
+<div class="commitmessage">
 <pre>
 <?php echo htmlentities($page['message_full']); ?>
 </pre>
