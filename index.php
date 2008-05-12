@@ -182,7 +182,7 @@ function validate_hash($hash)
 }
 
 $action = 'index';
-$template = '';
+$template = 'index';
 $page['title'] = 'ViewGit';
 
 if (isset($_REQUEST['a'])) {
@@ -261,6 +261,22 @@ elseif ($action === 'commit') {
 	$page['message'] = $info['message'];
 	$page['message_full'] = $info['message_full'];
 
+}
+elseif ($action === 'commitdiff') {
+	$template = 'commitdiff';
+	$page['project'] = validate_project($_REQUEST['p']);
+	$hash = validate_hash($_REQUEST['h']);
+	$page['commit_id'] = $hash;
+
+	$info = git_get_commit_info($page['project'], $hash);
+
+	$page['message'] = $info['message'];
+	$page['message_full'] = $info['message_full'];
+	$page['author_name'] = $info['author_name'];
+	$page['author_mail'] = $info['author_mail'];
+	$page['author_datetime'] = strftime($conf['datetime'], $info['author_utcstamp']);
+
+	$page['diffdata'] = join("\n", run_git($page['project'], "git diff $hash^..$hash"));
 }
 elseif ($action === 'summary') {
 	$template = 'summary';

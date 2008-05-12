@@ -47,3 +47,10 @@ table.heads th.date {
 	width: 15%;
 }
 
+/* commitdiff template */
+
+.message {
+	padding: 0.5em;
+	background-color: #999;
+}
+
