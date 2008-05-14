@@ -101,11 +101,11 @@ function git_get_heads($project)
 	return $heads;
 }
 
-function git_get_rev_list($project, $max_count = null)
+function git_get_rev_list($project, $max_count = null, $start = 'HEAD')
 {
-	$cmd = 'git rev-list HEAD';
+	$cmd = "git rev-list $start";
 	if (!is_null($max_count)) {
-		$cmd = "git rev-list --max-count=$max_count HEAD";
+		$cmd = "git rev-list --max-count=$max_count $start";
 	}
 
 	return run_git($project, $cmd);
@@ -303,6 +303,24 @@ elseif ($action === 'commitdiff') {
 
 	$text = join("\n", run_git($page['project'], "git diff $hash^..$hash"));
 	$page['diffdata'] = format_diff($text);
+}
+elseif ($action === 'shortlog') {
+	$template = 'shortlog';
+	$page['project'] = validate_project($_REQUEST['p']);
+	$page['ref'] = $_REQUEST['h']; // TODO validate
+
+	// TODO merge the logic with 'summary' below
+	$revs = git_get_rev_list($page['project'], $conf['summary_shortlog'], $page['ref']); // TODO pass first rev as parameter
+	foreach ($revs as $rev) {
+		$info = git_get_commit_info($page['project'], $rev);
+		$page['shortlog'][] = array(
+			'author' => $info['author_name'],
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'message' => $info['message'],
+			'commit_id' => $rev,
+			'tree' => $info['tree'],
+		);
+	}
 }
 elseif ($action === 'summary') {
 	$template = 'summary';

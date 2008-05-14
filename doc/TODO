@@ -1,5 +1,4 @@
 - shortlog page
-	- share subtemplate with summary
 	- summary's shortlog title should link here
 	- start from HEAD unless 'h' is provided, add a 'next' link that starts from the last commit?
 - blobs
