@@ -70,6 +70,23 @@ table.heads th.date {
 	color: #999;
 }
 
+/* tree template */
+table.tree th.perm {
+	width: 10%;
+}
+
+table.tree th.dl {
+	width: 10%;
+}
+
+table.tree .dir {
+	background-color: #ff9;
+}
+
+table.tree .dir:hover {
+	background-color: #ff0;
+}
+
 /* viewblob template */
 .file {
 	background-color: #aaa;

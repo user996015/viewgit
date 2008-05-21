@@ -1,22 +1,31 @@
-<pre>
+<table class="tree">
+<thead>
+<tr>
+	<th class="perm">Permissions</th>
+	<th class="name">Name</th>
+	<th class="dl">Download</th>
+</tr>
+</thead>
+<tbody>
 <?php
 foreach ($page['entries'] as $e) {
-	echo "$e[mode] ";
 	if ($e['type'] === 'blob') {
-		echo "<a href=\"". makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'])) ."\">$e[name]</a>";
-		// download blob
-		echo " [<a href=\"". makelink(array('a' => 'blob', 'p' => $page['project'], 'h' => $e['hash'], 'n' => $e['name'])) ."\">download</a>]";
+		echo "<tr>\n";
+		echo "\t<td>$e[mode]</td>\n";
+		echo "\t<td><a href=\"". makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'])) ."\">". htmlspecialchars($e['name']) ."</a></td>\n";
+		echo "\t<td><a href=\"". makelink(array('a' => 'blob', 'p' => $page['project'], 'h' => $e['hash'], 'n' => $e['name'])) ."\">blob</a></td>\n";
 	}
 	else {
-		echo "<a href=\"". makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'])) ."\">$e[name]/</a>";
-		// download tar/zip
-		echo " [download <a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'targz')) ."\">tar.gz</a> / <a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'zip')) ."\">zip</a>]";
+		echo "<tr class=\"dir\">\n";
+		echo "\t<td>$e[mode]</td>\n";
+		echo "\t<td>". htmlspecialchars($e['name']) ."/</td>\n";
+		echo "\t<td><a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'targz')) ."\">tar.gz</a> / <a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'zip')) ."\">zip</a></td>\n";
 	}
-	
-	echo "\n";
+	echo "</tr>\n";
 }
 ?>
-</pre>
+</tbody>
+</table>
 
 <p>Download as <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree'], 't' => 'targz')) ?>">tar.gz</a> or <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree'], 't' => 'zip')) ?>">zip</a>.</p>
 
