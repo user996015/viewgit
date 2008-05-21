@@ -257,13 +257,16 @@ elseif ($action === 'archive') {
 
 	die();
 }
+// blob: send a blob to browser with filename suggestion
 elseif ($action === 'blob') {
-	$page['project'] = validate_project($_REQUEST['p']);
-	$page['hash'] = validate_hash($_REQUEST['h']);
+	$project = validate_project($_REQUEST['p']);
+	$hash = validate_hash($_REQUEST['h']);
+	$name = $_REQUEST['n'];
 
-	header('Content-type: text/plain');
+	header('Content-type: application/octet-stream');
+	header("Content-Disposition: attachment; filename=$name"); // FIXME needs quotation
 
-	run_git_passthru($page['project'], "git cat-file blob $page[hash]");
+	run_git_passthru($project, "git cat-file blob $hash");
 	die();
 }
 elseif ($action === 'commit') {
