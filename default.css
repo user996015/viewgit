@@ -70,3 +70,10 @@ table.heads th.date {
 	color: #999;
 }
 
+/* viewblob template */
+.file {
+	background-color: #aaa;
+	padding: 0.5em;
+	margin: 0.5em;
+}
+

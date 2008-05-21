@@ -374,6 +374,14 @@ elseif ($action === 'tree') {
 
 	$page['entries'] = git_ls_tree($page['project'], $page['tree']);
 }
+elseif ($action === 'viewblob') {
+	$template = 'blob';
+	$page['project'] = validate_project($_REQUEST['p']);
+	$page['hash'] = validate_hash($_REQUEST['h']);
+	$page['title'] = "$page[project] - Blob - ViewGit";
+
+	$page['data'] = join("\n", run_git($page['project'], "git cat-file blob $page[hash]"));
+}
 else {
 	die('Invalid action');
 }
