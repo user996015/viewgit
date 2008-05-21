@@ -19,7 +19,7 @@ foreach ($page['entries'] as $e) {
 		echo "<tr class=\"dir\">\n";
 		echo "\t<td>$e[mode]</td>\n";
 		echo "\t<td>". htmlspecialchars($e['name']) ."/</td>\n";
-		echo "\t<td><a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'targz')) ."\">tar.gz</a> / <a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'zip')) ."\">zip</a></td>\n";
+		echo "\t<td><a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'targz', 'n' => $e['name'])) ."\">tar.gz</a> / <a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'zip', 'n' => $e['name'])) ."\">zip</a></td>\n";
 	}
 	echo "</tr>\n";
 }
