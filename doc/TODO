@@ -1,15 +1,10 @@
 - all pages: allow navigation between commit/commitdiff/tree/etc easily like gitweb
+	- summary | shortlog | log | commit | commitdiff | tree
+	- keep parameter (commit_id) if provided, otherwise links should default to HEAD
+	- make sure all templates use commit_id so that the header template can use it
 
-- blobs
-	- downloading of blobs
-	- page to show blob
-	- linked from: tree
+- commitdiff: after log, show changed files with section link to diff
 
-- summary: commitdiff
-	- author
-	- log
-	- files changed: patch -> section, blob
-	- diff (+ section links)
 - research whether git checkout can be made to work through viewgit
 
 - make sure stuff works when a commit has multiple parents (merge/octopus)
@@ -42,6 +37,7 @@
 	- DONE shortlog
 	- root dir, under which all directories are shown on viewgit
 	- DONE tree browsing / downloading of individual files
+	- documentation: README/INSTALL, LICENSE, example config
 - optional
 	- RSS feeds: projects, shortlog
 	- branches list?
