@@ -1,3 +1,10 @@
+- tree
+	- pass OPTIONAL commit_id in 'hb' parameter (should be kept in next links)
+		-> pagenav commit/commitdiff will link to the commit related 
+	- a given tree may be related to multiple commits
+	- further directory/file viewing links should retain full path from commit in 'f'
+	- main nav bar should show path "fragments" if present, and link to each
+
 - WIP all pages: allow navigation between commit/commitdiff/tree/etc easily like gitweb
 	- summary | shortlog | log | commit | commitdiff | tree
 	- keep parameter (commit_id) if provided, otherwise links should default to HEAD
