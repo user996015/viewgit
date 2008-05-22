@@ -22,6 +22,9 @@ if ($page['action'] === 'summary') {
 elseif ($page['action'] === 'commit') {
 	echo " : Commit $page[commit_id]";
 }
+elseif ($page['action'] === 'shortlog') {
+	echo " : Shortlog";
+}
 elseif ($page['action'] === 'tree') {
 	echo " : Tree $page[tree]";
 }

@@ -304,7 +304,11 @@ elseif ($action === 'commitdiff') {
 elseif ($action === 'shortlog') {
 	$template = 'shortlog';
 	$page['project'] = validate_project($_REQUEST['p']);
-	$page['ref'] = $_REQUEST['h']; // TODO validate
+	if (isset($_REQUEST['h'])) {
+		$page['ref'] = validate_hash($_REQUEST['h']);
+	} else {
+		$page['ref'] = 'HEAD';
+	}
 
 	// TODO merge the logic with 'summary' below
 	$revs = git_get_rev_list($page['project'], $conf['summary_shortlog'], $page['ref']); // TODO pass first rev as parameter

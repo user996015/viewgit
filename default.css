@@ -7,6 +7,10 @@ h1 {
 	font-size: 130%;
 }
 
+h1 a {
+	text-decoration: none;
+}
+
 table {
 	width: 100%;
 	border-collapse: collapse;

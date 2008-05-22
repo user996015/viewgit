@@ -1,4 +1,4 @@
-<h1>Shortlog</h1>
+<h1><a href="<?php echo makelink(array('a' => 'shortlog', 'p' => $page['project'])); ?>">Shortlog</a></h1>
 
 <table class="shortlog">
 <thead>

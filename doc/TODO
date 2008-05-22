@@ -1,8 +1,5 @@
 - all pages: allow navigation between commit/commitdiff/tree/etc easily like gitweb
 
-- shortlog page
-	- summary's shortlog title should link here
-	- start from HEAD unless 'h' is provided, add a 'next' link that starts from the last commit?
 - blobs
 	- downloading of blobs
 	- page to show blob
