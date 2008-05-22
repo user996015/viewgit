@@ -266,6 +266,7 @@ elseif ($action === 'blob') {
 elseif ($action === 'commit') {
 	$template = 'commit';
 	$page['project'] = validate_project($_REQUEST['p']);
+	$page['title'] = "$page[project] - Commit - ViewGit";
 	$page['commit_id'] = validate_hash($_REQUEST['h']);
 
 	$info = git_get_commit_info($page['project'], $page['commit_id']);
@@ -287,6 +288,7 @@ elseif ($action === 'commit') {
 elseif ($action === 'commitdiff') {
 	$template = 'commitdiff';
 	$page['project'] = validate_project($_REQUEST['p']);
+	$page['title'] = "$page[project] - Commitdiff - ViewGit";
 	$hash = validate_hash($_REQUEST['h']);
 	$page['commit_id'] = $hash;
 
@@ -304,6 +306,7 @@ elseif ($action === 'commitdiff') {
 elseif ($action === 'shortlog') {
 	$template = 'shortlog';
 	$page['project'] = validate_project($_REQUEST['p']);
+	$page['title'] = "$page[project] - Shortlog - ViewGit";
 	if (isset($_REQUEST['h'])) {
 		$page['ref'] = validate_hash($_REQUEST['h']);
 	} else {
