@@ -48,7 +48,7 @@ function get_project_info($name)
 /**
  * Get details of a commit: tree, parent, author/committer (name, mail, date), message
  */
-function git_get_commit_info($project, $hash)
+function git_get_commit_info($project, $hash = 'HEAD')
 {
 	$info = array();
 	$info['h'] = $hash;
@@ -81,6 +81,9 @@ function git_get_commit_info($project, $hash)
 			if (!isset($info['message'])) {
 				$info['message'] = substr($line, 4, 40);
 			}
+		}
+		elseif (preg_match('/^[0-9a-f]{40}$/', $line) > 0) {
+			$info['h'] = $line;
 		}
 	}
 
@@ -279,7 +282,7 @@ elseif ($action === 'commit') {
 	$page['committer_mail'] = $info['committer_mail'];
 	$page['committer_datetime'] = strftime($conf['datetime'], $info['committer_utcstamp']);
 	$page['committer_datetime_local'] = strftime($conf['datetime'], $info['committer_stamp']) .' '. $info['committer_timezone'];
-	$page['tree'] = $info['tree'];
+	$page['tree_id'] = $info['tree'];
 	$page['parent'] = $info['parent'];
 	$page['message'] = $info['message'];
 	$page['message_full'] = $info['message_full'];
@@ -293,6 +296,8 @@ elseif ($action === 'commitdiff') {
 	$page['commit_id'] = $hash;
 
 	$info = git_get_commit_info($page['project'], $hash);
+
+	$page['tree_id'] = $info['tree'];
 
 	$page['message'] = $info['message'];
 	$page['message_full'] = $info['message_full'];
@@ -313,6 +318,10 @@ elseif ($action === 'shortlog') {
 		$page['ref'] = 'HEAD';
 	}
 
+	$info = git_get_commit_info($page['project']);
+	$page['commit_id'] = $info['h'];
+	$page['tree_id'] = $info['tree'];
+
 	// TODO merge the logic with 'summary' below
 	$revs = git_get_rev_list($page['project'], $conf['summary_shortlog'], $page['ref']); // TODO pass first rev as parameter
 	foreach ($revs as $rev) {
@@ -330,6 +339,10 @@ elseif ($action === 'summary') {
 	$template = 'summary';
 	$page['project'] = validate_project($_REQUEST['p']);
 	$page['title'] = "$page[project] - Summary - ViewGit";
+
+	$info = git_get_commit_info($page['project']);
+	$page['commit_id'] = $info['h'];
+	$page['tree_id'] = $info['tree'];
 	
 	$revs = git_get_rev_list($page['project'], $conf['summary_shortlog']);
 	foreach ($revs as $rev) {
@@ -370,10 +383,15 @@ elseif ($action === 'summary') {
 elseif ($action === 'tree') {
 	$template = 'tree';
 	$page['project'] = validate_project($_REQUEST['p']);
-	$page['tree'] = validate_hash($_REQUEST['h']);
+	$page['tree_id'] = validate_hash($_REQUEST['h']);
 	$page['title'] = "$page[project] - Tree - ViewGit";
 
-	$page['entries'] = git_ls_tree($page['project'], $page['tree']);
+	// for the header
+	// TODO should perhaps get this as a GET parameter from other pages instead of using HEAD's commit_id
+	$info = git_get_commit_info($page['project']);
+	$page['commit_id'] = $info['h'];
+
+	$page['entries'] = git_ls_tree($page['project'], $page['tree_id']);
 }
 elseif ($action === 'viewblob') {
 	$template = 'blob';

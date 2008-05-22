@@ -26,10 +26,18 @@ elseif ($page['action'] === 'shortlog') {
 	echo " : Shortlog";
 }
 elseif ($page['action'] === 'tree') {
-	echo " : Tree $page[tree]";
+	echo " : Tree $page[tree_id]";
 }
 elseif ($page['action'] === 'viewblob') {
 	echo " : Blob $page[hash]";
 }
 ?>
+</div>
+
+<div class="pagenav">
+<a href="<?php echo makelink(array('a' => 'summary', 'p' => $page['project'])); ?>">Summary</a> |
+<a href="<?php echo makelink(array('a' => 'shortlog', 'p' => $page['project'])); ?>">Shortlog</a> |
+<a href="<?php echo makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $page['commit_id'])); ?>">Commit</a> |
+<a href="<?php echo makelink(array('a' => 'commitdiff', 'p' => $page['project'], 'h' => $page['commit_id'])); ?>">Commitdiff</a> |
+<a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $page['tree_id'])); ?>">Tree</a>
 </div>

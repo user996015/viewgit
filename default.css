@@ -36,6 +36,11 @@ table th {
 	border: 1px solid black;
 }
 
+.pagenav {
+	font-size: 80%;
+	padding-top: 0.3em;
+}
+
 /* summary template */
 
 table.shortlog th.date {

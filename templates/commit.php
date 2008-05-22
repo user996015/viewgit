@@ -32,7 +32,7 @@
 </tr>
 <tr>
 	<td>Tree</td>
-	<td><a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $page['tree'])); ?>"><?php echo $page['tree']; ?></a></td>
+	<td><a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $page['tree_id'])); ?>"><?php echo $page['tree_id']; ?></a></td>
 </tr>
 <tr>
 	<td>Parent</td>

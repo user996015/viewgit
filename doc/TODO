@@ -1,9 +1,10 @@
-- all pages: allow navigation between commit/commitdiff/tree/etc easily like gitweb
+- WIP all pages: allow navigation between commit/commitdiff/tree/etc easily like gitweb
 	- summary | shortlog | log | commit | commitdiff | tree
 	- keep parameter (commit_id) if provided, otherwise links should default to HEAD
 	- make sure all templates use commit_id so that the header template can use it
 
 - commitdiff: after log, show changed files with section link to diff
+- full log page
 
 - research whether git checkout can be made to work through viewgit
 
