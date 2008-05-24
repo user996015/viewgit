@@ -1,8 +1,6 @@
-- tree
+- tree/blob
 	- further directory/file viewing links should retain full path from commit in 'f'
 	- main nav bar should show path "fragments" if present, and link to each
-- blob
-	- pass base commit 'hb' as optional parameter
 - header pagenav: bolden current selection
 
 - commitdiff: after log, show changed files with section link to diff

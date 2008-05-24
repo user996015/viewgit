@@ -403,16 +403,32 @@ elseif ($action === 'tree') {
 		// for the header
 		$info = git_get_commit_info($page['project']);
 		$page['commit_id'] = $info['h'];
-		die('DEBUG');
 	}
 
 	$page['entries'] = git_ls_tree($page['project'], $page['tree_id']);
 }
+/*
+ * View a blob as inline, embedded on the page.
+ * @param p project
+ * @param h blob hash
+ * @param hb OPTIONAL base commit
+ */
 elseif ($action === 'viewblob') {
 	$template = 'blob';
 	$page['project'] = validate_project($_REQUEST['p']);
 	$page['hash'] = validate_hash($_REQUEST['h']);
 	$page['title'] = "$page[project] - Blob - ViewGit";
+	if (isset($_REQUEST['hb'])) {
+		$page['commit_id'] = validate_hash($_REQUEST['hb']);
+	}
+	else {
+		$page['commit_id'] = 'HEAD';
+	}
+
+	// For the header's pagenav
+	$info = git_get_commit_info($page['project'], $page['commit_id']);
+	$page['commit_id'] = $info['h'];
+	$page['tree_id'] = $info['tree'];
 
 	$page['data'] = join("\n", run_git($page['project'], "git cat-file blob $page[hash]"));
 }

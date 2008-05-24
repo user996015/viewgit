@@ -12,7 +12,7 @@ foreach ($page['entries'] as $e) {
 	if ($e['type'] === 'blob') {
 		echo "<tr>\n";
 		echo "\t<td>$e[mode]</td>\n";
-		echo "\t<td><a href=\"". makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'])) ."\">". htmlspecialchars($e['name']) ."</a></td>\n";
+		echo "\t<td><a href=\"". makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'])) ."\">". htmlspecialchars($e['name']) ."</a></td>\n";
 		echo "\t<td><a href=\"". makelink(array('a' => 'blob', 'p' => $page['project'], 'h' => $e['hash'], 'n' => $e['name'])) ."\">blob</a></td>\n";
 	}
 	else {
