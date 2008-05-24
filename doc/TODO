@@ -10,6 +10,10 @@
 	- or in validate_hash()
 
 - research whether git checkout can be made to work through viewgit
+	- If repos use git-update-server-info, could perhaps use internal rewrite to send requests to the .git directories
+		- ^.*\.git$ -> redirect to .git dir
+	- alternatively, could generate the needed info on fly when client request comes
+	- should be configurable whether checkout can be done, and whether to show the checkout command on pages
 
 - make sure stuff works when a commit has multiple parents (merge/octopus)
 
