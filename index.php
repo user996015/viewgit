@@ -405,6 +405,11 @@ elseif ($action === 'tree') {
 		$page['commit_id'] = $info['h'];
 	}
 
+	$page['path'] = '';
+	if (isset($_REQUEST['f'])) {
+		$page['path'] = $_REQUEST['f']; // TODO validate?
+	}
+
 	$page['entries'] = git_ls_tree($page['project'], $page['tree_id']);
 }
 /*
@@ -423,6 +428,11 @@ elseif ($action === 'viewblob') {
 	}
 	else {
 		$page['commit_id'] = 'HEAD';
+	}
+
+	$page['path'] = '';
+	if (isset($_REQUEST['f'])) {
+		$page['path'] = $_REQUEST['f']; // TODO validate?
 	}
 
 	// For the header's pagenav

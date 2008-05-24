@@ -26,10 +26,10 @@ elseif ($page['action'] === 'shortlog') {
 	echo " : Shortlog";
 }
 elseif ($page['action'] === 'tree') {
-	echo " : Tree $page[tree_id]";
+	echo " : Tree $page[tree_id] [/$page[path]]";
 }
 elseif ($page['action'] === 'viewblob') {
-	echo " : Blob $page[hash]";
+	echo " : Blob $page[hash] [/$page[path]]";
 }
 ?>
 </div>

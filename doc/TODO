@@ -1,5 +1,4 @@
 - tree/blob
-	- further directory/file viewing links should retain full path from commit in 'f'
 	- main nav bar should show path "fragments" if present, and link to each
 - header pagenav: bolden current selection
 
@@ -68,6 +67,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- disable error reporting by default, and use own error handler for debug mode
 - full log page
 - summary: show [MASTER] and so on if the given commit is a tag or a head
 - commit: option to hide/scramble the e-mail
