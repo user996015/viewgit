@@ -16,7 +16,7 @@ foreach ($page['projects'] as $p) {
 	echo "\t<td>$p[description]</td>\n";
 	echo "\t<td>$p[head_datetime]</td>\n";
 	echo "\t<td>";
-	echo "[<a href=\"". makelink(array('a' => 'tree', 'p' => $p['name'], 'h' => $p['head_tree'])) ."\">tree</a>]";
+	echo "[<a href=\"". makelink(array('a' => 'tree', 'p' => $p['name'], 'h' => $p['head_tree'], 'hb' => $p['head_hash'])) ."\">tree</a>]";
 	echo "[<a href=\"". makelink(array('a' => 'archive', 'p' => $p['name'], 'h' => $p['head_tree'], 't' => 'targz')) ."\">tar/gz</a>]";
 	echo "[<a href=\"". makelink(array('a' => 'archive', 'p' => $p['name'], 'h' => $p['head_tree'], 't' => 'zip')) ."\">zip</a>]";
 	echo "</td>\n";

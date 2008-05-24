@@ -1,9 +1,9 @@
 - tree
-	- pass OPTIONAL commit_id in 'hb' parameter (should be kept in next links)
-		-> pagenav commit/commitdiff will link to the commit related 
-	- a given tree may be related to multiple commits
 	- further directory/file viewing links should retain full path from commit in 'f'
 	- main nav bar should show path "fragments" if present, and link to each
+- blob
+	- pass base commit 'hb' as optional parameter
+- header pagenav: bolden current selection
 
 - commitdiff: after log, show changed files with section link to diff
 - shortlog: accept branch/tag name as 'h'

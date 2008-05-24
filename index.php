@@ -380,16 +380,31 @@ elseif ($action === 'summary') {
 		);
 	}
 }
+/*
+ * Shows a tree, with list of directories/files, links to them and download
+ * links to archives.
+ *
+ * @param p project
+ * @param h tree hash
+ * @param hb OPTIONAL base commit (trees can be part of multiple commits, this
+ * one denotes which commit the user navigated from)
+ */
 elseif ($action === 'tree') {
 	$template = 'tree';
 	$page['project'] = validate_project($_REQUEST['p']);
 	$page['tree_id'] = validate_hash($_REQUEST['h']);
 	$page['title'] = "$page[project] - Tree - ViewGit";
 
-	// for the header
-	// TODO should perhaps get this as a GET parameter from other pages instead of using HEAD's commit_id
-	$info = git_get_commit_info($page['project']);
-	$page['commit_id'] = $info['h'];
+	// 'hb' optionally contains the commit_id this tree is related to
+	if (isset($_REQUEST['hb'])) {
+		$page['commit_id'] = validate_hash($_REQUEST['hb']);
+	}
+	else {
+		// for the header
+		$info = git_get_commit_info($page['project']);
+		$page['commit_id'] = $info['h'];
+		die('DEBUG');
+	}
 
 	$page['entries'] = git_ls_tree($page['project'], $page['tree_id']);
 }

@@ -18,7 +18,7 @@ foreach ($page['entries'] as $e) {
 	else {
 		echo "<tr class=\"dir\">\n";
 		echo "\t<td>$e[mode]</td>\n";
-		echo "\t<td>". htmlspecialchars($e['name']) ."/</td>\n";
+		echo "\t<td><a href=\"" .makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'])) ."\">". htmlspecialchars($e['name']) ."/</a></td>\n";
 		echo "\t<td><a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'targz', 'n' => $e['name'])) ."\">tar.gz</a> / <a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 't' => 'zip', 'n' => $e['name'])) ."\">zip</a></td>\n";
 	}
 	echo "</tr>\n";

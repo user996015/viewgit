@@ -34,10 +34,12 @@ elseif ($page['action'] === 'viewblob') {
 ?>
 </div>
 
+<?php if (isset($page['project'])) { ?>
 <div class="pagenav">
 <a href="<?php echo makelink(array('a' => 'summary', 'p' => $page['project'])); ?>">Summary</a> |
 <a href="<?php echo makelink(array('a' => 'shortlog', 'p' => $page['project'])); ?>">Shortlog</a> |
 <a href="<?php echo makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $page['commit_id'])); ?>">Commit</a> |
 <a href="<?php echo makelink(array('a' => 'commitdiff', 'p' => $page['project'], 'h' => $page['commit_id'])); ?>">Commitdiff</a> |
-<a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $page['tree_id'])); ?>">Tree</a>
+<a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'])); ?>">Tree</a>
 </div>
+<? } ?>
