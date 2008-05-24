@@ -26,10 +26,15 @@ elseif ($page['action'] === 'shortlog') {
 	echo " : Shortlog";
 }
 elseif ($page['action'] === 'tree') {
-	echo " : Tree $page[tree_id] [/$page[path]]";
+	echo " : Tree $page[tree_id]";
 }
 elseif ($page['action'] === 'viewblob') {
-	echo " : Blob $page[hash] [/$page[path]]";
+	echo " : Blob $page[hash]";
+}
+
+if (isset($page['path'])) {
+	echo ' / ';
+	echo join(' / ', explode('/', $page['path']));
 }
 ?>
 </div>
