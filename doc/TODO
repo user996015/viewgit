@@ -5,13 +5,9 @@
 	- further directory/file viewing links should retain full path from commit in 'f'
 	- main nav bar should show path "fragments" if present, and link to each
 
-- WIP all pages: allow navigation between commit/commitdiff/tree/etc easily like gitweb
-	- summary | shortlog | log | commit | commitdiff | tree
-	- keep parameter (commit_id) if provided, otherwise links should default to HEAD
-	- make sure all templates use commit_id so that the header template can use it
-
 - commitdiff: after log, show changed files with section link to diff
-- full log page
+- shortlog: accept branch/tag name as 'h'
+	- or in validate_hash()
 
 - research whether git checkout can be made to work through viewgit
 
@@ -70,6 +66,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- full log page
 - summary: show [MASTER] and so on if the given commit is a tag or a head
 - commit: option to hide/scramble the e-mail
 - archive: use ob_start/ob_length/ob_flush for creating archives so that Content-Length can be sent
