@@ -17,7 +17,7 @@ echo ' ['. $page['author_datetime'] .']';
 
 <div class="diff">
 <pre>
-<?php echo htmlentities($page['diffdata']); ?>
+<?php echo $page['diffdata']; ?>
 </pre>
 </div>
 
