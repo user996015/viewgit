@@ -1,4 +1,4 @@
-<h1><?php echo htmlentities($page['message']); ?></h1>
+<h1><?php echo htmlentities($page['message_firstline']); ?></h1>
 
 <table class="commit">
 <tbody>

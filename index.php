@@ -25,14 +25,12 @@ function format_diff($text)
 			'/^(\+.*)$/m',
 			'/^(-.*)$/m',
 			'/^(@.*)$/m',
-			//'#^diff --git a/(.*) b/(.*)$#',
 			'/^([^d\+-@].*)$/m',
 		),
 		array(
 			'<span class="add">$1</span>',
 			'<span class="del">$1</span>',
 			'<span class="pos">$1</span>',
-			//'<span class="file" id="$1">diff --git a/$1 b/$2</span>', // FIXME
 			'<span class="etc">$1</span>',
 		),
 		$text);
@@ -98,6 +96,7 @@ function git_get_commit_info($project, $hash = 'HEAD')
 			$info['message_full'] .= substr($line, 4) ."\n";
 			if (!isset($info['message'])) {
 				$info['message'] = substr($line, 4, 40);
+				$info['message_firstline'] = substr($line, 4);
 			}
 		}
 		elseif (preg_match('/^[0-9a-f]{40}$/', $line) > 0) {
@@ -303,6 +302,7 @@ elseif ($action === 'commit') {
 	$page['tree_id'] = $info['tree'];
 	$page['parent'] = $info['parent'];
 	$page['message'] = $info['message'];
+	$page['message_firstline'] = $info['message_firstline'];
 	$page['message_full'] = $info['message_full'];
 
 }
@@ -318,6 +318,7 @@ elseif ($action === 'commitdiff') {
 	$page['tree_id'] = $info['tree'];
 
 	$page['message'] = $info['message'];
+	$page['message_firstline'] = $info['message_firstline'];
 	$page['message_full'] = $info['message_full'];
 	$page['author_name'] = $info['author_name'];
 	$page['author_mail'] = $info['author_mail'];
