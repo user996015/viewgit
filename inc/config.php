@@ -10,6 +10,9 @@ $conf['projects'] = array(
 
 $conf['datetime'] = '%Y-%m-%d %H:%M:%S';
 
+// Maximum length of commit message's first line to show 
+$conf['commit_message_maxlen'] = 50;
+
 // Maximum number of shortlog entries to show on the summary page
 $conf['summary_shortlog'] = 30;
 

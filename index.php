@@ -66,6 +66,8 @@ function get_project_info($name)
  */
 function git_get_commit_info($project, $hash = 'HEAD')
 {
+	global $conf;
+
 	$info = array();
 	$info['h'] = $hash;
 	$info['message_full'] = '';
@@ -95,7 +97,7 @@ function git_get_commit_info($project, $hash = 'HEAD')
 		elseif (substr($line, 0, 4) === '    ') {
 			$info['message_full'] .= substr($line, 4) ."\n";
 			if (!isset($info['message'])) {
-				$info['message'] = substr($line, 4, 40);
+				$info['message'] = substr($line, 4, $conf['commit_message_maxlen']);
 				$info['message_firstline'] = substr($line, 4);
 			}
 		}
