@@ -1,8 +1,8 @@
-<h1><?php echo $page['message']; ?></h1>
+<h1><?php echo htmlentities($page['message']); ?></h1>
 
 <div class="authorinfo">
 <?php
-echo $page['author_name'];
+echo htmlentities($page['author_name']);
 echo ' ['. $page['author_datetime'] .']';
 ?>
 </div>
@@ -17,7 +17,7 @@ echo ' ['. $page['author_datetime'] .']';
 
 <div class="diff">
 <pre>
-<?php echo $page['diffdata']; ?>
+<?php echo htmlentities($page['diffdata']); ?>
 </pre>
 </div>
 

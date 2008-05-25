@@ -1,10 +1,10 @@
-<h1><?php echo $page['message']; ?></h1>
+<h1><?php echo htmlentities($page['message']); ?></h1>
 
 <table class="commit">
 <tbody>
 <tr>
 	<td>Author</td>
-	<td><?php echo $page['author_name']; ?> &lt;<?php echo $page['author_mail']; ?>&gt;</td>
+	<td><?php echo htmlentities($page['author_name']); ?> &lt;<?php echo htmlentities($page['author_mail']); ?>&gt;</td>
 </tr>
 <tr>
 	<td>Author date</td>
@@ -16,7 +16,7 @@
 </tr>
 <tr>
 	<td>Committer</td>
-	<td><?php echo $page['committer_name']; ?> &lt;<?php echo $page['committer_mail']; ?>&gt;</td>
+	<td><?php echo htmlentities($page['committer_name']); ?> &lt;<?php echo htmlentities($page['committer_mail']); ?>&gt;</td>
 </tr>
 <tr>
 	<td>Committer date</td>
@@ -41,7 +41,7 @@
 </tbody>
 </table>
 
-<div class="message"><?php echo $page['message_full']; ?></div>
+<div class="message"><?php echo htmlentities($page['message_full']); ?></div>
 
 <?php /* TODO: list of files changed */ ?>
 
