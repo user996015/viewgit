@@ -3,9 +3,10 @@
 	- how to get the tree hashes for linking fragments? Have to climb up the tree from 'hb' ?
 - header pagenav: bolden current selection
 
-- commitdiff: after log, show changed files with section link to diff
 - shortlog: accept branch/tag name as 'h'
 	- or in validate_hash()
+
+- h1: show full first line of commit message instead of first N characters
 
 - research whether git checkout can be made to work through viewgit
 	- If repos use git-update-server-info, could perhaps use internal rewrite to send requests to the .git directories

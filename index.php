@@ -5,9 +5,19 @@ require_once('inc/config.php');
 
 /**
  * Formats "git diff" output into xhtml.
+ * @return array(array of filenames, xhtml)
  */
 function format_diff($text)
 {
+	$files = array();
+
+	// match every "^diff --git a/<path> b/<path>$" line
+	foreach (explode("\n", $text) as $line) {
+		if (preg_match('#^diff --git a/(.*) b/(.*)$#', $line, $matches) > 0) {
+			$files[$matches[1]] = urlencode($matches[1]);
+		}
+	}
+
 	$text = htmlentities($text);
 
 	$text = preg_replace(
@@ -15,17 +25,25 @@ function format_diff($text)
 			'/^(\+.*)$/m',
 			'/^(-.*)$/m',
 			'/^(@.*)$/m',
-			'/^([^\+-@].*)$/m',
+			//'#^diff --git a/(.*) b/(.*)$#',
+			'/^([^d\+-@].*)$/m',
 		),
 		array(
 			'<span class="add">$1</span>',
 			'<span class="del">$1</span>',
 			'<span class="pos">$1</span>',
+			//'<span class="file" id="$1">diff --git a/$1 b/$2</span>', // FIXME
 			'<span class="etc">$1</span>',
 		),
 		$text);
+	$text = preg_replace_callback('#^diff --git a/(.*) b/(.*)$#m',
+		create_function(
+			'$m',
+			'return "<span class=\"diffline\"><a name=\"". urlencode($m[1]) ."\">diff --git a/$m[1] b/$m[2]</a></span>";'
+		),
+		$text);
 
-	return $text;
+	return array($files, $text);
 }
 
 function get_project_info($name)
@@ -306,7 +324,8 @@ elseif ($action === 'commitdiff') {
 	$page['author_datetime'] = strftime($conf['datetime'], $info['author_utcstamp']);
 
 	$text = join("\n", run_git($page['project'], "git diff $hash^..$hash"));
-	$page['diffdata'] = format_diff($text);
+	list($page['files'], $page['diffdata']) = format_diff($text);
+	//$page['diffdata'] = format_diff($text);
 }
 elseif ($action === 'shortlog') {
 	$template = 'shortlog';

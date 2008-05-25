@@ -13,7 +13,27 @@ echo ' ['. $page['author_datetime'] .']';
 </pre>
 </div>
 
-<?php /* TODO: list of changed files with section links to diff */ ?>
+<div class="filelist">
+<table>
+<thead>
+<tr>
+	<th>Filename</th>
+	<th>Links</th>
+</tr>
+</thead>
+<tbody>
+<?php
+// pathname | patch | blob | history
+foreach ($page['files'] as $file => $url) {
+	echo "<tr>\n";
+	echo "<td><a href=\"#$url\">$file</a></td>";
+	echo "<td>blob | history</td>";
+	echo "</tr>\n";
+}
+?>
+</tbody>
+</table>
+</div>
 
 <div class="diff">
 <pre>
