@@ -3,6 +3,11 @@ error_reporting(E_ALL);
 
 require_once('inc/config.php');
 
+function debug($msg)
+{
+	file_put_contents('/tmp/viewgit.log', strftime('%H:%M:%S') ." $_SERVER[REMOTE_ADDR]:$_SERVER[REMOTE_PORT] $msg\n", FILE_APPEND);
+}
+
 /**
  * Formats "git diff" output into xhtml.
  * @return array(array of filenames, xhtml)
@@ -283,6 +288,35 @@ elseif ($action === 'blob') {
 	header("Content-Disposition: attachment; filename=$name"); // FIXME needs quotation
 
 	run_git_passthru($project, "git cat-file blob $hash");
+	die();
+}
+/**
+ * git checkout.
+ */
+elseif ($action === 'co') {
+	// For debugging
+	debug("Project: $_REQUEST[p] Request: $_REQUEST[r]");
+
+	// eg. info/refs, HEAD
+	$p = validate_project($_REQUEST['p']); // project
+	$r = $_REQUEST['r']; // path
+
+	$gitdir = $conf['projects'][$p]['repo'];
+	$filename = $gitdir .'/'. $r;
+
+	// make sure the request is legit (no reading of other files besides those under git projects)
+	if ($r === 'HEAD' || $r === 'info/refs' || preg_match('!^objects/info/(packs|http-alternates|alternates)$!', $r) > 0 || preg_match('!^objects/[0-9a-f]{2}/[0-9a-f]{38}$!', $r) > 0) {
+		if (file_exists($filename)) {
+			debug('OK, sending');
+			readfile($filename);
+		} else {
+			debug('Not found');
+			header('404');
+		}
+	} else {
+		debug("Denied");
+	}
+
 	die();
 }
 elseif ($action === 'commit') {
