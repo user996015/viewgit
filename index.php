@@ -294,6 +294,8 @@ elseif ($action === 'blob') {
  * git checkout.
  */
 elseif ($action === 'co') {
+	if (!$conf['allow_checkout']) { die('Checkout not allowed'); }
+
 	// For debugging
 	debug("Project: $_REQUEST[p] Request: $_REQUEST[r]");
 

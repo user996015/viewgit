@@ -16,4 +16,7 @@ $conf['commit_message_maxlen'] = 50;
 // Maximum number of shortlog entries to show on the summary page
 $conf['summary_shortlog'] = 30;
 
+// Allow checking out projects via "git clone"
+$conf['allow_checkout'] = true;
+
 include_once('localconfig.php');
