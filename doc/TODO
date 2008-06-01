@@ -5,8 +5,6 @@
 - shortlog: accept branch/tag name as 'h'
 	- or in validate_hash()
 
-- checkout: generate git-update-server-info information on-the-fly if needed?
-
 - make sure stuff works when a commit has multiple parents (merge/octopus)
 
 [Milestones]
@@ -42,7 +40,6 @@
 	- RSS feeds: projects, shortlog
 	- branches list?
 	- tag list
-- don't mimic gitweb interface as it's a tad clunky
 
 [misc]
 - name?
@@ -62,6 +59,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- checkout: generate git-update-server-info information on-the-fly if needed?
 - disable error reporting by default, and use own error handler for debug mode
 - full log page
 - summary: show [MASTER] and so on if the given commit is a tag or a head
