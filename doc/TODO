@@ -2,8 +2,7 @@
 	- main nav bar should show path "fragments" if present, and link to each
 	- how to get the tree hashes for linking fragments? Have to climb up the tree from 'hb' ?
 
-- shortlog: accept branch/tag name as 'h'
-	- or in validate_hash()
+- pagenav loses track of which branch/tag we are viewing
 
 - make sure stuff works when a commit has multiple parents (merge/octopus)
 
@@ -59,6 +58,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- commitdiff: could make sections initially hidden (with javascript)
 - checkout: generate git-update-server-info information on-the-fly if needed?
 - disable error reporting by default, and use own error handler for debug mode
 - full log page

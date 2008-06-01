@@ -74,7 +74,7 @@ function git_get_commit_info($project, $hash = 'HEAD')
 	global $conf;
 
 	$info = array();
-	$info['h'] = $hash;
+	$info['h_name'] = $hash;
 	$info['message_full'] = '';
 
 	$output = run_git($project, "git rev-list --header --max-count=1 $hash");
@@ -226,7 +226,7 @@ function validate_project($project)
  */
 function validate_hash($hash)
 {
-	if (strlen($hash) != 40 || !preg_match('/^[0-9a-z]*$/', $hash)) {
+	if (!preg_match('/^[0-9a-z]{40}$/', $hash) && !preg_match('!^refs/(heads|tags)/[-.0-9a-z]+$!', $hash)) {
 		die('Invalid hash');
 
 	}
@@ -376,7 +376,7 @@ elseif ($action === 'shortlog') {
 		$page['ref'] = 'HEAD';
 	}
 
-	$info = git_get_commit_info($page['project']);
+	$info = git_get_commit_info($page['project'], $page['ref']);
 	$page['commit_id'] = $info['h'];
 	$page['tree_id'] = $info['tree'];
 
