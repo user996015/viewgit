@@ -1,7 +1,6 @@
 - tree/blob
 	- main nav bar should show path "fragments" if present, and link to each
 	- how to get the tree hashes for linking fragments? Have to climb up the tree from 'hb' ?
-- header pagenav: bolden current selection
 
 - shortlog: accept branch/tag name as 'h'
 	- or in validate_hash()

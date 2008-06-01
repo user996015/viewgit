@@ -52,7 +52,9 @@ $links = array(
 $first = true;
 foreach ($links as $link => $params) {
 	if (!$first) { echo " | "; }
+	if ($page['action'] === $link) { echo '<span class="cur">'; }
 	echo "<a href=\"". makelink(array_merge(array('a' => $link, 'p' => $page['project']), $params)) ."\">". ucfirst($link) . "</a>";
+	if ($page['action'] === $link) { echo '</span>'; }
 	$first = false;
 }
 ?>

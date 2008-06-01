@@ -41,6 +41,10 @@ table th {
 	padding-top: 0.3em;
 }
 
+.cur {
+	font-weight: bold;
+}
+
 /* summary template */
 
 table.shortlog th.date {
