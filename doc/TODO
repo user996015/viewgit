@@ -1,8 +1,3 @@
-- tree/blob
-	- main nav bar should show path "fragments" if present, and link to each
-	- how to get the tree hashes for linking fragments? Have to climb up the tree from 'hb' ?
-	- git-ls-tree <commit|tree> <subdir>
-
 - pagenav loses track of which branch/tag we are viewing
 
 - make sure stuff works when a commit has multiple parents (merge/octopus)

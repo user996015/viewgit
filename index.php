@@ -503,8 +503,6 @@ elseif ($action === 'tree') {
 
 	// get path info for the header
 	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], explode('/', $page['path']));
-	//print_r($pathinfo);
-	//die();
 
 	$page['entries'] = git_ls_tree($page['project'], $page['tree_id']);
 }
@@ -535,6 +533,8 @@ elseif ($action === 'viewblob') {
 	$info = git_get_commit_info($page['project'], $page['commit_id']);
 	$page['commit_id'] = $info['h'];
 	$page['tree_id'] = $info['tree'];
+
+	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], explode('/', $page['path']));
 
 	$page['data'] = join("\n", run_git($page['project'], "git cat-file blob $page[hash]"));
 }
