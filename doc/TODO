@@ -1,6 +1,10 @@
-- pagenav loses track of which branch/tag we are viewing
-
 - make sure stuff works when a commit has multiple parents (merge/octopus)
+	- commit: show all parents
+
+- document files and functions
+- doc/README / doc/INSTALL
+	- concise description, dependencies, installation instructions
+- example config
 
 [Milestones]
 - Public Launch (0.0.1?)
@@ -37,11 +41,6 @@
 	- tag list
 
 [misc]
-- name?
-	- ViewGit
-		- 3 google hits, none of a project
-		- Not registered at: SourceForge, Freshmeat, BerliOS
-
 - license?
 	- GPLv2 vs. GPLv3 vs. AGPLv3
 	- add clarification that linking to the original homepage is enough to provide source, as long as it's around
@@ -54,6 +53,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- pagenav loses track of which branch/tag we are viewing
 - geshi support (check compatiblity with AGPLv3)?
 - commitdiff: could make sections initially hidden (with javascript)
 - checkout: generate git-update-server-info information on-the-fly if needed?
