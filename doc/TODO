@@ -1,9 +1,6 @@
 - make sure stuff works when a commit has multiple parents (merge/octopus)
 	- commit: show all parents
 
-- document files and functions
-- doc/README / doc/INSTALL
-	- concise description, dependencies, installation instructions
 - example config
 
 [Milestones]
