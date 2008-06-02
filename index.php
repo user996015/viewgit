@@ -1,4 +1,12 @@
 <?php
+/** @file
+ * The main "controller" file of ViewGit.
+ *
+ * All requests come to this file. You can think of it as the controller in the
+ * Model-View-Controller pattern. It reads config, processes user input,
+ * fetches required data using git commandline, and finally passes the data to
+ * templates to be shown to the user.
+ */
 error_reporting(E_ALL);
 
 require_once('inc/config.php');
@@ -49,6 +57,10 @@ function format_diff($text)
 	return array($files, $text);
 }
 
+/**
+ * Get project information from config and git, name/description and HEAD
+ * commit info are returned in an array.
+ */
 function get_project_info($name)
 {
 	global $conf;
@@ -114,6 +126,9 @@ function git_get_commit_info($project, $hash = 'HEAD')
 	return $info;
 }
 
+/**
+ * Get list of heads (branches) for a project.
+ */
 function git_get_heads($project)
 {
 	$heads = array();
@@ -149,6 +164,11 @@ function git_get_path_info($project, $root_hash, $parts)
 	return $pathinfo;
 }
 
+/**
+ * Get revision list starting from given commit.
+ * @param max_count number of commit hashes to return, or all if not given
+ * @param start revision to start from, or HEAD if not given
+ */
 function git_get_rev_list($project, $max_count = null, $start = 'HEAD')
 {
 	$cmd = "git rev-list $start";
@@ -159,6 +179,9 @@ function git_get_rev_list($project, $max_count = null, $start = 'HEAD')
 	return run_git($project, $cmd);
 }
 
+/**
+ * Get list of tags for a project.
+ */
 function git_get_tags($project)
 {
 	$tags = array();
@@ -172,6 +195,11 @@ function git_get_tags($project)
 	return $tags;
 }
 
+/**
+ * Get information about objects in a tree.
+ * @param tree tree or commit hash
+ * @return list of arrays containing name, mode, type, hash
+ */
 function git_ls_tree($project, $tree)
 {
 	$entries = array();
@@ -186,6 +214,9 @@ function git_ls_tree($project, $tree)
 	return $entries;
 }
 
+/**
+ * Get information about the given object in a tree, or null if not in the tree.
+ */
 function git_ls_tree_part($project, $tree, $name)
 {
 	$entries = git_ls_tree($project, $tree);
@@ -197,6 +228,9 @@ function git_ls_tree_part($project, $tree, $name)
 	return null;
 }
 
+/**
+ * Return a URL that contains the given parameters.
+ */
 function makelink($dict)
 {
 	$params = array();
