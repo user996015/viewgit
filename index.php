@@ -128,6 +128,27 @@ function git_get_heads($project)
 	return $heads;
 }
 
+/**
+ * Get array containing path information for parts, starting from root_hash.
+ *
+ * @param root_hash commit/tree hash for the root tree
+ * @param parts array of path fragments
+ */
+function git_get_path_info($project, $root_hash, $parts)
+{
+	$pathinfo = array();
+
+	$tid = $root_hash;
+	$pathinfo = array();
+	foreach ($parts as $p) {
+		$entry = git_ls_tree_part($project, $tid, $p);
+		$pathinfo[] = $entry;
+		$tid = $entry['hash'];
+	}
+
+	return $pathinfo;
+}
+
 function git_get_rev_list($project, $max_count = null, $start = 'HEAD')
 {
 	$cmd = "git rev-list $start";
@@ -163,6 +184,17 @@ function git_ls_tree($project, $tree)
 	}
 
 	return $entries;
+}
+
+function git_ls_tree_part($project, $tree, $name)
+{
+	$entries = git_ls_tree($project, $tree);
+	foreach ($entries as $entry) {
+		if ($entry['name'] === $name) {
+			return $entry;
+		}
+	}
+	return null;
 }
 
 function makelink($dict)
@@ -446,6 +478,7 @@ elseif ($action === 'summary') {
  * @param h tree hash
  * @param hb OPTIONAL base commit (trees can be part of multiple commits, this
  * one denotes which commit the user navigated from)
+ * @param f OPTIONAL path the user has followed to view this tree
  */
 elseif ($action === 'tree') {
 	$template = 'tree';
@@ -467,6 +500,11 @@ elseif ($action === 'tree') {
 	if (isset($_REQUEST['f'])) {
 		$page['path'] = $_REQUEST['f']; // TODO validate?
 	}
+
+	// get path info for the header
+	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], explode('/', $page['path']));
+	//print_r($pathinfo);
+	//die();
 
 	$page['entries'] = git_ls_tree($page['project'], $page['tree_id']);
 }

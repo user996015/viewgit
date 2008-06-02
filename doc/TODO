@@ -1,6 +1,7 @@
 - tree/blob
 	- main nav bar should show path "fragments" if present, and link to each
 	- how to get the tree hashes for linking fragments? Have to climb up the tree from 'hb' ?
+	- git-ls-tree <commit|tree> <subdir>
 
 - pagenav loses track of which branch/tag we are viewing
 
@@ -58,6 +59,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- geshi support (check compatiblity with AGPLv3)?
 - commitdiff: could make sections initially hidden (with javascript)
 - checkout: generate git-update-server-info information on-the-fly if needed?
 - disable error reporting by default, and use own error handler for debug mode

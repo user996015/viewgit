@@ -33,8 +33,19 @@ elseif ($page['action'] === 'viewblob') {
 }
 
 if (isset($page['path'])) {
-	echo ' / ';
-	echo htmlentities(join(' / ', explode('/', $page['path'])));
+	if (isset($page['pathinfo'])) {
+		echo ' ';
+		$f = '';
+		foreach ($page['pathinfo'] as $p) {
+			if (strlen($f) > 0) { $f .= '/'; }
+			$f .= "$p[name]";
+			echo "/ <a href=\"". makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $p['hash'], 'hb' => $page['commit_id'], 'f' => $f)) ."\">$p[name]</a> ";
+		}
+	} else {
+		// TODO remove when unused
+		echo ' / ';
+		echo htmlentities(join(' / ', explode('/', $page['path'])));
+	}
 }
 ?>
 </div>
