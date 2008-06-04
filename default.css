@@ -32,16 +32,30 @@ table th {
 .nav {
 	font-size: 80%;
 	padding: 0.5em;
-	background-color: #999;
-	border: 1px solid black;
+}
+
+.nav a {
+	text-decoration: none;
 }
 
 .pagenav {
+	margin-top: 0.3em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 	font-size: 80%;
-	padding-top: 0.3em;
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
 }
 
-.cur {
+.pagenav a {
+	text-decoration: none;
+}
+
+.pagenav a:hover {
+	text-decoration: underline;
+}
+
+.pagenav .cur {
 	font-weight: bold;
 }
 
