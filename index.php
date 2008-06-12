@@ -321,7 +321,7 @@ elseif ($action === 'archive') {
 	$tree = validate_hash($_REQUEST['h']);
 	$type = $_REQUEST['t'];
 
-	$basename = "$project-tree-$tree";
+	$basename = "$project-tree-". substr($tree, 0, 7);
 	if (isset($_REQUEST['n'])) {
 		$basename = "$project-$_REQUEST[n]-". substr($tree, 0, 6);
 	}
