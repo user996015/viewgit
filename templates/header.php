@@ -6,6 +6,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 <head>
 	<title><?php echo $page['title']; ?></title>
 	<link rel="stylesheet" href="default.css" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="favicon.png" />
 </head>
 <body>
 
