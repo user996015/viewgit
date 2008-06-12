@@ -413,7 +413,7 @@ elseif ($action === 'commit') {
 elseif ($action === 'commitdiff') {
 	$template = 'commitdiff';
 	$page['project'] = validate_project($_REQUEST['p']);
-	$page['title'] = "$page[project] - Commitdiff - ViewGit";
+	$page['title'] = "$page[project] - Commitdiff - ViewGit";
 	$hash = validate_hash($_REQUEST['h']);
 	$page['commit_id'] = $hash;
 
@@ -485,12 +485,22 @@ elseif ($action === 'summary') {
 	foreach ($tags as $tag) {
 		$info = git_get_commit_info($page['project'], $tag['h']);
 		$page['tags'][] = array(
+			'stamp' => $info['author_utcstamp'],
 			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'h' => $tag['h'],
 			'fullname' => $tag['fullname'],
 			'name' => $tag['name'],
 		);
 	}
+	// sort tags newest first
+	// aka. two more reasons to hate PHP (figuring those out is your homework:)
+	$arr = $page['tags'];
+	usort($arr, create_function(
+		'$x, $y',
+		'$a = $x["stamp"]; $b = $y["stamp"]; return ($a == $b ? 0 : ($a > $b ? -1 : 1));'
+	));
+	// it's actually three, I lied.
+	$page['tags'] = $arr;
 
 	$heads = git_get_heads($page['project']);
 	$page['heads'] = array();
