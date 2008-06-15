@@ -79,7 +79,7 @@ function get_project_info($name)
 }
 
 /**
- * Get details of a commit: tree, parent, author/committer (name, mail, date), message
+ * Get details of a commit: tree, parents, author/committer (name, mail, date), message
  */
 function git_get_commit_info($project, $hash = 'HEAD')
 {
@@ -104,9 +104,6 @@ function git_get_commit_info($project, $hash = 'HEAD')
 		}
 		// may be repeated multiple times for merge/octopus
 		elseif (substr($line, 0, 6) === 'parent') {
-			if (!isset($info['parent'])) {
-				$info['parent']  = substr($line, 7);
-			}
 			$info['parents'][] = substr($line, 7);
 		}
 		elseif (preg_match($pattern, $line, $matches) > 0) {
@@ -409,7 +406,6 @@ elseif ($action === 'commit') {
 	$page['committer_datetime'] = strftime($conf['datetime'], $info['committer_utcstamp']);
 	$page['committer_datetime_local'] = strftime($conf['datetime'], $info['committer_stamp']) .' '. $info['committer_timezone'];
 	$page['tree_id'] = $info['tree'];
-	$page['parent'] = $info['parent']; // TODO remove
 	$page['parents'] = $info['parents'];
 	$page['message'] = $info['message'];
 	$page['message_firstline'] = $info['message_firstline'];
