@@ -88,6 +88,7 @@ function git_get_commit_info($project, $hash = 'HEAD')
 	$info = array();
 	$info['h_name'] = $hash;
 	$info['message_full'] = '';
+	$info['parents'] = array();
 
 	$output = run_git($project, "git rev-list --header --max-count=1 $hash");
 	// tree <h>
@@ -101,8 +102,12 @@ function git_get_commit_info($project, $hash = 'HEAD')
 		if (substr($line, 0, 4) === 'tree') {
 			$info['tree'] = substr($line, 5);
 		}
+		// may be repeated multiple times for merge/octopus
 		elseif (substr($line, 0, 6) === 'parent') {
-			$info['parent']  = substr($line, 7);
+			if (!isset($info['parent'])) {
+				$info['parent']  = substr($line, 7);
+			}
+			$info['parents'][] = substr($line, 7);
 		}
 		elseif (preg_match($pattern, $line, $matches) > 0) {
 			$info[$matches[1] .'_name'] = $matches[2];
@@ -404,7 +409,8 @@ elseif ($action === 'commit') {
 	$page['committer_datetime'] = strftime($conf['datetime'], $info['committer_utcstamp']);
 	$page['committer_datetime_local'] = strftime($conf['datetime'], $info['committer_stamp']) .' '. $info['committer_timezone'];
 	$page['tree_id'] = $info['tree'];
-	$page['parent'] = $info['parent'];
+	$page['parent'] = $info['parent']; // TODO remove
+	$page['parents'] = $info['parents'];
 	$page['message'] = $info['message'];
 	$page['message_firstline'] = $info['message_firstline'];
 	$page['message_full'] = $info['message_full'];

@@ -34,10 +34,14 @@
 	<td>Tree</td>
 	<td><a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'])); ?>"><?php echo $page['tree_id']; ?></a></td>
 </tr>
-<tr>
-	<td>Parent</td>
-	<td><a href="<?php echo makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $page['parent'])); ?>"><?php echo $page['parent']; ?></a></td>
-</tr>
+<?php
+foreach ($page['parents'] as $parent) {
+	echo "<tr>\n";
+	echo "\t<td>Parent</td>\n";
+	echo "\t<td><a href=\"". makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $parent)) ."\">$parent</a></td>\n";
+	echo "</tr>\n";
+}
+?>
 </tbody>
 </table>
 
