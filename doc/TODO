@@ -26,16 +26,10 @@
 	- depends: PHP5, git
 - mandatory features (0.0.1)
 	- project list (configurable or from a root, using globs perhaps?)
-		- DONE name, description (.git/description), action links
-	- DONE tar.gz snapshots of trees
-	- DONE shortlog
 	- root dir, under which all directories are shown on viewgit
-	- DONE tree browsing / downloading of individual files
 	- documentation: README/INSTALL, LICENSE, example config
 - optional
 	- RSS feeds: projects, shortlog
-	- branches list?
-	- tag list
 
 [misc]
 - license?
@@ -50,6 +44,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- summary: limit number of tags shown, add a separate page for all tags (eg. wine)
 - pagenav loses track of which branch/tag we are viewing
 - geshi support (check compatiblity with AGPLv3)?
 - commitdiff: could make sections initially hidden (with javascript)
