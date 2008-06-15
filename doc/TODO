@@ -16,9 +16,6 @@
 - First fixes & new features based on feedback (0.0.2)
 
 [features]
-- ideas in nutshell
-	- free git repository viewer that is easy to install and does not have many dependencies
-	- depends: PHP5, git
 - mandatory features (0.0.1)
 	- project list (configurable or from a root, using globs perhaps?)
 	- root dir, under which all directories are shown on viewgit
@@ -39,6 +36,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- commit support / uploading of bundles to be reviewed
 - summary: limit number of tags shown, add a separate page for all tags (eg. wine)
 - pagenav loses track of which branch/tag we are viewing
 - geshi support (check compatiblity with AGPLv3)?
