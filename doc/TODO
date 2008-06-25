@@ -29,13 +29,6 @@
 	- link from viewsvn's page
 - First fixes & new features based on feedback (0.0.2)
 
-[misc]
-- license?
-	- GPLv2 vs. GPLv3 vs. AGPLv3
-	- add clarification that linking to the original homepage is enough to provide source, as long as it's around
-	- when decided, state in the commit log that it holds retroactively for earlier commits?
-	- contributions should be licensed under aforementioned license "or any later version approved by" me (to allow upgrading to GPLv4 or whatever later?)
-
 [low priority]
 - diff between arbitrary trees/commits
 - commitdiff page: filename list has no action links
