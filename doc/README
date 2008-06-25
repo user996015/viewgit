@@ -1,7 +1,7 @@
 Description
 ===========
 ViewGit is a git web interface / repository viewer, that aims to be easy to set
-up and upgrade, and light on dependencies.
+up and upgrade, light on dependencies, and comfortable to use.
 
 Some of the current features are:
 - Project index with description, last change, tree browsing, and download links
@@ -10,6 +10,8 @@ Some of the current features are:
 - Commit: details of the commit
 - Commitdiff: colored diff of the changes in a commit
 - Tree (directory) browsing with downloadable trees (as tar/gz and zip), and downloadable files
+- RSS feeds of changes with configurable item title/description content
+- (Optional) Checkouts using mod_rewrite and git-update-server-info in .git/hooks/post-update
 
 Dependencies
 ============
