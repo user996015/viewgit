@@ -1,6 +1,5 @@
 - should be possible to link to a path at HEAD without the need for a tree hash
 	- tree: "Browse this tree at HEAD" -link
-- diff between arbitrary trees/commits
 
 [Milestones]
 - Public Launch (0.0.1?)
@@ -37,6 +36,8 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- diff between arbitrary trees/commits
+- commitdiff page: filename list has no action links
 - commit support / uploading of bundles to be reviewed
 - summary: limit number of tags shown, add a separate page for all tags (eg. wine)
 - pagenav loses track of which branch/tag we are viewing

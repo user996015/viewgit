@@ -164,10 +164,10 @@ elseif ($action === 'rss-log') {
 		$link = $ext_url . makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $rev));
 
 		$page['rss_items'][] = array(
-			'title' => $info['message_firstline'],
+			'title' => rss_item_format($conf['rss_item_title'], $info),
 			'guid' => $link,
 			'link' => $link,
-			'description' => '('. $info['author_name'] .') '. $info['message'],
+			'description' => rss_item_format($conf['rss_item_description'], $info),
 			'pubdate' => rss_pubdate($info['author_stamp']),
 		);
 	}

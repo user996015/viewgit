@@ -25,4 +25,9 @@ $conf['rss_ttl'] = 10;
 // RSS: Maximum number of items in feed
 $conf['rss_max_items'] = 30;
 
+// RSS item format. Allowed formatting:
+// {AUTHOR}, {SHORTLOG}, {LOG}, {COMMITTER}
+$conf['rss_item_title'] = '{SHORTLOG} ({AUTHOR})';
+$conf['rss_item_description'] = '{LOG}<br /><br /> <b>{AUTHOR}</b> &lt;{AUTHOR_MAIL}&gt;';
+
 include_once('localconfig.php');

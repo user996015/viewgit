@@ -237,6 +237,30 @@ function makelink($dict)
 	return '';
 }
 
+/**
+ * Used to format RSS item title and description.
+ *
+ * @param info commit info from git_get_commit_info()
+ */
+function rss_item_format($format, $info)
+{
+	return preg_replace(array(
+		'/{AUTHOR}/',
+		'/{AUTHOR_MAIL}/',
+		'/{SHORTLOG}/',
+		'/{LOG}/',
+		'/{COMMITTER}/',
+		'/{COMMITTER_MAIL}/',
+	), array(
+		$info['author_name'],
+		$info['author_mail'],
+		$info['message_firstline'],
+		$info['message'],
+		$info['committer_name'],
+		$info['committer_mail'],
+	), $format);
+}
+
 function rss_pubdate($secs)
 {
 	return date('D, d M Y H:i:s O', $secs);
