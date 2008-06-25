@@ -1,3 +1,11 @@
+- bundle about page that says what the software is and where to download it
+
+- RSS: allow summary of changes (git diff --stat ?)
+
+- summary: limit number of tags shown, add a separate page for all tags (eg. wine)
+
+- geshi support (check compatiblity with AGPLv3)?
+
 - should be possible to link to a path at HEAD without the need for a tree hash
 	- tree: "Browse this tree at HEAD" -link
 
@@ -11,16 +19,15 @@
 
 	- sourceforge project
 	- website, tracked with Google Analytics
+		- Google Analytics
+		- Piwik
+		- Link to other projects at <http://git.or.cz/gitwiki/Gitweb>
 	- freshmeat project page
 	- post link to <http://git.or.cz/gitwiki/Gitweb>
 	- announce on git list
 	- announce on viewsvn's news section
 	- link from viewsvn's page
 - First fixes & new features based on feedback (0.0.2)
-
-[features]
-- mandatory features (0.0.1)
-	- root dir, under which all directories are shown on viewgit
 
 [misc]
 - license?
@@ -29,23 +36,13 @@
 	- when decided, state in the commit log that it holds retroactively for earlier commits?
 	- contributions should be licensed under aforementioned license "or any later version approved by" me (to allow upgrading to GPLv4 or whatever later?)
 
-- bundle about page that says what the software is and where to download it
-
-- other projects?
-	- <http://git.or.cz/gitwiki/Gitweb>
-
 [low priority]
-- RSS: allow summary of changes (git diff --stat ?)
 - diff between arbitrary trees/commits
 - commitdiff page: filename list has no action links
 - commit support / uploading of bundles to be reviewed
-- summary: limit number of tags shown, add a separate page for all tags (eg. wine)
 - pagenav loses track of which branch/tag we are viewing
-- geshi support (check compatiblity with AGPLv3)?
-- commitdiff: could make sections initially hidden (with javascript)
 - checkout: generate git-update-server-info information on-the-fly if needed?
 - disable error reporting by default, and use own error handler for debug mode
 - full log page
 - summary: show [MASTER] and so on if the given commit is a tag or a head
-- archive: use ob_start/ob_length/ob_flush for creating archives so that Content-Length can be sent
 
