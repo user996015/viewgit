@@ -1,7 +1,5 @@
 - bundle about page that says what the software is and where to download it
 
-- RSS: allow summary of changes (git diff --stat ?)
-
 - summary: limit number of tags shown, add a separate page for all tags (eg. wine)
 
 - geshi support (check compatiblity with AGPLv3)?

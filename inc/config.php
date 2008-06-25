@@ -35,8 +35,8 @@ $conf['rss_ttl'] = 10;
 $conf['rss_max_items'] = 30;
 
 // RSS item format. Allowed formatting:
-// {AUTHOR}, {SHORTLOG}, {LOG}, {COMMITTER}
+// {AUTHOR}, {AUTHOR_MAIL}, {SHORTLOG}, {LOG}, {COMMITTER}, {COMMITTER_MAIL}, {DIFFSTAT}
 $conf['rss_item_title'] = '{SHORTLOG} ({AUTHOR})';
-$conf['rss_item_description'] = '<pre>{LOG}</pre><b>{AUTHOR}</b> &lt;{AUTHOR_MAIL}&gt;';
+$conf['rss_item_description'] = '<pre>{LOG}</pre><b>{AUTHOR}</b> &lt;{AUTHOR_MAIL}&gt;<br /><pre>{DIFFSTAT}</pre>';
 
 include_once('localconfig.php');

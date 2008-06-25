@@ -70,6 +70,14 @@ function get_project_info($name)
 	return $info;
 }
 
+function git_diffstat($project, $commit, $commit_base = null)
+{
+	if (is_null($commit_base)) {
+		$commit_base = "$commit^";
+	}
+	return join("\n", run_git($project, "git diff --stat $commit_base..$commit"));
+}
+
 /**
  * Get details of a commit: tree, parents, author/committer (name, mail, date), message
  */
@@ -263,6 +271,7 @@ function rss_item_format($format, $info)
 		'/{LOG}/',
 		'/{COMMITTER}/',
 		'/{COMMITTER_MAIL}/',
+		'/{DIFFSTAT}/',
 	), array(
 		$info['author_name'],
 		$info['author_mail'],
@@ -270,6 +279,7 @@ function rss_item_format($format, $info)
 		$info['message_full'],
 		$info['committer_name'],
 		$info['committer_mail'],
+		isset($info['diffstat']) ? $info['diffstat'] : '',
 	), $format);
 }
 

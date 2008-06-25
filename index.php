@@ -175,10 +175,15 @@ elseif ($action === 'rss-log') {
 
 	$page['rss_items'] = array();
 
+	$diffstat = strstr($conf['rss_item_description'], '{DIFFSTAT}');
+
 	$revs = git_get_rev_list($page['project'], $conf['rss_max_items']);
 	foreach ($revs as $rev) {
 		$info = git_get_commit_info($page['project'], $rev);
 		$link = $ext_url . makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $rev));
+		if ($diffstat) {
+			$info['diffstat'] = git_diffstat($page['project'], $rev);
+		}
 
 		$page['rss_items'][] = array(
 			'title' => rss_item_format($conf['rss_item_title'], $info),
