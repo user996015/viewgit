@@ -18,7 +18,9 @@ echo ' ['. $page['author_datetime'] .']';
 <thead>
 <tr>
 	<th>Filename</th>
+<?php /*
 	<th>Links</th>
+*/ ?>
 </tr>
 </thead>
 <tbody>
@@ -27,7 +29,7 @@ echo ' ['. $page['author_datetime'] .']';
 foreach ($page['files'] as $file => $url) {
 	echo "<tr>\n";
 	echo "<td><a href=\"#$url\">$file</a></td>";
-	echo "<td>blob | history</td>";
+	echo "<td>" /* blob | history */ ."</td>";
 	echo "</tr>\n";
 }
 ?>
