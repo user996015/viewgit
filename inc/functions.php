@@ -267,7 +267,7 @@ function rss_item_format($format, $info)
 		$info['author_name'],
 		$info['author_mail'],
 		$info['message_firstline'],
-		$info['message'],
+		$info['message_full'],
 		$info['committer_name'],
 		$info['committer_mail'],
 	), $format);
