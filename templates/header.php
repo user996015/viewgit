@@ -12,6 +12,7 @@ if (isset($page['project'])) {
 	echo "\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"". htmlentities($page['project']) ." log\" href=\"". makelink(array('a' => 'rss-log', 'p' => $page['project'])) ."\" />\n";
 }
 ?>
+	<meta name="generator" content="ViewGit" />
 </head>
 <body>
 
