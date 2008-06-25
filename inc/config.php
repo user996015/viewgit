@@ -8,6 +8,10 @@ $conf['projects'] = array(
 	// 'name' => array('repo' => '/path/to/repo'),
 );
 
+// If set, contains an array of globs/wildcards where to include projects.
+// Use this if you have a lot of projects under a directory.
+//$conf['projects_globs'] = array('/path/to/*/.git', '/var/git/*.git');
+
 $conf['datetime'] = '%Y-%m-%d %H:%M:%S';
 
 // Maximum length of commit message's first line to show 

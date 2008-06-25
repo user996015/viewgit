@@ -20,7 +20,6 @@
 
 [features]
 - mandatory features (0.0.1)
-	- project list (configurable or from a root, using globs perhaps?)
 	- root dir, under which all directories are shown on viewgit
 
 [misc]
@@ -36,6 +35,7 @@
 	- <http://git.or.cz/gitwiki/Gitweb>
 
 [low priority]
+- RSS: allow summary of changes (git diff --stat ?)
 - diff between arbitrary trees/commits
 - commitdiff page: filename list has no action links
 - commit support / uploading of bundles to be reviewed

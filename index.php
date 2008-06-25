@@ -12,6 +12,23 @@ error_reporting(E_ALL);
 require_once('inc/config.php');
 require_once('inc/functions.php');
 
+if (isset($conf['projects_glob'])) {
+	foreach ($conf['projects_glob'] as $glob) {
+		foreach (glob($glob) as $path) {
+			// Get the last part of the path before .git
+			$name = preg_replace(array('#/?\.git$#', '#^.*/#'), array('', ''), $path);
+
+			// Workaround against name collisions; proj, proj1, proj2, ...
+			$i = '';
+			while (in_array($name . $i, array_keys($conf['projects']))) {
+				@$i++;
+			}
+			$name = $name . $i;
+			$conf['projects'][$name] = array('repo' => $path);
+		}
+	}
+}
+
 $action = 'index';
 $template = 'index';
 $page['title'] = 'ViewGit';

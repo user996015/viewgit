@@ -12,6 +12,7 @@ Some of the current features are:
 - Tree (directory) browsing with downloadable trees (as tar/gz and zip), and downloadable files
 - RSS feeds of changes with configurable item title/description content
 - (Optional) Checkouts using mod_rewrite and git-update-server-info in .git/hooks/post-update
+- Alternative project list configuration using globs/wildcards (useful for mass hosting of projects)
 
 Dependencies
 ============
