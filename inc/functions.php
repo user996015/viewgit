@@ -104,6 +104,10 @@ function git_get_commit_info($project, $hash = 'HEAD')
 			$info[$matches[1] .'_stamp'] = $matches[4];
 			$info[$matches[1] .'_timezone'] = $matches[5];
 			$info[$matches[1] .'_utcstamp'] = $matches[4] - ((intval($matches[5]) / 100.0) * 3600);
+
+			if (isset($conf['mail_filter'])) {
+				$info[$matches[1] .'_mail'] = $conf['mail_filter']($info[$matches[1] .'_mail']);
+			}
 		}
 		elseif (substr($line, 0, 4) === '    ') {
 			$info['message_full'] .= substr($line, 4) ."\n";
@@ -235,6 +239,14 @@ function makelink($dict)
 		return '?'. htmlentities(join('&', $params));
 	}
 	return '';
+}
+
+/**
+ * Obfuscate the e-mail address.
+ */
+function obfuscate_mail($mail)
+{
+	return str_replace(array('@', '.'), array(' at ', ' dot '), $mail);
 }
 
 /**

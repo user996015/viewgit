@@ -23,6 +23,11 @@ $conf['summary_shortlog'] = 30;
 // Allow checking out projects via "git clone"
 $conf['allow_checkout'] = true;
 
+// If set, this function is used to obfuscate e-mail addresses of authors/committers
+// The 'obfuscate_mail' function simply replaces @ with ' at ' and . with ' dot '
+//$conf['mail_filter'] = 'obfuscate_mail';
+//$conf['mail_filter'] = create_function('$mail', 'return str_rot13(strtoupper($mail));');
+
 // RSS time to live (how often clients should update the feed), in minutes.
 $conf['rss_ttl'] = 10;
 
