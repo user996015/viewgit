@@ -19,4 +19,10 @@ $conf['summary_shortlog'] = 30;
 // Allow checking out projects via "git clone"
 $conf['allow_checkout'] = true;
 
+// RSS time to live (how often clients should update the feed), in minutes.
+$conf['rss_ttl'] = 10;
+
+// RSS: Maximum number of items in feed
+$conf['rss_max_items'] = 30;
+
 include_once('localconfig.php');

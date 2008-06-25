@@ -7,6 +7,11 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 	<title><?php echo $page['title']; ?></title>
 	<link rel="stylesheet" href="default.css" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="favicon.png" />
+<?php
+if (isset($page['project'])) {
+	echo "\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"". htmlentities($page['project']) ." log\" href=\"". makelink(array('a' => 'rss-log', 'p' => $page['project'])) ."\" />\n";
+}
+?>
 </head>
 <body>
 

@@ -23,8 +23,6 @@
 - mandatory features (0.0.1)
 	- project list (configurable or from a root, using globs perhaps?)
 	- root dir, under which all directories are shown on viewgit
-- optional
-	- RSS feeds: projects, shortlog
 
 [misc]
 - license?

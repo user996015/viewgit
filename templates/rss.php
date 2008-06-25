@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/rss+xml');
 echo '<?xml version="1.0" encoding="utf-8"?>'."\n";
 ?>
 <rss version="2.0">
@@ -14,8 +15,9 @@ echo '<?xml version="1.0" encoding="utf-8"?>'."\n";
 <?php
 foreach ($page['rss_items'] as $item) {
 	echo "\t\t<item>\n";
+	echo "\t\t\t<title>". htmlentities($item['title']) ."</title>\n";
 	echo "\t\t\t<link>$item[link]</link>\n";
-	echo "\t\t\t<description>$item[description]</description>\n";
+	echo "\t\t\t<description>". htmlentities($item['description']) ."</description>\n";
 	echo "\t\t\t<pubDate>$item[pubdate]</pubDate>\n";
 	echo "\t\t\t<guid>$item[guid]</guid>\n";
 	echo "\t\t</item>\n\n";
