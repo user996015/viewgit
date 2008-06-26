@@ -283,7 +283,11 @@ elseif ($action === 'tags') {
 elseif ($action === 'tree') {
 	$template = 'tree';
 	$page['project'] = validate_project($_REQUEST['p']);
-	$page['tree_id'] = validate_hash($_REQUEST['h']);
+	if (isset($_REQUEST['h'])) {
+		$page['tree_id'] = validate_hash($_REQUEST['h']);
+	} else {
+		$page['tree_id'] = 'HEAD';
+	}
 	$page['title'] = "$page[project] - Tree - ViewGit";
 
 	// 'hb' optionally contains the commit_id this tree is related to
