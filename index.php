@@ -38,6 +38,9 @@ if (isset($_REQUEST['a'])) {
 }
 $page['action'] = $action;
 
+/*
+ * index - list of projects
+ */
 if ($action === 'index') {
 	$template = 'index';
 	$page['title'] = 'List of projects - ViewGit';
@@ -46,6 +49,14 @@ if ($action === 'index') {
 		$page['projects'][] = get_project_info($p);
 	}
 }
+
+/*
+ * archive - send a tree as an archive to client
+ * @param p project
+ * @param h tree hash
+ * @param t type, "targz" or "zip"
+ * @param n OPTIONAL name suggestion
+ */
 elseif ($action === 'archive') {
 	$project = validate_project($_REQUEST['p']);
 	$tree = validate_hash($_REQUEST['h']);
@@ -74,7 +85,13 @@ elseif ($action === 'archive') {
 
 	die();
 }
-// blob: send a blob to browser with filename suggestion
+
+/*
+ * blob - send a blob to browser with filename suggestion
+ * @param p project
+ * @param h blob hash
+ * @param n filename
+ */
 elseif ($action === 'blob') {
 	$project = validate_project($_REQUEST['p']);
 	$hash = validate_hash($_REQUEST['h']);
@@ -86,8 +103,11 @@ elseif ($action === 'blob') {
 	run_git_passthru($project, "git cat-file blob $hash");
 	die();
 }
-/**
- * git checkout.
+
+/*
+ * co - git checkout. These requests come from mod_rewrite, see the .htaccess file.
+ * @param p project
+ * @param r path
  */
 elseif ($action === 'co') {
 	if (!$conf['allow_checkout']) { die('Checkout not allowed'); }
@@ -117,6 +137,12 @@ elseif ($action === 'co') {
 
 	die();
 }
+
+/*
+ * commit - view commit information
+ * @param p project
+ * @param h commit hash
+ */
 elseif ($action === 'commit') {
 	$template = 'commit';
 	$page['project'] = validate_project($_REQUEST['p']);
@@ -140,6 +166,12 @@ elseif ($action === 'commit') {
 	$page['message_full'] = $info['message_full'];
 
 }
+
+/*
+ * commitdiff - view diff of a commit
+ * @param p project
+ * @param h commit hash
+ */
 elseif ($action === 'commitdiff') {
 	$template = 'commitdiff';
 	$page['project'] = validate_project($_REQUEST['p']);
@@ -162,6 +194,11 @@ elseif ($action === 'commitdiff') {
 	list($page['files'], $page['diffdata']) = format_diff($text);
 	//$page['diffdata'] = format_diff($text);
 }
+
+/*
+ * rss-log - RSS feed of project changes
+ * @param p project
+ */
 elseif ($action === 'rss-log') {
 	$page['project'] = validate_project($_REQUEST['p']);
 
@@ -197,6 +234,12 @@ elseif ($action === 'rss-log') {
 	require('templates/rss.php');
 	die();
 }
+
+/*
+ * shortlog - project shortlog entries
+ * @param p project
+ * @param h OPTIONAL commit id to start showing log from
+ */
 elseif ($action === 'shortlog') {
 	$template = 'shortlog';
 	$page['project'] = validate_project($_REQUEST['p']);
