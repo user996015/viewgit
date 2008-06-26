@@ -20,7 +20,9 @@
 	- link from viewsvn's page
 - First fixes & new features based on feedback (0.0.2)
 
-[low priority]
+[unsorted]
+- prefix unvalidated values from browser with 'untrusted_'
+- rewrite the git functions into reusable a class
 - diff between arbitrary trees/commits
 - commitdiff page: filename list has no action links
 - commit support / uploading of bundles to be reviewed
