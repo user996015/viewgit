@@ -254,18 +254,7 @@ elseif ($action === 'shortlog') {
 	$page['commit_id'] = $info['h'];
 	$page['tree_id'] = $info['tree'];
 
-	// TODO merge the logic with 'summary' below
-	$revs = git_get_rev_list($page['project'], $conf['summary_shortlog'], $page['ref']); // TODO pass first rev as parameter
-	foreach ($revs as $rev) {
-		$info = git_get_commit_info($page['project'], $rev);
-		$page['shortlog'][] = array(
-			'author' => $info['author_name'],
-			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
-			'message' => $info['message'],
-			'commit_id' => $rev,
-			'tree' => $info['tree'],
-		);
-	}
+	$page['shortlog'] = handle_shortlog($page['project'], $page['ref']);
 }
 elseif ($action === 'summary') {
 	$template = 'summary';
@@ -276,17 +265,7 @@ elseif ($action === 'summary') {
 	$page['commit_id'] = $info['h'];
 	$page['tree_id'] = $info['tree'];
 	
-	$revs = git_get_rev_list($page['project'], $conf['summary_shortlog']);
-	foreach ($revs as $rev) {
-		$info = git_get_commit_info($page['project'], $rev);
-		$page['shortlog'][] = array(
-			'author' => $info['author_name'],
-			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
-			'message' => $info['message'],
-			'commit_id' => $rev,
-			'tree' => $info['tree'],
-		);
-	}
+	$page['shortlog'] = handle_shortlog($page['project']);
 
 	$page['tags'] = handle_tags($page['project'], $conf['summary_tags']);
 

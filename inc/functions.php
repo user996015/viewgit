@@ -241,6 +241,29 @@ function git_ls_tree_part($project, $tree, $name)
 }
 
 /**
+ * Get shortlog entries for the given project.
+ */
+function handle_shortlog($project, $hash = 'HEAD')
+{
+	global $conf;
+
+	$result = array();
+	$revs = git_get_rev_list($project, $conf['summary_shortlog'], $hash);
+	foreach ($revs as $rev) {
+		$info = git_get_commit_info($project, $rev);
+		$result[] = array(
+			'author' => $info['author_name'],
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'message' => $info['message'],
+			'commit_id' => $rev,
+			'tree' => $info['tree'],
+		);
+	}
+
+	return $result;
+}
+
+/**
  * Fetch tags data, newest first.
  *
  * @param limit maximum number of tags to return
