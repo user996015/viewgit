@@ -285,9 +285,13 @@ elseif ($action === 'tree') {
 	$page['project'] = validate_project($_REQUEST['p']);
 	if (isset($_REQUEST['h'])) {
 		$page['tree_id'] = validate_hash($_REQUEST['h']);
-	} else {
+	}
+	/*
+	else {
+		// TODO walk the tree
 		$page['tree_id'] = 'HEAD';
 	}
+	*/
 	$page['title'] = "$page[project] - Tree - ViewGit";
 
 	// 'hb' optionally contains the commit_id this tree is related to
@@ -307,6 +311,14 @@ elseif ($action === 'tree') {
 
 	// get path info for the header
 	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], explode('/', $page['path']));
+	if (!isset($page['tree_id'])) {
+		// Take the last hash from the tree
+		if (count($page['pathinfo']) > 1) {
+			$page['tree_id'] = $page['pathinfo'][count($page['pathinfo']) - 1]['hash'];
+		} else {
+			$page['tree_id'] = 'HEAD';
+		}
+	}
 
 	$page['entries'] = git_ls_tree($page['project'], $page['tree_id']);
 }

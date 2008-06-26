@@ -2,6 +2,7 @@
 
 - should be possible to link to a path at HEAD without the need for a tree hash
 	- tree: "Browse this tree at HEAD" -link
+	- index.php/tree: if 'h' is not set but 'hb' = HEAD, walk the tree using 'f'
 
 [Milestones]
 - Public Launch (0.0.1?)
