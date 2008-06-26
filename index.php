@@ -310,10 +310,10 @@ elseif ($action === 'tree') {
 	}
 
 	// get path info for the header
-	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], explode('/', $page['path']));
+	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], $page['path']);
 	if (!isset($page['tree_id'])) {
 		// Take the last hash from the tree
-		if (count($page['pathinfo']) > 1) {
+		if (count($page['pathinfo']) > 0) {
 			$page['tree_id'] = $page['pathinfo'][count($page['pathinfo']) - 1]['hash'];
 		} else {
 			$page['tree_id'] = 'HEAD';
@@ -350,7 +350,7 @@ elseif ($action === 'viewblob') {
 	$page['commit_id'] = $info['h'];
 	$page['tree_id'] = $info['tree'];
 
-	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], explode('/', $page['path']));
+	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], $page['path']);
 
 	$page['data'] = join("\n", run_git($page['project'], "git cat-file blob $page[hash]"));
 

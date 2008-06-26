@@ -153,10 +153,16 @@ function git_get_heads($project)
  * Get array containing path information for parts, starting from root_hash.
  *
  * @param root_hash commit/tree hash for the root tree
- * @param parts array of path fragments
+ * @param path path
  */
-function git_get_path_info($project, $root_hash, $parts)
+function git_get_path_info($project, $root_hash, $path)
 {
+	if (strlen($path) > 0) {
+		$parts = explode('/', $path);
+	} else {
+		$parts = array();
+	}
+
 	$pathinfo = array();
 
 	$tid = $root_hash;
