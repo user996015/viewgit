@@ -235,6 +235,38 @@ function git_ls_tree_part($project, $tree, $name)
 }
 
 /**
+ * Fetch tags data.
+ */
+function handle_tags($project)
+{
+	global $conf;
+
+	$tags = git_get_tags($project);
+	$result = array();
+	foreach ($tags as $tag) {
+		$info = git_get_commit_info($project, $tag['h']);
+		$result[] = array(
+			'stamp' => $info['author_utcstamp'],
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'h' => $tag['h'],
+			'fullname' => $tag['fullname'],
+			'name' => $tag['name'],
+		);
+	}
+
+	// sort tags newest first
+	// aka. two more reasons to hate PHP (figuring those out is your homework:)
+	usort($result, create_function(
+		'$x, $y',
+		'$a = $x["stamp"]; $b = $y["stamp"]; return ($a == $b ? 0 : ($a > $b ? -1 : 1));'
+	));
+
+	//$result = array_splice($page['tags'], 0, $conf['summary_tags']);
+
+	return $result;
+}
+
+/**
  * Return a URL that contains the given parameters.
  */
 function makelink($dict)

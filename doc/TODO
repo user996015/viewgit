@@ -1,7 +1,5 @@
 - bundle about page that says what the software is and where to download it
 
-- summary: limit number of tags shown, add a separate page for all tags (eg. wine)
-
 - should be possible to link to a path at HEAD without the need for a tree hash
 	- tree: "Browse this tree at HEAD" -link
 

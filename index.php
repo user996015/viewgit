@@ -245,27 +245,10 @@ elseif ($action === 'summary') {
 		);
 	}
 
-	$tags = git_get_tags($page['project']);
-	$page['tags'] = array();
-	foreach ($tags as $tag) {
-		$info = git_get_commit_info($page['project'], $tag['h']);
-		$page['tags'][] = array(
-			'stamp' => $info['author_utcstamp'],
-			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
-			'h' => $tag['h'],
-			'fullname' => $tag['fullname'],
-			'name' => $tag['name'],
-		);
-	}
-	// sort tags newest first
-	// aka. two more reasons to hate PHP (figuring those out is your homework:)
-	$arr = $page['tags'];
-	usort($arr, create_function(
-		'$x, $y',
-		'$a = $x["stamp"]; $b = $y["stamp"]; return ($a == $b ? 0 : ($a > $b ? -1 : 1));'
-	));
-	// it's actually three, I lied.
-	$page['tags'] = $arr;
+	$page['tags'] = handle_tags($page['project']);
+	// TODO: optimize this, at the moment data for all tags is fetched when
+	// only few are shown...
+	$page['tags'] = array_splice($page['tags'], 0, $conf['summary_tags']);
 
 	$heads = git_get_heads($page['project']);
 	$page['heads'] = array();
@@ -278,6 +261,17 @@ elseif ($action === 'summary') {
 			'name' => $h['name'],
 		);
 	}
+}
+elseif ($action === 'tags') {
+	$template = 'tags';
+	$page['project'] = validate_project($_REQUEST['p']);
+	$page['title'] = "$page[project] - Tags - ViewGit";
+
+	$info = git_get_commit_info($page['project']);
+	$page['commit_id'] = $info['h'];
+	$page['tree_id'] = $info['tree'];
+
+	$page['tags'] = handle_tags($page['project']);
 }
 /*
  * Shows a tree, with list of directories/files, links to them and download

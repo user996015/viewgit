@@ -20,6 +20,9 @@ $conf['commit_message_maxlen'] = 50;
 // Maximum number of shortlog entries to show on the summary page
 $conf['summary_shortlog'] = 30;
 
+// Maximum number of tags to show on the summary page
+$conf['summary_tags'] = 10;
+
 // Allow checking out projects via "git clone"
 $conf['allow_checkout'] = true;
 
