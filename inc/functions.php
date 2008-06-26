@@ -235,9 +235,11 @@ function git_ls_tree_part($project, $tree, $name)
 }
 
 /**
- * Fetch tags data.
+ * Fetch tags data, newest first.
+ *
+ * @param limit maximum number of tags to return
  */
-function handle_tags($project)
+function handle_tags($project, $limit = 0)
 {
 	global $conf;
 
@@ -261,7 +263,12 @@ function handle_tags($project)
 		'$a = $x["stamp"]; $b = $y["stamp"]; return ($a == $b ? 0 : ($a > $b ? -1 : 1));'
 	));
 
-	//$result = array_splice($page['tags'], 0, $conf['summary_tags']);
+	// TODO optimize this some way, currently all tags are fetched when only a
+	// few are shown. The problem is that without fetching the commit info
+	// above, we can't sort using dates, only by tag name...
+	if ($limit > 0) {
+		$result = array_splice($result, 0, $limit);
+	}
 
 	return $result;
 }

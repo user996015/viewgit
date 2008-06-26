@@ -245,10 +245,7 @@ elseif ($action === 'summary') {
 		);
 	}
 
-	$page['tags'] = handle_tags($page['project']);
-	// TODO: optimize this, at the moment data for all tags is fetched when
-	// only few are shown...
-	$page['tags'] = array_splice($page['tags'], 0, $conf['summary_tags']);
+	$page['tags'] = handle_tags($page['project'], $conf['summary_tags']);
 
 	$heads = git_get_heads($page['project']);
 	$page['heads'] = array();
