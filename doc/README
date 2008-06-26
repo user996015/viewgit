@@ -14,6 +14,7 @@ Some of the current features are:
 - (Optional) Checkouts using mod_rewrite and git-update-server-info in .git/hooks/post-update
 - Alternative project list configuration using globs/wildcards (useful for mass hosting of projects)
 - Optional e-mail address obfuscator
+- Optional GeSHi support (not bundled)
 
 Dependencies
 ============

@@ -346,6 +346,15 @@ elseif ($action === 'viewblob') {
 	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], explode('/', $page['path']));
 
 	$page['data'] = join("\n", run_git($page['project'], "git cat-file blob $page[hash]"));
+
+	// GeSHi support
+	if ($conf['geshi']) {
+		require_once($conf['geshi_path']);
+		$ext = array_pop(explode('.', $page['path']));
+		$lang = Geshi::get_language_name_from_extension($ext);
+		$geshi =& new Geshi($page['data'], $lang);
+		$page['html_data'] = $geshi->parse_code();
+	}
 }
 else {
 	die('Invalid action');

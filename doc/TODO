@@ -2,8 +2,6 @@
 
 - summary: limit number of tags shown, add a separate page for all tags (eg. wine)
 
-- geshi support (check compatiblity with AGPLv3)?
-
 - should be possible to link to a path at HEAD without the need for a tree hash
 	- tree: "Browse this tree at HEAD" -link
 

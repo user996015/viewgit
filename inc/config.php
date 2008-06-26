@@ -28,6 +28,13 @@ $conf['allow_checkout'] = true;
 //$conf['mail_filter'] = 'obfuscate_mail';
 //$conf['mail_filter'] = create_function('$mail', 'return str_rot13(strtoupper($mail));');
 
+// Whether to use GeSHi for source highlighting
+$conf['geshi'] = false;
+
+// Path to geshi.php
+//$conf['geshi_path'] = 'inc/geshi/geshi.php';
+//$conf['geshi_path'] = '/usr/share/php-geshi/geshi.php'; // Path on Debian
+
 // RSS time to live (how often clients should update the feed), in minutes.
 $conf['rss_ttl'] = 10;
 
