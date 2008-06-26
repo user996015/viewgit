@@ -46,4 +46,6 @@ $conf['rss_max_items'] = 30;
 $conf['rss_item_title'] = '{SHORTLOG} ({AUTHOR})';
 $conf['rss_item_description'] = '<pre>{LOG}</pre><b>{AUTHOR}</b> &lt;{AUTHOR_MAIL}&gt;<br /><pre>{DIFFSTAT}</pre>';
 
-include_once('localconfig.php');
+if (!@include_once('localconfig.php')) {
+	die('ViewGit has not been configured yet, please read doc/README.');
+}
