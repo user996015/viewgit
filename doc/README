@@ -25,5 +25,5 @@ Dependencies
 First installation
 ==================
 - Create inc/localconfig.php and consult inc/config.php for what to put there.
-- Edit .htaccess RewriteBase
+- Copy doc/example-htaccess to .htaccess and edit RewriteBase in it
 
