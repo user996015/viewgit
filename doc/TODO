@@ -1,23 +1,26 @@
 - bundle about page that says what the software is and where to download it
 
+- nav cleanup (don't show the useless hashes)
+
+- web: screenshots?
+- web: how to contact the author
+
 [Milestones]
 - Public Launch (0.0.1?)
-	- a public demo
-	- must have a minimalistic but useful interface
-	- must have features planned as mandatory
-	- should be at least able to rival other similar projects (the PHP ones at least)
-	- validate generated pages
-
+	- a public demo at <http://code.fealdia.org/viewgit/>
 	- sourceforge project
-	- website, tracked with Google Analytics
-		- Google Analytics
-		- Piwik
-		- Link to other projects at <http://git.or.cz/gitwiki/Gitweb>
-	- freshmeat project page
+	- Google Analytics account
+		- add to website
+	- Piwik?
+	- repo.or.cz account + push
+	- upload website
+	- make a release
+	- freshmeat registration + release announcement
 	- post link to <http://git.or.cz/gitwiki/Gitweb>
-	- announce on git list
-	- announce on viewsvn's news section
-	- link from viewsvn's page
+	- link from viewsvn.berlios.de
+	- announce in viewsvn news?
+	- blog.fealdia.org
+	- (announce on git list)
 - First fixes & new features based on feedback (0.0.2)
 
 [unsorted]
