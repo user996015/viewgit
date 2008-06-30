@@ -51,6 +51,9 @@ $conf['rss_item_description'] = '<pre>{LOG}</pre><b>{AUTHOR}</b> &lt;{AUTHOR_MAI
 
 $conf['debug'] = false;
 
+// Includes a small link to the ViewGit homepage on each page
+$conf['ad'] = true;
+
 if (!@include_once('localconfig.php')) {
 	die('ViewGit has not been configured yet, please read doc/README.');
 }

@@ -59,6 +59,13 @@ table th {
 	font-weight: bold;
 }
 
+.ad {
+	font-size: 60%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
 /* summary template */
 
 table.shortlog th.date {
