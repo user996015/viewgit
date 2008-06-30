@@ -1,18 +1,17 @@
 - bundle about page that says what the software is and where to download it
 
-- web: screenshots?
 - web: how to contact the author
+- viewgit templates: include a link to viewgit homepage
 
 [Milestones]
 - Public Launch (0.0.1?)
-	- a public demo at <http://code.fealdia.org/viewgit/>
-	- sourceforge project
+	- WIP register sourceforge project
 	- Google Analytics account
 		- add to website
 	- Piwik?
-	- repo.or.cz account + push
 	- upload website
 	- make a release
+	- push to repo.or.cz
 	- freshmeat registration + release announcement
 	- post link to <http://git.or.cz/gitwiki/Gitweb>
 	- link from viewsvn.berlios.de
@@ -22,6 +21,7 @@
 - First fixes & new features based on feedback (0.0.2)
 
 [unsorted]
+- summary: sort heads by modified date?
 - prefix unvalidated values from browser with 'untrusted_'
 - rewrite the git functions into reusable a class
 - diff between arbitrary trees/commits

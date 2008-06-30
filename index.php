@@ -129,7 +129,7 @@ elseif ($action === 'co') {
 			readfile($filename);
 		} else {
 			debug('Not found');
-			header('404');
+			header('HTTP/1.0 404 Not Found');
 		}
 	} else {
 		debug("Denied");

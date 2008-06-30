@@ -5,7 +5,11 @@
 
 function debug($msg)
 {
-	file_put_contents('/tmp/viewgit.log', strftime('%H:%M:%S') ." $_SERVER[REMOTE_ADDR]:$_SERVER[REMOTE_PORT] $msg\n", FILE_APPEND);
+	global $conf;
+
+	if ($conf['debug']) {
+		file_put_contents('/tmp/viewgit.log', strftime('%H:%M:%S') ." $_SERVER[REMOTE_ADDR]:$_SERVER[REMOTE_PORT] $msg\n", FILE_APPEND);
+	}
 }
 
 /**
