@@ -27,16 +27,19 @@ if ($page['action'] === 'summary') {
 	echo " : Summary";
 }
 elseif ($page['action'] === 'commit') {
-	echo " : Commit $page[commit_id]";
+	echo " : Commit ". substr($page['commit_id'], 0, 6);
+}
+elseif ($page['action'] === 'commitdiff') {
+	echo " : Commitdiff ". substr($page['commit_id'], 0, 6);
 }
 elseif ($page['action'] === 'shortlog') {
 	echo " : Shortlog";
 }
 elseif ($page['action'] === 'tree') {
-	echo " : Tree $page[tree_id]";
+	echo " : Tree ". substr($page['tree_id'], 0, 6);
 }
 elseif ($page['action'] === 'viewblob') {
-	echo " : Blob $page[hash]";
+	echo " : Blob ". substr($page['hash'], 0, 6);
 }
 
 if (isset($page['path'])) {
