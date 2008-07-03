@@ -1,28 +1,10 @@
-- bundle about page that says what the software is and where to download it
-
-- web: how to contact the author
-
 [Milestones]
-- Public Launch (0.0.1?)
-	- WIP register sourceforge project
-	- Google Analytics account
-		- add to website
-	- Piwik?
-	- upload website
-	- make a release
-	- push to repo.or.cz
-	- freshmeat registration + release announcement
-	- post link to <http://git.or.cz/gitwiki/Gitweb>
-	- link from viewsvn.berlios.de
-	- announce in viewsvn news?
-	- blog.fealdia.org
-	- (announce on git list)
 - First fixes & new features based on feedback (0.0.2)
 
 [unsorted]
 - summary: sort heads by modified date?
 - prefix unvalidated values from browser with 'untrusted_'
-- rewrite the git functions into reusable a class
+- rewrite the git functions into a reusable class
 - diff between arbitrary trees/commits
 - commitdiff page: filename list has no action links
 - commit support / uploading of bundles to be reviewed
