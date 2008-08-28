@@ -377,7 +377,7 @@ elseif ($action === 'viewblob') {
 	$page['data'] = join("\n", run_git($page['project'], "git cat-file blob $page[hash]"));
 
 	// GeSHi support
-	if ($conf['geshi']) {
+	if ($conf['geshi'] && strpos($page['path'], '.')) {
 		require_once($conf['geshi_path']);
 		$ext = array_pop(explode('.', $page['path']));
 		$lang = Geshi::get_language_name_from_extension($ext);
