@@ -378,6 +378,7 @@ elseif ($action === 'viewblob') {
 
 	// GeSHi support
 	if ($conf['geshi'] && strpos($page['path'], '.')) {
+		error_reporting(E_ALL ^ E_NOTICE);
 		require_once($conf['geshi_path']);
 		$ext = array_pop(explode('.', $page['path']));
 		$lang = Geshi::get_language_name_from_extension($ext);
@@ -391,6 +392,7 @@ elseif ($action === 'viewblob') {
 			}
 		}
 		$page['html_data'] = $geshi->parse_code();
+		error_reporting(E_ALL);
 	}
 }
 else {
