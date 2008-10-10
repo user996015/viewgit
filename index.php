@@ -382,6 +382,14 @@ elseif ($action === 'viewblob') {
 		$ext = array_pop(explode('.', $page['path']));
 		$lang = Geshi::get_language_name_from_extension($ext);
 		$geshi =& new Geshi($page['data'], $lang);
+		if (isset($conf['geshi_line_numbers'])) {
+			if ($conf['geshi_line_numbers'] == 0) {
+				$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+			}
+			else {
+				$geshi->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS, $conf['geshi_line_numbers']);
+			}
+		}
 		$page['html_data'] = $geshi->parse_code();
 	}
 }

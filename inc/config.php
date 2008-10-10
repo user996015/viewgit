@@ -38,6 +38,12 @@ $conf['geshi'] = false;
 //$conf['geshi_path'] = 'inc/geshi/geshi.php';
 //$conf['geshi_path'] = '/usr/share/php-geshi/geshi.php'; // Path on Debian
 
+// Use line numbers in geshi?
+// commenting out this option will disable line numbers completely
+// Using a value of 0 will enable "NORMAL" geshi line numbers
+// Using values of 1 or more will enable "FANCY" geshi line numbers
+$conf['geshi_line_numbers'] = 5;
+
 // RSS time to live (how often clients should update the feed), in minutes.
 $conf['rss_ttl'] = 10;
 
