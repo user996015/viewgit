@@ -39,7 +39,7 @@ $conf['geshi'] = false;
 //$conf['geshi_path'] = '/usr/share/php-geshi/geshi.php'; // Path on Debian
 
 // Use line numbers in geshi?
-// commenting out this option will disable line numbers completely
+// Setting this to "false" disables line numbers
 // Using a value of 0 will enable "NORMAL" geshi line numbers
 // Using values of 1 or more will enable "FANCY" geshi line numbers
 $conf['geshi_line_numbers'] = 5;
