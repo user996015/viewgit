@@ -248,24 +248,53 @@ function git_ls_tree_part($project, $tree, $name)
 }
 
 /**
+ * Get the ref list as dict: hash -> list of names
+ */
+function git_ref_list($project, $tags = true, $heads = true)
+{
+	$cmd = "git show-ref --dereference";
+	if ($tags) { $cmd .= " --tags"; }
+	if ($heads) { $cmd .= " --heads"; }
+
+	$result = array();
+	$output = run_git($project, $cmd);
+	foreach ($output as $line) {
+		// <hash> <ref>
+		$parts = explode(' ', $line, 2);
+		$name = str_replace(array('refs/', '{}'), array('', ''), $parts[1]);
+		$result[$parts[0]][] = $name;
+	}
+	return $result;
+}
+
+/**
  * Get shortlog entries for the given project.
  */
 function handle_shortlog($project, $hash = 'HEAD')
 {
 	global $conf;
 
+	$refs_by_hash = git_ref_list($project);
+
 	$result = array();
 	$revs = git_get_rev_list($project, $conf['summary_shortlog'], $hash);
 	foreach ($revs as $rev) {
 		$info = git_get_commit_info($project, $rev);
+		$refs = array();
+		if (in_array($rev, array_keys($refs_by_hash))) {
+			$refs = $refs_by_hash[$rev];
+		}
 		$result[] = array(
 			'author' => $info['author_name'],
 			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'message' => $info['message'],
 			'commit_id' => $rev,
 			'tree' => $info['tree'],
+			'refs' => $refs,
 		);
 	}
+	#print_r($result);
+	#die();
 
 	return $result;
 }

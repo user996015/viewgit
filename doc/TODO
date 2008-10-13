@@ -12,5 +12,4 @@
 - checkout: generate git-update-server-info information on-the-fly if needed?
 - disable error reporting by default, and use own error handler for debug mode
 - full log page
-- summary: show [MASTER] and so on if the given commit is a tag or a head
 

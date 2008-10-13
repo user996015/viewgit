@@ -66,6 +66,26 @@ table th {
 	right: 0;
 }
 
+span.head {
+	background-color: #afa;
+	font-size: 80%;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	margin-left: 0.5em;
+	border-right: 1px solid #090;
+	border-bottom: 1px solid #090;
+}
+
+span.tag {
+	background-color: #ffa;
+	font-size: 80%;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	margin-left: 0.5em;
+	border-right: 1px solid #990;
+	border-bottom: 1px solid #990;
+}
+
 /* summary template */
 
 table.shortlog th.date {
