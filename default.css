@@ -66,32 +66,28 @@ table th {
 	right: 0;
 }
 
-span.head {
-	background-color: #afa;
+span.label {
 	font-size: 80%;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	margin-left: 0.5em;
+	font-weight: bold;
+}
+
+span.head {
+	background-color: #afa;
 	border-right: 1px solid #090;
 	border-bottom: 1px solid #090;
 }
 
 span.remote {
 	background-color: #faf;
-	font-size: 80%;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	margin-left: 0.5em;
 	border-right: 1px solid #909;
 	border-bottom: 1px solid #909;
 }
 
 span.tag {
 	background-color: #ffa;
-	font-size: 80%;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	margin-left: 0.5em;
 	border-right: 1px solid #990;
 	border-bottom: 1px solid #990;
 }
