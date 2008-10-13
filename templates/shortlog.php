@@ -20,9 +20,10 @@ foreach ($page['shortlog'] as $l) {
 	if (count($l['refs']) > 0) {
 		foreach ($l['refs'] as $ref) {
 			$parts = explode('/', $ref);
-			$shortref = $parts[1];
+			$shortref = join('/', array_slice($parts, 1));
 			$type = 'head';
 			if ($parts[0] == 'tags') { $type = 'tag'; }
+			elseif ($parts[0] == 'remotes') { $type = 'remote'; }
 			echo "<span class=\"$type\" title=\"$ref\">$shortref</span>";
 		}
 	}

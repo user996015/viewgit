@@ -248,13 +248,18 @@ function git_ls_tree_part($project, $tree, $name)
 }
 
 /**
- * Get the ref list as dict: hash -> list of names
+ * Get the ref list as dict: hash -> list of names.
+ * @param tags whether to show tags
+ * @param heads whether to show heads
+ * @param remotes whether to show remote heads, currently implies tags and heads too.
  */
-function git_ref_list($project, $tags = true, $heads = true)
+function git_ref_list($project, $tags = true, $heads = true, $remotes = true)
 {
 	$cmd = "git show-ref --dereference";
-	if ($tags) { $cmd .= " --tags"; }
-	if ($heads) { $cmd .= " --heads"; }
+	if (!$remotes) {
+		if ($tags) { $cmd .= " --tags"; }
+		if ($heads) { $cmd .= " --heads"; }
+	}
 
 	$result = array();
 	$output = run_git($project, $cmd);
@@ -274,7 +279,7 @@ function handle_shortlog($project, $hash = 'HEAD')
 {
 	global $conf;
 
-	$refs_by_hash = git_ref_list($project);
+	$refs_by_hash = git_ref_list($project, true, true, $conf['shortlog_remote_labels']);
 
 	$result = array();
 	$revs = git_get_rev_list($project, $conf['summary_shortlog'], $hash);

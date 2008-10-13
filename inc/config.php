@@ -23,6 +23,9 @@ $conf['summary_shortlog'] = 30;
 // Maximum number of tags to show on the summary page
 $conf['summary_tags'] = 10;
 
+// Whether to show remote labels on shortlog
+$conf['shortlog_remote_labels'] = false;
+
 // Allow checking out projects via "git clone"
 $conf['allow_checkout'] = true;
 

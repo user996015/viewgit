@@ -76,6 +76,16 @@ span.head {
 	border-bottom: 1px solid #090;
 }
 
+span.remote {
+	background-color: #faf;
+	font-size: 80%;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	margin-left: 0.5em;
+	border-right: 1px solid #909;
+	border-bottom: 1px solid #909;
+}
+
 span.tag {
 	background-color: #ffa;
 	font-size: 80%;
