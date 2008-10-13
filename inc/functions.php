@@ -261,7 +261,7 @@ function git_ref_list($project, $tags = true, $heads = true)
 	foreach ($output as $line) {
 		// <hash> <ref>
 		$parts = explode(' ', $line, 2);
-		$name = str_replace(array('refs/', '{}'), array('', ''), $parts[1]);
+		$name = str_replace(array('refs/', '^{}'), array('', ''), $parts[1]);
 		$result[$parts[0]][] = $name;
 	}
 	return $result;
