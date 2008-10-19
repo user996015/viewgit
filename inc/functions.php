@@ -121,7 +121,8 @@ function git_get_commit_info($project, $hash = 'HEAD')
 				$info[$matches[1] .'_mail'] = $conf['mail_filter']($info[$matches[1] .'_mail']);
 			}
 		}
-		elseif (substr($line, 0, 4) === '    ') {
+		// Lines starting with four spaces and empty lines after first such line are part of commit message
+		elseif (substr($line, 0, 4) === '    ' || (strlen($line) == 0 && isset($info['message']))) {
 			$info['message_full'] .= substr($line, 4) ."\n";
 			if (!isset($info['message'])) {
 				$info['message'] = substr($line, 4, $conf['commit_message_maxlen']);
