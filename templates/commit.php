@@ -45,7 +45,7 @@ foreach ($page['parents'] as $parent) {
 </tbody>
 </table>
 
-<div class="message"><?php echo htmlentities($page['message_full']); ?></div>
+<div class="commitmessage"><pre><?php echo htmlentities($page['message_full']); ?></pre></div>
 
 <?php /* TODO: list of files changed */ ?>
 
