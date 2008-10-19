@@ -385,7 +385,7 @@ function rss_item_format($format, $info)
 		$info['author_name'],
 		$info['author_mail'],
 		$info['message_firstline'],
-		$info['message_full'],
+		htmlentities($info['message_full']),
 		$info['committer_name'],
 		$info['committer_mail'],
 		isset($info['diffstat']) ? $info['diffstat'] : '',
