@@ -1,7 +1,4 @@
-[Milestones]
-- First fixes & new features based on feedback (0.0.2)
-
-[unsorted]
+- commit searching
 - summary: sort heads by modified date?
 - prefix unvalidated values from browser with 'untrusted_'
 - rewrite the git functions into a reusable class
