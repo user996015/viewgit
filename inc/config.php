@@ -12,7 +12,10 @@ $conf['projects'] = array(
 // Use this if you have a lot of projects under a directory.
 //$conf['projects_globs'] = array('/path/to/*/.git', '/var/git/*.git');
 
-$conf['datetime'] = '%Y-%m-%d %H:%M:%S';
+$conf['datetime'] = '%Y-%m-%d %H:%M';
+
+// More complete format for commit page
+$conf['datetime_full'] = '%Y-%m-%d %H:%M:%S';
 
 // Maximum length of commit message's first line to show 
 $conf['commit_message_maxlen'] = 50;
