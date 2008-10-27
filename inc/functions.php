@@ -408,7 +408,7 @@ function run_git($project, $command)
 
 	$output = array();
 	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." $command";
-	exec($cmd, &$output);
+	exec($cmd, $output);
 	return $output;
 }
 
@@ -422,7 +422,7 @@ function run_git_passthru($project, $command)
 
 	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." $command";
 	$result = 0;
-	passthru($cmd, &$result);
+	passthru($cmd, $result);
 	return $result;
 }
 
