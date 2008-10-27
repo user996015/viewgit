@@ -76,5 +76,5 @@ foreach ($links as $link => $params) {
 }
 ?>
 </div>
-<? } ?>
+<?php } ?>
 
