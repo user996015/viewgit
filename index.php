@@ -382,16 +382,18 @@ elseif ($action === 'viewblob') {
 		require_once($conf['geshi_path']);
 		$ext = array_pop(explode('.', $page['path']));
 		$lang = Geshi::get_language_name_from_extension($ext);
-		$geshi =& new Geshi($page['data'], $lang);
-		if (is_int($conf['geshi_line_numbers'])) {
-			if ($conf['geshi_line_numbers'] == 0) {
-				$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+		if (strlen($lang) > 0) {
+			$geshi =& new Geshi($page['data'], $lang);
+			if (is_int($conf['geshi_line_numbers'])) {
+				if ($conf['geshi_line_numbers'] == 0) {
+					$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+				}
+				else {
+					$geshi->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS, $conf['geshi_line_numbers']);
+				}
 			}
-			else {
-				$geshi->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS, $conf['geshi_line_numbers']);
-			}
+			$page['html_data'] = $geshi->parse_code();
 		}
-		$page['html_data'] = $geshi->parse_code();
 		error_reporting(E_ALL);
 	}
 }
