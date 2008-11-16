@@ -418,7 +418,7 @@ function run_git($project, $command)
 	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." ". $conf['git'] ." $command";
 	$ret = 0;
 	exec($cmd, $output, $ret);
-	if ($ret != 0) { die('FATAL: exec() for git failed, is the path properly configured?'); }
+	//if ($ret != 0) { die('FATAL: exec() for git failed, is the path properly configured?'); }
 	return $output;
 }
 
