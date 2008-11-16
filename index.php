@@ -71,13 +71,13 @@ elseif ($action === 'archive') {
 		header("Content-Type: application/x-tar-gz");
 		header("Content-Transfer-Encoding: binary");
 		header("Content-Disposition: attachment; filename=\"$basename.tar.gz\";");
-		run_git_passthru($project, "git archive --format=tar $tree |gzip");
+		run_git_passthru($project, "archive --format=tar $tree |gzip");
 	}
 	elseif ($type === 'zip') {
 		header("Content-Type: application/x-zip");
 		header("Content-Transfer-Encoding: binary");
 		header("Content-Disposition: attachment; filename=\"$basename.zip\";");
-		run_git_passthru($project, "git archive --format=zip $tree");
+		run_git_passthru($project, "archive --format=zip $tree");
 	}
 	else {
 		die('Invalid archive type requested');
@@ -100,7 +100,7 @@ elseif ($action === 'blob') {
 	header('Content-type: application/octet-stream');
 	header("Content-Disposition: attachment; filename=$name"); // FIXME needs quotation
 
-	run_git_passthru($project, "git cat-file blob $hash");
+	run_git_passthru($project, "cat-file blob $hash");
 	die();
 }
 

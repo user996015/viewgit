@@ -79,7 +79,7 @@ function git_diffstat($project, $commit, $commit_base = null)
 	if (is_null($commit_base)) {
 		$commit_base = "$commit^";
 	}
-	return join("\n", run_git($project, "git diff --stat $commit_base..$commit"));
+	return join("\n", run_git($project, "diff --stat $commit_base..$commit"));
 }
 
 /**
@@ -94,7 +94,7 @@ function git_get_commit_info($project, $hash = 'HEAD')
 	$info['message_full'] = '';
 	$info['parents'] = array();
 
-	$output = run_git($project, "git rev-list --header --max-count=1 $hash");
+	$output = run_git($project, "rev-list --header --max-count=1 $hash");
 	// tree <h>
 	// parent <h>
 	// author <name> "<"<mail>">" <stamp> <timezone>
@@ -144,7 +144,7 @@ function git_get_heads($project)
 {
 	$heads = array();
 
-	$output = run_git($project, 'git show-ref --heads');
+	$output = run_git($project, 'show-ref --heads');
 	foreach ($output as $line) {
 		$fullname = substr($line, 41);
 		$name = array_pop(explode('/', $fullname));
@@ -191,9 +191,9 @@ function git_get_path_info($project, $root_hash, $path)
  */
 function git_get_rev_list($project, $max_count = null, $start = 'HEAD')
 {
-	$cmd = "git rev-list $start";
+	$cmd = "rev-list $start";
 	if (!is_null($max_count)) {
-		$cmd = "git rev-list --max-count=$max_count $start";
+		$cmd = "rev-list --max-count=$max_count $start";
 	}
 
 	return run_git($project, $cmd);
@@ -206,7 +206,7 @@ function git_get_tags($project)
 {
 	$tags = array();
 
-	$output = run_git($project, 'git show-ref --tags');
+	$output = run_git($project, 'show-ref --tags');
 	foreach ($output as $line) {
 		$fullname = substr($line, 41);
 		$name = array_pop(explode('/', $fullname));
@@ -223,7 +223,7 @@ function git_get_tags($project)
 function git_ls_tree($project, $tree)
 {
 	$entries = array();
-	$output = run_git($project, "git ls-tree $tree");
+	$output = run_git($project, "ls-tree $tree");
 	// 100644 blob 493b7fc4296d64af45dac64bceac2d9a96c958c1    .gitignore
 	// 040000 tree 715c78b1011dc58106da2a1af2fe0aa4c829542f    doc
 	foreach ($output as $line) {
@@ -256,7 +256,7 @@ function git_ls_tree_part($project, $tree, $name)
  */
 function git_ref_list($project, $tags = true, $heads = true, $remotes = true)
 {
-	$cmd = "git show-ref --dereference";
+	$cmd = "show-ref --dereference";
 	if (!$remotes) {
 		if ($tags) { $cmd .= " --tags"; }
 		if ($heads) { $cmd .= " --heads"; }
@@ -407,7 +407,7 @@ function run_git($project, $command)
 	global $conf;
 
 	$output = array();
-	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." $command";
+	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." ". $conf['git'] ." $command";
 	exec($cmd, $output);
 	return $output;
 }
@@ -420,7 +420,7 @@ function run_git_passthru($project, $command)
 {
 	global $conf;
 
-	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." $command";
+	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." ". $conf['git'] ." $command";
 	$result = 0;
 	passthru($cmd, $result);
 	return $result;
