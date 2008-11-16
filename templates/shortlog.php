@@ -33,6 +33,7 @@ foreach ($page['shortlog'] as $l) {
 	echo "[<a href=\"". makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'])) ."\">tree</a>]";
 	echo "[<a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 't' => 'targz')) ."\" rel=\"nofollow\">tar/gz</a>]";
 	echo "[<a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 't' => 'zip')) ."\" rel=\"nofollow\">zip</a>]";
+	echo "[<a href=\"". makelink(array('a' => 'patch', 'p' => $page['project'], 'h' => $l['commit_id'])) ."\">patch</a>]";
 	echo "</td>\n";
 	echo "</tr>\n";
 	$page['lasthash'] = $l['commit_id'];

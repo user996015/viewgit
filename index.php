@@ -195,6 +195,20 @@ elseif ($action === 'commitdiff') {
 	//$page['diffdata'] = format_diff($text);
 }
 
+elseif ($action === 'patch') {
+	$project = validate_project($_REQUEST['p']);
+	$hash = validate_hash($_REQUEST['h']);
+
+	//header("Content-Type: text/x-diff");
+	header("Content-Type: application/octet-stream");
+	header("Content-Transfer-Encoding: binary");
+	// TODO git-style filename
+	header("Content-Disposition: attachment; filename=\"viewgit.patch\";");
+
+	run_git_passthru($project, "format-patch --stdout $hash^..$hash");
+	die();
+}
+
 /*
  * rss-log - RSS feed of project changes
  * @param p project
