@@ -408,7 +408,9 @@ function run_git($project, $command)
 
 	$output = array();
 	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." ". $conf['git'] ." $command";
-	exec($cmd, $output) or die('FATAL: exec() for git failed, is the path properly configured?');
+	$ret = 0;
+	exec($cmd, $output, $ret);
+	if ($ret != 0) { die('FATAL: exec() for git failed, is the path properly configured?'); }
 	return $output;
 }
 
@@ -422,7 +424,7 @@ function run_git_passthru($project, $command)
 
 	$cmd = "GIT_DIR=". $conf['projects'][$project]['repo'] ." ". $conf['git'] ." $command";
 	$result = 0;
-	passthru($cmd, $result) or die();
+	passthru($cmd, $result);
 	return $result;
 }
 
