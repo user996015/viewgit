@@ -74,6 +74,14 @@ function get_project_info($name)
 	return $info;
 }
 
+/**
+ * Get diff between given revisions as text.
+ */
+function git_diff($project, $from, $to)
+{
+	return join("\n", run_git($project, "diff $from..$to"));
+}
+
 function git_diffstat($project, $commit, $commit_base = null)
 {
 	if (is_null($commit_base)) {
