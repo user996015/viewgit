@@ -198,12 +198,13 @@ elseif ($action === 'commitdiff') {
 elseif ($action === 'patch') {
 	$project = validate_project($_REQUEST['p']);
 	$hash = validate_hash($_REQUEST['h']);
+	$filename = "$project-". substr($hash, 0, 7) .".patch";
 
 	//header("Content-Type: text/x-diff");
 	header("Content-Type: application/octet-stream");
 	header("Content-Transfer-Encoding: binary");
 	// TODO git-style filename
-	header("Content-Disposition: attachment; filename=\"viewgit.patch\";");
+	header("Content-Disposition: attachment; filename=\"$filename\";");
 
 	run_git_passthru($project, "format-patch --stdout $hash^..$hash");
 	die();
