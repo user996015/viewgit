@@ -389,7 +389,7 @@ elseif ($action === 'viewblob') {
 
 	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], $page['path']);
 
-	$page['data'] = join("\n", run_git($page['project'], "git cat-file blob $page[hash]"));
+	$page['data'] = join("\n", run_git($page['project'], "cat-file blob $page[hash]"));
 
 	// GeSHi support
 	if ($conf['geshi'] && strpos($page['path'], '.')) {
