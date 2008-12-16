@@ -1,11 +1,8 @@
 - commit page: link commit ids to commits
 - commit searching
-	- commit: git log -Sstring
 	- grep: git grep
-	- author/committer: git log --author=pattern
-	- pickaxe: git log -Sstring --pickaxe-all
 
-	- result
+	- better result page
 		- date, author, subject, matching commit message/filename/etc if any, action links
 - summary: sort heads by modified date?
 - prefix unvalidated values from browser with 'untrusted_'
