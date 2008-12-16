@@ -290,6 +290,9 @@ function git_search_commits($project, $type, $string)
 	if ($type == 'change') {
 		$cmd = 'log -S'. escapeshellarg($string);
 	}
+	elseif ($type == 'commit') {
+		$cmd = 'log --grep='. escapeshellarg($string);
+	}
 	else {
 		die('Unsupported type');
 	}

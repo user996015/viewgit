@@ -81,6 +81,7 @@ foreach ($links as $link => $params) {
 <input type="hidden" name="p" value="<?php echo $page['project']; ?>" />
 <select name="st">
 	<option>change</option>
+	<option>commit</option>
 </select>
 <input type="text" name="s"<?php if (isset($page['search_s'])) { echo ' value="'. htmlentities($page['search_s']) .'"'; } ?> />
 </form>
