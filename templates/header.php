@@ -80,10 +80,16 @@ foreach ($links as $link => $params) {
 <input type="hidden" name="a" value="search" />
 <input type="hidden" name="p" value="<?php echo $page['project']; ?>" />
 <select name="st">
-	<option>change</option>
-	<option>commit</option>
-	<option>author</option>
-	<option>committer</option>
+<?php
+$opts = array('commit', 'change', 'author', 'committer');
+foreach ($opts as $opt) {
+	echo "\t<option";
+	if (isset($page['search_t']) && $opt == $page['search_t']) {
+		echo ' selected="selected"';
+	}
+	echo ">$opt</option>\n";
+}
+?>
 </select>
 <input type="text" name="s"<?php if (isset($page['search_s'])) { echo ' value="'. htmlentities($page['search_s']) .'"'; } ?> />
 </form>
