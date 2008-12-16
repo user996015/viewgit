@@ -291,7 +291,13 @@ function git_search_commits($project, $type, $string)
 		$cmd = 'log -S'. escapeshellarg($string);
 	}
 	elseif ($type == 'commit') {
-		$cmd = 'log --grep='. escapeshellarg($string);
+		$cmd = 'log -i --grep='. escapeshellarg($string);
+	}
+	elseif ($type == 'author') {
+		$cmd = 'log -i --author='. escapeshellarg($string);
+	}
+	elseif ($type == 'committer') {
+		$cmd = 'log -i --committer='. escapeshellarg($string);
 	}
 	else {
 		die('Unsupported type');
