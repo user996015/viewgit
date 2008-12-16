@@ -282,6 +282,29 @@ function git_ref_list($project, $tags = true, $heads = true, $remotes = true)
 }
 
 /**
+ * Find commits based on search type and string.
+ */
+function git_search_commits($project, $type, $string)
+{
+	// git log -sFOO
+	if ($type == 'change') {
+		$cmd = 'log -S'. escapeshellarg($string);
+	}
+	else {
+		die('Unsupported type');
+	}
+	$lines = run_git($project, $cmd);
+
+	$result = array();
+	foreach ($lines as $line) {
+		if (preg_match('/^commit (.*?)$/', $line, $matches)) {
+			$result[] = $matches[1];
+		}
+	}
+	return $result;
+}
+
+/**
  * Get shortlog entries for the given project.
  */
 function handle_shortlog($project, $hash = 'HEAD')

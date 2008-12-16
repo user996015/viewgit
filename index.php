@@ -251,6 +251,43 @@ elseif ($action === 'rss-log') {
 }
 
 /*
+ * search - search project history
+ * @param p project
+ * @param st search type: commit,grep,author,committer,pickaxe
+ * @param s string to search for
+ */
+elseif ($action === 'search') {
+	$template = 'shortlog';
+
+	$page['project'] = validate_project($_REQUEST['p']);
+
+	$info = git_get_commit_info($page['project']);
+	$page['commit_id'] = $info['h'];
+	$page['tree_id'] = $info['tree'];
+
+	$type = $_REQUEST['st'];
+	$string = $_REQUEST['s'];
+
+	$page['search_t'] = $type;
+	$page['search_s'] = $string;
+
+	$commits = git_search_commits($page['project'], $type, $string);
+	$shortlog = array();
+	foreach ($commits as $c) {
+		$info = git_get_commit_info($page['project'], $c);
+		$shortlog[] = array(
+			'author' => $info['author_name'],
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'message' => $info['message'],
+			'commit_id' => $info['h'],
+			'tree' => $info['tree'],
+			'refs' => array(),
+		);
+	}
+	$page['shortlog'] = $shortlog;
+}
+
+/*
  * shortlog - project shortlog entries
  * @param p project
  * @param h OPTIONAL commit id to start showing log from

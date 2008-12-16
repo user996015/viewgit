@@ -59,6 +59,10 @@ table th {
 	font-weight: bold;
 }
 
+.search {
+	display: inline;
+}
+
 .ad {
 	font-size: 60%;
 	position: absolute;
