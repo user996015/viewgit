@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 require_once('inc/config.php');
 require_once('inc/functions.php');
 
-if (!empty($conf['auth_lib'])){
+if (isset($conf['auth_lib'])){
 	require_once("inc/auth_{$conf['auth_lib']}.php");
 	auth_check();
 }
