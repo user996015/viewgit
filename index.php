@@ -12,16 +12,10 @@ error_reporting(E_ALL);
 require_once('inc/config.php');
 require_once('inc/functions.php');
 
-/*
-do authentication?
-your auth function should get the user/pass for itself ($_REQEST, $_SERVER['PHP_AUTH_USER'], etc)
-and should do the denying itself (die(), maybe a redirect to a registration page, etc)
-*/
 if (!empty($conf['auth_lib'])){
 	require_once("inc/auth_{$conf['auth_lib']}.php");
 	auth_check();
 }
-
 
 if (isset($conf['projects_glob'])) {
 	foreach ($conf['projects_glob'] as $glob) {

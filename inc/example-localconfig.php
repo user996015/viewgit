@@ -14,7 +14,3 @@ $conf['datetime'] = '%y-%m-%d %H:%M';
 // Extra security
 $conf['allow_checkout'] = false;
 
-
-// authenticate using some drupal site's config
-$conf['drupal_site_config']='/var/www/sites/default/settings.php';
-$conf['auth_lib']='drupal_user';

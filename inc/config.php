@@ -70,6 +70,15 @@ $conf['debug'] = false;
 // Includes a small link to the ViewGit homepage on each page
 $conf['ad'] = true;
 
+// If auth_lib is set, inc/<auth_lib>.php must exist and include a function
+// named auth_check(). The function should check any required global variables
+// (such as $_REQUEST, $_SERVER['PHP_AUTH_USER']) and die() if access is denied.
+
+// Uncomment the following lines to authenticate using some drupal site's
+// config
+//$conf['auth_lib'] = 'drupal_user';
+//$conf['drupal_site_config'] = '/var/www/sites/default/settings.php';
+
 if (!@include_once('localconfig.php')) {
 	die('ViewGit has not been configured yet, please read doc/README.');
 }
