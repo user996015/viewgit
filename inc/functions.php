@@ -67,7 +67,7 @@ function get_project_info($name)
 
 	$headinfo = git_get_commit_info($name, 'HEAD');
 	$info['head_stamp'] = $headinfo['author_utcstamp'];
-	$info['head_datetime'] = strftime($conf['datetime'], $headinfo['author_utcstamp']);
+	$info['head_datetime'] = gmstrftime($conf['datetime'], $headinfo['author_utcstamp']);
 	$info['head_hash'] = $headinfo['h'];
 	$info['head_tree'] = $headinfo['tree'];
 
@@ -121,9 +121,9 @@ function git_get_commit_info($project, $hash = 'HEAD')
 		elseif (preg_match($pattern, $line, $matches) > 0) {
 			$info[$matches[1] .'_name'] = $matches[2];
 			$info[$matches[1] .'_mail'] = $matches[3];
-			$info[$matches[1] .'_stamp'] = $matches[4];
+			$info[$matches[1] .'_stamp'] = $matches[4] + ((intval($matches[5]) / 100.0) * 3600);
 			$info[$matches[1] .'_timezone'] = $matches[5];
-			$info[$matches[1] .'_utcstamp'] = $matches[4] - ((intval($matches[5]) / 100.0) * 3600);
+			$info[$matches[1] .'_utcstamp'] = $matches[4];
 
 			if (isset($conf['mail_filter'])) {
 				$info[$matches[1] .'_mail'] = $conf['mail_filter']($info[$matches[1] .'_mail']);
@@ -334,7 +334,7 @@ function handle_shortlog($project, $hash = 'HEAD')
 		}
 		$result[] = array(
 			'author' => $info['author_name'],
-			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'date' => gmstrftime($conf['datetime'], $info['author_utcstamp']),
 			'message' => $info['message'],
 			'commit_id' => $rev,
 			'tree' => $info['tree'],
@@ -362,7 +362,7 @@ function handle_tags($project, $limit = 0)
 		$info = git_get_commit_info($project, $tag['h']);
 		$result[] = array(
 			'stamp' => $info['author_utcstamp'],
-			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'date' => gmstrftime($conf['datetime'], $info['author_utcstamp']),
 			'h' => $tag['h'],
 			'fullname' => $tag['fullname'],
 			'name' => $tag['name'],

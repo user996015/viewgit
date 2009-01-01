@@ -166,12 +166,12 @@ elseif ($action === 'commit') {
 
 	$page['author_name'] = $info['author_name'];
 	$page['author_mail'] = $info['author_mail'];
-	$page['author_datetime'] = strftime($conf['datetime_full'], $info['author_utcstamp']);
-	$page['author_datetime_local'] = strftime($conf['datetime_full'], $info['author_stamp']) .' '. $info['author_timezone'];
+	$page['author_datetime'] = gmstrftime($conf['datetime_full'], $info['author_utcstamp']);
+	$page['author_datetime_local'] = gmstrftime($conf['datetime_full'], $info['author_stamp']) .' '. $info['author_timezone'];
 	$page['committer_name'] = $info['committer_name'];
 	$page['committer_mail'] = $info['committer_mail'];
-	$page['committer_datetime'] = strftime($conf['datetime_full'], $info['committer_utcstamp']);
-	$page['committer_datetime_local'] = strftime($conf['datetime_full'], $info['committer_stamp']) .' '. $info['committer_timezone'];
+	$page['committer_datetime'] = gmstrftime($conf['datetime_full'], $info['committer_utcstamp']);
+	$page['committer_datetime_local'] = gmstrftime($conf['datetime_full'], $info['committer_stamp']) .' '. $info['committer_timezone'];
 	$page['tree_id'] = $info['tree'];
 	$page['parents'] = $info['parents'];
 	$page['message'] = $info['message'];
@@ -201,7 +201,7 @@ elseif ($action === 'commitdiff') {
 	$page['message_full'] = $info['message_full'];
 	$page['author_name'] = $info['author_name'];
 	$page['author_mail'] = $info['author_mail'];
-	$page['author_datetime'] = strftime($conf['datetime'], $info['author_utcstamp']);
+	$page['author_datetime'] = gmstrftime($conf['datetime'], $info['author_utcstamp']);
 
 	$text = git_diff($page['project'], "$hash^", $hash);
 	list($page['files'], $page['diffdata']) = format_diff($text);
@@ -290,7 +290,7 @@ elseif ($action === 'search') {
 		$info = git_get_commit_info($page['project'], $c);
 		$shortlog[] = array(
 			'author' => $info['author_name'],
-			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'date' => gmstrftime($conf['datetime'], $info['author_utcstamp']),
 			'message' => $info['message'],
 			'commit_id' => $info['h'],
 			'tree' => $info['tree'],
@@ -339,7 +339,7 @@ elseif ($action === 'summary') {
 	foreach ($heads as $h) {
 		$info = git_get_commit_info($page['project'], $h['h']);
 		$page['heads'][] = array(
-			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'date' => gmstrftime($conf['datetime'], $info['author_utcstamp']),
 			'h' => $h['h'],
 			'fullname' => $h['fullname'],
 			'name' => $h['name'],
