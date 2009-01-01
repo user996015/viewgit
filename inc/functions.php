@@ -155,7 +155,8 @@ function git_get_heads($project)
 	$output = run_git($project, 'show-ref --heads');
 	foreach ($output as $line) {
 		$fullname = substr($line, 41);
-		$name = array_pop(explode('/', $fullname));
+		$tmp = explode('/', $fullname);
+		$name = array_pop($tmp);
 		$heads[] = array('h' => substr($line, 0, 40), 'fullname' => "$fullname", 'name' => "$name");
 	}
 
@@ -217,7 +218,8 @@ function git_get_tags($project)
 	$output = run_git($project, 'show-ref --tags');
 	foreach ($output as $line) {
 		$fullname = substr($line, 41);
-		$name = array_pop(explode('/', $fullname));
+		$tmp = explode('/', $fullname);
+		$name = array_pop($tmp);
 		$tags[] = array('h' => substr($line, 0, 40), 'fullname' => $fullname, 'name' => $name);
 	}
 	return $tags;
