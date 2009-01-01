@@ -35,10 +35,21 @@ table th {
 	margin: 0;
 }
 
-.notices .error {
-	background-color: #f77;
+.notices p {
 	margin: 0;
 	padding: 0;
+}
+
+.notices .error {
+	background-color: #f77;
+}
+
+.notices .info {
+	background-color: #ff7;
+}
+
+.notices .warning {
+	background-color: #fc7;
 }
 
 .nav {

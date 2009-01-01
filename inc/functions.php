@@ -506,20 +506,40 @@ function vg_error_handler($errno, $errstr, $errfile, $errline)
 {
 	global $page;
 
+	$mask = ini_get('error_reporting');
+
 	$class = 'error';
 
-	if ($errno & E_ALL) {
-		// Remove any preceding path until viewgit's directory
-		$file = $errfile;
-		$file = strstr($file, 'viewgit/');
-
-		$message = "PHP: $file:$errline $errstr";
-
-		$page['notices'][] = array(
-			'message' => $message,
-			'class' => $class,
-		);
+	// If mask for this error is not enabled, return silently
+	if (!($errno & $mask)) {
+		return true;
 	}
+
+	// Remove any preceding path until viewgit's directory
+	$file = $errfile;
+	$file = strstr($file, 'viewgit/');
+
+	$message = "$file:$errline $errstr [$errno]";
+
+	switch ($errno) {
+		case E_ERROR:
+			$class = 'error';
+			break;
+		case E_WARNING:
+			$class = 'warning';
+			break;
+		case E_NOTICE:
+		case E_STRICT:
+		default:
+			$class = 'info';
+			break;
+	}
+
+	$page['notices'][] = array(
+		'message' => $message,
+		'class' => $class,
+	);
+
 	return true;
 }
 
