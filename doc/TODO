@@ -12,6 +12,5 @@
 - commit support / uploading of bundles to be reviewed
 - pagenav loses track of which branch/tag we are viewing
 - checkout: generate git-update-server-info information on-the-fly if needed?
-- disable error reporting by default, and use own error handler for debug mode
 - full log page
 

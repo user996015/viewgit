@@ -7,8 +7,7 @@
  * fetches required data using git commandline, and finally passes the data to
  * templates to be shown to the user.
  */
-// TODO include E_STRICT?
-error_reporting(E_ALL);
+error_reporting(E_ALL | E_STRICT);
 
 require_once('inc/config.php');
 require_once('inc/functions.php');
