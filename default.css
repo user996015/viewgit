@@ -29,6 +29,18 @@ table th {
 	border-bottom: 1px solid black;
 }
 
+.notices {
+	font-size: 80%;
+	padding-left: 1em;
+	margin: 0;
+}
+
+.notices .error {
+	background-color: #f77;
+	margin: 0;
+	padding: 0;
+}
+
 .nav {
 	font-size: 80%;
 	padding: 0.5em;

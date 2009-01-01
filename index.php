@@ -12,6 +12,10 @@ error_reporting(E_ALL);
 require_once('inc/config.php');
 require_once('inc/functions.php');
 
+$old_error_handler = set_error_handler('vg_error_handler');
+
+// TODO change error_reporting() based on config
+
 if (isset($conf['auth_lib'])){
 	require_once("inc/auth_{$conf['auth_lib']}.php");
 	auth_check();

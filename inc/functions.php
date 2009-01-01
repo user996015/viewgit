@@ -496,3 +496,28 @@ function validate_hash($hash)
 	return $hash;
 }
 
+/**
+ * Custom error handler for ViewGit. The errors are pushed to $page['notices']
+ * and displayed by templates/header.php.
+ */
+function vg_error_handler($errno, $errstr, $errfile, $errline)
+{
+	global $page;
+
+	$class = 'error';
+
+	if ($errno & E_ALL) {
+		// Remove any preceding path until viewgit's directory
+		$file = $errfile;
+		$file = strstr($file, 'viewgit/');
+
+		$message = "PHP: $file:$errline $errstr";
+
+		$page['notices'][] = array(
+			'message' => $message,
+			'class' => $class,
+		);
+	}
+	return true;
+}
+

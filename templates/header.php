@@ -16,6 +16,16 @@ if (isset($page['project'])) {
 </head>
 <body>
 
+<?php
+if (isset($page['notices'])) {
+	echo '<div class="notices">';
+	foreach ($page['notices'] as $n) {
+		echo "<p class=\"$n[class]\">$n[message]</p>";
+	}
+	echo '</div>';
+}
+?>
+
 <div class="nav">
 <a href=".">Index</a>
 <?php
