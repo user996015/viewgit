@@ -1,3 +1,7 @@
+- direct links to /path/to/files can't be given out - should be possible to link to HEAD
+- url rewriting?
+- support weird stuff in filenames (\n etc)
+	- use -z for ls-tree
 - commit page: link commit ids to commits
 - commit searching
 	- grep: git grep
