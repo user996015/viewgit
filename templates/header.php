@@ -13,12 +13,12 @@ if (isset($page['project'])) {
 }
 ?>
 	<meta name="generator" content="ViewGit" />
-<?php call_hooks('header'); ?>
+<?php VGPlugin::call_hooks('header'); ?>
 </head>
 <body>
 
 <?php
-call_hooks('page_start');
+VGPlugin::call_hooks('page_start');
 if (isset($page['notices'])) {
 	echo '<div class="notices">';
 	foreach ($page['notices'] as $n) {
@@ -86,7 +86,7 @@ foreach ($links as $link => $params) {
 	if ($page['action'] === $link) { echo '</span>'; }
 	$first = false;
 }
-call_hooks('pagenav');
+VGPlugin::call_hooks('pagenav');
 ?>
  | 
 <form action="?" type="get" class="search">

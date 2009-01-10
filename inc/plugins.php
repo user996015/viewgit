@@ -1,17 +1,5 @@
 <?php
 
-$plugin_actions = array(); // action -> plugin object
-$plugin_hooks = array();
-
-function call_hooks($type) {
-	global $plugin_hooks;
-	if (in_array($type, $plugin_hooks)) {
-		foreach ($plugin_hooks[$type] as $class) {
-			$class->hook($type);
-		}
-	}
-}
-
 /**
  * Base class plugins should extend. This defines the public, hopefully
  * somewhat static API plugins should be able to rely on.
@@ -67,13 +55,29 @@ class VGPlugin
 	 * Registers the given action for this plugin.
 	 */
 	function register_action($action) {
-		global $plugin_actions;
-		$plugin_actions[$action] = $this;
+		self::$plugin_actions[$action] = $this;
 	}
 
 	function register_hook($type) {
+		self::$plugin_hooks[$type][] = $this;
+	}
+
+	// Static members + methods
+
+	public static $plugin_actions = array();
+	public static $plugin_hooks = array();
+
+	/**
+	 * Call plugin hooks of given type.
+	 * @see VGPlugin::register_hook()
+	 */
+	static function call_hooks($type) {
 		global $plugin_hooks;
-		$plugin_hooks[$type][] = $this;
+		if (in_array($type, self::$plugin_hooks)) {
+			foreach (self::$plugin_hooks[$type] as $class) {
+				$class->hook($type);
+			}
+		}
 	}
 }
 
