@@ -5,8 +5,8 @@ $plugin_hooks = array();
 
 function call_hooks($type) {
 	global $plugin_hooks;
-	foreach ($plugin_hooks as $type => $classes) {
-		foreach ($classes as $class) {
+	if (in_array($type, $plugin_hooks)) {
+		foreach ($plugin_hooks[$type] as $class) {
 			$class->hook($type);
 		}
 	}
