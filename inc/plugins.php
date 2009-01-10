@@ -72,8 +72,7 @@ class VGPlugin
 	 * @see VGPlugin::register_hook()
 	 */
 	static function call_hooks($type) {
-		global $plugin_hooks;
-		if (in_array($type, self::$plugin_hooks)) {
+		if (in_array($type, array_keys(self::$plugin_hooks))) {
 			foreach (self::$plugin_hooks[$type] as $class) {
 				$class->hook($type);
 			}

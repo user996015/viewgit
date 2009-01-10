@@ -473,8 +473,8 @@ elseif ($action === 'viewblob') {
 		error_reporting($old_mask);
 	}
 }
-elseif (in_array($action, array_keys($plugin_actions))) {
-	$plugin_actions[$action]->action($action);
+elseif (in_array($action, array_keys(VGPlugin::$plugin_actions))) {
+	VGPlugin::$plugin_actions[$action]->action($action);
 	die();
 }
 else {
