@@ -34,24 +34,8 @@ if (isset($page['notices'])) {
 if (isset($page['project'])) {
 	echo " &raquo; <a href=\"". makelink(array('a' => 'summary', 'p' => $page['project'])) ."\">$page[project]</a>";
 }
-// TODO: move this out of here
-if ($page['action'] === 'summary') {
-	echo " : Summary";
-}
-elseif ($page['action'] === 'commit') {
-	echo " : Commit ". substr($page['commit_id'], 0, 6);
-}
-elseif ($page['action'] === 'commitdiff') {
-	echo " : Commitdiff ". substr($page['commit_id'], 0, 6);
-}
-elseif ($page['action'] === 'shortlog') {
-	echo " : Shortlog";
-}
-elseif ($page['action'] === 'tree') {
-	echo " : Tree ". substr($page['tree_id'], 0, 6);
-}
-elseif ($page['action'] === 'viewblob') {
-	echo " : Blob ". substr($page['hash'], 0, 6);
+if (isset($page['subtitle'])) {
+	echo " : $page[subtitle]";
 }
 
 if (isset($page['path'])) {

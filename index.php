@@ -172,6 +172,7 @@ elseif ($action === 'commit') {
 	$page['project'] = validate_project($_REQUEST['p']);
 	$page['title'] = "$page[project] - Commit - ViewGit";
 	$page['commit_id'] = validate_hash($_REQUEST['h']);
+	$page['subtitle'] = "Commit ". substr($page['commit_id'], 0, 6);
 
 	$info = git_get_commit_info($page['project'], $page['commit_id']);
 
@@ -202,6 +203,7 @@ elseif ($action === 'commitdiff') {
 	$page['title'] = "$page[project] - Commitdiff - ViewGit";
 	$hash = validate_hash($_REQUEST['h']);
 	$page['commit_id'] = $hash;
+	$page['subtitle'] = "Commitdiff ". substr($page['commit_id'], 0, 6);
 
 	$info = git_get_commit_info($page['project'], $hash);
 
@@ -320,6 +322,7 @@ elseif ($action === 'shortlog') {
 	$template = 'shortlog';
 	$page['project'] = validate_project($_REQUEST['p']);
 	$page['title'] = "$page[project] - Shortlog - ViewGit";
+	$page['subtitle'] = "Shortlog";
 	if (isset($_REQUEST['h'])) {
 		$page['ref'] = validate_hash($_REQUEST['h']);
 	} else {
@@ -336,6 +339,7 @@ elseif ($action === 'summary') {
 	$template = 'summary';
 	$page['project'] = validate_project($_REQUEST['p']);
 	$page['title'] = "$page[project] - Summary - ViewGit";
+	$page['subtitle'] = "Summary";
 
 	$info = git_get_commit_info($page['project']);
 	$page['commit_id'] = $info['h'];
@@ -418,6 +422,7 @@ elseif ($action === 'tree') {
 		}
 	}
 
+	$page['subtitle'] = "Tree ". substr($page['tree_id'], 0, 6);
 	$page['entries'] = git_ls_tree($page['project'], $page['tree_id']);
 }
 /*
@@ -437,6 +442,7 @@ elseif ($action === 'viewblob') {
 	else {
 		$page['commit_id'] = 'HEAD';
 	}
+	$page['subtitle'] = "Blob ". substr($page['hash'], 0, 6);
 
 	$page['path'] = '';
 	if (isset($_REQUEST['f'])) {
