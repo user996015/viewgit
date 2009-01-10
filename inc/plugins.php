@@ -33,7 +33,26 @@ class VGPlugin
 	function action($action) {}
 
 	/**
+	 * Display the given template.
+	 */
+	function display_template($template, $with_headers = true) {
+		if ($with_headers) {
+			require 'templates/header.php';
+		}
+		require "$template";
+		if ($with_headers) {
+			require 'templates/footer.php';
+		}
+	}
+
+	/**
 	 * Called when a registered hook is triggered.
+	 * 
+	 * Hooks:
+	 * header - before closing the head tag
+	 * page_start - after body is opened
+	 * footer - before closing the body tag
+	 * pagenav - output() can be used to insert content into pagenav.
 	 */
 	function hook($type) {}
 

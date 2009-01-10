@@ -13,10 +13,12 @@ if (isset($page['project'])) {
 }
 ?>
 	<meta name="generator" content="ViewGit" />
+<?php call_hooks('header'); ?>
 </head>
 <body>
 
 <?php
+call_hooks('page_start');
 if (isset($page['notices'])) {
 	echo '<div class="notices">';
 	foreach ($page['notices'] as $n) {
