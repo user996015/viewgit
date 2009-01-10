@@ -11,6 +11,18 @@ error_reporting(E_ALL | E_STRICT);
 
 require_once('inc/config.php');
 require_once('inc/functions.php');
+require_once('inc/plugins.php');
+
+// Include all plugins
+foreach (glob('plugins/*/main.php') as $plugin) {
+	require_once($plugin);
+
+	$parts = explode('/', $plugin);
+	$name = $parts[1];
+
+	$classname = "${name}plugin";
+	$inst = new $classname;
+}
 
 $old_error_handler = set_error_handler('vg_error_handler');
 
@@ -460,6 +472,10 @@ elseif ($action === 'viewblob') {
 		}
 		error_reporting($old_mask);
 	}
+}
+elseif (in_array($action, array_keys($plugin_actions))) {
+	$plugin_actions[$action]->action($action);
+	die();
 }
 else {
 	die('Invalid action');

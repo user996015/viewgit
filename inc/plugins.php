@@ -15,9 +15,14 @@ function call_hooks($type) {
 /**
  * Base class plugins should extend. This defines the public, hopefully
  * somewhat static API plugins should be able to rely on.
+ *
+ * Plugins go to plugins/name/main.php and must contain a NamePlugin class.
  */
 class VGPlugin
 {
+	/**
+	 * Actions, hooks and other things must be initialized/registered here.
+	 */
 	function __construct() {
 
 	}

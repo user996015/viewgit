@@ -84,6 +84,7 @@ foreach ($links as $link => $params) {
 	if ($page['action'] === $link) { echo '</span>'; }
 	$first = false;
 }
+call_hooks('pagenav');
 ?>
  | 
 <form action="?" type="get" class="search">
