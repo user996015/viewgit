@@ -3,8 +3,11 @@
 class HelloPlugin extends VGPlugin
 {
 	function __construct() {
-		$this->register_action('hello');
-		$this->register_hook('pagenav');
+		global $conf;
+		if (isset($conf['hello'])) {
+			$this->register_action('hello');
+			$this->register_hook('pagenav');
+		}
 	}
 
 	function action($action) {
