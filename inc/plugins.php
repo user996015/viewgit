@@ -40,7 +40,7 @@ class VGPlugin
 	 * header - before closing the head tag
 	 * page_start - after body is opened
 	 * footer - before closing the body tag
-	 * pagenav - output() can be used to insert content into pagenav.
+	 * pagenav - $page['links'] can be modified to add more pagenav links, see templates/header.php
 	 */
 	function hook($type) {}
 

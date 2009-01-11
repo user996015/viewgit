@@ -55,22 +55,22 @@ if (isset($page['path'])) {
 <?php if (isset($page['project'])) { ?>
 <div class="pagenav">
 <?php
-$links = array(
+$page['links'] = array(
 	'summary' => array(),
 	'shortlog' => array(),
 	'commit' => array('h' => $page['commit_id']),
 	'commitdiff' => array('h' => $page['commit_id']),
 	'tree' => array('h' => $page['tree_id'], 'hb' => $page['commit_id']),
 );
+VGPlugin::call_hooks('pagenav');
 $first = true;
-foreach ($links as $link => $params) {
+foreach ($page['links'] as $link => $params) {
 	if (!$first) { echo " | "; }
 	if ($page['action'] === $link) { echo '<span class="cur">'; }
 	echo "<a href=\"". makelink(array_merge(array('a' => $link, 'p' => $page['project']), $params)) ."\">". ucfirst($link) . "</a>";
 	if ($page['action'] === $link) { echo '</span>'; }
 	$first = false;
 }
-VGPlugin::call_hooks('pagenav');
 ?>
  | 
 <form action="?" type="get" class="search">

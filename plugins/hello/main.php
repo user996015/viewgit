@@ -16,7 +16,8 @@ class HelloPlugin extends VGPlugin
 
 	function hook($type) {
 		if ($type == 'pagenav') {
-			$this->output(" | <a href=\"". makelink(array('a' => 'hello')) ."\">Hello</a> ");
+			global $page;
+			$page['links']['hello'] = array('a' => 'hello');
 		}
 	}
 }
