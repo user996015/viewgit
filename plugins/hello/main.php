@@ -11,7 +11,7 @@ class HelloPlugin extends VGPlugin
 	}
 
 	function action($action) {
-		$this->output("Hello world!");
+		$this->display_plugin_template('hello');
 	}
 
 	function hook($type) {

@@ -34,6 +34,22 @@ class VGPlugin
 	}
 
 	/**
+	 * Display the given template.
+	 */
+	function display_plugin_template($template, $with_headers = true) {
+		$name = 'plugins/'. $this->get_name() .'/templates/'. $template .'.php';
+		$this->display_template($name, $with_headers);
+	}
+
+	/**
+	 * Return the name of this plugin, for example: "hello".
+	 */
+	function get_name() {
+		$name = get_class($this);
+		return strtolower(str_replace('Plugin', '', $name));
+	}
+
+	/**
 	 * Called when a registered hook is triggered.
 	 * 
 	 * Hooks:
