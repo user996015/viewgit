@@ -1,15 +1,15 @@
-<h1><?php echo htmlentities($page['message_firstline']); ?></h1>
+<h1><?php echo htmlentities_wrapper($page['message_firstline']); ?></h1>
 
 <div class="authorinfo">
 <?php
-echo htmlentities($page['author_name']);
+echo htmlentities_wrapper($page['author_name']);
 echo ' ['. $page['author_datetime'] .']';
 ?>
 </div>
 
 <div class="commitmessage">
 <pre>
-<?php echo htmlentities($page['message_full']); ?>
+<?php echo htmlentities_wrapper($page['message_full']); ?>
 </pre>
 </div>
 

@@ -9,7 +9,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 	<link rel="icon" type="image/png" href="favicon.png" />
 <?php
 if (isset($page['project'])) {
-	echo "\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"". htmlentities($page['project']) ." log\" href=\"". makelink(array('a' => 'rss-log', 'p' => $page['project'])) ."\" />\n";
+	echo "\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"". htmlentities_wrapper($page['project']) ." log\" href=\"". makelink(array('a' => 'rss-log', 'p' => $page['project'])) ."\" />\n";
 }
 ?>
 	<meta name="generator" content="ViewGit" />
@@ -88,7 +88,7 @@ foreach ($opts as $opt) {
 }
 ?>
 </select>
-<input type="text" name="s"<?php if (isset($page['search_s'])) { echo ' value="'. htmlentities($page['search_s']) .'"'; } ?> />
+<input type="text" name="s"<?php if (isset($page['search_s'])) { echo ' value="'. htmlentities_wrapper($page['search_s']) .'"'; } ?> />
 </form>
 </div>
 <?php } ?>

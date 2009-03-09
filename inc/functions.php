@@ -3,6 +3,11 @@
  * Functions used by ViewGit.
  */
 
+function htmlentities_wrapper($text)
+{
+	return htmlentities($text, ENT_NOQUOTES, 'UTF-8');
+}
+
 function debug($msg)
 {
 	global $conf;

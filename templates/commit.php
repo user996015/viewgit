@@ -1,10 +1,10 @@
-<h1><?php echo htmlentities($page['message_firstline']); ?></h1>
+<h1><?php echo htmlentities_wrapper($page['message_firstline']); ?></h1>
 
 <table class="commit">
 <tbody>
 <tr>
 	<td>Author</td>
-	<td><?php echo htmlentities($page['author_name']); ?> &lt;<?php echo htmlentities($page['author_mail']); ?>&gt;</td>
+	<td><?php echo htmlentities_wrapper($page['author_name']); ?> &lt;<?php echo htmlentities_wrapper($page['author_mail']); ?>&gt;</td>
 </tr>
 <tr>
 	<td>Author date</td>
@@ -16,7 +16,7 @@
 </tr>
 <tr>
 	<td>Committer</td>
-	<td><?php echo htmlentities($page['committer_name']); ?> &lt;<?php echo htmlentities($page['committer_mail']); ?>&gt;</td>
+	<td><?php echo htmlentities_wrapper($page['committer_name']); ?> &lt;<?php echo htmlentities_wrapper($page['committer_mail']); ?>&gt;</td>
 </tr>
 <tr>
 	<td>Committer date</td>
@@ -45,7 +45,7 @@ foreach ($page['parents'] as $parent) {
 </tbody>
 </table>
 
-<div class="commitmessage"><pre><?php echo htmlentities($page['message_full']); ?></pre></div>
+<div class="commitmessage"><pre><?php echo htmlentities_wrapper($page['message_full']); ?></pre></div>
 
 <?php /* TODO: list of files changed */ ?>
 
