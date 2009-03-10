@@ -32,7 +32,7 @@ function format_diff($text)
 		}
 	}
 
-	$text = htmlentities($text);
+	$text = htmlentities_wrapper($text);
 
 	$text = preg_replace(
 		array(
@@ -401,7 +401,7 @@ function makelink($dict)
 		$params[] = rawurlencode($k) .'='. str_replace('%2F', '/', rawurlencode($v));
 	}
 	if (count($params) > 0) {
-		return '?'. htmlentities(join('&', $params));
+		return '?'. htmlentities_wrapper(join('&', $params));
 	}
 	return '';
 }
@@ -433,7 +433,7 @@ function rss_item_format($format, $info)
 		$info['author_name'],
 		$info['author_mail'],
 		$info['message_firstline'],
-		htmlentities($info['message_full']),
+		htmlentities_wrapper($info['message_full']),
 		$info['committer_name'],
 		$info['committer_mail'],
 		isset($info['diffstat']) ? $info['diffstat'] : '',
