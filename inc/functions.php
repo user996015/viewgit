@@ -3,11 +3,6 @@
  * Functions used by ViewGit.
  */
 
-function htmlentities_wrapper($text)
-{
-	return htmlentities($text, ENT_NOQUOTES, 'UTF-8');
-}
-
 function debug($msg)
 {
 	global $conf;
@@ -389,6 +384,11 @@ function handle_tags($project, $limit = 0)
 	}
 
 	return $result;
+}
+
+function htmlentities_wrapper($text)
+{
+	return htmlentities($text, ENT_NOQUOTES, 'UTF-8');
 }
 
 /**
