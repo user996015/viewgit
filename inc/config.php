@@ -70,7 +70,7 @@ $conf['debug'] = false;
 // Includes a small link to the ViewGit homepage on each page
 $conf['ad'] = true;
 
-// If auth_lib is set, inc/<auth_lib>.php must exist and include a function
+// If auth_lib is set, inc/auth_<auth_lib>.php must exist and include a function
 // named auth_check(). The function should check any required global variables
 // (such as $_REQUEST, $_SERVER['PHP_AUTH_USER']) and die() if access is denied.
 
