@@ -388,7 +388,7 @@ function handle_tags($project, $limit = 0)
 
 function htmlentities_wrapper($text)
 {
-	return htmlentities(iconv('UTF-8', 'UTF-8//IGNORE', $text), ENT_NOQUOTES, 'UTF-8');
+	return htmlentities(@iconv('UTF-8', 'UTF-8//IGNORE', $text), ENT_NOQUOTES, 'UTF-8');
 }
 
 /**
