@@ -31,3 +31,10 @@ foreach ($page['heads'] as $h) {
 </tbody>
 </table>
 
+<?php
+// call plugins that register "summary" hook
+if (in_array('summary', array_keys(VGPlugin::$plugin_hooks))) {
+	VGPlugin::call_hooks('summary');
+}
+
+?>

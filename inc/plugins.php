@@ -54,6 +54,7 @@ class VGPlugin
 	 * 
 	 * Hooks:
 	 * header - before closing the head tag
+	 * summary - add to summary page
 	 * page_start - after body is opened
 	 * footer - before closing the body tag
 	 * pagenav - $page['links'] can be modified to add more pagenav links, see templates/header.php
