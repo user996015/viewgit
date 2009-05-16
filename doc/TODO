@@ -1,3 +1,5 @@
+- allow extra PATHs to be given, for example for git-issues. Otherwise all
+  extra executables have to be in system PATH.
 - direct links to /path/to/files can't be given out - should be possible to link to HEAD
 - url rewriting?
 - support weird stuff in filenames (\n etc)
