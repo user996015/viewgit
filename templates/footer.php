@@ -4,6 +4,6 @@ if ($conf['ad']) {
 }
 VGPlugin::call_hooks('footer');
 ?>
-
+</div>
 </body>
 </html>

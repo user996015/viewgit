@@ -51,6 +51,7 @@ if (isset($page['path'])) {
 }
 ?>
 </div>
+<div id="page_body">
 
 <?php if (isset($page['project'])) { ?>
 <div class="pagenav">

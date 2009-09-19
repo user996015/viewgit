@@ -21,7 +21,8 @@ require_once('templates/tags.php');
 <tbody>
 <?php
 foreach ($page['heads'] as $h) {
-	echo "<tr>\n";
+	$tr_class = $tr_class=="odd" ? "even" : "odd";
+	echo "<tr class=\"$tr_class\">\n";
 	echo "\t<td>$h[date]</td>\n";
 	echo "\t<td><a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $h['fullname'])) ."\">$h[name]</a></td>\n";
 	echo "\t<td></td>\n";
