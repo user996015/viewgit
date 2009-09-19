@@ -79,6 +79,9 @@ $conf['ad'] = true;
 //$conf['auth_lib'] = 'drupal_user';
 //$conf['drupal_site_config'] = '/var/www/sites/default/settings.php';
 
+// Which stylesheet to use
+$conf['style'] = 'default';
+
 if (!@include_once('localconfig.php')) {
 	die('ViewGit has not been configured yet, please read doc/README.');
 }
