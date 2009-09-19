@@ -119,6 +119,10 @@ span.tag {
 	border-bottom: 1px solid #990;
 }
 
+/* index template */
+.tree_link:before, .tar_link:before, .zip_link:before { content: '['; }
+.tree_link:after, .tar_link:after, .zip_link:after { content: ']'; }
+
 /* summary template */
 
 table.shortlog th.date {
@@ -133,6 +137,9 @@ table.shortlog th.author {
 table.heads th.date {
 	width: 15%;
 }
+
+.cdiff_link:before, .patch_link:before { content: '['; }
+.cdiff_link:after, .patch_link:after { content: ']'; }
 
 /* commitdiff template */
 

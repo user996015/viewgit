@@ -30,11 +30,11 @@ foreach ($page['shortlog'] as $l) {
 	}
 	echo "</td>\n";
 	echo "\t<td>";
-	echo "[<a href=\"". makelink(array('a' => 'commitdiff', 'p' => $page['project'], 'h' => $l['commit_id'])) ."\" class=\"cdiff_link\" title=\"Commit Diff\">commitdiff</a>]";
-	echo "[<a href=\"". makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'])) ."\" class=\"tree_link\" title=\"Tree\">tree</a>]";
-	echo "[<a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 't' => 'targz')) ."\" rel=\"nofollow\" class=\"tar_link\" title=\"tar/gz\">tar/gz</a>]";
-	echo "[<a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 't' => 'zip')) ."\" rel=\"nofollow\" class=\"zip_link\" title=\"zip\">zip</a>]";
-	echo "[<a href=\"". makelink(array('a' => 'patch', 'p' => $page['project'], 'h' => $l['commit_id'])) ."\" class=\"patch_link\" title=\"Patch\">patch</a>]";
+	echo "<a href=\"". makelink(array('a' => 'commitdiff', 'p' => $page['project'], 'h' => $l['commit_id'])) ."\" class=\"cdiff_link\" title=\"Commit Diff\">commitdiff</a>";
+	echo " <a href=\"". makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'])) ."\" class=\"tree_link\" title=\"Tree\">tree</a>";
+	echo " <a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 't' => 'targz')) ."\" rel=\"nofollow\" class=\"tar_link\" title=\"tar/gz\">tar/gz</a>";
+	echo " <a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 't' => 'zip')) ."\" rel=\"nofollow\" class=\"zip_link\" title=\"zip\">zip</a>";
+	echo " <a href=\"". makelink(array('a' => 'patch', 'p' => $page['project'], 'h' => $l['commit_id'])) ."\" class=\"patch_link\" title=\"Patch\">patch</a>";
 	echo "</td>\n";
 	echo "</tr>\n";
 	$page['lasthash'] = $l['commit_id'];
