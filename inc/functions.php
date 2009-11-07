@@ -391,6 +391,11 @@ function htmlentities_wrapper($text)
 	return htmlentities(@iconv('UTF-8', 'UTF-8//IGNORE', $text), ENT_NOQUOTES, 'UTF-8');
 }
 
+function xmlentities_wrapper($text)
+{
+	return str_replace(array('&', '<'), array('&#x26;', '&#x3C;'), @iconv('UTF-8', 'UTF-8//IGNORE', $text));
+}
+
 /**
  * Return a URL that contains the given parameters.
  */
@@ -430,13 +435,13 @@ function rss_item_format($format, $info)
 		'/{COMMITTER_MAIL}/',
 		'/{DIFFSTAT}/',
 	), array(
-		$info['author_name'],
-		$info['author_mail'],
-		$info['message_firstline'],
+		htmlentities_wrapper($info['author_name']),
+		htmlentities_wrapper($info['author_mail']),
+		htmlentities_wrapper($info['message_firstline']),
 		htmlentities_wrapper($info['message_full']),
-		$info['committer_name'],
-		$info['committer_mail'],
-		isset($info['diffstat']) ? $info['diffstat'] : '',
+		htmlentities_wrapper($info['committer_name']),
+		htmlentities_wrapper($info['committer_mail']),
+		htmlentities_wrapper(isset($info['diffstat']) ? $info['diffstat'] : ''),
 	), $format);
 }
 
