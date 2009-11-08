@@ -42,7 +42,7 @@ global $page;
 	{
 		$username=$_REQUEST['username'];
 		$password=md5($_REQUEST['password']);
-		if ($conf['auth_simple_users'][$username]==$password)
+		if (isset($conf['auth_simple_users'][$username]) && $conf['auth_simple_users'][$username]==$password)
 		{
 			$_SESSION['loginname']=$username;
 			return;
