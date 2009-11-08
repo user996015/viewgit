@@ -1,5 +1,8 @@
 <?php
-// restrict usage, based on drupal db
+/** @file
+ * Restrict usage, based on drupal db.
+ * @author David Konsumer <konsumer@jetboystudio.com>
+ */
 
 require_once($conf['drupal_site_config']);
 
