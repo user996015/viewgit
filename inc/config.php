@@ -74,6 +74,11 @@ $conf['ad'] = true;
 // named auth_check(). The function should check any required global variables
 // (such as $_REQUEST, $_SERVER['PHP_AUTH_USER']) and die() if access is denied.
 
+// For a simple username/password authorisation you can use auth_simple, see
+// inc/auth_simple.php for more info. The array is username => md5 hash.
+//$conf['auth_lib'] = 'simple';
+//$conf['auth_simple_users'] = array('test' => 'd7b58f27f98f47bacd60fa87efe822ba');
+
 // Uncomment the following lines to authenticate using some drupal site's
 // config
 //$conf['auth_lib'] = 'drupal_user';
