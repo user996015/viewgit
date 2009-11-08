@@ -83,7 +83,7 @@ global $page;
 	document.getElementById("username").focus();
 	</script>
 
-<?
+<?php
 	require('templates/footer.php');	
 	die;
 }
