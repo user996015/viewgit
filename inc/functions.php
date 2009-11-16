@@ -447,7 +447,7 @@ function rss_item_format($format, $info)
 
 function rss_pubdate($secs)
 {
-	return date('D, d M Y H:i:s O', $secs);
+	return gmdate('D, d M Y H:i:s O', $secs);
 }
 
 /**
