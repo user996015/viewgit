@@ -268,7 +268,7 @@ elseif ($action === 'rss-log') {
 			'guid' => $link,
 			'link' => $link,
 			'description' => rss_item_format($conf['rss_item_description'], $info),
-			'pubdate' => rss_pubdate($info['author_stamp']),
+			'pubdate' => rss_pubdate($info['author_utcstamp']),
 		);
 	}
 
