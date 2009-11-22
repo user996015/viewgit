@@ -88,5 +88,8 @@ $conf['ad'] = true;
 $conf['style'] = 'default';
 
 if (!@include_once('localconfig.php')) {
-	die('ViewGit has not been configured yet, please read doc/README.');
+	header("Content-type: text/plain");
+	echo "ViewGit has not been configured yet, please read doc/README for installation instructions:\n\n";
+	require_once('doc/README');
+	die();
 }
