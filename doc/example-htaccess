@@ -1,6 +1,7 @@
 Options -Indexes
 php_flag register_globals off
 php_flag magic_quotes_gpc off
+php_flag short_open_tag off
 
 RewriteEngine On
 RewriteBase /~hoxu/viewgit/
