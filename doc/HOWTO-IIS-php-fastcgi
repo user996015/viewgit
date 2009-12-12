@@ -1,0 +1,35 @@
+The following howto for running ViewGit on Windows with IIS and php-fastcgi has
+been provided by Troy Hamilton <troy.a.hamilton@gmail.com>:
+--------------------------------------------------------------------------------
+
+I didn't see any information on the ViewGit sourceforge page about running it
+on Windows with IIS and php-fastcgi, so I thought I'd send a note describing
+the methods I employed to get it working.  (And it works really well, by the
+way.)
+
+First, I set up php-fastcgi for IIS as described here:
+http://www.iis.net/expand/fastcgi
+
+Next, I had to grant the Internet Guest Account read and execute permission to
+cmd.exe in order to avoid php "Unable to fork" errors:
+http://www.somacon.com/p255.php
+
+Other than that, the included README file was sufficient, but I didn't mess
+with any url rewriting, though.
+
+I did have to make a couple of changes in the php code for the windows
+environment, however:
+
+cmd.exe treats the hat symbol (^) as an escape character, so on line 219 of
+index.php, I had to change:
+$text = git_diff($page['project'], "$hash^", $hash);
+
+to this:
+$text = git_diff($page['project'], "$hash~1", $hash);
+
+I also had to do the same on line 235.
+
+Similarly, I had to add a ^ character to escape the pipe on line 98:
+run_git_passthru($project, "archive --format=tar $tree ^|gzip");
+
+I also installed the gnuwin32 tools on the server for gzip.exe (tar.gz archives) and patch.exe.
