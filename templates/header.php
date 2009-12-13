@@ -74,7 +74,7 @@ foreach ($page['links'] as $link => $params) {
 }
 ?>
  | 
-<form action="?" type="get" class="search">
+<form action="?" method="get" class="search">
 <input type="hidden" name="a" value="search" />
 <input type="hidden" name="p" value="<?php echo $page['project']; ?>" />
 <select name="st">
