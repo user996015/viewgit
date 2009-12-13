@@ -290,7 +290,7 @@ function git_ref_list($project, $tags = true, $heads = true, $remotes = true)
 /**
  * Find commits based on search type and string.
  */
-function git_search_commits($project, $type, $string)
+function git_search_commits($project, $branch, $type, $string)
 {
 	// git log -sFOO
 	if ($type == 'change') {
@@ -308,6 +308,7 @@ function git_search_commits($project, $type, $string)
 	else {
 		die('Unsupported type');
 	}
+	$cmd .= ' '. $branch;
 	$lines = run_git($project, $cmd);
 
 	$result = array();

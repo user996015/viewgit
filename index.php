@@ -279,6 +279,7 @@ elseif ($action === 'rss-log') {
 /*
  * search - search project history
  * @param p project
+ * @param h branch
  * @param st search type: commit,grep,author,committer,pickaxe
  * @param s string to search for
  */
@@ -291,13 +292,14 @@ elseif ($action === 'search') {
 	$page['commit_id'] = $info['h'];
 	$page['tree_id'] = $info['tree'];
 
+	$branch = validate_hash($_REQUEST['h']);
 	$type = $_REQUEST['st'];
 	$string = $_REQUEST['s'];
 
 	$page['search_t'] = $type;
 	$page['search_s'] = $string;
 
-	$commits = git_search_commits($page['project'], $type, $string);
+	$commits = git_search_commits($page['project'], $branch, $type, $string);
 	$shortlog = array();
 	foreach ($commits as $c) {
 		$info = git_get_commit_info($page['project'], $c);

@@ -77,6 +77,7 @@ foreach ($page['links'] as $link => $params) {
 <form action="?" method="get" class="search">
 <input type="hidden" name="a" value="search" />
 <input type="hidden" name="p" value="<?php echo $page['project']; ?>" />
+<input type="hidden" name="h" value="<?php echo $page['commit_id']; ?>" />
 <select name="st">
 <?php
 $opts = array('commit', 'change', 'author', 'committer');
