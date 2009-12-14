@@ -25,7 +25,7 @@ $conf['datetime_full'] = '%Y-%m-%d %H:%M:%S';
 $conf['commit_message_maxlen'] = 50;
 
 // Maximum number of shortlog entries to show on the summary page
-$conf['summary_shortlog'] = 30;
+$conf['summary_shortlog'] = 15;
 
 // Maximum number of tags to show on the summary page
 $conf['summary_tags'] = 10;
