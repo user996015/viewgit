@@ -80,7 +80,7 @@ table tr.even {
 }
 
 table tr.odd td, table tr.even td {
-	padding: 6px 2px;
+	padding: 3px 2px;
 }
 
 table tbody tr:hover {
