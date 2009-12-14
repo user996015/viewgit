@@ -20,6 +20,7 @@ require_once('templates/tags.php');
 </thead>
 <tbody>
 <?php
+$tr_class = 'even';
 foreach ($page['heads'] as $h) {
 	$tr_class = $tr_class=="odd" ? "even" : "odd";
 	echo "<tr class=\"$tr_class\">\n";
