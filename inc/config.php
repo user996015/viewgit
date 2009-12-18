@@ -66,6 +66,7 @@ $conf['rss_item_title'] = '{SHORTLOG} ({AUTHOR})';
 $conf['rss_item_description'] = '<pre>{LOG}</pre><b>{AUTHOR}</b> &lt;{AUTHOR_MAIL}&gt;<br /><pre>{DIFFSTAT}</pre>';
 
 $conf['debug'] = false;
+$conf['debug_command_trace'] = false;
 
 // Includes a small link to the ViewGit homepage on each page
 $conf['ad'] = true;

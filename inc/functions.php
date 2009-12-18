@@ -467,6 +467,11 @@ function run_git($project, $command)
 	$cmd = $conf['git'] ." --git-dir=". escapeshellarg($conf['projects'][$project]['repo']) ." $command";
 	$ret = 0;
 	exec($cmd, $output, $ret);
+	if ($conf['debug_command_trace']) {
+		static $count = 0;
+		$count++;
+		trigger_error("[$count]\$ $cmd [exit $ret]");
+	}
 	//if ($ret != 0) { die('FATAL: exec() for git failed, is the path properly configured?'); }
 	return $output;
 }
