@@ -199,15 +199,20 @@ function git_get_path_info($project, $root_hash, $path)
 
 /**
  * Get revision list starting from given commit.
+ * @param skip how many hashes to skip from the beginning
  * @param max_count number of commit hashes to return, or all if not given
  * @param start revision to start from, or HEAD if not given
  */
-function git_get_rev_list($project, $max_count = null, $start = 'HEAD')
+function git_get_rev_list($project, $skip = 0, $max_count = null, $start = 'HEAD')
 {
-	$cmd = "rev-list $start";
-	if (!is_null($max_count)) {
-		$cmd = "rev-list --max-count=$max_count $start";
+	$cmd = "rev-list ";
+	if ($skip != 0) {
+		$cmd .= "--skip=$skip ";
 	}
+	if (!is_null($max_count)) {
+		$cmd .= "--max-count=$max_count ";
+	}
+	$cmd .= $start;
 
 	return run_git($project, $cmd);
 }
@@ -323,14 +328,14 @@ function git_search_commits($project, $branch, $type, $string)
 /**
  * Get shortlog entries for the given project.
  */
-function handle_shortlog($project, $hash = 'HEAD')
+function handle_shortlog($project, $hash = 'HEAD', $page = 0)
 {
 	global $conf;
 
 	$refs_by_hash = git_ref_list($project, true, true, $conf['shortlog_remote_labels']);
 
 	$result = array();
-	$revs = git_get_rev_list($project, $conf['summary_shortlog'], $hash);
+	$revs = git_get_rev_list($project, $page * $conf['summary_shortlog'], $conf['summary_shortlog'], $hash);
 	foreach ($revs as $rev) {
 		$info = git_get_commit_info($project, $rev);
 		$refs = array();

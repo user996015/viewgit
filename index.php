@@ -255,7 +255,7 @@ elseif ($action === 'rss-log') {
 
 	$diffstat = strstr($conf['rss_item_description'], '{DIFFSTAT}');
 
-	$revs = git_get_rev_list($page['project'], $conf['rss_max_items']);
+	$revs = git_get_rev_list($page['project'], 0, $conf['rss_max_items']);
 	foreach ($revs as $rev) {
 		$info = git_get_commit_info($page['project'], $rev);
 		$link = $ext_url . makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $rev));
@@ -330,12 +330,17 @@ elseif ($action === 'shortlog') {
 	} else {
 		$page['ref'] = 'HEAD';
 	}
+	if (isset($_REQUEST['pg'])) {
+		$page['pg'] = intval($_REQUEST['pg']);
+	} else {
+		$page['pg'] = 0;
+	}
 
 	$info = git_get_commit_info($page['project'], $page['ref']);
 	$page['commit_id'] = $info['h'];
 	$page['tree_id'] = $info['tree'];
 
-	$page['shortlog'] = handle_shortlog($page['project'], $page['ref']);
+	$page['shortlog'] = handle_shortlog($page['project'], $page['ref'], $page['pg']);
 }
 elseif ($action === 'summary') {
 	$template = 'summary';
@@ -350,6 +355,7 @@ elseif ($action === 'summary') {
 	$page['shortlog'] = handle_shortlog($page['project']);
 
 	$page['tags'] = handle_tags($page['project'], $conf['summary_tags']);
+	$page['ref'] = 'HEAD';
 
 	$heads = git_get_heads($page['project']);
 	$page['heads'] = array();

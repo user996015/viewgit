@@ -44,8 +44,13 @@ foreach ($page['shortlog'] as $l) {
 </table>
 
 
-<?php 
+<?php
 if ($page['lasthash'] !== 'HEAD') {
-	echo "<p><a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['lasthash'])) ."\">More...</a></p>";
+	echo "<p>";
+	for ($i = 0; $i < $page['pg']; $i++) {
+		echo "<a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $i)) ."\">$i</a> ";
+	}
+	echo "<a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $page['pg'] + 1)) ."\">more &raquo;</a>";
+	echo "</p>";
 }
 ?>
