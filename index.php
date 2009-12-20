@@ -312,6 +312,7 @@ elseif ($action === 'search') {
 			'refs' => array(),
 		);
 	}
+	$page['shortlog_no_more'] = true;
 	$page['shortlog'] = $shortlog;
 }
 

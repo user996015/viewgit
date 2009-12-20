@@ -45,7 +45,7 @@ foreach ($page['shortlog'] as $l) {
 
 
 <?php
-if ($page['lasthash'] !== 'HEAD') {
+if ($page['lasthash'] !== 'HEAD' && !isset($page['shortlog_no_more'])) {
 	echo "<p>";
 	for ($i = 0; $i < $page['pg']; $i++) {
 		echo "<a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $i)) ."\">$i</a> ";
