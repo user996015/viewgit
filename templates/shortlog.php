@@ -16,7 +16,7 @@ foreach ($page['shortlog'] as $l) {
 	$tr_class = $tr_class=="odd" ? "even" : "odd";
 	echo "<tr class=\"$tr_class\">\n";
 	echo "\t<td>$l[date]</td>\n";
-	echo "\t<td>". htmlentities_wrapper($l['author']) ."</td>\n";
+	echo "\t<td>". format_author($l['author']) ."</td>\n";
 	echo "\t<td><a href=\"". makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $l['commit_id'])) ."\">". htmlentities_wrapper($l['message']) ."</a>";
 	if (count($l['refs']) > 0) {
 		foreach ($l['refs'] as $ref) {

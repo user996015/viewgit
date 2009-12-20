@@ -13,6 +13,21 @@ function debug($msg)
 }
 
 /**
+ * Format author's name & wrap it to links etc.
+ */
+function format_author($author)
+{
+	global $page;
+
+	if (isset($page['project'])) {
+		// FIXME 'h' - use only if available
+		return '<a href="'. makelink(array('a' => 'search', 'p' => $page['project'], 'h' => 'HEAD', 'st' => 'author', 's' => $author)) .'">'. htmlentities_wrapper($author) .'</a>';
+	} else {
+		return htmlentities_wrapper($author);
+	}
+}
+
+/**
  * Formats "git diff" output into xhtml.
  * @return array(array of filenames, xhtml)
  */

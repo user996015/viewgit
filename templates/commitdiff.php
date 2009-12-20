@@ -2,7 +2,7 @@
 
 <div class="authorinfo">
 <?php
-echo htmlentities_wrapper($page['author_name']);
+echo format_author($page['author_name']);
 echo ' ['. $page['author_datetime'] .']';
 ?>
 </div>

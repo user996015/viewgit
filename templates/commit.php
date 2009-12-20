@@ -4,7 +4,7 @@
 <tbody>
 <tr>
 	<td>Author</td>
-	<td><?php echo htmlentities_wrapper($page['author_name']); ?> &lt;<?php echo htmlentities_wrapper($page['author_mail']); ?>&gt;</td>
+	<td><?php echo format_author($page['author_name']); ?> &lt;<?php echo htmlentities_wrapper($page['author_mail']); ?>&gt;</td>
 </tr>
 <tr>
 	<td>Author date</td>
@@ -16,7 +16,7 @@
 </tr>
 <tr>
 	<td>Committer</td>
-	<td><?php echo htmlentities_wrapper($page['committer_name']); ?> &lt;<?php echo htmlentities_wrapper($page['committer_mail']); ?>&gt;</td>
+	<td><?php echo format_author($page['committer_name']); ?> &lt;<?php echo htmlentities_wrapper($page['committer_mail']); ?>&gt;</td>
 </tr>
 <tr>
 	<td>Committer date</td>
