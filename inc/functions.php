@@ -161,8 +161,13 @@ function git_get_commit_info($project, $hash = 'HEAD')
 		}
 	}
 
+	// This is a workaround for the unlikely situation where a commit does
+	// not have a message. Such a commit can be created with the following
+	// command:
+	// git commit --allow-empty -m '' --cleanup=verbatim
 	if (!array_key_exists('message', $info)) {
-		$info['message'] = "";
+		$info['message'] = '(no message)';
+		$info['message_firstline'] = '(no message)';
 	}
 
 	return $info;
