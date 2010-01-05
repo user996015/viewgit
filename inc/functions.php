@@ -161,6 +161,10 @@ function git_get_commit_info($project, $hash = 'HEAD')
 		}
 	}
 
+	if (!array_key_exists('message', $info)) {
+		$info['message'] = "";
+	}
+
 	return $info;
 }
 
