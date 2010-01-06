@@ -147,7 +147,7 @@ elseif ($action === 'co') {
 	$filename = $gitdir .'/'. $r;
 
 	// make sure the request is legit (no reading of other files besides those under git projects)
-	if ($r === 'HEAD' || $r === 'info/refs' || preg_match('!^objects/info/(packs|http-alternates|alternates)$!', $r) > 0 || preg_match('!^objects/[0-9a-f]{2}/[0-9a-f]{38}$!', $r) > 0) {
+	if ($r === 'HEAD' || $r === 'info/refs' || preg_match('!^objects/info/(packs|http-alternates|alternates)$!', $r) > 0 || preg_match('!^objects/[0-9a-f]{2}/[0-9a-f]{38}$!', $r) > 0 || preg_match('!^objects/pack/pack-[0-9a-f]{40}\.(idx|pack)$!', $r)) {
 		if (file_exists($filename)) {
 			debug('OK, sending');
 			readfile($filename);
