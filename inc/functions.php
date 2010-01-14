@@ -540,7 +540,7 @@ function validate_project($project)
  */
 function validate_hash($hash)
 {
-	if (!preg_match('/^[0-9a-z]{40}$/', $hash) && !preg_match('!^refs/(heads|tags)/[-.0-9a-z]+$!', $hash) && $hash !== 'HEAD') {
+	if (!preg_match('/^[0-9a-z]{40}$/', $hash) && !preg_match('!^refs/(heads|tags)/[-_.0-9a-zA-Z]+$!', $hash) && $hash !== 'HEAD') {
 		die('Invalid hash');
 
 	}
