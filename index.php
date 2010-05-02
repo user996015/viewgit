@@ -471,7 +471,8 @@ elseif ($action === 'viewblob') {
 	if ($conf['geshi'] && strpos($page['path'], '.')) {
 		$old_mask = error_reporting(E_ALL ^ E_NOTICE);
 		require_once($conf['geshi_path']);
-		$ext = array_pop(explode('.', $page['path']));
+		$parts = explode('.', $page['path']);
+		$ext = array_pop($parts);
 		$lang = Geshi::get_language_name_from_extension($ext);
 		if (strlen($lang) > 0) {
 			$geshi =& new Geshi($page['data'], $lang);
