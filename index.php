@@ -83,6 +83,7 @@ if ($action === 'index') {
  */
 elseif ($action === 'archive') {
 	$project = validate_project($_REQUEST['p']);
+	$info = get_project_info($project);
 	$tree = validate_hash($_REQUEST['h']);
 	$type = $_REQUEST['t'];
 
@@ -90,18 +91,22 @@ elseif ($action === 'archive') {
 	if (isset($_REQUEST['n'])) {
 		$basename = "$project-$_REQUEST[n]-". substr($tree, 0, 6);
 	}
+	$prefix_option = '';
+	if (isset($info['archive_prefix'])) {
+		$prefix_option = "--prefix={$info['archive_prefix']}/";
+	}
 
 	if ($type === 'targz') {
 		header("Content-Type: application/x-tar-gz");
 		header("Content-Transfer-Encoding: binary");
 		header("Content-Disposition: attachment; filename=\"$basename.tar.gz\";");
-		run_git_passthru($project, "archive --format=tar $tree |gzip");
+		run_git_passthru($project, "archive --format=tar $prefix_option $tree |gzip");
 	}
 	elseif ($type === 'zip') {
 		header("Content-Type: application/x-zip");
 		header("Content-Transfer-Encoding: binary");
 		header("Content-Disposition: attachment; filename=\"$basename.zip\";");
-		run_git_passthru($project, "archive --format=zip $tree");
+		run_git_passthru($project, "archive --format=zip $prefix_option $tree");
 	}
 	else {
 		die('Invalid archive type requested');
