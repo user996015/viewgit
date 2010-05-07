@@ -95,6 +95,10 @@ elseif ($action === 'archive') {
 	if (isset($info['archive_prefix'])) {
 		$prefix_option = "--prefix={$info['archive_prefix']}/";
 	}
+	elseif (isset($conf['archive_prefix'])) {
+		$prefix_option = "--prefix={$conf['archive_prefix']}/";
+	}
+	$prefix_option = str_replace(array('{PROJECT}'), array($project), $prefix_option);
 
 	if ($type === 'targz') {
 		header("Content-Type: application/x-tar-gz");
