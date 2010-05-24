@@ -47,5 +47,24 @@ foreach ($page['parents'] as $parent) {
 
 <div class="commitmessage"><pre><?php echo htmlentities_wrapper($page['message_full']); ?></pre></div>
 
-<?php /* TODO: list of files changed */ ?>
+<div class="filelist">
+<table>
+<thead>
+<tr>
+	<th>Affected files:</th>
+</tr>
+</thead>
+<tbody>
+
+<?php
+foreach ($page['affected_files'] as $details) {
+	echo "<tr><td>";
+	echo "<a href=\"" . makelink( array('a' => 'viewblob', 'p' => $page['project'], 'h' => $details['hash'] ) ) . "\">$details[name]</a><br />";
+	echo "</td><td></td></tr>";
+}
+?>
+
+</tbody>
+</table>
+</div>
 

@@ -180,6 +180,21 @@ function git_get_commit_info($project, $hash = 'HEAD', $path = null)
 	$info['committer_datetime'] = gmstrftime($conf['datetime_full'], $info['committer_utcstamp']);
 	$info['committer_datetime_local'] = gmstrftime($conf['datetime_full'], $info['committer_stamp']) .' '. $info['committer_timezone'];
 
+	$info['affected_files'] = array();
+	$affected_files = run_git($project, "show --pretty=\"format:\" --name-only $hash");
+	foreach ($affected_files as $file ) {
+		// The format above contains a blank line; Skip it.
+		if ($file == '') {
+			continue;
+		}
+
+		$output = run_git($project, "ls-tree $hash $file");
+		foreach ($output as $line) {
+			$parts = preg_split('/\s+/', $line, 4);
+			$info['affected_files'][] = array('name' => $parts[3], 'hash' => $parts[2]);
+		}
+	}
+
 	return $info;
 }
 

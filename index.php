@@ -198,6 +198,7 @@ elseif ($action === 'commit') {
 	$page['message'] = $info['message'];
 	$page['message_firstline'] = $info['message_firstline'];
 	$page['message_full'] = $info['message_full'];
+	$page['affected_files'] = $info['affected_files'];
 
 }
 
