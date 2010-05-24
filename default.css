@@ -260,7 +260,7 @@ table.tree .blob a.item_name{
 /* viewblob template */
 .file {
 	border:1px solid #999;
-	background:#ffe;
+	background:#ddd;
 	padding: 0 0.5em;
 	margin: 0.5em;
 	font-size: 1.2em;
