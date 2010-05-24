@@ -170,6 +170,11 @@ function git_get_commit_info($project, $hash = 'HEAD')
 		$info['message_firstline'] = '(no message)';
 	}
 
+	$info['author_datetime'] = gmstrftime($conf['datetime_full'], $info['author_utcstamp']);
+	$info['author_datetime_local'] = gmstrftime($conf['datetime_full'], $info['author_stamp']) .' '. $info['author_timezone'];
+	$info['committer_datetime'] = gmstrftime($conf['datetime_full'], $info['committer_utcstamp']);
+	$info['committer_datetime_local'] = gmstrftime($conf['datetime_full'], $info['committer_stamp']) .' '. $info['committer_timezone'];
+
 	return $info;
 }
 

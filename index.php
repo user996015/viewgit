@@ -187,12 +187,12 @@ elseif ($action === 'commit') {
 
 	$page['author_name'] = $info['author_name'];
 	$page['author_mail'] = $info['author_mail'];
-	$page['author_datetime'] = gmstrftime($conf['datetime_full'], $info['author_utcstamp']);
-	$page['author_datetime_local'] = gmstrftime($conf['datetime_full'], $info['author_stamp']) .' '. $info['author_timezone'];
+	$page['author_datetime'] = $info['author_datetime'];
+	$page['author_datetime_local'] = $info['author_datetime_local'];
 	$page['committer_name'] = $info['committer_name'];
 	$page['committer_mail'] = $info['committer_mail'];
-	$page['committer_datetime'] = gmstrftime($conf['datetime_full'], $info['committer_utcstamp']);
-	$page['committer_datetime_local'] = gmstrftime($conf['datetime_full'], $info['committer_stamp']) .' '. $info['committer_timezone'];
+	$page['committer_datetime'] = $info['committer_datetime'];
+	$page['committer_datetime_local'] = $info['committer_datetime_local'];
 	$page['tree_id'] = $info['tree'];
 	$page['parents'] = $info['parents'];
 	$page['message'] = $info['message'];
