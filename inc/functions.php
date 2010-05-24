@@ -112,7 +112,7 @@ function git_diffstat($project, $commit, $commit_base = null)
 /**
  * Get details of a commit: tree, parents, author/committer (name, mail, date), message
  */
-function git_get_commit_info($project, $hash = 'HEAD')
+function git_get_commit_info($project, $hash = 'HEAD', $path = null)
 {
 	global $conf;
 
@@ -121,7 +121,12 @@ function git_get_commit_info($project, $hash = 'HEAD')
 	$info['message_full'] = '';
 	$info['parents'] = array();
 
-	$output = run_git($project, "rev-list --header --max-count=1 $hash");
+	$extra = '';
+	if (isset($path)) {
+		$extra = '-- '. escapeshellarg($path);
+	}
+
+	$output = run_git($project, "rev-list --header --max-count=1 $hash $extra");
 	// tree <h>
 	// parent <h>
 	// author <name> "<"<mail>">" <stamp> <timezone>
