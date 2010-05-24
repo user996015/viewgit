@@ -98,7 +98,7 @@ function get_project_info($name)
  */
 function git_diff($project, $from, $to)
 {
-	return join("\n", run_git($project, "diff $from..$to"));
+	return join("\n", run_git($project, "diff \"$from..$to\""));
 }
 
 function git_diffstat($project, $commit, $commit_base = null)
