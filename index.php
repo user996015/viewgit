@@ -475,6 +475,9 @@ elseif ($action === 'viewblob') {
 	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], $page['path']);
 
 	$page['data'] = join("\n", run_git($page['project'], "cat-file blob $page[hash]"));
+	$link = makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => ''));
+	$format = "--pretty=format:'commit <a href=$link%H>%H</a>%nAuthor: %an%nDate: %ad%n%n%s%n%n%b'";
+	$page['lastlog'] = join("<br />", run_git($page['project'], "log -n 1 $format -- $page[path]"));
 
 	// GeSHi support
 	if ($conf['geshi'] && strpos($page['path'], '.')) {
