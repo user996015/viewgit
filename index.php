@@ -198,7 +198,7 @@ elseif ($action === 'commit') {
 	$page['message'] = $info['message'];
 	$page['message_firstline'] = $info['message_firstline'];
 	$page['message_full'] = $info['message_full'];
-	$page['affected_files'] = $info['affected_files'];
+	$page['affected_files'] = git_get_changed_paths($page['project'], $page['commit_id']);
 
 }
 
