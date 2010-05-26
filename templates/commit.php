@@ -59,7 +59,7 @@ foreach ($page['parents'] as $parent) {
 <?php
 foreach ($page['affected_files'] as $details) {
 	echo "<tr><td>";
-	echo "<a href=\"" . makelink( array('a' => 'viewblob', 'p' => $page['project'], 'h' => $details['hash'] ) ) . "\">$details[name]</a><br />";
+	echo "<a href=\"" . makelink( array('a' => 'viewblob', 'p' => $page['project'], 'h' => $details['hash'] ) ) . "\">$details[name]</a>";
 	echo "</td><td></td></tr>";
 }
 ?>
