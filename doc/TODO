@@ -20,7 +20,6 @@
 	- tree: should link to dir/file log
 	- commitdiff: link to file log
 	- SECURITY: how to validate the path properly before passing it to commandline?
-- simple integrated stats (git shortlog -s -n )?
 
 - OPTIMIZE: shortlog viewing, a lot of 'git rev-list' calls, could just use one with --header
 
@@ -41,8 +40,15 @@
 - rewrite the git functions into a reusable class
 - diff between arbitrary trees/commits
 - commitdiff page: filename list has no action links
-- commit support / uploading of bundles to be reviewed
 - pagenav loses track of which branch/tag we are viewing
 - checkout: generate git-update-server-info information on-the-fly if needed?
 - full log page
+
+= Discarded ideas =
+- simple integrated stats (git shortlog -s -n )?
+	1) statistics are out of scope for the project (feature creep)
+	2) generating them on the fly would place too much strain on the server for large repositories
+	3) there is already gitstats ;)
+- commit support / uploading of bundles to be reviewed
+	- out of scope
 
