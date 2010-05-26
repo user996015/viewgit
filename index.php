@@ -37,6 +37,9 @@ if (isset($conf['auth_lib'])){
 }
 
 if (isset($conf['projects_glob'])) {
+	if (!isset($conf['projects_exclude'])) {
+		$conf['projects_exclude'] = array();
+	}
 	foreach ($conf['projects_glob'] as $glob) {
 		foreach (glob($glob) as $path) {
 			// Get the last part of the path before .git
@@ -48,7 +51,9 @@ if (isset($conf['projects_glob'])) {
 				@$i++;
 			}
 			$name = $name . $i;
-			$conf['projects'][$name] = array('repo' => $path);
+			if (!in_array($name, $conf['projects_exclude'])) {
+				$conf['projects'][$name] = array('repo' => $path);
+			}
 		}
 	}
 }

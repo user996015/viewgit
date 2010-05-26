@@ -16,6 +16,11 @@ $conf['git'] = 'git';
 // Use this if you have a lot of projects under a directory.
 //$conf['projects_glob'] = array('/path/to/*/.git', '/var/git/*.git');
 
+// If set, contains an array of projects to exclude.
+// Use this if you have set $conf['projects_glob'] and you
+// want to exclude just some projects.
+//$conf['projects_exclude'] = array('project1', 'project2');
+
 // Prefix for tar/gz & zip archives generated. Default is to use the project
 // name. Can be overridden in project config.
 $conf['archive_prefix'] = '{PROJECT}';
