@@ -223,7 +223,7 @@ elseif ($action === 'commitdiff') {
 	$page['message_full'] = $info['message_full'];
 	$page['author_name'] = $info['author_name'];
 	$page['author_mail'] = $info['author_mail'];
-	$page['author_datetime'] = gmstrftime($conf['datetime'], $info['author_utcstamp']);
+	$page['author_datetime'] = $info['author_datetime'];
 
 	$text = git_diff($page['project'], "$hash^", $hash);
 	list($page['files'], $page['diffdata']) = format_diff($text);
