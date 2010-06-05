@@ -83,6 +83,8 @@ if ($action === 'index') {
  * archive - send a tree as an archive to client
  * @param p project
  * @param h tree hash
+ * @param hb OPTIONAL base commit (trees can be part of multiple commits, this
+ * one denotes which commit the user navigated from)
  * @param t type, "targz" or "zip"
  * @param n OPTIONAL name suggestion
  */
@@ -91,19 +93,32 @@ elseif ($action === 'archive') {
 	$info = get_project_info($project);
 	$tree = validate_hash($_REQUEST['h']);
 	$type = $_REQUEST['t'];
-
-	$basename = "$project-tree-". substr($tree, 0, 7);
-	if (isset($_REQUEST['n'])) {
-		$basename = "$project-$_REQUEST[n]-". substr($tree, 0, 6);
+	if (isset($_REQUEST['hb'])) {
+		$hb = validate_hash($_REQUEST['hb']);
+		$describe = git_describe($project, $hb);
 	}
-	$prefix_option = '';
+
+	// Archive prefix
+	$archive_prefix = '';
 	if (isset($info['archive_prefix'])) {
-		$prefix_option = "--prefix={$info['archive_prefix']}/";
+		$archive_prefix = "{$info['archive_prefix']}";
 	}
 	elseif (isset($conf['archive_prefix'])) {
-		$prefix_option = "--prefix={$conf['archive_prefix']}/";
+		$archive_prefix = "{$conf['archive_prefix']}";
 	}
-	$prefix_option = str_replace(array('{PROJECT}'), array($project), $prefix_option);
+	$archive_prefix = str_replace(array('{PROJECT}', '{DESCRIBE}'), array($project, $describe), $archive_prefix);
+
+	// Basename
+	$basename = "$project-tree-". substr($tree, 0, 7);
+	$basename = $archive_prefix;
+	if (isset($_REQUEST['n'])) {
+		$basename = "$basename-$_REQUEST[n]-". substr($tree, 0, 6);
+	}
+
+	$prefix_option = '';
+	if (isset($archive_prefix)) {
+		$prefix_option = "--prefix={$archive_prefix}/";
+	}
 
 	if ($type === 'targz') {
 		header("Content-Type: application/x-tar-gz");

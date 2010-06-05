@@ -21,9 +21,9 @@ $conf['git'] = 'git';
 // want to exclude just some projects.
 //$conf['projects_exclude'] = array('project1', 'project2');
 
-// Prefix for tar/gz & zip archives generated. Default is to use the project
-// name. Can be overridden in project config.
-$conf['archive_prefix'] = '{PROJECT}';
+// Name and prefix for tar/gz & zip archives generated. Default is to use the
+// project name and version. Can be overridden in project config.
+$conf['archive_prefix'] = '{PROJECT}-{DESCRIBE}';
 
 $conf['datetime'] = '%Y-%m-%d %H:%M';
 

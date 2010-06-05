@@ -93,6 +93,12 @@ function get_project_info($name)
 	return $info;
 }
 
+function git_describe($project, $commit)
+{
+	$output = run_git($project, "describe --always ". escapeshellarg($commit));
+	return $output[0];
+}
+
 /**
  * Get diff between given revisions as text.
  */
