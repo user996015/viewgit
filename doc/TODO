@@ -1,9 +1,9 @@
 - annotate/blame view
-- archive: allow PROJECT-VERSION.tar.gz naming (use git describe?)
-	- preg_replace_callback
-	- heed the path in archive naming somehow?
-		- append to the archive prefix (optional)?
-		- must be validated & escaped properly
+	- git annotate -l -t <filename>
+	- links from
+		- viewblob
+		- tree
+		- commit
 - write "how to contribute patches" and note about git format-patch
 - shortlog: author link does not work from non-master branch
 - $page['refname'] - set when available (branch, tag, or other label)
