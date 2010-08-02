@@ -12,7 +12,7 @@ function debug($msg)
 	}
 }
 
-function fixEncoding($in_str)
+function fix_encoding($in_str)
 {
 	$cur_encoding = mb_detect_encoding($in_str) ;
 	if($cur_encoding == "UTF-8" && mb_check_encoding($in_str,"UTF-8")) {

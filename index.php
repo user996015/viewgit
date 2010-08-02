@@ -247,7 +247,7 @@ elseif ($action === 'commitdiff') {
 	$page['author_mail'] = $info['author_mail'];
 	$page['author_datetime'] = $info['author_datetime'];
 
-	$text = fixEncoding(git_diff($page['project'], "$hash^", $hash));
+	$text = fix_encoding(git_diff($page['project'], "$hash^", $hash));
 	list($page['files'], $page['diffdata']) = format_diff($text);
 	//$page['diffdata'] = format_diff($text);
 }
@@ -496,7 +496,7 @@ elseif ($action === 'viewblob') {
 
 	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], $page['path']);
 
-	$page['data'] = fixEncoding(join("\n", run_git($page['project'], "cat-file blob $page[hash]")));
+	$page['data'] = fix_encoding(join("\n", run_git($page['project'], "cat-file blob $page[hash]")));
 
 	$page['lastlog'] = git_get_commit_info($page['project'], 'HEAD', $page['path']);
 
