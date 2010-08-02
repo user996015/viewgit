@@ -1,4 +1,5 @@
 <?php
+header('Content-type: text/html; charset=UTF-8');
 /** @file
  * The main "controller" file of ViewGit.
  *
@@ -495,7 +496,8 @@ elseif ($action === 'viewblob') {
 
 	$page['pathinfo'] = git_get_path_info($page['project'], $page['commit_id'], $page['path']);
 
-	$page['data'] = join("\n", run_git($page['project'], "cat-file blob $page[hash]"));
+	$page['data'] = fixEncoding(join("\n", run_git($page['project'], "cat-file blob $page[hash]")));
+
 	$page['lastlog'] = git_get_commit_info($page['project'], 'HEAD', $page['path']);
 
 	// GeSHi support
