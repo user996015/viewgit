@@ -32,3 +32,5 @@ $conf['datetime'] = '%y-%m-%d %H:%M';
 // Extra security
 $conf['allow_checkout'] = false;
 
+// Exclude robots
+//$conf['robots'] = "noindex, nofollow";
