@@ -233,6 +233,11 @@ function git_get_heads($project)
 		$fullname = substr($line, 41);
 		$tmp = explode('/', $fullname);
 		$name = array_pop($tmp);
+		$pre = array_pop($tmp);
+		if ($pre != 'heads')
+		{
+			$name = $pre . '/' . $name;
+		}
 		$heads[] = array('h' => substr($line, 0, 40), 'fullname' => "$fullname", 'name' => "$name");
 	}
 
@@ -588,7 +593,7 @@ function validate_project($project)
  */
 function validate_hash($hash)
 {
-	if (!preg_match('/^[0-9a-z]{40}$/', $hash) && !preg_match('!^refs/(heads|tags)/[-_.0-9a-zA-Z]+$!', $hash) && $hash !== 'HEAD') {
+	if (!preg_match('/^[0-9a-z]{40}$/', $hash) && !preg_match('!^refs/(heads|tags)/[-_.0-9a-zA-Z/]+$!', $hash) && $hash !== 'HEAD') {
 		die('Invalid hash');
 
 	}
