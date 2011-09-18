@@ -99,6 +99,7 @@ function get_project_info($name)
 	$info['head_datetime'] = gmstrftime($conf['datetime'], $headinfo['author_utcstamp']);
 	$info['head_hash'] = $headinfo['h'];
 	$info['head_tree'] = $headinfo['tree'];
+	$info['message'] = $headinfo['message'];
 
 	return $info;
 }

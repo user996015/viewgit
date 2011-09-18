@@ -4,6 +4,7 @@
 <tr>
 	<th>Project</th>
 	<th>Description</th>
+	<th>Last Commit</th>
 	<th>Last Change</th>
 	<th>Actions</th>
 </tr>
@@ -15,6 +16,7 @@ foreach ($page['projects'] as $p) {
 	echo "<tr class=\"$tr_class\">\n";
 	echo "\t<td><a href=\"". makelink(array('a' => 'summary', 'p' => $p['name'])) ."\">$p[name]</a></td>\n";
 	echo "\t<td>". htmlentities_wrapper($p['description']) ."</td>\n";
+	echo "\t<td>". htmlentities_wrapper($p['message']) ."</td>\n";
 	echo "\t<td>". htmlentities_wrapper($p['head_datetime']) ."</td>\n";
 	echo "\t<td>";
 	echo "<a href=\"". makelink(array('a' => 'tree', 'p' => $p['name'], 'h' => $p['head_tree'], 'hb' => $p['head_hash'])) ."\" class=\"tree_link\" title=\"Tree\">tree</a>";
