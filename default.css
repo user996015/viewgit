@@ -15,6 +15,18 @@ a {
 	color: #c00;
 }
 
+a.external {
+	text-decoration: none;
+}
+
+a.external:before {
+	content: ' [';
+}
+
+a.external:after {
+	content: '] ';
+}
+
 a.tree_link {
 	padding-top: 16px;
 	height: 0px;

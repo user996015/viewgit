@@ -14,7 +14,12 @@
 foreach ($page['projects'] as $p) {
 	$tr_class = $tr_class=="odd" ? "even" : "odd";
 	echo "<tr class=\"$tr_class\">\n";
-	echo "\t<td><a href=\"". makelink(array('a' => 'summary', 'p' => $p['name'])) ."\">$p[name]</a></td>\n";
+	echo "\t<td><a href=\"". makelink(array('a' => 'summary', 'p' => $p['name'])) ."\">$p[name]</a>";
+	if ($p['www']) {
+		//echo "<a href=\"$p[www]\" class=\"external\">&#8599;</a>";
+		tpl_extlink($p['www']);
+	}
+	echo "</td>\n";
 	echo "\t<td>". htmlentities_wrapper($p['description']) ."</td>\n";
 	echo "\t<td>". htmlentities_wrapper($p['message']) ."</td>\n";
 	echo "\t<td>". htmlentities_wrapper($p['head_datetime']) ."</td>\n";

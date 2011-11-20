@@ -573,6 +573,11 @@ function run_git_passthru($project, $command)
 	return $result;
 }
 
+function tpl_extlink($link)
+{
+	echo "<a href=\"$link\" class=\"external\">&#8599;</a>";
+}
+
 /**
  * Makes sure the given project is valid. If it's not, this function will
  * die().

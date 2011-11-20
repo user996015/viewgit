@@ -33,6 +33,10 @@ if (isset($page['notices'])) {
 <?php
 if (isset($page['project'])) {
 	echo " &raquo; <a href=\"". makelink(array('a' => 'summary', 'p' => $page['project'])) ."\">$page[project]</a>";
+	$projconf = $conf['projects'][$page['project']];
+	if ($projconf['www']) {
+		tpl_extlink($projconf['www']);
+	}
 }
 if (isset($page['subtitle'])) {
 	echo " : $page[subtitle]";
