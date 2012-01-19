@@ -51,7 +51,7 @@ foreach ($page['parents'] as $parent) {
 <table>
 <thead>
 <tr>
-	<th>Affected files:</th>
+	<th colspan="2">Affected files:</th>
 </tr>
 </thead>
 <tbody>
