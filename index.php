@@ -336,7 +336,7 @@ elseif ($action === 'search') {
 		$info = git_get_commit_info($page['project'], $c);
 		$shortlog[] = array(
 			'author' => $info['author_name'],
-			'date' => gmstrftime($conf['datetime'], $info['author_utcstamp']),
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'message' => $info['message'],
 			'commit_id' => $info['h'],
 			'tree' => $info['tree'],
@@ -394,7 +394,7 @@ elseif ($action === 'summary') {
 	foreach ($heads as $h) {
 		$info = git_get_commit_info($page['project'], $h['h']);
 		$page['heads'][] = array(
-			'date' => gmstrftime($conf['datetime'], $info['author_utcstamp']),
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'h' => $h['h'],
 			'fullname' => $h['fullname'],
 			'name' => $h['name'],

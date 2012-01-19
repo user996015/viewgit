@@ -8,7 +8,7 @@ function debug($msg)
 	global $conf;
 
 	if ($conf['debug']) {
-		file_put_contents('php://stderr', gmstrftime('%H:%M:%S') ." viewgit: $_SERVER[REMOTE_ADDR]:$_SERVER[REMOTE_PORT] $msg\n", FILE_APPEND);
+		file_put_contents('php://stderr', strftime('%H:%M:%S') ." viewgit: $_SERVER[REMOTE_ADDR]:$_SERVER[REMOTE_PORT] $msg\n", FILE_APPEND);
 	}
 }
 
@@ -100,7 +100,7 @@ function get_project_info($name)
 
 	$headinfo = git_get_commit_info($name, 'HEAD');
 	$info['head_stamp'] = $headinfo['author_utcstamp'];
-	$info['head_datetime'] = gmstrftime($conf['datetime'], $headinfo['author_utcstamp']);
+	$info['head_datetime'] = strftime($conf['datetime'], $headinfo['author_utcstamp']);
 	$info['head_hash'] = $headinfo['h'];
 	$info['head_tree'] = $headinfo['tree'];
 	$info['message'] = $headinfo['message'];
@@ -218,10 +218,10 @@ function git_get_commit_info($project, $hash = 'HEAD', $path = null)
 		$info['message_firstline'] = '(no message)';
 	}
 
-	$info['author_datetime'] = gmstrftime($conf['datetime_full'], $info['author_utcstamp']);
-	$info['author_datetime_local'] = gmstrftime($conf['datetime_full'], $info['author_stamp']) .' '. $info['author_timezone'];
-	$info['committer_datetime'] = gmstrftime($conf['datetime_full'], $info['committer_utcstamp']);
-	$info['committer_datetime_local'] = gmstrftime($conf['datetime_full'], $info['committer_stamp']) .' '. $info['committer_timezone'];
+	$info['author_datetime'] = strftime($conf['datetime_full'], $info['author_utcstamp']);
+	$info['author_datetime_local'] = strftime($conf['datetime_full'], $info['author_stamp']) .' '. $info['author_timezone'];
+	$info['committer_datetime'] = strftime($conf['datetime_full'], $info['committer_utcstamp']);
+	$info['committer_datetime_local'] = strftime($conf['datetime_full'], $info['committer_stamp']) .' '. $info['committer_timezone'];
 
 	return $info;
 }
@@ -426,7 +426,7 @@ function handle_shortlog($project, $hash = 'HEAD', $page = 0)
 		}
 		$result[] = array(
 			'author' => $info['author_name'],
-			'date' => gmstrftime($conf['datetime'], $info['author_utcstamp']),
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'message' => $info['message'],
 			'commit_id' => $rev,
 			'tree' => $info['tree'],
@@ -454,7 +454,7 @@ function handle_tags($project, $limit = 0)
 		$info = git_get_commit_info($project, $tag['h']);
 		$result[] = array(
 			'stamp' => $info['author_utcstamp'],
-			'date' => gmstrftime($conf['datetime'], $info['author_utcstamp']),
+			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'h' => $tag['h'],
 			'fullname' => $tag['fullname'],
 			'name' => $tag['name'],
