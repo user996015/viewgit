@@ -13,10 +13,10 @@ class TablesorterPlugin extends VGPlugin
 		if ($type == 'header') {
 ?>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script type="text/javascript" src="/plugins/tablesorter/js/jquery.tablesorter.min.js"></script>
-<script type="text/javascript" src="/plugins/tablesorter/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="/plugins/tablesorter/js/jquery.tablesorter.cookie.js"></script>
-<link rel="stylesheet" href="/plugins/tablesorter/css/tablesorter.css" type="text/css" media="screen" charset="utf-8" />
+<script type="text/javascript" src="plugins/tablesorter/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="plugins/tablesorter/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="plugins/tablesorter/js/jquery.tablesorter.cookie.js"></script>
+<link rel="stylesheet" href="plugins/tablesorter/css/tablesorter.css" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" charset="utf-8">
 /* <![CDATA[ */
 
