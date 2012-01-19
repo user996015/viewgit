@@ -1,0 +1,25 @@
+th {
+	cursor: pointer;
+}
+
+th.headerSortUp:after {
+	color: gray;
+	font-size: 8px;
+	content: "  ▲";
+}
+th.headerSortDown:after {
+	color: gray;
+	font-size: 8px;
+	content: "  ▼";
+}
+
+/* kill existing even/odd rules and use css selectors */
+table tr.even, table tr.odd {
+	background-color: white;
+	border-bottom: 0;
+	border-top: 0;
+}
+
+table tr:nth-child(odd) {
+	background-color: #f0f0f0;
+}

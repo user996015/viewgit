@@ -16,18 +16,7 @@ class TablesorterPlugin extends VGPlugin
 <script type="text/javascript" src="/plugins/tablesorter/js/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/plugins/tablesorter/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="/plugins/tablesorter/js/jquery.tablesorter.cookie.js"></script>
-<style type="text/css" media="screen">
-	th {
-		cursor: pointer;
-	}
-	
-	th.headerSortUp:after {
-		content: " ▲";
-	}
-	th.headerSortDown:after {
-		content: " ▼";
-	}
-</style>
+<link rel="stylesheet" href="/plugins/tablesorter/css/tablesorter.css" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" charset="utf-8">
 /* <![CDATA[ */
 
