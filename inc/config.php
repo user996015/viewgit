@@ -30,6 +30,11 @@ $conf['datetime'] = '%Y-%m-%d %H:%M';
 // More complete format for commit page
 $conf['datetime_full'] = '%Y-%m-%d %H:%M:%S';
 
+// Set timezone to format timestamps for. If you have a local one-site team,
+// you may want to override this with your local timezone.
+// See http://www.php.net/manual/en/timezones.php for supported values.
+$conf['timezone'] = 'UTC';
+
 // Maximum length of commit message's first line to show 
 $conf['commit_message_maxlen'] = 50;
 

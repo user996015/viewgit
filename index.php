@@ -32,6 +32,9 @@ if (!$conf['debug']) {
 	error_reporting(E_ALL ^ E_NOTICE);
 }
 
+// Timezone
+date_default_timezone_set($conf['timezone']);
+
 if (isset($conf['auth_lib'])){
 	require_once("inc/auth_{$conf['auth_lib']}.php");
 	auth_check();
