@@ -95,7 +95,7 @@ function get_project_info($name)
 
 	// If description is not set, read it from the repository's description
 	if (!isset($info['description'])) {
-		$info['description'] = file_get_contents($info['repo'] .'/description');
+		$info['description'] = @file_get_contents($info['repo'] .'/description');
 	}
 
 	$headinfo = git_get_commit_info($name, 'HEAD');
