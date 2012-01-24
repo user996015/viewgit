@@ -270,8 +270,7 @@ function git_get_path_info($project, $root_hash, $path)
 	foreach ($parts as $p) {
 		$entry = git_ls_tree_part($project, $tid, $p);
 		if (is_null($entry)) {
-			trigger_error("Invalid path info: $path");
-			break;
+			die('Invalid path info.');
 		}
 		$pathinfo[] = $entry;
 		$tid = $entry['hash'];
