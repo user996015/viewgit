@@ -1,4 +1,4 @@
-<h2>Last commit for <?php echo $page['path']; ?>: <a href="<?php echo makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $page['lastlog']['h'])); ?>"><?php echo htmlentities_wrapper($page['lastlog']['h']); ?></a></h2>
+<h2>Last commit for <?php echo htmlentities_wrapper($page['path']); ?>: <a href="<?php echo makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $page['lastlog']['h'])); ?>"><?php echo htmlentities_wrapper($page['lastlog']['h']); ?></a></h2>
 <h1><?php echo htmlentities_wrapper($page['lastlog']['message_firstline']); ?></h1>
 <div class="authorinfo">
 <?php
