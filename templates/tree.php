@@ -8,7 +8,22 @@
 </thead>
 <tbody>
 <?php
-foreach ($page['entries'] as $e) {
+$entries = $page['entries'];
+$folders = array();
+$files = array();
+
+foreach ($entries as $e) {
+    if ($e['type'] === 'tree') {
+        $folders[] = $e;
+    }
+    else {
+        $files[] = $e;
+    }
+}
+
+$sorted_entries = array_merge($folders, $files);
+
+foreach ($sorted_entries as $e) {
 	$tr_class = $tr_class=="odd" ? "even" : "odd";
 
 	if (strlen($page['path']) > 0) {
