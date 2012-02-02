@@ -209,7 +209,7 @@ span.tag {
 	border-bottom: 1px solid #990;
 }
 
-/* summary template */
+/* shortlog template */
 
 table.shortlog {
     font-family: monospace, courier new;
@@ -222,7 +222,6 @@ table.shortlog {
     }
 
     table.shortlog .date {
-        white-space: pre;
         width: 120px;
     }
 
@@ -236,6 +235,40 @@ table.shortlog {
 
     table.shortlog .actions {
         width: 150px;
+    }
+
+/* tree template */
+
+table.tree {
+    font-family: monospace, courier new;
+    font-size: 90%;
+    table-layout: fixed;
+}
+
+    table.tree td {
+        white-space: nowrap;
+    }
+
+    table.tree .perm {
+        width: 80px;
+    }
+
+    table.tree .name {
+        overflow: hidden;
+    }
+
+    table.tree .dir a.item_name {
+        padding-left: 20px;
+        background: url('images/silk/folder.png') no-repeat 0 50%;
+    }
+
+    table.tree .blob a.item_name {
+        padding-left: 20px;
+        background: url('images/silk/page_white_text.png') no-repeat 0 50%;
+    }
+
+    table.tree .dl {
+        width: 60px;
     }
 
 /* commitdiff template */
@@ -266,25 +299,6 @@ div.diff {
 
 .diff .etc {
 	color: #999;
-}
-
-/* tree template */
-table.tree th.perm {
-	width: 10%;
-}
-
-table.tree th.dl {
-	width: 10%;
-}
-
-table.tree .dir a.item_name{
-	padding-left: 20px;
-	background: url('images/silk/folder.png') no-repeat 0 50%;
-}
-
-table.tree .blob a.item_name{
-	padding-left: 20px;
-	background: url('images/silk/page_white_text.png') no-repeat 0 50%;
 }
 
 /* viewblob template */
