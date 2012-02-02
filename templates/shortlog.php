@@ -15,7 +15,7 @@ $page['lasthash'] = 'HEAD';
 foreach ($page['shortlog'] as $l) {
 	$tr_class = $tr_class=="odd" ? "even" : "odd";
 	echo '<tr class="' . $tr_class . '">' . "\n";
-	echo "\t" . '<td class="date">' . $l[date] . '</td>' . "\n";
+	echo "\t" . '<td class="date">' . $l['date'] . '</td>' . "\n";
 	echo "\t" . '<td class="author">' . format_author($l['author']) ."</td>\n";
 	echo "\t" . '<td class="message">' .
         '<a href="' . makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $l['commit_id'])) . '">' .
