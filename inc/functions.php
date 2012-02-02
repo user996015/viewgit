@@ -555,8 +555,10 @@ function run_git($project, $command, &$ret=0)
     $dir = escapeshellarg($conf['projects'][$project]['repo']);
     $dir = trim($dir, '\'');
     $cmd = $conf['git'] . ' ' . $command;
+    $cwd = getcwd();
     chdir($dir);
 	exec($cmd, $output, $ret);
+    chdir($cwd);
 	if ($conf['debug_command_trace']) {
 		static $count = 0;
 		$count++;
