@@ -546,7 +546,7 @@ function rss_pubdate($secs)
  * Executes a git command in the project repo.
  * @return array of output lines
  */
-function run_git($project, $command)
+function run_git($project, $command, &$ret=0)
 {
 	global $conf;
 
@@ -556,7 +556,6 @@ function run_git($project, $command)
     $dir = trim($dir, '\'');
     $cmd = $conf['git'] . ' ' . $command;
     chdir($dir);
-	$ret = 0;
 	exec($cmd, $output, $ret);
 	if ($conf['debug_command_trace']) {
 		static $count = 0;
