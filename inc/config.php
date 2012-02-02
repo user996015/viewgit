@@ -36,7 +36,7 @@ $conf['datetime_full'] = '%Y-%m-%d %H:%M:%S';
 $conf['timezone'] = 'UTC';
 
 // Maximum length of commit message's first line to show 
-$conf['commit_message_maxlen'] = 50;
+$conf['commit_message_maxlen'] = 100;
 
 // Maximum number of shortlog entries to show on the summary page
 $conf['summary_shortlog'] = 15;
