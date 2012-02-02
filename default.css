@@ -211,18 +211,32 @@ span.tag {
 
 /* summary template */
 
-table.shortlog th.date {
-	width: 15%;
-	white-space: pre;
+table.shortlog {
+    font-family: monospace, courier new;
+    font-size: 90%;
+    table-layout: fixed;
 }
 
-table.shortlog th.author {
-	width: 15%;
-}
+    table.shortlog td {
+        white-space: nowrap;
+    }
 
-table.heads th.date {
-	width: 15%;
-}
+    table.shortlog .date {
+        white-space: pre;
+        width: 120px;
+    }
+
+    table.shortlog .author {
+        width: 150px;
+    }
+
+    table.shortlog .message {
+        overflow: hidden;
+    }
+
+    table.shortlog .actions {
+        width: 150px;
+    }
 
 /* commitdiff template */
 
