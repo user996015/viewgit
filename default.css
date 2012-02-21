@@ -226,7 +226,8 @@ table.shortlog {
     }
 
     table.shortlog .author {
-        width: 150px;
+        overflow: hidden;
+        width: 200px;
     }
 
     table.shortlog .message {
