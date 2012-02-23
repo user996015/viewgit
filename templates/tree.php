@@ -38,13 +38,23 @@ foreach ($sorted_entries as $e) {
 		echo "\t" . '<td class="name">' . "<a href=\"". makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) ."\" class=\"item_name\">". htmlspecialchars($e['name']) ."</a></td>\n";
 		echo "\t" . '<td class="dl">' . "<a href=\"". makelink(array('a' => 'blob', 'p' => $page['project'], 'h' => $e['hash'], 'n' => $e['name'])) ."\">blob</a></td>\n";
 	}
-	else {
-		echo "<tr class=\"dir $tr_class\">\n";
-		echo "\t" . '<td class="perm">' . $e[mode] . '</td>' . "\n";
-		echo "\t" . '<td class="name">' . "<a href=\"" .makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) ."\" class=\"item_name\">". htmlspecialchars($e['name']) ."/</a></td>\n";
-		echo "\t" . '<td class="dl">' . "<a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'targz', 'n' => $e['name'])) ."\" class=\"tar_link\" title=\"tar/gz\">tar.gz</a> <a href=\"". makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'zip', 'n' => $e['name'])) ."\" class=\"zip_link\" title=\"zip\">zip</a></td>\n";
-	}
-	echo "</tr>\n";
+    else {
+        echo
+            '<tr class="dir ' . $tr_class . '">' .
+                '<td class="perm">' .
+                    $e[mode] .
+                '</td>' .
+                '<td class="name">' .
+                    '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) ."\" class=\"item_name\">". htmlspecialchars($e['name']) . '/</a>' .
+                '</td>' .
+                '<td class="dl">' .
+                    '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'targz', 'n' => $e['name'])) . '" class="tar_link" title="tar/gz">tar.gz</a>' .
+                    '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'zip', 'n' => $e['name'])) . '" class="zip_link" title="zip">zip</a>' .
+                '</td>' .
+                '';
+    }
+
+    echo '</tr>';
 }
 ?>
 </tbody>
