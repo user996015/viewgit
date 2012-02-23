@@ -144,10 +144,6 @@ table tr.even {
 	border-top: 1px solid #eee;
 }
 
-table tr.odd td, table tr.even td {
-	padding: 3px 2px;
-}
-
 table tbody tr:hover {
 	background-color: #e0ffe0;
 }
@@ -305,6 +301,12 @@ table.tree {
 
     table.tree .name {
         overflow: hidden;
+    }
+
+    table.tree a.item_name {
+        display: block;
+        min-height: 16px;
+        padding: 2px 0;
     }
 
     table.tree .dir a.item_name {
