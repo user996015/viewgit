@@ -1,13 +1,18 @@
-<table class="tree">
-    <thead>
-        <tr>
-            <th class="perm">Permission</th>
-            <th class="name">Name</th>
-            <th class="age">Age</th>
-            <th class="dl">Download</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="tree">
+    <h1>
+        <span>Tree</span>
+    </h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="perm">Permission</th>
+                <th class="name">Name</th>
+                <th class="age">Age</th>
+                <th class="download">Download</th>
+            </tr>
+        </thead>
+        <tbody>
 <?php
 $entries = $page['entries'];
 $folders = array();
@@ -46,7 +51,7 @@ foreach ($sorted_entries as $e) {
                 '<td class="age">' .
                     $e['age'] .
                 '</td>' .
-                '<td class="dl">' .
+                '<td class="download">' .
                     '<a href="' . makelink(array('a' => 'blob', 'p' => $page['project'], 'h' => $e['hash'], 'n' => $e['name'])) . '">blob</a>' .
                 '</td>' .
             '</tr>' .
@@ -64,7 +69,7 @@ foreach ($sorted_entries as $e) {
                 '<td class="age">' .
                     $e['age'] .
                 '</td>' .
-                '<td class="dl">' .
+                '<td class="download">' .
                     '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'targz', 'n' => $e['name'])) . '" class="tar_link" title="tar/gz">tar.gz</a>' .
                     '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'zip', 'n' => $e['name'])) . '" class="zip_link" title="zip">zip</a>' .
                 '</td>' .
@@ -73,7 +78,9 @@ foreach ($sorted_entries as $e) {
     }
 }
 ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<p>Download as <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'], 't' => 'targz')) ?>" rel="nofollow">tar.gz</a> or <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'], 't' => 'zip')) ?>" rel="nofollow">zip</a>. Browse this tree at the <a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'hb' => 'HEAD', 'f' => $page['path'])); ?>">HEAD</a>.</p>
+    <p>Download as <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'], 't' => 'targz')) ?>" rel="nofollow">tar.gz</a> or <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'], 't' => 'zip')) ?>" rel="nofollow">zip</a>. Browse this tree at the <a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'hb' => 'HEAD', 'f' => $page['path'])); ?>">HEAD</a>.</p>
+
+</div>
