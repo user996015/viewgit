@@ -58,7 +58,8 @@ table {
         .summary h1 span,
         .shortlog h1 a,
         .shortlog h1 span,
-        .tree h1 span {
+        .tree h1 span,
+        .commit h1 span {
             display: block;
             font-weight: bold;
             padding: 0.67em 0;
@@ -77,20 +78,24 @@ table {
         .shortlog th,
         .shortlog td,
         .tree th,
-        .tree td {
+        .tree td,
+        .filelist th,
+        .filelist td {
             vertical-align: middle;
         }
 
         .summary th,
         .shortlog th,
-        .tree th {
+        .tree th,
+        .filelist th {
             padding: 5px 4px;
             font-weight: bold;
         }
 
         .summary td,
         .shortlog td,
-        .tree td {
+        .tree td,
+        .filelist td {
             padding: 3px 4px;
             white-space: nowrap;
         }
@@ -168,6 +173,33 @@ table {
         .tree .download {
             width: 60px;
         }
+
+.commit {
+}
+
+    .commit table {
+        font-family: courier new, monospace;
+        line-height: 150%;
+    }
+
+    .commitmessage {
+        background: #ffe;
+        border: 1px solid #999;
+        margin: 1em 0;
+    }
+
+        .commitmessage pre {
+            white-space: pre-wrap;                 /* css-3 */
+            white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+            white-space: -pre-wrap;                /* Opera 4-6 */
+            white-space: -o-pre-wrap;              /* Opera 7 */
+            word-wrap: break-word;                 /* Internet Explorer 5.5+ */
+
+            font-family: courier new, monospace;
+            font-size: 100%;
+            padding: 0.5em;
+        }
+
 
 /**
  * More polished style for ViewGit
@@ -381,22 +413,6 @@ span.tag {
 }
 
 /* commitdiff template */
-
-.commitmessage {
-	border:1px solid #999;
-	background:#ffe;
-	padding: 0 0.5em;
-	margin: 0.5em;
-	font-size: 1.2em;
-}
-
-    .commitmessage pre {
-        white-space: pre-wrap;                 /* css-3 */
-        white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-        white-space: -pre-wrap;                /* Opera 4-6 */
-        white-space: -o-pre-wrap;              /* Opera 7 */
-        word-wrap: break-word;                 /* Internet Explorer 5.5+ */
-    }
 
 div.diff {
 	font-size: 1.2em;
