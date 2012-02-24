@@ -3,6 +3,66 @@
  * Functions used by ViewGit.
  */
 
+/**
+ * Format a unix timestamp. Borrowed from websvn.
+ */
+// {{{ datetimeFormatDuration
+//
+// Formats a duration of seconds for display.
+//
+// $seconds the number of seconds until something
+// $nbsp true if spaces should be replaced by nbsp
+// $skipSeconds true if seconds should be omitted
+//
+// return the formatted duration (e.g. @c "8h   6m  1s")
+
+function datetimeFormatDuration($seconds, $nbsp = false, $skipSeconds = false) {
+    global $lang;
+
+    $neg = false;
+    if ($seconds < 0) {
+        $seconds = 0 - $seconds;
+        $neg = true;
+    }
+
+    $qty = array();
+    $names = array($lang['DAYLETTER'], $lang['HOURLETTER'], $lang['MINUTELETTER']);
+
+    $qty[] = (int)($seconds / (60 * 60 * 24));
+    $seconds %= 60 * 60 * 24;
+
+    $qty[] = (int)($seconds / (60 * 60));
+    $seconds %= 60 * 60;
+
+    $qty[] = (int)($seconds / 60);
+
+    if (!$skipSeconds) {
+        $qty[] = (int)($seconds % 60);
+        $names[] = $lang['SECONDLETTER'];
+    }
+
+    $text = $neg ? '-' : '';
+    $any = false;
+    $count = count($names);
+    $parts = 0;
+    for ($i = 0; $i < $count; $i++) {
+        // If a "higher valued" time slot had a value or this time slot
+        // has a value or this is the very last entry (i.e. all values
+        // are 0 and we still want to print seconds)
+        if ($any || $qty[$i] > 0 || $i == $count - 1) {
+            if ($any) $text .= $nbsp ? '&nbsp;' : ' ';
+            if ($any && $qty[$i] < 10) $text .= '0';
+            $text .= $qty[$i].$names[$i];
+            $any = true;
+            $parts++;
+            if ($parts >= 2) break;
+        }
+    }
+    return $text;
+}
+
+// }}}
+
 function debug($msg)
 {
 	global $conf;
