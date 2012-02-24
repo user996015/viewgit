@@ -1,16 +1,17 @@
-<h1>
-    <a href="<?php echo makelink(array('a' => 'tags', 'p' => $page['project'])); ?>">Tags</a>
-</h1>
+<div class="tags">
+    <h1>
+        <a href="<?php echo makelink(array('a' => 'tags', 'p' => $page['project'])); ?>">Tags</a>
+    </h1>
 
-<table class="heads">
-    <thead>
-        <tr>
-            <th class="date">Date</th>
-            <th class="branch">Tag</th>
-            <th class="actions">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
+    <table>
+        <thead>
+            <tr>
+                <th class="date">Date</th>
+                <th class="branch">Tag</th>
+                <th class="actions">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
 <?php
 $tr_class = 'even';
 
@@ -31,5 +32,6 @@ foreach ($page['tags'] as $tag) {
         '';
 }
 ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

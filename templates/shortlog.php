@@ -1,17 +1,18 @@
-<h1>
-    <a href="<?php echo makelink(array('a' => 'shortlog', 'p' => $page['project'])); ?>">Shortlog</a>
-</h1>
+<div class="shortlog">
+    <h1>
+        <a href="<?php echo makelink(array('a' => 'shortlog', 'p' => $page['project'])); ?>">Shortlog</a>
+    </h1>
 
-<table class="shortlog">
-    <thead>
-        <tr>
-            <th class="date">Date</th>
-            <th class="author">Author</th>
-            <th class="message">Message</th>
-            <th class="actions">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
+    <table class="shortlog">
+        <thead>
+            <tr>
+                <th class="date">Date</th>
+                <th class="author">Author</th>
+                <th class="message">Message</th>
+                <th class="actions">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
 <?php
 $page['lasthash'] = 'HEAD';
 
@@ -74,17 +75,20 @@ foreach ($page['shortlog'] as $l) {
     $page['lasthash'] = $l['commit_id'];
 }
 ?>
-</tbody>
-</table>
-
+        </tbody>
+    </table>
 
 <?php
 if ($page['lasthash'] !== 'HEAD' && !isset($page['shortlog_no_more'])) {
-	echo "<p>";
-	for ($i = 0; $i < $page['pg']; $i++) {
-		echo "<a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $i)) ."\">$i</a> ";
-	}
-	echo "<a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $page['pg'] + 1)) ."\">more &raquo;</a>";
-	echo "</p>";
+    echo "<p>";
+
+    for ($i = 0; $i < $page['pg']; $i++) {
+        echo "<a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $i)) ."\">$i</a> ";
+    }
+
+    echo "<a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $page['pg'] + 1)) ."\">more &raquo;</a>";
+    echo "</p>";
 }
 ?>
+
+</div>
