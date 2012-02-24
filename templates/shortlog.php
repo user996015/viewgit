@@ -48,11 +48,25 @@ foreach ($page['shortlog'] as $l) {
         '</td>' .
 
         '<td class="actions">' .
-            '<a href="' . makelink(array('a' => 'commitdiff', 'p' => $page['project'], 'h' => $l['commit_id'])) . '" class="cdiff_link" title="Commit Diff">commitdiff</a>' .
-            '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'])) . '" class="tree_link" title="Tree">tree</a>' .
-            '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'], 't' => 'targz')) . '" rel="nofollow" class="tar_link" title="tar/gz">tar/gz</a>' .
-            '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'], 't' => 'zip')) . '" rel="nofollow" class="zip_link" title="zip">zip</a>' .
-            '<a href="' . makelink(array('a' => 'patch', 'p' => $page['project'], 'h' => $l['commit_id'])) . '" class="patch_link" title="Patch">patch</a>' .
+            '<a href="' . makelink(array('a' => 'commitdiff', 'p' => $page['project'], 'h' => $l['commit_id'])) . '" class="diff" title="Commit Diff">' .
+                '<img alt="diff" src="images/silk/commit_diff.png" />' .
+            '</a>' .
+
+            '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'])) . '" class="tree" title="Tree">' .
+                '<img alt="tree" src="images/silk/chart_organisation.png" />' .
+            '</a>' .
+
+            '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'], 't' => 'targz')) . '" rel="nofollow" class="tar" title="tar/gz">' .
+                '<img alt="tar/gz" src="images/silk/page_white_compressed.png" />' .
+            '</a>' .
+
+            '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'], 't' => 'zip')) . '" rel="nofollow" class="zip" title="zip">' .
+                '<img alt="zip" src="images/silk/page_white_zip.png" />' .
+            '</a>' .
+
+            '<a href="' . makelink(array('a' => 'patch', 'p' => $page['project'], 'h' => $l['commit_id'])) . '" class="patch" title="Patch">' .
+                '<img alt="patch" src="images/silk/page_white_code_red.png" />' .
+            '</a>' .
         '</td>' .
     '</tr>' .
     '';
