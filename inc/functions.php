@@ -3,6 +3,71 @@
  * Functions used by ViewGit.
  */
 
+/**
+ * Format a unix timestamp. Borrowed from websvn.
+ */
+// {{{ datetimeFormatDuration
+//
+// Formats a duration of seconds for display.
+//
+// $seconds the number of seconds until something
+// $nbsp true if spaces should be replaced by nbsp
+// $skipSeconds true if seconds should be omitted
+//
+// return the formatted duration (e.g. @c "8h   6m  1s")
+
+function datetimeFormatDuration($seconds, $nbsp = false, $skipSeconds = false) {
+    //global $lang;
+    $lang = array();
+    $lang['DAYLETTER'] = 'd';
+    $lang['HOURLETTER'] = 'h';
+    $lang['MINUTELETTER'] = 'm';
+    $lang['SECONDLETTER'] = 's';
+
+    $neg = false;
+    if ($seconds < 0) {
+        $seconds = 0 - $seconds;
+        $neg = true;
+    }
+
+    $qty = array();
+    $names = array($lang['DAYLETTER'], $lang['HOURLETTER'], $lang['MINUTELETTER']);
+
+    $qty[] = (int)($seconds / (60 * 60 * 24));
+    $seconds %= 60 * 60 * 24;
+
+    $qty[] = (int)($seconds / (60 * 60));
+    $seconds %= 60 * 60;
+
+    $qty[] = (int)($seconds / 60);
+
+    if (!$skipSeconds) {
+        $qty[] = (int)($seconds % 60);
+        $names[] = $lang['SECONDLETTER'];
+    }
+
+    $text = $neg ? '-' : '';
+    $any = false;
+    $count = count($names);
+    $parts = 0;
+    for ($i = 0; $i < $count; $i++) {
+        // If a "higher valued" time slot had a value or this time slot
+        // has a value or this is the very last entry (i.e. all values
+        // are 0 and we still want to print seconds)
+        if ($any || $qty[$i] > 0 || $i == $count - 1) {
+            if ($any) $text .= $nbsp ? '&nbsp;' : ' ';
+            if ($any && $qty[$i] < 10) $text .= '0';
+            $text .= $qty[$i].$names[$i];
+            $any = true;
+            $parts++;
+            if ($parts >= 2) break;
+        }
+    }
+    return $text;
+}
+
+// }}}
+
 function debug($msg)
 {
 	global $conf;
@@ -321,18 +386,31 @@ function git_get_tags($project)
  * @param tree tree or commit hash
  * @return list of arrays containing name, mode, type, hash
  */
-function git_ls_tree($project, $tree)
+function git_ls_tree($project, $tree, $path='')
 {
-	$entries = array();
-	$output = run_git($project, "ls-tree $tree");
-	// 100644 blob 493b7fc4296d64af45dac64bceac2d9a96c958c1    .gitignore
-	// 040000 tree 715c78b1011dc58106da2a1af2fe0aa4c829542f    doc
-	foreach ($output as $line) {
-		$parts = preg_split('/\s+/', $line, 4);
-		$entries[] = array('name' => $parts[3], 'mode' => $parts[0], 'type' => $parts[1], 'hash' => $parts[2]);
-	}
+    $entries = array();
+    $output = run_git($project, 'ls-tree ' . $tree);
+    // 100644 blob 493b7fc4296d64af45dac64bceac2d9a96c958c1    .gitignore
+    // 040000 tree 715c78b1011dc58106da2a1af2fe0aa4c829542f    doc
+    foreach ($output as $line) {
+        $parts = preg_split('/\s+/', $line, 4);
 
-	return $entries;
+        // Calculate age
+        $command = 'log -n 1 --format="%ct" ' . (empty($path) ? '' : $path . '/') . $parts[3];
+        $out = run_git($project, $command);
+        $committer_date_unix_timestamp = $out['0'];
+        $age = datetimeFormatDuration(time() - $committer_date_unix_timestamp);
+
+        $entries[] = array(
+            'name' => $parts[3],
+            'mode' => $parts[0],
+            'type' => $parts[1],
+            'hash' => $parts[2],
+            'age'  => $age,
+        );
+    }
+
+    return $entries;
 }
 
 /**

@@ -1,4 +1,6 @@
-<h1><?php echo htmlentities_wrapper($page['message_firstline']); ?></h1>
+<h1>
+    <span><?php echo htmlentities_wrapper($page['message_firstline']); ?></span>
+</h1>
 
 <div class="authorinfo">
 <?php
@@ -8,29 +10,27 @@ echo ' ['. $page['author_datetime'] .']';
 </div>
 
 <div class="commitmessage">
-<pre>
-<?php echo htmlentities_wrapper($page['message_full']); ?>
-</pre>
+    <pre><?php echo htmlentities_wrapper($page['message_full']); ?></pre>
 </div>
 
 <div class="filelist">
-<table>
-<thead>
-<tr>
-	<th>Filename</th>
-<?php /*
-	<th>Links</th>
-*/ ?>
-</tr>
-</thead>
-<tbody>
+    <table>
+        <thead>
+            <tr>
+                <th>Filename</th>
+            </tr>
+        </thead>
+        <tbody>
 <?php
 // pathname | patch | blob | history
 foreach ($page['files'] as $file => $url) {
-	echo "<tr>\n";
-	echo "<td><a href=\"#$url\">$file</a></td>";
-	echo "<td>" /* blob | history */ ."</td>";
-	echo "</tr>\n";
+    echo
+        '<tr>' .
+            '<td>' .
+                '<a href="#' . $url . '">' . $file . '</a>' .
+            '</td>' .
+        '</tr>' .
+        '';
 }
 ?>
 </tbody>
@@ -42,4 +42,3 @@ foreach ($page['files'] as $file => $url) {
 <?php echo $page['diffdata']; ?>
 </pre>
 </div>
-

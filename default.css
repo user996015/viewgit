@@ -1,6 +1,217 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* End CSS reset */
+
+.summary {
+}
+    .summary h1,
+    .shortlog h1 {
+    }
+
+        .summary h1 a,
+        .summary h1 span,
+        .shortlog h1 a,
+        .shortlog h1 span,
+        .tree h1 span,
+        .commit h1 span,
+        .commitdiff h1 span {
+            display: block;
+            font-weight: bold;
+            padding: 0.67em 0;
+        }
+
+    .summary table,
+    .shortlog table,
+    .tree table,
+    .commitdiff table {
+        font-family: monospace, courier new;
+        font-size: 90%;
+        table-layout: fixed;
+    }
+
+        .summary th,
+        .summary td,
+        .shortlog th,
+        .shortlog td,
+        .tree th,
+        .tree td,
+        .filelist th,
+        .filelist td,
+        .commitdiff td {
+            vertical-align: middle;
+        }
+
+        .summary th,
+        .shortlog th,
+        .tree th,
+        .filelist th,
+        .commitdiff th {
+            padding: 5px 4px;
+            font-weight: bold;
+        }
+
+        .summary td,
+        .shortlog td,
+        .tree td,
+        .filelist td,
+        .commitdiff td {
+            padding: 3px 4px;
+            white-space: nowrap;
+        }
+
+        .summary .date,
+        .shortlog .date {
+            width: 120px;
+        }
+
+        .summary .author,
+        .shortlog .author {
+            overflow: hidden;
+            width: 200px;
+        }
+
+            .summary .author a,
+            .shortlog .author a {
+                display: block;
+                float: left;
+            }
+
+        .summary .message,
+        .shortlog .message {
+            overflow: hidden;
+        }
+
+            .summary .message a,
+            .shortlog .message a {
+                display: block;
+                float: left;
+            }
+
+        .summary .actions,
+        .shortlog .actions {
+            width: 150px;
+        }
+
+            .summary .actions a,
+            .shortlog .actions a,
+            .tree .download a {
+                display: block;
+                float: left;
+            }
+
+                .summary .actions img,
+                .shortlog .actions img,
+                .tree .download img {
+                    padding: 3px;
+                }
+
+        .tree .perm {
+            width: 80px;
+        }
+
+        .tree .name {
+            overflow: hidden;
+        }
+
+        .tree a.item_name {
+            display: block;
+            min-height: 16px;
+            padding: 4px 0;
+        }
+
+        .tree .dir a.item_name {
+            padding-left: 20px;
+            background: url('images/silk/folder.png') no-repeat 0 50%;
+        }
+
+        .tree .blob a.item_name {
+            padding-left: 20px;
+            background: url('images/silk/page_white_text.png') no-repeat 0 50%;
+        }
+
+        .tree .download {
+            width: 60px;
+        }
+
+.commit {
+}
+
+    .commit table {
+        font-family: monospace, courier new;
+        line-height: 150%;
+    }
+
+    .commitmessage {
+        background: #ffe;
+        border: 1px solid #999;
+        margin: 1em 0;
+    }
+
+        .commitmessage pre {
+            white-space: pre-wrap;                 /* css-3 */
+            white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+            white-space: -pre-wrap;                /* Opera 4-6 */
+            white-space: -o-pre-wrap;              /* Opera 7 */
+            word-wrap: break-word;                 /* Internet Explorer 5.5+ */
+
+            font-family: monospace, courier new;
+            font-size: 100%;
+            padding: 0.5em;
+        }
+
+    .diff {
+        font-family: monospace, courier new;
+    }
+
+
 /**
  * More polished style for ViewGit
- *
  * @author John Lawrence <mail@johnlawrence.net>
  */
 body {
@@ -34,6 +245,11 @@ a.tree_link {
 	overflow: hidden;
 	display: inline-block;
 	background: url('images/silk/chart_organisation.png') no-repeat 50% 50%;
+}
+
+a.tar_link,
+a.zip_link {
+    float: left;
 }
 
 a.tar_link {
@@ -93,10 +309,6 @@ table tr.even {
 	background-color: #f8f8f8;
 	border-bottom: 1px solid #eee;
 	border-top: 1px solid #eee;
-}
-
-table tr.odd td, table tr.even td {
-	padding: 3px 2px;
 }
 
 table tbody tr:hover {
@@ -209,90 +421,7 @@ span.tag {
 	border-bottom: 1px solid #990;
 }
 
-/* shortlog template */
-
-table.shortlog {
-    font-family: monospace, courier new;
-    font-size: 90%;
-    table-layout: fixed;
-}
-
-    table.shortlog td {
-        white-space: nowrap;
-    }
-
-    table.shortlog .date {
-        width: 120px;
-    }
-
-    table.shortlog .author {
-        overflow: hidden;
-        width: 200px;
-    }
-
-    table.shortlog .message {
-        overflow: hidden;
-    }
-
-    table.shortlog .actions {
-        width: 150px;
-    }
-
-/* tree template */
-
-table.tree {
-    font-family: monospace, courier new;
-    font-size: 90%;
-    table-layout: fixed;
-}
-
-    table.tree td {
-        white-space: nowrap;
-    }
-
-    table.tree .perm {
-        width: 80px;
-    }
-
-    table.tree .name {
-        overflow: hidden;
-    }
-
-    table.tree .dir a.item_name {
-        padding-left: 20px;
-        background: url('images/silk/folder.png') no-repeat 0 50%;
-    }
-
-    table.tree .blob a.item_name {
-        padding-left: 20px;
-        background: url('images/silk/page_white_text.png') no-repeat 0 50%;
-    }
-
-    table.tree .dl {
-        width: 60px;
-    }
-
 /* commitdiff template */
-
-.commitmessage {
-	border:1px solid #999;
-	background:#ffe;
-	padding: 0 0.5em;
-	margin: 0.5em;
-	font-size: 1.2em;
-}
-
-    .commitmessage pre {
-        white-space: pre-wrap;                 /* css-3 */
-        white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-        white-space: -pre-wrap;                /* Opera 4-6 */
-        white-space: -o-pre-wrap;              /* Opera 7 */
-        word-wrap: break-word;                 /* Internet Explorer 5.5+ */
-    }
-
-div.diff {
-	font-size: 1.2em;
-}
 
 .diff .add {
 	color: green;
