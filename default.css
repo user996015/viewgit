@@ -59,7 +59,8 @@ table {
         .shortlog h1 a,
         .shortlog h1 span,
         .tree h1 span,
-        .commit h1 span {
+        .commit h1 span,
+        .commitdiff h1 span {
             display: block;
             font-weight: bold;
             padding: 0.67em 0;
@@ -67,7 +68,8 @@ table {
 
     .summary table,
     .shortlog table,
-    .tree table {
+    .tree table,
+    .commitdiff table {
         font-family: monospace, courier new;
         font-size: 90%;
         table-layout: fixed;
@@ -80,14 +82,16 @@ table {
         .tree th,
         .tree td,
         .filelist th,
-        .filelist td {
+        .filelist td,
+        .commitdiff td {
             vertical-align: middle;
         }
 
         .summary th,
         .shortlog th,
         .tree th,
-        .filelist th {
+        .filelist th,
+        .commitdiff th {
             padding: 5px 4px;
             font-weight: bold;
         }
@@ -95,7 +99,8 @@ table {
         .summary td,
         .shortlog td,
         .tree td,
-        .filelist td {
+        .filelist td,
+        .commitdiff td {
             padding: 3px 4px;
             white-space: nowrap;
         }
@@ -178,7 +183,7 @@ table {
 }
 
     .commit table {
-        font-family: courier new, monospace;
+        font-family: monospace, courier new;
         line-height: 150%;
     }
 
@@ -195,10 +200,14 @@ table {
             white-space: -o-pre-wrap;              /* Opera 7 */
             word-wrap: break-word;                 /* Internet Explorer 5.5+ */
 
-            font-family: courier new, monospace;
+            font-family: monospace, courier new;
             font-size: 100%;
             padding: 0.5em;
         }
+
+    .diff {
+        font-family: monospace, courier new;
+    }
 
 
 /**
@@ -413,10 +422,6 @@ span.tag {
 }
 
 /* commitdiff template */
-
-div.diff {
-	font-size: 1.2em;
-}
 
 .diff .add {
 	color: green;
