@@ -556,7 +556,11 @@ function run_git($project, $command, &$ret=0)
     $dir = trim($dir, '\'');
     $cmd = $conf['git'] . ' ' . $command;
     $cwd = getcwd();
-    chdir($dir);
+
+    if (!chdir($dir)) {
+        trigger_error('Failed to chdir to ' . $dir);
+    }
+
 	exec($cmd, $output, $ret);
     chdir($cwd);
 	if ($conf['debug_command_trace']) {
