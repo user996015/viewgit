@@ -46,10 +46,80 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+/* End CSS reset */
+
+/* Summary */
+.summary {
+}
+    .summary h1 {
+    }
+
+        .summary h1 a,
+        .summary h1 span {
+            display: block;
+            font-weight: bold;
+            padding: 0.67em 0;
+        }
+
+    .summary table {
+        font-family: monospace, courier new;
+        font-size: 90%;
+        table-layout: fixed;
+    }
+
+        .summary th,
+        .summary td {
+            vertical-align: middle;
+        }
+
+        .summary th {
+            padding: 5px 4px;
+            font-weight: bold;
+        }
+
+        .summary td {
+            padding: 3px 4px;
+            white-space: nowrap;
+        }
+
+        .summary .date {
+            width: 120px;
+        }
+
+        .summary .author {
+            overflow: hidden;
+            width: 200px;
+        }
+
+            .summary .author a {
+                display: block;
+                float: left;
+            }
+
+        .summary .message {
+            overflow: hidden;
+        }
+
+            .summary .message a {
+                display: block;
+                float: left;
+            }
+
+        .summary .actions {
+            width: 150px;
+        }
+
+            .summary .actions a {
+                display: block;
+                float: left;
+            }
+
+                .summary .actions img {
+                    padding: 3px;
+                }
 
 /**
  * More polished style for ViewGit
- *
  * @author John Lawrence <mail@johnlawrence.net>
  */
 body {
@@ -83,6 +153,11 @@ a.tree_link {
 	overflow: hidden;
 	display: inline-block;
 	background: url('images/silk/chart_organisation.png') no-repeat 50% 50%;
+}
+
+a.tar_link,
+a.zip_link {
+    float: left;
 }
 
 a.tar_link {
@@ -254,35 +329,6 @@ span.tag {
 	border-bottom: 1px solid #990;
 }
 
-/* shortlog template */
-
-table.shortlog {
-    font-family: monospace, courier new;
-    font-size: 90%;
-    table-layout: fixed;
-}
-
-    table.shortlog td {
-        white-space: nowrap;
-    }
-
-    table.shortlog .date {
-        width: 120px;
-    }
-
-    table.shortlog .author {
-        overflow: hidden;
-        width: 200px;
-    }
-
-    table.shortlog .message {
-        overflow: hidden;
-    }
-
-    table.shortlog .actions {
-        width: 150px;
-    }
-
 /* tree template */
 
 table.tree {
@@ -306,7 +352,7 @@ table.tree {
     table.tree a.item_name {
         display: block;
         min-height: 16px;
-        padding: 2px 0;
+        padding: 4px 0;
     }
 
     table.tree .dir a.item_name {
