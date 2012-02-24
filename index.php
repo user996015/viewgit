@@ -466,7 +466,7 @@ elseif ($action === 'tree') {
 	}
 
 	$page['subtitle'] = "Tree ". substr($page['tree_id'], 0, 6);
-	$page['entries'] = git_ls_tree($page['project'], $page['tree_id']);
+	$page['entries'] = git_ls_tree($page['project'], $page['tree_id'], $page['path']);
 }
 /*
  * View a blob as inline, embedded on the page.
