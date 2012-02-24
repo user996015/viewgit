@@ -386,18 +386,32 @@ function git_get_tags($project)
  * @param tree tree or commit hash
  * @return list of arrays containing name, mode, type, hash
  */
-function git_ls_tree($project, $tree)
+function git_ls_tree($project, $tree, $path='')
 {
-	$entries = array();
-	$output = run_git($project, "ls-tree $tree");
-	// 100644 blob 493b7fc4296d64af45dac64bceac2d9a96c958c1    .gitignore
-	// 040000 tree 715c78b1011dc58106da2a1af2fe0aa4c829542f    doc
-	foreach ($output as $line) {
-		$parts = preg_split('/\s+/', $line, 4);
-		$entries[] = array('name' => $parts[3], 'mode' => $parts[0], 'type' => $parts[1], 'hash' => $parts[2]);
-	}
+    $entries = array();
+    $output = run_git($project, 'ls-tree ' . $tree);
+    // 100644 blob 493b7fc4296d64af45dac64bceac2d9a96c958c1    .gitignore
+    // 040000 tree 715c78b1011dc58106da2a1af2fe0aa4c829542f    doc
+    foreach ($output as $line) {
+        $parts = preg_split('/\s+/', $line, 4);
 
-	return $entries;
+        // Calculate age
+        $command = 'log -n 1 --format="%ct" ' . (empty($path) ? '' : $path . '/') . $parts[3];
+        echo $command . "\n";
+        $out = run_git($project, $command);
+        $committer_date_unix_timestamp = $out['0'];
+        $age = datetimeFormatDuration(time() - $committer_date_unix_timestamp);
+
+        $entries[] = array(
+            'name' => $parts[3],
+            'mode' => $parts[0],
+            'type' => $parts[1],
+            'hash' => $parts[2],
+            'age'  => $age,
+        );
+    }
+
+    return $entries;
 }
 
 /**
