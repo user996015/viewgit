@@ -48,7 +48,6 @@ table {
 }
 /* End CSS reset */
 
-/* Summary */
 .summary {
 }
     .summary h1,
@@ -58,14 +57,16 @@ table {
         .summary h1 a,
         .summary h1 span,
         .shortlog h1 a,
-        .shortlog h1 span {
+        .shortlog h1 span,
+        .tree h1 span {
             display: block;
             font-weight: bold;
             padding: 0.67em 0;
         }
 
     .summary table,
-    .shortlog table {
+    .shortlog table,
+    .tree table {
         font-family: monospace, courier new;
         font-size: 90%;
         table-layout: fixed;
@@ -74,18 +75,22 @@ table {
         .summary th,
         .summary td,
         .shortlog th,
-        .shortlog td {
+        .shortlog td,
+        .tree th,
+        .tree td {
             vertical-align: middle;
         }
 
         .summary th,
-        .shortlog th {
+        .shortlog th,
+        .tree th {
             padding: 5px 4px;
             font-weight: bold;
         }
 
         .summary td,
-        .shortlog td {
+        .shortlog td,
+        .tree td {
             padding: 3px 4px;
             white-space: nowrap;
         }
@@ -124,15 +129,45 @@ table {
         }
 
             .summary .actions a,
-            .shortlog .actions a {
+            .shortlog .actions a,
+            .tree .download a {
                 display: block;
                 float: left;
             }
 
                 .summary .actions img,
-                .shortlog .actions img {
+                .shortlog .actions img,
+                .tree .download img {
                     padding: 3px;
                 }
+
+        .tree .perm {
+            width: 80px;
+        }
+
+        .tree .name {
+            overflow: hidden;
+        }
+
+        .tree a.item_name {
+            display: block;
+            min-height: 16px;
+            padding: 4px 0;
+        }
+
+        .tree .dir a.item_name {
+            padding-left: 20px;
+            background: url('images/silk/folder.png') no-repeat 0 50%;
+        }
+
+        .tree .blob a.item_name {
+            padding-left: 20px;
+            background: url('images/silk/page_white_text.png') no-repeat 0 50%;
+        }
+
+        .tree .download {
+            width: 60px;
+        }
 
 /**
  * More polished style for ViewGit
@@ -344,46 +379,6 @@ span.tag {
 	border-right: 1px solid #990;
 	border-bottom: 1px solid #990;
 }
-
-/* tree template */
-
-table.tree {
-    font-family: monospace, courier new;
-    font-size: 90%;
-    table-layout: fixed;
-}
-
-    table.tree td {
-        white-space: nowrap;
-    }
-
-    table.tree .perm {
-        width: 80px;
-    }
-
-    table.tree .name {
-        overflow: hidden;
-    }
-
-    table.tree a.item_name {
-        display: block;
-        min-height: 16px;
-        padding: 4px 0;
-    }
-
-    table.tree .dir a.item_name {
-        padding-left: 20px;
-        background: url('images/silk/folder.png') no-repeat 0 50%;
-    }
-
-    table.tree .blob a.item_name {
-        padding-left: 20px;
-        background: url('images/silk/page_white_text.png') no-repeat 0 50%;
-    }
-
-    table.tree .dl {
-        width: 60px;
-    }
 
 /* commitdiff template */
 
