@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title><?php echo $page['title']; ?></title>
-    <link rel="stylesheet" href="<?php echo $conf['style']; ?>.css" type="text/css" />
+    <link rel="stylesheet" href="css/<?php echo $conf['style']; ?>.css" type="text/css" />
     <link rel="icon" type="image/png" href="favicon.png" />
 <?php
 if (isset($page['project'])) {

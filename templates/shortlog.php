@@ -50,23 +50,23 @@ foreach ($page['shortlog'] as $l) {
 
         '<td class="actions">' .
             '<a href="' . makelink(array('a' => 'commitdiff', 'p' => $page['project'], 'h' => $l['commit_id'])) . '" class="diff" title="Commit Diff">' .
-                '<img alt="diff" src="images/silk/commit_diff.png" />' .
+                '<img alt="diff" src="img/silk/commit_diff.png" />' .
             '</a>' .
 
             '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'])) . '" class="tree" title="Tree">' .
-                '<img alt="tree" src="images/silk/chart_organisation.png" />' .
+                '<img alt="tree" src="img/silk/chart_organisation.png" />' .
             '</a>' .
 
             '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'], 't' => 'targz')) . '" rel="nofollow" class="tar" title="tar/gz">' .
-                '<img alt="tar/gz" src="images/silk/page_white_compressed.png" />' .
+                '<img alt="tar/gz" src="img/silk/page_white_compressed.png" />' .
             '</a>' .
 
             '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $l['tree'], 'hb' => $l['commit_id'], 't' => 'zip')) . '" rel="nofollow" class="zip" title="zip">' .
-                '<img alt="zip" src="images/silk/page_white_zip.png" />' .
+                '<img alt="zip" src="img/silk/page_white_zip.png" />' .
             '</a>' .
 
             '<a href="' . makelink(array('a' => 'patch', 'p' => $page['project'], 'h' => $l['commit_id'])) . '" class="patch" title="Patch">' .
-                '<img alt="patch" src="images/silk/page_white_code_red.png" />' .
+                '<img alt="patch" src="img/silk/page_white_code_red.png" />' .
             '</a>' .
         '</td>' .
     '</tr>' .

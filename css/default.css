@@ -167,12 +167,12 @@ table {
 
         .tree .dir a.item_name {
             padding-left: 20px;
-            background: url('images/silk/folder.png') no-repeat 0 50%;
+            background: url('../img/silk/folder.png') no-repeat 0 50%;
         }
 
         .tree .blob a.item_name {
             padding-left: 20px;
-            background: url('images/silk/page_white_text.png') no-repeat 0 50%;
+            background: url('../img/silk/page_white_text.png') no-repeat 0 50%;
         }
 
         .tree .download {
@@ -244,7 +244,7 @@ a.tree_link {
 	width: 22px;
 	overflow: hidden;
 	display: inline-block;
-	background: url('images/silk/chart_organisation.png') no-repeat 50% 50%;
+	background: url('../img/silk/chart_organisation.png') no-repeat 50% 50%;
 }
 
 a.tar_link,
@@ -258,7 +258,7 @@ a.tar_link {
 	width: 22px;
 	overflow: hidden;
 	display: inline-block;
-	background: url('images/silk/page_white_compressed.png') no-repeat 50% 50%;
+	background: url('../img/silk/page_white_compressed.png') no-repeat 50% 50%;
 }
 
 a.zip_link{
@@ -267,7 +267,7 @@ a.zip_link{
 	width: 22px;
 	overflow: hidden;
 	display: inline-block;
-	background: url('images/silk/page_white_zip.png') no-repeat 50% 50%;
+	background: url('../img/silk/page_white_zip.png') no-repeat 50% 50%;
 }
 
 a.cdiff_link {
@@ -276,7 +276,7 @@ a.cdiff_link {
 	width: 22px;
 	overflow: hidden;
 	display: inline-block;
-	background: url('images/silk/commit_diff.png') no-repeat 50% 50%;
+	background: url('../img/silk/commit_diff.png') no-repeat 50% 50%;
 }
 
 a.patch_link {
@@ -285,7 +285,7 @@ a.patch_link {
 	width: 22px;
 	overflow: hidden;
 	display: inline-block;
-	background: url('images/silk/page_white_code_red.png') no-repeat 50% 50%;
+	background: url('../img/silk/page_white_code_red.png') no-repeat 50% 50%;
 }
 
 h1 {
@@ -349,7 +349,7 @@ table th {
 	font-size: 1.4em;
 	padding: 20px;
 	margin: 0;
-	background:#333 url('images/viewgit.png') no-repeat 98% 50%;
+	background:#333 url('../img/viewgit.png') no-repeat 98% 50%;
 	border-bottom: 1px solid #000;
 	color: #eee;
 }
