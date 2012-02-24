@@ -51,70 +51,86 @@ table {
 /* Summary */
 .summary {
 }
-    .summary h1 {
+    .summary h1,
+    .shortlog h1 {
     }
 
         .summary h1 a,
-        .summary h1 span {
+        .summary h1 span,
+        .shortlog h1 a,
+        .shortlog h1 span {
             display: block;
             font-weight: bold;
             padding: 0.67em 0;
         }
 
-    .summary table {
+    .summary table,
+    .shortlog table {
         font-family: monospace, courier new;
         font-size: 90%;
         table-layout: fixed;
     }
 
         .summary th,
-        .summary td {
+        .summary td,
+        .shortlog th,
+        .shortlog td {
             vertical-align: middle;
         }
 
-        .summary th {
+        .summary th,
+        .shortlog th {
             padding: 5px 4px;
             font-weight: bold;
         }
 
-        .summary td {
+        .summary td,
+        .shortlog td {
             padding: 3px 4px;
             white-space: nowrap;
         }
 
-        .summary .date {
+        .summary .date,
+        .shortlog .date {
             width: 120px;
         }
 
-        .summary .author {
+        .summary .author,
+        .shortlog .author {
             overflow: hidden;
             width: 200px;
         }
 
-            .summary .author a {
+            .summary .author a,
+            .shortlog .author a {
                 display: block;
                 float: left;
             }
 
-        .summary .message {
+        .summary .message,
+        .shortlog .message {
             overflow: hidden;
         }
 
-            .summary .message a {
+            .summary .message a,
+            .shortlog .message a {
                 display: block;
                 float: left;
             }
 
-        .summary .actions {
+        .summary .actions,
+        .shortlog .actions {
             width: 150px;
         }
 
-            .summary .actions a {
+            .summary .actions a,
+            .shortlog .actions a {
                 display: block;
                 float: left;
             }
 
-                .summary .actions img {
+                .summary .actions img,
+                .shortlog .actions img {
                     padding: 3px;
                 }
 
