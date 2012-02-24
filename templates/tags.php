@@ -1,5 +1,5 @@
 <h1>
-    <span>Tags</span>
+    <a href="<?php echo makelink(array('a' => 'tags', 'p' => $page['project'])); ?>">Tags</a>
 </h1>
 
 <table class="heads">

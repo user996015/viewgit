@@ -3,10 +3,6 @@ require_once('templates/shortlog.php');
 require_once('templates/tags.php');
 ?>
 
-<p>
-    <a href="<?php echo makelink(array('a' => 'tags', 'p' => $page['project'])) ?>">View all tags</a>
-</p>
-
 <h1>
     <span>Heads</span>
 </h1>
