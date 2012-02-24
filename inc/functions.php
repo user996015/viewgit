@@ -17,7 +17,12 @@
 // return the formatted duration (e.g. @c "8h   6m  1s")
 
 function datetimeFormatDuration($seconds, $nbsp = false, $skipSeconds = false) {
-    global $lang;
+    //global $lang;
+    $lang = array();
+    $lang['DAYLETTER'] = 'd';
+    $lang['HOURLETTER'] = 'h';
+    $lang['MINUTELETTER'] = 'm';
+    $lang['SECONDLETTER'] = 's';
 
     $neg = false;
     if ($seconds < 0) {
