@@ -15,7 +15,7 @@ if (isset($page['project'])) {
 	<meta name="generator" content="ViewGit" />
 <?php VGPlugin::call_hooks('header'); ?>
 </head>
-<body>
+<body class="<?php echo $page['action']; ?>">
 
 <?php
 VGPlugin::call_hooks('page_start');
