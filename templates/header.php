@@ -1,12 +1,10 @@
-<?php
-echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html id="top">
 <head>
-	<title><?php echo $page['title']; ?></title>
-	<link rel="stylesheet" href="<?php echo $conf['style']; ?>.css" type="text/css" />
-	<link rel="icon" type="image/png" href="favicon.png" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title><?php echo $page['title']; ?></title>
+    <link rel="stylesheet" href="<?php echo $conf['style']; ?>.css" type="text/css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
 <?php
 if (isset($page['project'])) {
 	echo "\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"". htmlentities_wrapper($page['project']) ." log\" href=\"". makelink(array('a' => 'rss-log', 'p' => $page['project'])) ."\" />\n";
@@ -98,4 +96,3 @@ foreach ($opts as $opt) {
 </form>
 </div>
 <?php } ?>
-
