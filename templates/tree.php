@@ -1,8 +1,9 @@
 <table class="tree">
     <thead>
         <tr>
-            <th class="perm">Permissions</th>
+            <th class="perm">Permission</th>
             <th class="name">Name</th>
+            <th class="age">Age</th>
             <th class="dl">Download</th>
         </tr>
     </thead>
@@ -24,7 +25,7 @@ foreach ($entries as $e) {
 $sorted_entries = array_merge($folders, $files);
 
 foreach ($sorted_entries as $e) {
-    $tr_class = $tr_class == "odd" ? "even" : "odd";
+    $tr_class = $tr_class == 'odd' ? 'even' : 'odd';
 
     if (strlen($page['path']) > 0) {
         $path = $page['path'] .'/'. $e['name'];
@@ -42,6 +43,9 @@ foreach ($sorted_entries as $e) {
                 '<td class="name">' .
                     '<a href="' . makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) . '" class="item_name">' . htmlspecialchars($e['name']) . '</a>' .
                 '</td>' .
+                '<td class="age">' .
+                    $e['age'] .
+                '</td>' .
                 '<td class="dl">' .
                     '<a href="' . makelink(array('a' => 'blob', 'p' => $page['project'], 'h' => $e['hash'], 'n' => $e['name'])) . '">blob</a>' .
                 '</td>' .
@@ -56,6 +60,9 @@ foreach ($sorted_entries as $e) {
                 '</td>' .
                 '<td class="name">' .
                     '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) . '" class="item_name">' . htmlspecialchars($e['name']) . '/</a>' .
+                '</td>' .
+                '<td class="age">' .
+                    $e['age'] .
                 '</td>' .
                 '<td class="dl">' .
                     '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'targz', 'n' => $e['name'])) . '" class="tar_link" title="tar/gz">tar.gz</a>' .
