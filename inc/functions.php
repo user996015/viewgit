@@ -409,8 +409,13 @@ function git_ls_tree($project, $tree, $path='')
         // Calculate age
         $command = 'log -n 1 --format="%ct" ' . (empty($path) ? '' : $path . '/') . $parts[3];
         $out = run_git($project, $command);
-        $committer_date_unix_timestamp = $out['0'];
-        $age = datetimeFormatDuration(time() - $committer_date_unix_timestamp);
+
+        $age = '';
+
+        if (isset($out['0'])) {
+            $committer_date_unix_timestamp = $out['0'];
+            $age = datetimeFormatDuration(time() - $committer_date_unix_timestamp);
+        }
 
         $entries[] = array(
             'name' => $parts[3],
