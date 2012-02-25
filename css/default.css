@@ -69,7 +69,8 @@ table {
     .summary table,
     .shortlog table,
     .tree table,
-    .commitdiff table {
+    .commitdiff table,
+    .index table {
         font-family: monospace, courier new;
         font-size: 90%;
         table-layout: fixed;
@@ -83,7 +84,8 @@ table {
         .tree td,
         .filelist th,
         .filelist td,
-        .commitdiff td {
+        .commitdiff td,
+        .index td {
             vertical-align: middle;
         }
 
@@ -91,16 +93,19 @@ table {
         .shortlog th,
         .tree th,
         .filelist th,
-        .commitdiff th {
-            padding: 5px 4px;
+        .commitdiff th,
+        .index th {
             font-weight: bold;
+            padding: 5px 4px;
+            white-space: nowrap;
         }
 
         .summary td,
         .shortlog td,
         .tree td,
         .filelist td,
-        .commitdiff td {
+        .commitdiff td,
+        .index td {
             padding: 3px 4px;
             white-space: nowrap;
         }
@@ -118,12 +123,11 @@ table {
 
             .summary .author a,
             .shortlog .author a {
-                display: block;
-                float: left;
             }
 
         .summary .message,
-        .shortlog .message {
+        .shortlog .message,
+        .index .message {
             overflow: hidden;
         }
 
@@ -134,7 +138,8 @@ table {
             }
 
         .summary .actions,
-        .shortlog .actions {
+        .shortlog .actions,
+        .index .actions {
             width: 150px;
         }
 
@@ -147,7 +152,8 @@ table {
 
                 .summary .actions img,
                 .shortlog .actions img,
-                .tree .download img {
+                .tree .download img,
+                .index .actions img {
                     padding: 3px;
                 }
 
@@ -178,6 +184,36 @@ table {
         .tree .download {
             width: 60px;
         }
+
+        .index {
+        }
+
+            .index td {
+                overflow: hidden;
+            }
+
+            .project {
+                overflow: hidden;
+                width: 100px;
+            }
+
+            .description {
+                width: 100px;
+            }
+
+            .age {
+                width: 50px;
+            }
+
+            td.age {
+                text-align: right;
+            }
+
+            .message {
+            }
+
+            .actions {
+            }
 
 .commit {
 }

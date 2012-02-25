@@ -94,16 +94,27 @@ function fix_encoding($in_str)
 /**
  * Format author's name & wrap it to links etc.
  */
-function format_author($author)
-{
-	global $page;
+function format_author($author, $page_project='') {
+    global $page;
 
-	if (isset($page['project'])) {
-		// FIXME 'h' - use only if available
-		return '<a href="'. makelink(array('a' => 'search', 'p' => $page['project'], 'h' => 'HEAD', 'st' => 'author', 's' => $author)) .'">'. htmlentities_wrapper($author) .'</a>';
-	} else {
-		return htmlentities_wrapper($author);
-	}
+    $project = $page['project'];
+
+    if (!empty($page_project)) {
+        $project = $page_project;
+    }
+
+    $author_link = htmlentities_wrapper($author);
+
+    if (!empty($project)) {
+        $author_link =
+            '[' .
+            '<a href="' . makelink(array('a' => 'search', 'p' => $project, 'h' => 'HEAD', 'st' => 'author', 's' => $author)) . '">' .
+                htmlentities_wrapper($author) .
+            '</a>' .
+            ']';
+    }
+
+    return $author_link;
 }
 
 /**
@@ -164,11 +175,11 @@ function get_project_info($name)
 	}
 
 	$headinfo = git_get_commit_info($name, 'HEAD');
+    $info = array_merge($info, $headinfo);
 	$info['head_stamp'] = $headinfo['author_utcstamp'];
 	$info['head_datetime'] = strftime($conf['datetime'], $headinfo['author_utcstamp']);
 	$info['head_hash'] = $headinfo['h'];
 	$info['head_tree'] = $headinfo['tree'];
-	$info['message'] = $headinfo['message'];
 
 	return $info;
 }

@@ -28,7 +28,7 @@ foreach ($page['heads'] as $h) {
             '<td>' . $h[date] . '</td>' .
             '<td>' .
                 '<a href="' . makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $h['fullname'])) . '">' .
-                    $h[name] .
+                    $h['name'] .
                 '</a>' .
             '</td>' .
             '<td></td>' .
