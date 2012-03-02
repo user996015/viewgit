@@ -177,6 +177,14 @@ table {
             background: url('../img/silk/page_white_text.png') no-repeat 0 50%;
         }
 
+        .tree .name {
+            width: 200px;
+        }
+
+        .tree .age {
+            width: 60px;
+        }
+
         .tree .download {
             width: 60px;
         }

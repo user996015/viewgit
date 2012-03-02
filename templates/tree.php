@@ -8,7 +8,10 @@
             <tr>
                 <th class="name">Name</th>
                 <th class="age">Age</th>
+                <th class="message">Message</th>
+                <?php /*
                 <th class="download">Download</th>
+                */ ?>
             </tr>
         </thead>
         <tbody>
@@ -39,38 +42,44 @@ foreach ($sorted_entries as $e) {
     }
 
     $safe_name = htmlspecialchars($e['name']);
+    $type = $e['type'] === 'blob' ? 'blob' : 'dir';
+    $class = $type . ' ' . $tr_class;
+    $title = '[' . $e['mode'] . '] ' . $safe_name;
+    $message = $e['message'];
 
-    if ($e['type'] === 'blob') {
-        echo
-            '<tr class="blob ' . $tr_class . '">' .
-                '<td class="name">' .
-                    '<a href="' . makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) . '" class="item_name" title="' . $safe_name . ' [' . $e['mode'] . ']">' . $safe_name  . '</a>' .
-                '</td>' .
-                '<td class="age">' .
-                    $e['age'] .
-                '</td>' .
-                '<td class="download">' .
-                    '<a href="' . makelink(array('a' => 'blob', 'p' => $page['project'], 'h' => $e['hash'], 'n' => $e['name'])) . '">blob</a>' .
-                '</td>' .
-            '</tr>' .
-            '';
+    if ($type === 'blob') {
+        $link = makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path));
+        $age = $e['age'];
+        $download_link = makelink(array('a' => 'blob', 'p' => $page['project'], 'h' => $e['hash'], 'n' => $e['name']));
+        $download = '<a href="' . $download_link  . '">blob</a>';
     }
     else {
-        echo
-            '<tr class="dir ' . $tr_class . '">' .
-                '<td class="name">' .
-                    '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) . '" class="item_name" title="' . $safe_name . ' [' . $e['mode'] . ']">' . $safe_name  . '</a>' .
-                '</td>' .
-                '<td class="age">' .
-                    $e['age'] .
-                '</td>' .
-                '<td class="download">' .
-                    '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'targz', 'n' => $e['name'])) . '" class="tar_link" title="tar/gz">tar.gz</a>' .
-                    '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'zip', 'n' => $e['name'])) . '" class="zip_link" title="zip">zip</a>' .
-                '</td>' .
-            '</tr>' .
+        $link = makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path));
+        $age = $e['age'];
+        $download =
+            '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'targz', 'n' => $e['name'])) . '" class="tar_link" title="tar/gz">tar.gz</a>' .
+            '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'zip', 'n' => $e['name'])) . '" class="zip_link" title="zip">zip</a>' .
             '';
     }
+
+    $name = '<a href="' . $link . '" class="item_name" title="' . $title . '">' . $safe_name  . '</a>';
+
+    echo
+        '<tr class="' . $class . '">' .
+            '<td class="name">' .
+                $name .
+            '</td>' .
+            '<td class="age">' .
+                $age .
+            '</td>' .
+            '<td class="message">' .
+                $message .
+            '</td>' .
+            //'<td class="download">' .
+                //$download .
+            //'</td>' .
+        '</tr>' .
+        '';
 }
 ?>
         </tbody>
