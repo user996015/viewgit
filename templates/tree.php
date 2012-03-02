@@ -6,7 +6,6 @@
     <table>
         <thead>
             <tr>
-                <th class="perm">Permission</th>
                 <th class="name">Name</th>
                 <th class="age">Age</th>
                 <th class="download">Download</th>
@@ -39,14 +38,13 @@ foreach ($sorted_entries as $e) {
         $path = $e['name'];
     }
 
+    $safe_name = htmlspecialchars($e['name']);
+
     if ($e['type'] === 'blob') {
         echo
             '<tr class="blob ' . $tr_class . '">' .
-                '<td class="perm">' .
-                    $e[mode] .
-                '</td>' .
                 '<td class="name">' .
-                    '<a href="' . makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) . '" class="item_name">' . htmlspecialchars($e['name']) . '</a>' .
+                    '<a href="' . makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) . '" class="item_name" title="' . $safe_name . ' [' . $e['mode'] . ']">' . $safe_name  . '</a>' .
                 '</td>' .
                 '<td class="age">' .
                     $e['age'] .
@@ -60,11 +58,8 @@ foreach ($sorted_entries as $e) {
     else {
         echo
             '<tr class="dir ' . $tr_class . '">' .
-                '<td class="perm">' .
-                    $e[mode] .
-                '</td>' .
                 '<td class="name">' .
-                    '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) . '" class="item_name">' . htmlspecialchars($e['name']) . '/</a>' .
+                    '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path)) . '" class="item_name" title="' . $safe_name . ' [' . $e['mode'] . ']">' . $safe_name  . '</a>' .
                 '</td>' .
                 '<td class="age">' .
                     $e['age'] .
