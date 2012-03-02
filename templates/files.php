@@ -52,7 +52,7 @@ foreach ($sorted_entries as $e) {
         $download = '<a href="' . $download_link  . '">blob</a>';
     }
     else {
-        $link = makelink(array('a' => 'tree', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path));
+        $link = makelink(array('a' => 'files', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path));
         $age = $e['age'];
         $download =
             '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 't' => 'targz', 'n' => $e['name'])) . '" class="tar_link" title="tar/gz">tar.gz</a>' .
@@ -95,7 +95,7 @@ echo
             '</a>' .
             '. Browse this tree at the ' .
 
-            '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'hb' => 'HEAD', 'f' => $page['path'])) . '">' .
+            '<a href="' . makelink(array('a' => 'files', 'p' => $page['project'], 'hb' => 'HEAD', 'f' => $page['path'])) . '">' .
                 'HEAD' .
             '</a>' .
             '.' .
