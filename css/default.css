@@ -427,20 +427,35 @@ table th {
             padding: 8px;
         }
 
-            .authorinfo .age {
-                color: #999;
-                font-size: 120%;
-            }
-
             .authorinfo a {
-                color: #4183c4;
-                font-size: 120%;
                 text-decoration: none;
             }
 
             .authorinfo a:hover {
                 text-decoration: underline;
             }
+
+            .authorinfo .author {
+            }
+
+                .authorinfo .author a {
+                    color: #4183c4;
+                }
+
+            .authorinfo .age {
+                color: #999;
+            }
+
+            .authorinfo .commit {
+                color: #888;
+                display: block;
+                float: right;
+            }
+
+                .authorinfo .commit a {
+                    color: #444;
+                    font-family: 'Monaco', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'monospace';
+                }
 
     .filelist {
     }
