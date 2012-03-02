@@ -71,9 +71,10 @@ table {
     .tree table,
     .commitdiff table,
     .index table {
-        font-family: monospace, courier new;
+        font-family: 'Monaco', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'monospace';
         font-size: 90%;
         table-layout: fixed;
+        overflow-x: hidden;
     }
 
         .summary th,
@@ -156,6 +157,15 @@ table {
                 .index .actions img {
                     padding: 3px;
                 }
+
+        .tree .tree a {
+            color: #4183c4;
+            text-decoration: none;
+        }
+
+        .tree .tree a:hover {
+            text-decoration: underline;
+        }
 
         .tree .name {
             overflow: hidden;
