@@ -1,17 +1,22 @@
-<h1>
-    <span><?php echo htmlentities_wrapper($page['message_firstline']); ?></span>
-</h1>
-
-<div class="authorinfo">
 <?php
-echo format_author($page['author_name']);
-echo ' ['. $page['author_datetime'] .']';
+echo
+    '<div class="commitmessage">' .
+        '<pre>' .
+            //htmlentities_wrapper($page['message_full']) .
+            htmlentities_wrapper($page['message_firstline']) .
+        '</pre>' .
+        '<div class="authorinfo">' .
+            format_author($page['author_name']) .
+            ' ' .
+            '<span class="age">' .
+                'authored ' .
+                datetimeFormatDuration(time() - strtotime(htmlentities_wrapper($page['author_datetime']))) .
+                ' ago' .
+            '</span>' .
+        '</div>' .
+    '</div>' .
+    '';
 ?>
-</div>
-
-<div class="commitmessage">
-    <pre><?php echo htmlentities_wrapper($page['message_full']); ?></pre>
-</div>
 
 <div class="filelist">
     <table>

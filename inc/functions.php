@@ -107,11 +107,12 @@ function format_author($author, $page_project='') {
 
     if (!empty($project)) {
         $author_link =
-            '[' .
+            //'[' .
             '<a href="' . makelink(array('a' => 'search', 'p' => $project, 'h' => 'HEAD', 'st' => 'author', 's' => $author)) . '">' .
                 htmlentities_wrapper($author) .
             '</a>' .
-            ']';
+            //']' .
+            '';
     }
 
     return $author_link;
