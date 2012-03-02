@@ -48,6 +48,57 @@ table {
 }
 /* End CSS reset */
 
+#nav {
+}
+
+#page_body {
+}
+
+    .pagenav {
+        margin: 10px 0;
+    }
+
+        .pagenav ul {
+            border-bottom: 1px solid #ddd;
+        }
+
+            .pagenav li {
+                display: inline-block;
+            }
+
+            .pagenav .active {
+            }
+
+                .pagenav .active a {
+                    background-color: #fff;
+                    color: #333;
+                    font-weight: bold;
+                    border-left: 1px solid #ddd;
+                    border-top: 1px solid #ddd;
+                    border-right: 1px solid #ddd;
+                    border-top-left-radius: 3px;
+                    border-top-right-radius: 3px;
+                }
+
+                .pagenav a {
+                    border-left: 1px solid transparent;
+                    border-top: 1px solid transparent;
+                    border-right: 1px solid transparent;
+                    color: #666;
+                    font-size: 110%;
+                    display: inline-block;
+                    margin-bottom: -1px;
+                    padding: 8px 12px;
+                    text-decoration: none;
+                }
+
+                .pagenav a:hover {
+                    text-decoration: underline;
+                }
+
+        .pagenav form {
+        }
+
 .summary {
 }
     .summary h1,
@@ -498,26 +549,6 @@ table th {
 
 div#page_body {
 	margin: 10px 20px;
-}
-
-.pagenav {
-	margin-top: 0.3em;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	border-top: 1px solid #333;
-	border-bottom: 1px solid #333;
-}
-
-.pagenav a {
-	text-decoration: none;
-}
-
-.pagenav a:hover {
-	text-decoration: underline;
-}
-
-.pagenav .cur {
-	font-weight: bold;
 }
 
 .search {
