@@ -133,6 +133,117 @@
                     .commits .authorship time {
                     }
 
+    .files-page {
+    }
+
+        .files table {
+            border: 1px solid #cacaca;
+            border-radius: 3px 3px 3px 3px;
+            width: 100%;
+        }
+
+            .files th {
+                background-color: #fafafa;
+                background-image: -moz-linear-gradient(#fafafa, #eaeaea);
+                border-bottom: 1px solid #d8d8d8;
+                color: #555555;
+                font-weight: bold;
+                padding: 8px 3px;
+                text-align: left;
+                text-shadow: 0 1px 0 #ffffff;
+                text-transform: lowercase;
+            }
+
+            .files td {
+                background-color: #f8f8f8;
+                border-bottom: 1px solid #eeeeee;
+                color: #484848;
+                padding: 8px 3px;
+                vertical-align: middle;
+            }
+
+            .files tbody tr:last-child td {
+                border-bottom: 0;
+            }
+
+            .files .name {
+                padding-left: 25px;
+            }
+
+            .files tbody .name {
+                background-image: url("../img/silk/folder.png");
+                background-position: 4px 4px;
+                background-repeat: no-repeat;
+            }
+
+            .files a {
+                color: #4183c4;
+                text-decoration: none;
+            }
+
+            .files p {
+                margin: 10px 0;
+            }
+
+/*
+.tree .tree a {
+    color: #4183c4;
+    text-decoration: none;
+}
+
+.tree .tree a:hover {
+    text-decoration: underline;
+}
+
+.tree .name {
+    overflow: hidden;
+}
+
+.tree a.item_name {
+    display: block;
+    min-height: 16px;
+    padding: 4px 0;
+}
+
+.tree .dir a.item_name {
+}
+
+.tree .blob a.item_name {
+    padding-left: 20px;
+    background: url('../img/silk/page_white_text.png') no-repeat 0 50%;
+}
+
+.tree .name {
+    width: 200px;
+}
+
+.tree .age {
+    width: 60px;
+}
+
+.tree .download {
+    width: 60px;
+}
+
+table tr.even {
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+}
+
+table tbody tr:hover {
+	background-color: #e0ffe0;
+}
+
+table th {
+	background-color: #cfcfcf;
+	text-align: left;
+	border-bottom: 1px solid #666;
+	border-top: 1px solid #666;
+	padding: 6px 2px;
+}
+*/
+
 .summary {
 }
     .summary h1,
@@ -242,47 +353,6 @@
                 .index .actions img {
                     padding: 3px;
                 }
-
-        .tree .tree a {
-            color: #4183c4;
-            text-decoration: none;
-        }
-
-        .tree .tree a:hover {
-            text-decoration: underline;
-        }
-
-        .tree .name {
-            overflow: hidden;
-        }
-
-        .tree a.item_name {
-            display: block;
-            min-height: 16px;
-            padding: 4px 0;
-        }
-
-        .tree .dir a.item_name {
-            padding-left: 20px;
-            background: url('../img/silk/folder.png') no-repeat 0 50%;
-        }
-
-        .tree .blob a.item_name {
-            padding-left: 20px;
-            background: url('../img/silk/page_white_text.png') no-repeat 0 50%;
-        }
-
-        .tree .name {
-            width: 200px;
-        }
-
-        .tree .age {
-            width: 60px;
-        }
-
-        .tree .download {
-            width: 60px;
-        }
 
         .index {
         }
@@ -521,26 +591,6 @@ h2 {
 table {
 	width: 100%;
 	border-collapse: collapse;
-}
-
-table tr.even {
-	background-color: #f8f8f8;
-	border-bottom: 1px solid #eee;
-	border-top: 1px solid #eee;
-}
-
-/*
-table tbody tr:hover {
-	background-color: #e0ffe0;
-}
-*/
-
-table th {
-	background-color: #cfcfcf;
-	text-align: left;
-	border-bottom: 1px solid #666;
-	border-top: 1px solid #666;
-	padding: 6px 2px;
 }
 
 .notices {

@@ -1,21 +1,18 @@
-<div class="tree">
-    <h1>
-        <span>Tree</span>
-    </h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th class="name">Name</th>
-                <th class="age">Age</th>
-                <th class="message">Message</th>
-                <?php /*
-                <th class="download">Download</th>
-                */ ?>
-            </tr>
-        </thead>
-        <tbody>
 <?php
+echo
+    '<div class="files">' .
+        '<table>' .
+            '<thead>' .
+                '<tr>' .
+                    '<th class="name">Name</th>' .
+                    '<th class="age">Age</th>' .
+                    '<th class="message">Message</th>' .
+                    //<th class="download">Download</th>' .
+                '</tr>' .
+            '</thead>' .
+            '<tbody>' .
+                '';
+
 $entries = $page['entries'];
 $folders = array();
 $files = array();
@@ -63,7 +60,7 @@ foreach ($sorted_entries as $e) {
             '';
     }
 
-    $name = '<a href="' . $link . '" class="item_name" title="' . $title . '">' . $safe_name . '</a>';
+    $name = '<a href="' . $link . '" title="' . $title . '">' . $safe_name . '</a>';
 
     echo
         '<tr class="' . $class . '">' .
@@ -82,10 +79,26 @@ foreach ($sorted_entries as $e) {
         '</tr>' .
         '';
 }
-?>
-        </tbody>
-    </table>
 
-    <p>Download as <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'], 't' => 'targz')) ?>" rel="nofollow">tar.gz</a> or <a href="<?php echo makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'], 't' => 'zip')) ?>" rel="nofollow">zip</a>. Browse this tree at the <a href="<?php echo makelink(array('a' => 'tree', 'p' => $page['project'], 'hb' => 'HEAD', 'f' => $page['path'])); ?>">HEAD</a>.</p>
+echo
+            '</tbody>' .
+        '</table>' .
 
-</div>
+        '<p>' .
+            'Download as ' .
+            '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'], 't' => 'targz')) . '" rel="nofollow">' .
+                'tar.gz' .
+            '</a>' .
+            ' or ' .
+            '<a href="' . makelink(array('a' => 'archive', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'], 't' => 'zip')) . '" rel="nofollow">' .
+                'zip' .
+            '</a>' .
+            '. Browse this tree at the ' .
+
+            '<a href="' . makelink(array('a' => 'tree', 'p' => $page['project'], 'hb' => 'HEAD', 'f' => $page['path'])) . '">' .
+                'HEAD' .
+            '</a>' .
+            '.' .
+        '</p>' .
+    '</div>' .
+    '';
