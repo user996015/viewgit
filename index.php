@@ -318,7 +318,7 @@ elseif ($action === 'rss-log') {
  * @param s string to search for
  */
 elseif ($action === 'search') {
-	$template = 'shortlog';
+	$template = 'commits';
 
 	$page['project'] = validate_project($_REQUEST['p']);
 
@@ -355,11 +355,11 @@ elseif ($action === 'search') {
  * @param p project
  * @param h OPTIONAL commit id to start showing log from
  */
-elseif ($action === 'shortlog') {
-	$template = 'shortlog';
+elseif ($action === 'commits') {
+	$template = 'commits';
 	$page['project'] = validate_project($_REQUEST['p']);
-	$page['title'] = "$page[project] - Shortlog - ViewGit";
-	$page['subtitle'] = "Shortlog";
+	$page['title'] = "$page[project] - Commits - ViewGit";
+	$page['subtitle'] = 'Commits';
 	if (isset($_REQUEST['h'])) {
 		$page['ref'] = validate_hash($_REQUEST['h']);
 	} else {
