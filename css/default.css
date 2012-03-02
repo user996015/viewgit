@@ -224,8 +224,9 @@ table {
     }
 
     .commitmessage {
-        background: #ffe;
-        border: 1px solid #999;
+        background-color: #e6f1f6;
+        border: 1px solid #c5d5dd;
+        border-radius: 4px;
         margin: 1em 0;
     }
 
@@ -236,14 +237,48 @@ table {
             white-space: -o-pre-wrap;              /* Opera 7 */
             word-wrap: break-word;                 /* Internet Explorer 5.5+ */
 
-            font-family: monospace, courier new;
-            font-size: 100%;
+            color: #213f4d;
+            font-family: 'Helvetica', 'arial', 'freesans', 'clean', 'sans-serif';
+            font-size: 150%;
+            font-weight: bold;
             padding: 0.5em;
         }
 
     .diff {
-        font-family: monospace, courier new;
+        margin: 10px 0;
     }
+
+        .diff pre {
+            font-family: 'Consolas', 'Lucida Console', 'Bitstream Vera Sans Mono', 'Courier New', 'monospace';
+            font-size: 110%;
+            line-height: 110%;
+        }
+
+        .diff pre {
+            border: 1px solid #ccc;
+        }
+
+
+    .diff .add {
+        background-color: #dfd;
+    }
+
+    .diff .del {
+        background-color: #fdd;
+    }
+
+    .diff .pos {
+        color: #999;
+    }
+
+    .diff .etc {
+        color: #999;
+    }
+
+        .diff .etc .del {
+            color: #000;
+        }
+
 
 
 /**
@@ -456,36 +491,6 @@ span.tag {
 	border-right: 1px solid #990;
 	border-bottom: 1px solid #990;
 }
-
-/* commitdiff template */
-
-code,
-pre {
-    font-family: 'Consolas', 'Lucida Console', 'Bitstream Vera Sans Mono', 'Courier New', 'monospace';
-    font-size: 110%;
-    line-height: 110%;
-}
-
-
-.diff .add {
-    background-color: #dfd;
-}
-
-.diff .del {
-    background-color: #fdd;
-}
-
-.diff .pos {
-	color: purple;
-}
-
-.diff .etc {
-	color: #999;
-}
-
-    .diff .etc .del {
-        color: #000;
-    }
 
 /* viewblob template */
 .file {
