@@ -1,5 +1,5 @@
 <?php
-require_once('templates/shortlog.php');
+require_once('templates/commits.php');
 require_once('templates/tags.php');
 ?>
 

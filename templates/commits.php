@@ -1,6 +1,6 @@
 <div class="shortlog">
     <h1>
-        <a href="<?php echo makelink(array('a' => 'shortlog', 'p' => $page['project'])); ?>">Shortlog</a>
+        <a href="<?php echo makelink(array('a' => 'shortlog', 'p' => $page['project'])); ?>">Commit History</a>
     </h1>
 
     <table class="shortlog">

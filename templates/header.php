@@ -61,7 +61,7 @@ if (isset($page['project'])) {
 
     $page['links'] = array(
         'summary' => array(),
-        'shortlog' => array(),
+        'commits' => array(),
         'commit' => array('h' => $page['commit_id']),
         'commitdiff' => array('h' => $page['commit_id']),
         'tree' => array('h' => $page['tree_id'], 'hb' => $page['commit_id']),
