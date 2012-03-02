@@ -529,6 +529,7 @@ function handle_shortlog($project, $hash = 'HEAD', $page = 0)
 		$result[] = array(
 			'author' => $info['author_name'],
 			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
+			'friendly_date' => strftime('%h %d, %Y', $info['author_utcstamp']),
 			'message' => $info['message'],
 			'commit_id' => $rev,
 			'tree' => $info['tree'],
