@@ -199,6 +199,24 @@
                 margin: 10px 0;
             }
 
+    .powered-by {
+        color: #636363;
+        float: right;
+        line-height: 150%;
+        margin-top: 35px;
+        padding-bottom: 25px;
+        width: 200px;
+    }
+
+        .powered-by a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .powered-by a:hover {
+            text-decoration: underline;
+        }
+
 /*
 
 .tree .name {
