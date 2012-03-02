@@ -45,7 +45,8 @@ foreach ($sorted_entries as $e) {
     $type = $e['type'] === 'blob' ? 'blob' : 'dir';
     $class = $type . ' ' . $tr_class;
     $title = '[' . $e['mode'] . '] ' . $safe_name;
-    $message = $e['message'];
+    $author = $e['author'];
+    $message = $e['message'] . ' [' . format_author($author) . ']';
 
     if ($type === 'blob') {
         $link = makelink(array('a' => 'viewblob', 'p' => $page['project'], 'h' => $e['hash'], 'hb' => $page['commit_id'], 'f' => $path));
@@ -62,7 +63,7 @@ foreach ($sorted_entries as $e) {
             '';
     }
 
-    $name = '<a href="' . $link . '" class="item_name" title="' . $title . '">' . $safe_name  . '</a>';
+    $name = '<a href="' . $link . '" class="item_name" title="' . $title . '">' . $safe_name . '</a>';
 
     echo
         '<tr class="' . $class . '">' .

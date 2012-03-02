@@ -408,17 +408,19 @@ function git_ls_tree($project, $tree, $path='')
         $parts = preg_split('/\s+/', $line, 4);
 
         // Calculate age
-        $command = 'log -n 1 --format="%ct|%s" ' . (empty($path) ? '' : $path . '/') . $parts[3];
+        $command = 'log -n 1 --format="%ct|%an|%s" ' . (empty($path) ? '' : $path . '/') . $parts[3];
         $out = run_git($project, $command);
 
         $age = '';
+        $author = '';
         $message = '';
 
         if (isset($out['0'])) {
             $explode = explode('|', $out['0']);
             $committer_date_unix_timestamp = $explode['0'];
             $age = datetimeFormatDuration(time() - $committer_date_unix_timestamp);
-            $message = $explode['1'];
+            $author = $explode['1'];
+            $message = $explode['2'];
         }
 
         $entries[] = array(
@@ -428,6 +430,7 @@ function git_ls_tree($project, $tree, $path='')
             'hash'    => $parts[2],
             'age'     => $age,
             'message' => $message,
+            'author'  => $author,
         );
     }
 
