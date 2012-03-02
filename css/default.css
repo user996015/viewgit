@@ -459,12 +459,17 @@ span.tag {
 
 /* commitdiff template */
 
+code,
+pre {
+}
+
+
 .diff .add {
-	color: green;
+    background-color: #dfd;
 }
 
 .diff .del {
-	color: red;
+    background-color: #fdd;
 }
 
 .diff .pos {
@@ -474,6 +479,10 @@ span.tag {
 .diff .etc {
 	color: #999;
 }
+
+    .diff .etc .del {
+        color: #000;
+    }
 
 /* viewblob template */
 .file {
