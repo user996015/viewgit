@@ -1,33 +1,64 @@
-<div class="shortlog">
-    <h1>
-        <a href="<?php echo makelink(array('a' => 'shortlog', 'p' => $page['project'])); ?>">Commit History</a>
-    </h1>
-
-    <table class="shortlog">
-        <thead>
-            <tr>
-                <th class="date">Date</th>
-                <th class="author">Author</th>
-                <th class="message">Message</th>
-                <th class="actions">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
 <?php
+echo
+    '<div class="commits">' .
+        /*
+        '<h1>' .
+            '<a href="' . makelink(array('a' => 'shortlog', 'p' => $page['project'])) . '">' .
+                'Commit History' .
+            '</a>' .
+        '</h1>' .
+        */
+
+        '';
+
 $page['lasthash'] = 'HEAD';
 
+$last_friendly_date = '';
+$first = true;
+
 foreach ($page['shortlog'] as $l) {
-    $tr_class = $tr_class=='odd' ? 'even' : 'odd';
+    $alternate_class = $alternate_class == 'odd' ? 'even' : 'odd';
+
+    if (!($last_friendly_date === $l['friendly_date'])) {
+        if (!$first) {
+            echo '</ol>';
+        }
+
+        $last_friendly_date = $l['friendly_date'];
+
+        echo
+            '<h3>' . $last_friendly_date . '</h3>' .
+
+            '<ol>' .
+            '';
+    }
+
+    $last_date = '';
 
     echo
-        '<tr class="' . $tr_class . '">' .
-            '<td class="date">' . $l['date'] . '</td>' .
-            '<td class="author">' . format_author($l['author']) . '</td>' .
-            '<td class="message">' .
+        '<li class="' . $alternate_class . '">' .
+            '<span class="message">' .
                 '<a href="' . makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $l['commit_id'])) . '">' .
                     htmlentities_wrapper($l['message']) .
-                '</a>';
+                '</a>' .
+            '</span>' .
 
+            '<span class="authorship">' .
+                '<span class="author">' .
+                    format_author($l['author']) .
+                '</span>' .
+
+                'authored ' .
+                '<time>' .
+                    $l['age'] .
+                '</time>' .
+                ' ago' .
+            '</span>' .
+
+            //'<td class="date">' . $l['date'] . '</td>' .
+            '';
+
+    /*
     if (count($l['refs']) > 0) {
         foreach ($l['refs'] as $ref) {
             $parts = explode('/', $ref);
@@ -44,10 +75,9 @@ foreach ($page['shortlog'] as $l) {
             echo '<span class="label ' . $type . '" title="' . $ref . '">' . $shortref . '</span>';
         }
     }
+    */
 
-    echo
-        '</td>' .
-
+    /*
         '<td class="actions">' .
             '<a href="' . makelink(array('a' => 'commitdiff', 'p' => $page['project'], 'h' => $l['commit_id'])) . '" class="diff" title="Commit Diff">' .
                 '<img alt="diff" src="img/silk/commit_diff.png" />' .
@@ -69,12 +99,14 @@ foreach ($page['shortlog'] as $l) {
                 '<img alt="patch" src="img/silk/page_white_code_red.png" />' .
             '</a>' .
         '</td>' .
-    '</tr>' .
     '';
+    */
 
     $page['lasthash'] = $l['commit_id'];
+    $first = false;
 }
 ?>
+            </ol>
         </tbody>
     </table>
 

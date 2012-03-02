@@ -526,8 +526,10 @@ function handle_shortlog($project, $hash = 'HEAD', $page = 0)
 		if (in_array($rev, array_keys($refs_by_hash))) {
 			$refs = $refs_by_hash[$rev];
 		}
+        $age = datetimeFormatDuration(time() - $info['author_utcstamp']);
 		$result[] = array(
 			'author' => $info['author_name'],
+			'age' => $age,
 			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'friendly_date' => strftime('%h %d, %Y', $info['author_utcstamp']),
 			'message' => $info['message'],

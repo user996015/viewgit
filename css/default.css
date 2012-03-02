@@ -49,6 +49,90 @@
         .pagenav form {
         }
 
+    .commits {
+    }
+
+        .commits h3 {
+            background: #e6f1f6;
+            border: 1px solid #c5d5dd;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            color: #3a505b;
+            font-size: 13px;
+            font-weight: bold;
+            margin: 15px 0 0 0;
+            padding: 8px;
+            text-shadow: 0 1px rgba(255, 255, 255, 1.0);
+        }
+
+        .commits ol {
+            background: #f7fbfc;
+            border-right: 1px solid #c5d5dd;
+            border-bottom: 1px solid #c5d5dd;
+            border-left: 1px solid #c5d5dd;
+            border-bottom-right-radius: 4px;
+            border-bottom-left-radius: 4px;
+            margin: 0 0 15px 0;
+        }
+
+            .commits li:hover {
+                background-color: #fcfce2;
+            }
+
+            .commits li:first-child {
+                border-top: 0;
+            }
+
+            .commits li {
+                border-top: 1px solid #e2eaee;
+                padding: 8px;
+            }
+
+            .commits .odd {
+                background-color: #fff;
+            }
+
+            .commits .even {
+            }
+
+                .commits a {
+                    text-decoration: none;
+                }
+
+                .commits a:hover {
+                    text-decoration: underline;
+                }
+
+                .commits .message,
+                .commits .message a {
+                    display: block;
+                }
+
+                .commits .message a {
+                    color: #333;
+                    font-size: 14px;
+                    font-weight: bold;
+                    margin: 1px 0 1px;
+                }
+
+                .commits .authorship {
+                    color: #888;
+                    display: block;
+                    font-size: 95%;
+                    padding-top: 4px;
+                }
+
+                    .commits .author {
+                        padding-right: 4px;
+                    }
+
+                    .commits .author a {
+                        color: #444;
+                    }
+
+                    .commits .authorship time {
+                    }
+
 .summary {
 }
     .summary h1,
