@@ -205,7 +205,7 @@ elseif ($action === 'commit') {
 	$page['project'] = validate_project($_REQUEST['p']);
 	$page['title'] = "$page[project] - Commit - ViewGit";
 	$page['commit_id'] = validate_hash($_REQUEST['h']);
-	$page['subtitle'] = "Commit ". substr($page['commit_id'], 0, 6);
+	$page['subtitle'] = "Commit ". substr($page['commit_id'], 0, 10);
 
 	$info = git_get_commit_info($page['project'], $page['commit_id']);
 
@@ -237,7 +237,7 @@ elseif ($action === 'commitdiff') {
 	$page['title'] = "$page[project] - Commitdiff - ViewGit";
 	$hash = validate_hash($_REQUEST['h']);
 	$page['commit_id'] = $hash;
-	$page['subtitle'] = "Commitdiff ". substr($page['commit_id'], 0, 6);
+	$page['subtitle'] = "Commitdiff ". substr($page['commit_id'], 0, 10);
 
 	$info = git_get_commit_info($page['project'], $hash);
 
@@ -258,7 +258,7 @@ elseif ($action === 'commitdiff') {
 elseif ($action === 'patch') {
 	$project = validate_project($_REQUEST['p']);
 	$hash = validate_hash($_REQUEST['h']);
-	$filename = "$project-". substr($hash, 0, 7) .".patch";
+	$filename = "$project-". substr($hash, 0, 10) .".patch";
 
 	//header("Content-Type: text/x-diff");
 	header("Content-Type: application/octet-stream");
@@ -439,15 +439,21 @@ elseif ($action === 'files') {
 	*/
 	$page['title'] = "$page[project] - Files - ViewGit";
 
-	// 'hb' optionally contains the commit_id this tree is related to
-	if (isset($_REQUEST['hb'])) {
-		$page['commit_id'] = validate_hash($_REQUEST['hb']);
-	}
-	else {
-		// for the header
-		$info = git_get_commit_info($page['project']);
-		$page['commit_id'] = $info['h'];
-	}
+    // 'hb' optionally contains the commit_id this tree is related to
+    if (isset($_REQUEST['hb'])) {
+        $page['commit_id'] = validate_hash($_REQUEST['hb']);
+        $info = git_get_commit_info($page['project'], $page['commit_id']);
+    }
+    else {
+        $info = git_get_commit_info($page['project']);
+    }
+
+    // for the header
+    $page['commit_id'] = $info['h'];
+    $page['message_firstline'] = $info['message_firstline'];
+    $page['author_name'] = $info['author_name'];
+    $page['author_datetime'] = $info['author_datetime'];
+    $page['hash'] = substr($page['commit_id'], 0, 10);
 
 	$page['path'] = '';
 	if (isset($_REQUEST['f'])) {
@@ -485,7 +491,7 @@ elseif ($action === 'viewblob') {
 	else {
 		$page['commit_id'] = 'HEAD';
 	}
-	$page['subtitle'] = "Blob ". substr($page['hash'], 0, 6);
+	$page['subtitle'] = "Blob ". substr($page['hash'], 0, 10);
 
 	$page['path'] = '';
 	if (isset($_REQUEST['f'])) {
