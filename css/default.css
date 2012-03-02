@@ -160,6 +160,7 @@
                 color: #484848;
                 padding: 8px 3px;
                 vertical-align: middle;
+                white-space: nowrap;
             }
 
             .files tbody tr:last-child td {
@@ -170,10 +171,18 @@
                 padding-left: 25px;
             }
 
-            .files tbody .name {
-                background-image: url("../img/silk/folder.png");
-                background-position: 4px 4px;
+            .files tbody .dir .name,
+            .files tbody .blob .name {
                 background-repeat: no-repeat;
+                background-position: 4px 4px;
+            }
+
+            .files tbody .dir .name {
+                background-image: url("../img/silk/folder.png");
+            }
+
+            .files tbody .blob .name {
+                background-image: url('../img/silk/page_white_text.png');
             }
 
             .files a {
@@ -181,37 +190,16 @@
                 text-decoration: none;
             }
 
+            .files a:hover {
+                color: #4183c4;
+                text-decoration: underline;
+            }
+
             .files p {
                 margin: 10px 0;
             }
 
 /*
-.tree .tree a {
-    color: #4183c4;
-    text-decoration: none;
-}
-
-.tree .tree a:hover {
-    text-decoration: underline;
-}
-
-.tree .name {
-    overflow: hidden;
-}
-
-.tree a.item_name {
-    display: block;
-    min-height: 16px;
-    padding: 4px 0;
-}
-
-.tree .dir a.item_name {
-}
-
-.tree .blob a.item_name {
-    padding-left: 20px;
-    background: url('../img/silk/page_white_text.png') no-repeat 0 50%;
-}
 
 .tree .name {
     width: 200px;
