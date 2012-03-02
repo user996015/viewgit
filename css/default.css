@@ -462,6 +462,7 @@ span.tag {
 code,
 pre {
     font-family: 'Consolas', 'Lucida Console', 'Bitstream Vera Sans Mono', 'Courier New', 'monospace';
+    font-size: 110%;
 }
 
 
