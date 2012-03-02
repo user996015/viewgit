@@ -65,7 +65,7 @@ if (isset($page['project'])) {
         'commits' => array(),
         'commit' => array('h' => $page['commit_id']),
         'commitdiff' => array('h' => $page['commit_id']),
-        'tree' => array('h' => $page['tree_id'], 'hb' => $page['commit_id']),
+        'files' => array('h' => $page['tree_id'], 'hb' => $page['commit_id']),
     );
 
     VGPlugin::call_hooks('pagenav');

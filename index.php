@@ -425,8 +425,8 @@ elseif ($action === 'tags') {
  * one denotes which commit the user navigated from)
  * @param f OPTIONAL path the user has followed to view this tree
  */
-elseif ($action === 'tree') {
-	$template = 'tree';
+elseif ($action === 'files') {
+	$template = 'files';
 	$page['project'] = validate_project($_REQUEST['p']);
 	if (isset($_REQUEST['h'])) {
 		$page['tree_id'] = validate_hash($_REQUEST['h']);
@@ -437,7 +437,7 @@ elseif ($action === 'tree') {
 		$page['tree_id'] = 'HEAD';
 	}
 	*/
-	$page['title'] = "$page[project] - Tree - ViewGit";
+	$page['title'] = "$page[project] - Files - ViewGit";
 
 	// 'hb' optionally contains the commit_id this tree is related to
 	if (isset($_REQUEST['hb'])) {
@@ -465,7 +465,7 @@ elseif ($action === 'tree') {
 		}
 	}
 
-	$page['subtitle'] = "Tree ". substr($page['tree_id'], 0, 6);
+	$page['subtitle'] = 'Commit ' . substr($page['tree_id'], 0, 10);
 	$page['entries'] = git_ls_tree($page['project'], $page['tree_id'], $page['path']);
 }
 /*
