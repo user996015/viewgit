@@ -260,10 +260,38 @@ table {
             .authorinfo a {
                 color: #4183c4;
                 font-size: 120%;
+                text-decoration: none;
+            }
+
+            .authorinfo a:hover {
+                text-decoration: underline;
+            }
+
+    .filelist {
+    }
+
+        .filelist a {
+            color: #4183c4;
+            text-decoration: none;
+            font-family: 'Monaco', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'monospace';
+            font-size: 110%;
+        }
+
+        .filelist a:hover {
+            text-decoration: underline;
+        }
+
+        .filelist table {
+            border-top: 1px solid #ddd;
+        }
+
+            .filelist td {
+                border-bottom: 1px solid #ddd;
+                padding: 6px 4px;
             }
 
     .diff {
-        margin: 10px 0;
+        margin: 20px 0;
     }
 
         .diff pre {
@@ -293,11 +321,10 @@ table {
         color: #999;
     }
 
+        .diff .etc .add,
         .diff .etc .del {
             color: #000;
         }
-
-
 
 /**
  * More polished style for ViewGit
@@ -400,9 +427,11 @@ table tr.even {
 	border-top: 1px solid #eee;
 }
 
+/*
 table tbody tr:hover {
 	background-color: #e0ffe0;
 }
+*/
 
 table th {
 	background-color: #cfcfcf;

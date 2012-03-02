@@ -20,11 +20,6 @@ echo
 
 <div class="filelist">
     <table>
-        <thead>
-            <tr>
-                <th>Filename</th>
-            </tr>
-        </thead>
         <tbody>
 <?php
 // pathname | patch | blob | history
