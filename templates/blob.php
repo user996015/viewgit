@@ -1,16 +1,47 @@
-<h2>Last commit for <?php echo htmlentities_wrapper($page['path']); ?>: <a href="<?php echo makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $page['lastlog']['h'])); ?>"><?php echo htmlentities_wrapper($page['lastlog']['h']); ?></a></h2>
-<h1><?php echo htmlentities_wrapper($page['lastlog']['message_firstline']); ?></h1>
-<div class="authorinfo">
 <?php
-echo format_author($page['lastlog']['author_name']);
-echo ' ['. $page['lastlog']['author_datetime'] .']';
+echo
+    '<div class="commitmessage">' .
+        '<pre>' .
+            //htmlentities_wrapper($page['lastlog']['message_full']) .
+            htmlentities_wrapper($page['lastlog']['message_firstline']) .
+        '</pre>' .
+
+        '<div class="authorinfo">' .
+            format_author($page['lastlog']['author_name']) .
+            ' ' .
+            '<span class="age">' .
+                'authored ' .
+                datetimeFormatDuration(time() - strtotime(htmlentities_wrapper($page['lastlog']['author_datetime']))) .
+                ' ago' .
+            '</span>' .
+        '</div>' .
+    '</div>' .
+    '';
 ?>
+
+<div class="filelist">
+    <table>
+        <tbody>
+<?php
+    $file = htmlentities_wrapper($page['path']);
+    $url = makelink(array('a' => 'commit', 'p' => $page['project'], 'h' => $page['lastlog']['h']));
+    $hash = htmlentities_wrapper($page['lastlog']['h']);
+    echo
+        '<tr>' .
+            '<td>' .
+                '<a href="' . $url . '">' . $file . '</a>' .
+            '</td>' .
+            '<td>' .
+                '<a href="' . $url . '">' . $hash . '</a>' .
+            '</td>' .
+        '</tr>' .
+        '';
+?>
+        </tbody>
+    </table>
 </div>
-<div class="commitmessage">
-<pre>
-<?php echo htmlentities_wrapper($page['lastlog']['message_full']); ?>
-</pre>
-</div>
+
+
 <div class="file">
 <?php
 if (isset($page['html_data'])) {

@@ -541,10 +541,14 @@ span.tag {
 
 /* viewblob template */
 .file {
-	border:1px solid #999;
-	background:#ddd;
-	padding: 0 0.5em;
-	margin: 0.5em;
-	font-size: 1.2em;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    font-size: 1.2em;
+    margin: 20px 0;
 }
 
+    .file pre {
+        font-family: 'Consolas', 'Lucida Console', 'Bitstream Vera Sans Mono', 'Courier New', 'monospace';
+        font-size: 90%;
+        line-height: 110%;
+    }

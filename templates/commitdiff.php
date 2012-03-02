@@ -5,6 +5,7 @@ echo
             //htmlentities_wrapper($page['message_full']) .
             htmlentities_wrapper($page['message_firstline']) .
         '</pre>' .
+
         '<div class="authorinfo">' .
             format_author($page['author_name']) .
             ' ' .
@@ -33,8 +34,8 @@ foreach ($page['files'] as $file => $url) {
         '';
 }
 ?>
-</tbody>
-</table>
+        </tbody>
+    </table>
 </div>
 
 <div class="diff">
