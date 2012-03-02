@@ -1,22 +1,5 @@
 <?php
-echo
-    '<div class="commitmessage">' .
-        '<pre>' .
-            //htmlentities_wrapper($page['message_full']) .
-            htmlentities_wrapper($page['message_firstline']) .
-        '</pre>' .
-
-        '<div class="authorinfo">' .
-            format_author($page['author_name']) .
-            ' ' .
-            '<span class="age">' .
-                'authored ' .
-                datetimeFormatDuration(time() - strtotime(htmlentities_wrapper($page['author_datetime']))) .
-                ' ago' .
-            '</span>' .
-        '</div>' .
-    '</div>' .
-    '';
+require_once('templates/commitmessage.php');
 ?>
 
 <div class="filelist">

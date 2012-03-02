@@ -1,4 +1,6 @@
 <?php
+require_once('templates/commitmessage.php');
+
 echo
     '<div class="files">' .
         '<table>' .
