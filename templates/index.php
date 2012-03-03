@@ -29,7 +29,7 @@ foreach ($page['projects'] as $p) {
     echo
             '</td>' .
             '<td class="description">' . htmlentities_wrapper($p['description']) . '</td>' .
-            '<td class="age">' . datetimeFormatDuration(time() - strtotime(htmlentities_wrapper($p['head_datetime']))) . '</td>' .
+            '<td class="age">' . ago($p['head_datetime']) . '</td>' .
 
             '<td class="message">' .
                 htmlentities_wrapper($p['message']) . ' ' . format_author($p['committer_name'], $p['name']) .

@@ -11,7 +11,7 @@ echo
             ' ' .
             '<span class="age">' .
                 'authored ' .
-                datetimeFormatDuration(time() - strtotime(htmlentities_wrapper($page['lastlog']['author_datetime']))) .
+                ago(htmlentities_wrapper($page['lastlog']['author_datetime'])) .
                 ' ago' .
             '</span>' .
         '</div>' .

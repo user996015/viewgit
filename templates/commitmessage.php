@@ -13,16 +13,16 @@ echo
 
             '<span class="age">' .
                 'authored ' .
-                datetimeFormatDuration(time() - strtotime(htmlentities_wrapper($page['author_datetime']))) .
+                ago($page['author_datetime']) .
                 ' ago' .
             '</span>' .
 
-            '<span class="commit">' .
+            '<a class="commit" href="">' .
                 'commit ' .
-                '<a href="">' .
+                '<span>' .
                     $page['hash'] .
-                '</a>' .
-            '</span>' .
+                '</span>' .
+            '</a>' .
         '</div>' .
     '</div>' .
     '';
