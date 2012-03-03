@@ -3,70 +3,54 @@
  * Functions used by ViewGit.
  */
 
-/**
- * Format a unix timestamp. Borrowed from websvn.
- */
-// {{{ datetimeFormatDuration
-//
-// Formats a duration of seconds for display.
-//
-// $seconds the number of seconds until something
-// $nbsp true if spaces should be replaced by nbsp
-// $skipSeconds true if seconds should be omitted
-//
-// return the formatted duration (e.g. @c "8h   6m  1s")
+function ago($a) {
+    $b = strtotime('now'); 
+    $c = strtotime($a);
+    $d = $b - $c;
+    $minute = 60;
+    $hour = $minute * 60;
+    $day = $hour * 24;
+    $week = $day * 7;
 
-function datetimeFormatDuration($seconds, $nbsp = false, $skipSeconds = false) {
-    //global $lang;
-    $lang = array();
-    $lang['DAYLETTER'] = 'd';
-    $lang['HOURLETTER'] = 'h';
-    $lang['MINUTELETTER'] = 'm';
-    $lang['SECONDLETTER'] = 's';
-
-    $neg = false;
-    if ($seconds < 0) {
-        $seconds = 0 - $seconds;
-        $neg = true;
+    if (!ctype_digit($d) || $d < 0) {
+        return '';
     }
 
-    $qty = array();
-    $names = array($lang['DAYLETTER'], $lang['HOURLETTER'], $lang['MINUTELETTER']);
-
-    $qty[] = (int)($seconds / (60 * 60 * 24));
-    $seconds %= 60 * 60 * 24;
-
-    $qty[] = (int)($seconds / (60 * 60));
-    $seconds %= 60 * 60;
-
-    $qty[] = (int)($seconds / 60);
-
-    if (!$skipSeconds) {
-        $qty[] = (int)($seconds % 60);
-        $names[] = $lang['SECONDLETTER'];
+    if ($d < 3) {
+        return 'right now';
     }
 
-    $text = $neg ? '-' : '';
-    $any = false;
-    $count = count($names);
-    $parts = 0;
-    for ($i = 0; $i < $count; $i++) {
-        // If a "higher valued" time slot had a value or this time slot
-        // has a value or this is the very last entry (i.e. all values
-        // are 0 and we still want to print seconds)
-        if ($any || $qty[$i] > 0 || $i == $count - 1) {
-            if ($any) $text .= $nbsp ? '&nbsp;' : ' ';
-            if ($any && $qty[$i] < 10) $text .= '0';
-            $text .= $qty[$i].$names[$i];
-            $any = true;
-            $parts++;
-            if ($parts >= 2) break;
-        }
+    if ($d < $minute) {
+        return floor($d / $e) . ' seconds ago';
     }
-    return $text;
+
+    if ($d < $minute * 2) {
+        return 'about 1 minute ago';
+    }
+
+    if ($d < $hour) {
+        return floor($d / $minute) . ' minutes ago';
+    }
+
+    if ($d < $hour * 2) {
+        return 'about 1 hour ago';
+    }
+
+    if ($d < $day) {
+        return floor($d / $hour) . ' hours ago';
+    }
+
+    if ($d > $day && $d < $day * 2) {
+        return 'yesterday';
+    }
+
+    if ($d < $day * 365) {
+        return floor($d / $day) . ' days ago';
+    }
+    else {
+        return 'over a year ago';
+    }
 }
-
-// }}}
 
 function debug($msg)
 {
@@ -408,7 +392,7 @@ function git_ls_tree($project, $tree, $path='')
         $parts = preg_split('/\s+/', $line, 4);
 
         // Calculate age
-        $command = 'log -n 1 --format="%ct|%an|%s" ' . (empty($path) ? '' : $path . '/') . $parts[3];
+        $command = 'log -n 1 --format="%aD|%an|%s" ' . (empty($path) ? '' : $path . '/') . $parts[3];
         $out = run_git($project, $command);
 
         $age = '';
@@ -417,8 +401,8 @@ function git_ls_tree($project, $tree, $path='')
 
         if (isset($out['0'])) {
             $explode = explode('|', $out['0']);
-            $committer_date_unix_timestamp = $explode['0'];
-            $age = datetimeFormatDuration(time() - $committer_date_unix_timestamp);
+            $author_date = $explode['0'];
+            $age = ago($author_date);
             $author = $explode['1'];
             $message = $explode['2'];
         }
@@ -526,7 +510,7 @@ function handle_shortlog($project, $hash = 'HEAD', $page = 0)
 		if (in_array($rev, array_keys($refs_by_hash))) {
 			$refs = $refs_by_hash[$rev];
 		}
-        $age = datetimeFormatDuration(time() - $info['author_utcstamp']);
+        $age = ago($info['author_utcstamp']);
 		$result[] = array(
 			'author' => $info['author_name'],
 			'age' => $age,
