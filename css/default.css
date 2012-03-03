@@ -376,12 +376,9 @@ table th {
                 width: 100px;
             }
 
-            .age {
-                width: 60px;
-            }
-
             td.age {
                 text-align: right;
+                width: 60px;
             }
 
             .message {
@@ -444,17 +441,20 @@ table th {
 
             .authorinfo .age {
                 color: #999;
+                display: inline-block;
+                padding: 0 4px;
             }
 
             .authorinfo .commit {
                 color: #888;
                 display: block;
                 float: right;
+                font-size: 90%;
+                font-family: 'Monaco', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'monospace';
             }
 
-                .authorinfo .commit a {
+                .authorinfo .commit span {
                     color: #444;
-                    font-family: 'Monaco', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'monospace';
                 }
 
     .filelist {
