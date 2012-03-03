@@ -21,8 +21,11 @@ foreach ($page['files'] as $file => $url) {
     </table>
 </div>
 
-<div class="diff">
-<pre>
-<?php echo $page['diffdata']; ?>
-</pre>
-</div>
+<?php
+echo
+    '<div class="diff">' .
+        '<pre>' .
+            $page['diffdata'] .
+        '</pre>' .
+    '</div>' .
+    '';
