@@ -196,37 +196,6 @@ elseif ($action === 'co') {
 }
 
 /*
- * commit - view commit information
- * @param p project
- * @param h commit hash
- */
-elseif ($action === 'commit') {
-	$template = 'commit';
-	$page['project'] = validate_project($_REQUEST['p']);
-	$page['title'] = "$page[project] - Commit - ViewGit";
-	$page['commit_id'] = validate_hash($_REQUEST['h']);
-	$page['subtitle'] = "Commit ". substr($page['commit_id'], 0, 10);
-
-	$info = git_get_commit_info($page['project'], $page['commit_id']);
-
-	$page['author_name'] = $info['author_name'];
-	$page['author_mail'] = $info['author_mail'];
-	$page['author_datetime'] = $info['author_datetime'];
-	$page['author_datetime_local'] = $info['author_datetime_local'];
-	$page['committer_name'] = $info['committer_name'];
-	$page['committer_mail'] = $info['committer_mail'];
-	$page['committer_datetime'] = $info['committer_datetime'];
-	$page['committer_datetime_local'] = $info['committer_datetime_local'];
-	$page['tree_id'] = $info['tree'];
-	$page['parents'] = $info['parents'];
-	$page['message'] = $info['message'];
-	$page['message_firstline'] = $info['message_firstline'];
-	$page['message_full'] = $info['message_full'];
-	$page['affected_files'] = git_get_changed_paths($page['project'], $page['commit_id']);
-
-}
-
-/*
  * commitdiff - view diff of a commit
  * @param p project
  * @param h commit hash
@@ -253,6 +222,29 @@ elseif ($action === 'commitdiff') {
 	$text = fix_encoding(git_diff($page['project'], "$hash^", $hash));
 	list($page['files'], $page['diffdata']) = format_diff($text);
 	//$page['diffdata'] = format_diff($text);
+
+	//$template = 'commit';
+	//$page['project'] = validate_project($_REQUEST['p']);
+	//$page['title'] = "$page[project] - Commit - ViewGit";
+	//$page['commit_id'] = validate_hash($_REQUEST['h']);
+	//$page['subtitle'] = "Commit ". substr($page['commit_id'], 0, 10);
+
+	//$info = git_get_commit_info($page['project'], $page['commit_id']);
+
+	//$page['author_name'] = $info['author_name'];
+	//$page['author_mail'] = $info['author_mail'];
+	//$page['author_datetime'] = $info['author_datetime'];
+	//$page['author_datetime_local'] = $info['author_datetime_local'];
+	//$page['committer_name'] = $info['committer_name'];
+	//$page['committer_mail'] = $info['committer_mail'];
+	//$page['committer_datetime'] = $info['committer_datetime'];
+	//$page['committer_datetime_local'] = $info['committer_datetime_local'];
+	//$page['tree_id'] = $info['tree'];
+	//$page['parents'] = $info['parents'];
+	//$page['message'] = $info['message'];
+	//$page['message_firstline'] = $info['message_firstline'];
+	//$page['message_full'] = $info['message_full'];
+	//$page['affected_files'] = git_get_changed_paths($page['project'], $page['commit_id']);
 }
 
 elseif ($action === 'patch') {
