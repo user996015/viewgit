@@ -3,7 +3,7 @@ echo
     '<div class="commits">' .
         /*
         '<h1>' .
-            '<a href="' . makelink(array('a' => 'shortlog', 'p' => $page['project'])) . '">' .
+            '<a href="' . makelink(array('a' => 'commits', 'p' => $page['project'])) . '">' .
                 'Commit History' .
             '</a>' .
         '</h1>' .
@@ -115,10 +115,10 @@ if ($page['lasthash'] !== 'HEAD' && !isset($page['shortlog_no_more'])) {
     echo "<p>";
 
     for ($i = 0; $i < $page['pg']; $i++) {
-        echo "<a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $i)) ."\">$i</a> ";
+        echo "<a href=\"". makelink(array('a' => 'commits', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $i)) ."\">$i</a> ";
     }
 
-    echo "<a href=\"". makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $page['pg'] + 1)) ."\">more &raquo;</a>";
+    echo "<a href=\"". makelink(array('a' => 'commits', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $page['pg'] + 1)) ."\">more &raquo;</a>";
     echo "</p>";
 }
 ?>
