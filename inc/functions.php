@@ -507,10 +507,12 @@ function handle_shortlog($project, $hash = 'HEAD', $page = 0)
 	foreach ($revs as $rev) {
 		$info = git_get_commit_info($project, $rev);
 		$refs = array();
+
 		if (in_array($rev, array_keys($refs_by_hash))) {
 			$refs = $refs_by_hash[$rev];
 		}
-        $age = ago($info['author_utcstamp']);
+
+        $age = ago($info['author_datetime']);
 		$result[] = array(
 			'author' => $info['author_name'],
 			'age' => $age,
