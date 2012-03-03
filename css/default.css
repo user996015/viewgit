@@ -480,42 +480,42 @@ table th {
                 padding: 6px 4px;
             }
 
-    .commitdiff {
+    .commitdiff-page {
     }
 
-        .commitdiff .diff {
+        .diff {
             margin: 20px 0;
         }
 
-            .commitdiff .diff pre {
+            .diff pre {
                 font-family: 'Consolas', 'Lucida Console', 'Bitstream Vera Sans Mono', 'Courier New', 'monospace';
                 font-size: 110%;
                 line-height: 110%;
             }
 
-            .commitdiff .diff pre {
+            .diff pre {
                 border: 1px solid #ccc;
             }
 
 
-        .commitdiff .diff .add {
+        .diff .add {
             background-color: #dfd;
         }
 
-        .commitdiff .diff .del {
+        .diff .del {
             background-color: #fdd;
         }
 
-        .commitdiff .diff .pos {
+        .diff .pos {
             color: #999;
         }
 
-        .commitdiff .diff .etc {
+        .diff .etc {
             color: #999;
         }
 
-            .commitdiff .diff .etc .add,
-            .commitdiff .diff .etc .del {
+            .diff .etc .add,
+            .diff .etc .del {
                 color: #000;
             }
 
