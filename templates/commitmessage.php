@@ -1,6 +1,10 @@
 <?php
 echo
     '<div class="commitmessage">' .
+        '<a class="browse" href="' . makelink(array('a' => 'files', 'p' => $page['project'], 'h' => $page['tree_id'], 'hb' => $page['commit_id'])) . '">' .
+            'Browse code' .
+        '</a>' .
+
         '<pre>' .
             //htmlentities_wrapper($page['message_full']) .
             htmlentities_wrapper($page['message_firstline']) .
@@ -20,7 +24,7 @@ echo
             '<a class="commit" href="">' .
                 'commit ' .
                 '<span>' .
-                    $page['hash'] .
+                    $page['commit_id'] .
                 '</span>' .
             '</a>' .
         '</div>' .

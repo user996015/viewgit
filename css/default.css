@@ -402,6 +402,24 @@ table th {
         margin: 1em 0;
     }
 
+        .commitmessage .browse {
+            background: -moz-linear-gradient(center top , #eff6f9, #ddecf3) repeat scroll 0 0 transparent;
+            border: 1px solid #cedee5;
+            border-radius: 3px 3px 3px 3px;
+            color: #4183c4;
+            float: right;
+            font-weight: bold;
+            line-height: 26px;
+            margin: 6px 5px 0 0;
+            padding: 0 10px;
+            text-decoration: none;
+            text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+            .commitmessage .browse:hover {
+                text-decoration: underline;
+            }
+
         .commitmessage pre {
             white-space: pre-wrap;                 /* css-3 */
             white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */

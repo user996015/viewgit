@@ -196,17 +196,17 @@ elseif ($action === 'co') {
 }
 
 /*
- * commitdiff - view diff of a commit
+ * commit - view diff of a commit
  * @param p project
  * @param h commit hash
  */
-elseif ($action === 'commitdiff') {
-	$template = 'commitdiff';
+elseif ($action === 'commit') {
+	$template = 'commit';
 	$page['project'] = validate_project($_REQUEST['p']);
-	$page['title'] = "$page[project] - Commitdiff - ViewGit";
+	$page['title'] = "$page[project] - Commit - ViewGit";
 	$hash = validate_hash($_REQUEST['h']);
 	$page['commit_id'] = $hash;
-	$page['subtitle'] = "Commitdiff ". substr($page['commit_id'], 0, 10);
+	$page['subtitle'] = "Commit ". substr($page['commit_id'], 0, 10);
 
 	$info = git_get_commit_info($page['project'], $hash);
 
@@ -231,14 +231,6 @@ elseif ($action === 'commitdiff') {
 
 	//$info = git_get_commit_info($page['project'], $page['commit_id']);
 
-	//$page['author_name'] = $info['author_name'];
-	//$page['author_mail'] = $info['author_mail'];
-	//$page['author_datetime'] = $info['author_datetime'];
-	//$page['author_datetime_local'] = $info['author_datetime_local'];
-	//$page['committer_name'] = $info['committer_name'];
-	//$page['committer_mail'] = $info['committer_mail'];
-	//$page['committer_datetime'] = $info['committer_datetime'];
-	//$page['committer_datetime_local'] = $info['committer_datetime_local'];
 	//$page['tree_id'] = $info['tree'];
 	//$page['parents'] = $info['parents'];
 	//$page['message'] = $info['message'];
