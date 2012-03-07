@@ -12,6 +12,10 @@
             border-bottom: 1px solid #ddd;
         }
 
+            .pagenav li:first-child {
+                padding-left: 10px;
+            }
+
             .pagenav li {
                 display: inline-block;
             }
