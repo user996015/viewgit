@@ -221,6 +221,19 @@
             text-decoration: underline;
         }
 
+    .index-page {
+    }
+
+        .index-page .files .actions a {
+            display: block;
+            float: left;
+            padding: 2px 3px;
+        }
+
+        .index-page .files .actions a img {
+            display: block;
+        }
+
 /*
 
 .tree .name {
