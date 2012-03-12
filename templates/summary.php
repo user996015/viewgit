@@ -27,7 +27,7 @@ foreach ($page['heads'] as $h) {
         '<tr class="' . $tr_class . '">' .
             '<td>' . $h[date] . '</td>' .
             '<td>' .
-                '<a href="' . makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $h['fullname'])) . '">' .
+                '<a href="' . makelink(array('a' => 'commits', 'p' => $page['project'], 'h' => $h['fullname'])) . '">' .
                     $h['name'] .
                 '</a>' .
             '</td>' .

@@ -23,7 +23,7 @@ foreach ($page['tags'] as $tag) {
                 $tag[date] .
             '</td>' .
             '<td>' .
-                '<a href="' . makelink(array('a' => 'shortlog', 'p' => $page['project'], 'h' => $tag['fullname'])) . '">' .
+                '<a href="' . makelink(array('a' => 'commits', 'p' => $page['project'], 'h' => $tag['fullname'])) . '">' .
                     $tag[name] .
                 '</a>' .
             '</td>' .
