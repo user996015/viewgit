@@ -1,15 +1,19 @@
-<table>
-    <thead>
-        <tr>
-            <th class="project">Project</th>
-            <th class="description">Description</th>
-            <th class="age">Age</th>
-            <th class="message">Last Commit</th>
-            <th class="actions">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
 <?php
+echo
+    '<div class="files">' .
+        '<table>' .
+            '<thead>' .
+                '<tr>' .
+                    '<th class="project">Project</th>' .
+                    '<th class="description">Description</th>' .
+                    '<th class="age">Age</th>' .
+                    '<th class="message">Last Commit</th>' .
+                    '<th class="actions">Actions</th>' .
+                '</tr>' .
+            '</thead>' .
+            '<tbody>' .
+            '';
+
 foreach ($page['projects'] as $p) {
     $tr_class = $tr_class=='odd' ? 'even' : 'odd';
 
@@ -26,13 +30,22 @@ foreach ($page['projects'] as $p) {
         tpl_extlink($p['www']);
     }
 
+    $author = $p['author_name'];
+    $message = $p['message'] . ' [' . format_author($author, $p['name']) . ']';
+
     echo
             '</td>' .
-            '<td class="description">' . htmlentities_wrapper($p['description']) . '</td>' .
-            '<td class="age">' . ago($p['head_datetime']) . '</td>' .
+
+            '<td class="description">' .
+                htmlentities_wrapper($p['description']) .
+            '</td>' .
+
+            '<td class="age">' .
+                ago($p['head_datetime']) .
+            '</td>' .
 
             '<td class="message">' .
-                htmlentities_wrapper($p['message']) . ' ' . format_author($p['committer_name'], $p['name']) .
+                $message .
             '</td>' .
 
             '<td class="actions">' .
@@ -51,6 +64,9 @@ foreach ($page['projects'] as $p) {
         '</tr>' .
         '';
 }
-?>
-    </tbody>
-</table>
+
+echo
+            '</tbody>' .
+        '</table>' .
+    '</div>' .
+    '';
