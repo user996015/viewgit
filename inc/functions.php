@@ -110,9 +110,11 @@ function format_diff($text) {
 	$files = array();
 
 	// match every "^diff --git a/<path> b/<path>$" line
+    $diff_counter = 0;
 	foreach (explode("\n", $text) as $line) {
 		if (preg_match('#^diff --git a/(.*) b/(.*)$#', $line, $matches) > 0) {
-			$files[$matches[1]] = urlencode($matches[1]);
+            $diff_counter += 1;
+            $files[$matches[1]] = 'diff-' . $diff_counter;
 		}
 	}
 
@@ -133,12 +135,42 @@ function format_diff($text) {
 		),
 		$text);
 
+    /*
 	$text = preg_replace_callback('#^diff --git a/(.*) b/(.*)$#m',
 		create_function(
 			'$m',
-			'return "<span class=\"diffline\"><a name=\"". urlencode($m[1]) ."\">diff --git a/$m[1] b/$m[2]</a></span>";'
+			'return "<span class=\"diffline\"><a id=\"" . urlencode($m[1]) . "\">diff --git a/$m[1] b/$m[2]</a></span>";'
 		),
 		$text);
+    */
+
+    /*
+    function foo($matches) {
+        static $count = 0;
+        ++$count;
+        return
+            '<span class="diffline">' .
+                '<a id="diff-' . $count . '">' .
+                    'diff --git a/' . $matches[1] . ' b/' . $matches[2] .
+                '</a>' .
+            '</span>';
+    }
+
+    $text = preg_replace_callback('#^diff --git a/(.*) b/(.*)$#m', 'foo', $text);
+    */
+
+    $text = preg_replace_callback('#^diff --git a/(.*) b/(.*)$#m',
+        create_function(
+            '$matches',
+            'static $count = 0;' .
+            '++$count;' .
+            'return ' .
+                '\'<span class="diffline">\' .' .
+                    '\'<a id="diff-\' . $count . \'">\' .' .
+                        '\'diff --git a/\' . $matches[1] . \' b/\' . $matches[2] . \'\' .' .
+                    '\'</a>\' .' .
+                '\'</span>\';'
+        ), $text);
 
     $text = str_replace("\n", '', $text);
 
