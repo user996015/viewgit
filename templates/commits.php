@@ -105,12 +105,9 @@ foreach ($page['shortlog'] as $l) {
     $page['lasthash'] = $l['commit_id'];
     $first = false;
 }
-?>
-            </ol>
-        </tbody>
-    </table>
 
-<?php
+echo '</ol>';
+
 if ($page['lasthash'] !== 'HEAD' && !isset($page['shortlog_no_more'])) {
     echo "<p>";
 
@@ -121,6 +118,5 @@ if ($page['lasthash'] !== 'HEAD' && !isset($page['shortlog_no_more'])) {
     echo "<a href=\"". makelink(array('a' => 'commits', 'p' => $page['project'], 'h' => $page['ref'], 'pg' => $page['pg'] + 1)) ."\">more &raquo;</a>";
     echo "</p>";
 }
-?>
 
-</div>
+echo '</div>';
