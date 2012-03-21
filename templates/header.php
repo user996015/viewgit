@@ -28,7 +28,7 @@ if (isset($page['notices'])) {
 ?>
 
 <div class="nav">
-<a href=".">Index</a>
+    <a href=".">Projects</a>
 <?php
 if (isset($page['project'])) {
     echo " &raquo; <a href=\"". makelink(array('a' => 'summary', 'p' => $page['project'])) ."\">$page[project]</a>";
@@ -37,8 +37,9 @@ if (isset($page['project'])) {
         tpl_extlink($projconf['www']);
     }
 }
+
 if (isset($page['subtitle'])) {
-    echo " : $page[subtitle]";
+    echo ' &raquo; ' . $page[subtitle];
 }
 
 if (isset($page['path'])) {
