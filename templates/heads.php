@@ -1,16 +1,17 @@
-<h1>
-    <span>Heads</span>
-</h1>
+<div class="heads">
+    <h1>
+        <span>Heads</span>
+    </h1>
 
-<table class="heads">
-    <thead>
-        <tr>
-            <th class="date">Date</th>
-            <th class="branch">Branch</th>
-            <th class="actions">Actions</th>
-        </tr>
-    </thead>
-<tbody>
+    <table class="heads">
+        <thead>
+            <tr>
+                <th class="date">Date</th>
+                <th class="branch">Branch</th>
+                <th class="actions">Actions</th>
+            </tr>
+        </thead>
+    <tbody>
 <?php
 $tr_class = 'even';
 
@@ -30,5 +31,6 @@ foreach ($page['heads'] as $h) {
         '';
 }
 ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
