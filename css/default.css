@@ -530,7 +530,7 @@ table th {
                 padding: 6px 4px;
             }
 
-    .commitdiff-page {
+    .commit-page {
     }
 
         .diff {
@@ -538,36 +538,41 @@ table th {
         }
 
             .diff pre {
+                background-color: #f8f8ff; /* ghostWhite */
+                border: 1px solid #ccc;
                 font-family: 'Consolas', 'Lucida Console', 'Bitstream Vera Sans Mono', 'Courier New', 'monospace';
                 font-size: 110%;
-                line-height: 110%;
+                line-height: 140%;
             }
 
-            .diff pre {
-                border: 1px solid #ccc;
-            }
+                .diff pre span {
+                    display: block;
+                }
 
+                .diff .diffline {
+                }
 
-        .diff .add {
-            background-color: #dfd;
-        }
+                .diff .add {
+                    background-color: #dfd;
+                }
 
-        .diff .del {
-            background-color: #fdd;
-        }
+                .diff .del {
+                    background-color: #fdd;
+                }
 
-        .diff .pos {
-            color: #999;
-        }
+                .diff .pos {
+                    color: #999;
+                    background-color: #eaf2f5;
+                }
 
-        .diff .etc {
-            color: #999;
-        }
+                .diff .etc {
+                    color: #999;
+                }
 
-            .diff .etc .add,
-            .diff .etc .del {
-                color: #000;
-            }
+                    .diff .etc .add,
+                    .diff .etc .del {
+                        color: #000;
+                    }
 
 /**
  * More polished style for ViewGit

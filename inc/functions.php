@@ -106,8 +106,7 @@ function format_author($author, $page_project='') {
  * Formats "git diff" output into xhtml.
  * @return array(array of filenames, xhtml)
  */
-function format_diff($text)
-{
+function format_diff($text) {
 	$files = array();
 
 	// match every "^diff --git a/<path> b/<path>$" line
@@ -133,12 +132,15 @@ function format_diff($text)
 			'<span class="etc">$1</span>',
 		),
 		$text);
+
 	$text = preg_replace_callback('#^diff --git a/(.*) b/(.*)$#m',
 		create_function(
 			'$m',
 			'return "<span class=\"diffline\"><a name=\"". urlencode($m[1]) ."\">diff --git a/$m[1] b/$m[2]</a></span>";'
 		),
 		$text);
+
+    $text = str_replace("\n", '', $text);
 
 	return array($files, $text);
 }
