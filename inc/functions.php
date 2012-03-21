@@ -107,57 +107,33 @@ function format_author($author, $page_project='') {
  * @return array(array of filenames, xhtml)
  */
 function format_diff($text) {
-	$files = array();
+    $files = array();
 
-	// match every "^diff --git a/<path> b/<path>$" line
+    // match every "^diff --git a/<path> b/<path>$" line
     $diff_counter = 0;
-	foreach (explode("\n", $text) as $line) {
-		if (preg_match('#^diff --git a/(.*) b/(.*)$#', $line, $matches) > 0) {
+    foreach (explode("\n", $text) as $line) {
+        if (preg_match('#^diff --git a/(.*) b/(.*)$#', $line, $matches) > 0) {
             $diff_counter += 1;
             $files[$matches[1]] = 'diff-' . $diff_counter;
-		}
-	}
-
-	$text = htmlentities_wrapper($text);
-
-	$text = preg_replace(
-		array(
-			'/^(\+.*)$/m',
-			'/^(-.*)$/m',
-			'/^(@.*)$/m',
-			'/^([^d\+-@].*)$/m',
-		),
-		array(
-			'<span class="add">$1</span>',
-			'<span class="del">$1</span>',
-			'<span class="pos">$1</span>',
-			'<span class="etc">$1</span>',
-		),
-		$text);
-
-    /*
-	$text = preg_replace_callback('#^diff --git a/(.*) b/(.*)$#m',
-		create_function(
-			'$m',
-			'return "<span class=\"diffline\"><a id=\"" . urlencode($m[1]) . "\">diff --git a/$m[1] b/$m[2]</a></span>";'
-		),
-		$text);
-    */
-
-    /*
-    function foo($matches) {
-        static $count = 0;
-        ++$count;
-        return
-            '<span class="diffline">' .
-                '<a id="diff-' . $count . '">' .
-                    'diff --git a/' . $matches[1] . ' b/' . $matches[2] .
-                '</a>' .
-            '</span>';
+        }
     }
 
-    $text = preg_replace_callback('#^diff --git a/(.*) b/(.*)$#m', 'foo', $text);
-    */
+    $text = htmlentities_wrapper($text);
+
+    $text = preg_replace(
+        array(
+            '/^(\+.*)$/m',
+            '/^(-.*)$/m',
+            '/^(@.*)$/m',
+            '/^([^d\+-@].*)$/m',
+        ),
+        array(
+            '<span class="add">$1</span>',
+            '<span class="del">$1</span>',
+            '<span class="pos">$1</span>',
+            '<span class="etc">$1</span>',
+        ),
+        $text);
 
     $text = preg_replace_callback('#^diff --git a/(.*) b/(.*)$#m',
         create_function(
@@ -174,7 +150,7 @@ function format_diff($text) {
 
     $text = str_replace("\n", '', $text);
 
-	return array($files, $text);
+    return array($files, $text);
 }
 
 /**
