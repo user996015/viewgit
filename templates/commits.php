@@ -49,13 +49,11 @@ foreach ($page['shortlog'] as $l) {
                 '</span>' .
 
                 'authored ' .
-                '<time>' .
+                '<time datetime="' . date(DATE_W3C, $l['author_utcstamp']) . '">' .
                     $l['age'] .
                 '</time>' .
                 ' ago' .
             '</span>' .
-
-            //'<td class="date">' . $l['date'] . '</td>' .
             '';
 
     /*
