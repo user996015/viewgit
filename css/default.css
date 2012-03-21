@@ -234,6 +234,20 @@
             display: block;
         }
 
+    .tags {
+    }
+
+        .tags thead {
+            display: none;
+        }
+
+    .heads {
+    }
+
+        .heads thead {
+            display: none;
+        }
+
 /*
 
 .tree .name {

@@ -7,7 +7,7 @@
         <thead>
             <tr>
                 <th class="date">Date</th>
-                <th class="branch">Tag</th>
+                <th class="tag">Tag</th>
                 <th class="actions">Actions</th>
             </tr>
         </thead>
@@ -16,18 +16,21 @@
 $tr_class = 'even';
 
 foreach ($page['tags'] as $tag) {
-    $tr_class = $tr_class=='odd' ? 'even' : 'odd';
+    $tr_class = $tr_class == 'odd' ? 'even' : 'odd';
+
     echo
         '<tr class="' .$tr_class . '">' .
-            '<td>' .
-                $tag[date] .
+            '<td class="date">' .
+                $tag['date'] .
             '</td>' .
-            '<td>' .
+            '<td class="tag">' .
                 '<a href="' . makelink(array('a' => 'commits', 'p' => $page['project'], 'h' => $tag['fullname'])) . '">' .
                     $tag[name] .
                 '</a>' .
             '</td>' .
-            '<td></td>' .
+            '<td class="actions">' .
+                '&nbsp;' .
+            '</td>' .
         '</tr>' .
         '';
 }

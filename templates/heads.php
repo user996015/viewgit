@@ -11,7 +11,7 @@
                 <th class="actions">Actions</th>
             </tr>
         </thead>
-    <tbody>
+        <tbody>
 <?php
 $tr_class = 'even';
 
@@ -20,13 +20,17 @@ foreach ($page['heads'] as $h) {
 
     echo
         '<tr class="' . $tr_class . '">' .
-            '<td>' . $h[date] . '</td>' .
-            '<td>' .
+            '<td class="date">' .
+                $h[date] .
+            '</td>' .
+            '<td class="branch">' .
                 '<a href="' . makelink(array('a' => 'commits', 'p' => $page['project'], 'h' => $h['fullname'])) . '">' .
                     $h['name'] .
                 '</a>' .
             '</td>' .
-            '<td></td>' .
+            '<td class="actions">' .
+                '&nbsp;' .
+            '</td>' .
         '</tr>' .
         '';
 }
