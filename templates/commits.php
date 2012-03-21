@@ -52,7 +52,6 @@ foreach ($page['shortlog'] as $l) {
                 '<time datetime="' . date(DATE_W3C, $l['author_utcstamp']) . '">' .
                     $l['age'] .
                 '</time>' .
-                ' ago' .
             '</span>' .
             '';
 
