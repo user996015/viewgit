@@ -496,8 +496,7 @@ function git_search_commits($project, $branch, $type, $string)
 /**
  * Get shortlog entries for the given project.
  */
-function handle_shortlog($project, $hash = 'HEAD', $page = 0)
-{
+function handle_shortlog($project, $hash = 'HEAD', $page = 0) {
 	global $conf;
 
 	$refs_by_hash = git_ref_list($project, true, true, $conf['shortlog_remote_labels']);
@@ -535,20 +534,21 @@ function handle_shortlog($project, $hash = 'HEAD', $page = 0)
  *
  * @param limit maximum number of tags to return
  */
-function handle_tags($project, $limit = 0)
-{
+function handle_tags($project, $limit = 0) {
 	global $conf;
 
 	$tags = git_get_tags($project);
 	$result = array();
 	foreach ($tags as $tag) {
 		$info = git_get_commit_info($project, $tag['h']);
+        $age = ago($info['author_datetime']);
 		$result[] = array(
 			'stamp' => $info['author_utcstamp'],
 			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'h' => $tag['h'],
 			'fullname' => $tag['fullname'],
 			'name' => $tag['name'],
+            'age' => $age,
 		);
 	}
 

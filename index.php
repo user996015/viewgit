@@ -380,11 +380,13 @@ elseif ($action === 'summary') {
 	$page['heads'] = array();
 	foreach ($heads as $h) {
 		$info = git_get_commit_info($page['project'], $h['h']);
+        $age = ago($info['author_datetime']);
 		$page['heads'][] = array(
 			'date' => strftime($conf['datetime'], $info['author_utcstamp']),
 			'h' => $h['h'],
 			'fullname' => $h['fullname'],
 			'name' => $h['name'],
+			'age' => $age,
 		);
 	}
 }

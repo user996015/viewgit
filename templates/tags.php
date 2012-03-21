@@ -19,13 +19,13 @@ foreach ($page['tags'] as $tag) {
     $tr_class = $tr_class == 'odd' ? 'even' : 'odd';
 
     echo
-        '<tr class="' .$tr_class . '">' .
+        '<tr class="' . $tr_class . '">' .
             '<td class="date">' .
-                $tag['date'] .
+                $tag['age'] .
             '</td>' .
             '<td class="tag">' .
                 '<a href="' . makelink(array('a' => 'commits', 'p' => $page['project'], 'h' => $tag['fullname'])) . '">' .
-                    $tag[name] .
+                    $tag['name'] .
                 '</a>' .
             '</td>' .
             '<td class="actions">' .

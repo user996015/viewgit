@@ -3,7 +3,7 @@
         <span>Heads</span>
     </h1>
 
-    <table class="heads">
+    <table>
         <thead>
             <tr>
                 <th class="date">Date</th>
@@ -16,12 +16,12 @@
 $tr_class = 'even';
 
 foreach ($page['heads'] as $h) {
-    $tr_class = $tr_class=='odd' ? 'even' : 'odd';
+    $tr_class = $tr_class == 'odd' ? 'even' : 'odd';
 
     echo
         '<tr class="' . $tr_class . '">' .
             '<td class="date">' .
-                $h[date] .
+                $h['age'] .
             '</td>' .
             '<td class="branch">' .
                 '<a href="' . makelink(array('a' => 'commits', 'p' => $page['project'], 'h' => $h['fullname'])) . '">' .
