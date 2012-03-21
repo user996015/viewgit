@@ -123,7 +123,7 @@
                     color: #888;
                     display: block;
                     font-size: 95%;
-                    padding-top: 4px;
+                    padding-top: 2px;
                 }
 
                     .commits .author {
@@ -369,6 +369,7 @@ table th {
             .shortlog .message a {
                 display: block;
                 float: left;
+                line-height: 140%;
             }
 
         .summary .actions,
