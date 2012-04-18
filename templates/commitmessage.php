@@ -6,8 +6,7 @@ echo
         '</a>' .
 
         '<pre>' .
-            //htmlentities_wrapper($page['message_full']) .
-            htmlentities_wrapper($page['message_firstline']) .
+            htmlentities_wrapper($page['message_full']) .
         '</pre>' .
 
         '<div class="authorinfo">' .
